@@ -8,6 +8,7 @@
 
 ## task list
 * css для PreviewImageField
+* пересмотреть upload_handlers генерировать хеш сумму для новых файлов
 
 
 ## release history
