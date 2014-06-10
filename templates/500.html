@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+
+{% block title %}{% trans 'ошибка' %} 500 :: {{ SITE_NAME }}{% endblock %}
+
+{% block extrahead %}
+	<link type="text/css" rel="stylesheet" href="{% static 'css/weboven::main.css' %}" >
+{% endblock %}
+
+{% block content %}<div class='error_list error500'>
+	<p class="error_number_line" >{% trans 'ошибка' %} <span class="error_number" >500</span></p>
+	<p class="error_text" >{% trans 'guru meditation' %}</p>
+	<p class="error_text" ><a href="/">{% trans 'на главную' %}</a> <a href="{{ request.META.HTTP_REFERER }}">{% trans 'назад' %}</a></p>
+</div>{% endblock %}
