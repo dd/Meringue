@@ -1,6 +1,6 @@
 # weboven Nucleum
 
-базовый пакет утилит и классов
+django base package
 
 
 ## requirements
