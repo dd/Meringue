@@ -9,6 +9,7 @@ django base package
 ## task list
 * css для PreviewImageField
 * пересмотреть upload_handlers генерировать хеш сумму для новых файлов
+* совместимость с python 3
 
 
 ## release history
