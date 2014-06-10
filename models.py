@@ -32,7 +32,7 @@ class GetAbsoluteUrlMixin(object):
         url_name = getattr(self._meta, 'url_name', None)
         if not url_name:
             cls = self.__class__.__name__.lower()
-            url_name = '%s_detail' %cls
+            url_name = '%s_detail' % cls
 
         namespace = getattr(self._meta, 'namespace', None)
         if not namespace:
@@ -44,7 +44,7 @@ class GetAbsoluteUrlMixin(object):
 
         if hasattr(self._meta, 'reverse_args'):
             reverse_args = [getattr(self, key) for key in
-                           self._meta.reverse_args]
+                            self._meta.reverse_args]
         else:
             reverse_args = [str(self.id)]
 
