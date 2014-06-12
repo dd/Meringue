@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 
-import re
-
 
 class UrlPatterns(object):
 
@@ -10,15 +8,8 @@ class UrlPatterns(object):
     '''
 
     def __init__(self, namespace=None, app_name=None):
-        if not app_name:
-            s = self.__module__
-            r = r'([^\.]+)'
-            app_name = '_'.join(re.findall(r, s)[:-1]).lower()
-        if not namespace:
-            namespace = app_name
-
-        self.app_name = app_name
-        self.namespace = namespace
+        self.app_name = app_name or '_'.join(self.__module__.split('.')[:-1]).lower()
+        self.namespace = namespace or self.app_name
 
     def __call__(self):
         return self.get_urlpatterns(), self.app_name, self.namespace

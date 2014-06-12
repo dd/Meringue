@@ -16,8 +16,7 @@ else:
 
 options.DEFAULT_NAMES = options.DEFAULT_NAMES + (
     'host_name',
-    'namespace',
-    'url_name',
+    'view',
     'reverse_args',
 )
 
@@ -28,39 +27,51 @@ options.DEFAULT_NAMES = options.DEFAULT_NAMES + (
 
 class GetAbsoluteUrlMixin(object):
 
-    def get_absolute_url(self):
-        url_name = getattr(self._meta, 'url_name', None)
-        if not url_name:
-            cls = self.__class__.__name__.lower()
-            url_name = '%s_detail' % cls
+    '''
+        Миксин автоматизирующий получение абсолютного адреса
+        Для получения адреса использует стандартную функцию reverse (в случае если установлен django_hosts то reverse_full)
+        при реверсе предполагается следующая схема:
+        host_name - название верхнего модуля в нижнем регистре (используется в случае установенного django_hosts)
+        view - '<namespace>:<url_name>'
+            namespace - название приложения приведённое к нижнему регистру и точки заменённые на нижнее подчёркивание
+            url_name - название класса приведённое к нижнему регистру с приставкой '-detail'
+        args - по умолчанию pk модели
 
-        namespace = getattr(self._meta, 'namespace', None)
-        if not namespace:
-            s = self.__module__
-            r = r'(.+)\.models$'
-            namespace = re.findall(r, s)[0].lower().replace('.', '_')
+        при определении класса модели можно предустановить параметры
+            host_name - название целевого хоста (string)
+            view - целевой url (string)
+            reverse_args - список атрибутов модели (list)
+    '''
 
-        url = '%s:%s' % (namespace, url_name)
-
-        if hasattr(self._meta, 'reverse_args'):
-            reverse_args = [getattr(self, key) for key in
-                            self._meta.reverse_args]
-        else:
-            reverse_args = [str(self.id)]
-
-        if 'django_hosts' in settings.INSTALLED_APPS:
-            s = self.__module__
-            r = r'(.[^\.]+).+\.models$'
-            module_name = re.findall(r, s)[0]
-            if hasattr(self._meta, 'host_name'):
-                host_name = self._meta.host_name
-            else:
+    def _host_name(self):
+        if 'django_hosts' in settings.INSTALLED_APPS and\
+           not hasattr(self._meta, 'host_name'):
+                module_name = self.__module__.split('.')[0]
                 module = __import__(module_name)
-                host_name = getattr(module, 'host_name', module_name)
-            return reverse_full(host=host_name, view=url,
-                                view_args=reverse_args)
+                self._meta.host_name = getattr(module, 'host_name',
+                                               module_name.lower())
+        return self._meta.host_name
 
-        return reverse(url, args=reverse_args)
+    def _view(self):
+        if not hasattr(self._meta, 'view'):
+            namespace = self.__module__[:-7].lower().replace('.', '_')
+
+            cls = self.__class__.__name__.lower()
+            view = '%s-detail' % cls
+
+            self._meta.view = '%s:%s' % (namespace, view)
+        return self._meta.view
+
+    def _reverse_args(self):
+        reverse_args = getattr(self._meta, 'reverse_args', ['pk'])
+        return [getattr(self, key) for key in reverse_args]
+
+    def get_absolute_url(self):
+        if 'django_hosts' in settings.INSTALLED_APPS:
+            return reverse_full(host=self._host_name(),
+                                view=self._view(),
+                                view_args=self._reverse_args())
+        return reverse(self._view(), args=self._reverse_args())
 
 
 #############
