@@ -10,6 +10,10 @@ django base package
 * css для PreviewImageField
 * пересмотреть upload_handlers генерировать хеш сумму для новых файлов
 * совместимость с python 3
+* thumbnail:
+** watermark
+** определение лица и использование в роли центра изображения
+** указание максимальной ширины или высоты
 
 
 ## release history
