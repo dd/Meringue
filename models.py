@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import re
-
 from django.conf import settings
 from django.db import models
 from django.db.models.query import QuerySet
@@ -48,12 +46,11 @@ class GetAbsoluteUrlMixin(object):
     '''
 
     def _host_name(self):
-        if 'django_hosts' in settings.INSTALLED_APPS and\
-           not hasattr(self._meta, 'host_name'):
-                module_name = self.__module__.split('.')[0]
-                module = __import__(module_name)
-                self._meta.host_name = getattr(module, 'host_name',
-                                               module_name.lower())
+        if not hasattr(self._meta, 'host_name'):
+            module_name = self.__module__.split('.')[0]
+            module = __import__(module_name)
+            self._meta.host_name = getattr(module, 'host_name',
+                                           module_name.lower())
         return self._meta.host_name
 
     def _view(self):
