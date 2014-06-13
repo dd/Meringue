@@ -13,8 +13,10 @@ register = Library()
 def cop_year():
     '''
     Шаблонный тег возвращает диапозон годов для футера в формате:
-    YYYY-YYYY
-    YYYY
+        YYYY-YYYY
+        YYYY
+
+    Год старта проекта указывается в settings проекта - START_YEAR
     '''
 
     year = timezone.now().year

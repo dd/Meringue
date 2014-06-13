@@ -1,1 +1,1 @@
-__VERSION__ = [0, 3, 'alfa', 4]
+__VERSION__ = [0, 3, 'alfa', 5]

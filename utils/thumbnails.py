@@ -188,7 +188,7 @@ def get_thumbnail(filename, task_list):
             url = thumb.thumbnail_url
         except Exception, e:
             # TODO 1: log error message cuz noone wishes to debug till here
-            # TODO 2: Если в размерах ноль приошибке нет превьюшки
+            # TODO 2: Если в размерах ноль при ошибке нет превьюшки
             print Exception
             print e
             url = _dummyimage(task_list)
