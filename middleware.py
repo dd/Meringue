@@ -14,7 +14,7 @@ site_middleware = 'wo_nucleum.middleware.SiteMiddleware'
 class SiteMiddleware:
     '''
         Подставляет SITE_ID и SITE_NAME при запросе, используется при
-        связке с django-hosts
+    связке с django-hosts
     '''
 
     def process_request(self, request):
