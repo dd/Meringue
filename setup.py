@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import meringue#  __VERSION__
+import meringue
 
 from setuptools import setup, find_packages
 
 
-# version = '.'.join([str(v) for v in __VERSION__])
+long_description = '\n%s\n%s\n' % (
+    open('README.rst').read(),
+    open('CHANGELOG').read()
+)
 
 setup(
     name = 'Meringue',
@@ -19,13 +22,13 @@ setup(
         'Django>=1.5.0',
         'South>=0.8.0',
         'pillow>=2.0.0',
-        'verlib',
+        'verlib>=0.1',
     ],
     packages = find_packages(),
     include_package_data = True,
     zip_safe = True,
     platforms = 'All',
-    long_description = '\n%s' % open('README.rst').read(),
+    long_description = long_description,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
