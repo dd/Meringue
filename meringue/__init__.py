@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from verlib import NormalizedVersion
+__VERSION__ = ((0, 3, 6),)
 
-__VERSION__ = (
-    (0, 3, 6),
-)
-
-version = str(NormalizedVersion.from_parts(*__VERSION__))
+try:
+    from verlib import NormalizedVersion
+    version = str(NormalizedVersion.from_parts(*__VERSION__))
+except:
+    version = '.'.join([str(j) for i in __VERSION__ for j in i])
