@@ -11,7 +11,7 @@ except ImportError:
 
 from django.conf import settings
 
-from wo_nucleum import settings as wn_settings
+from wo_sheet_pan import settings as wn_settings
 
 
 class Thumbnail(object):

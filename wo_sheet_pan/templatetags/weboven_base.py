@@ -3,7 +3,7 @@
 from django.template import Library
 from django.utils import timezone
 
-from wo_nucleum import settings as wn_settings
+from wo_sheet_pan import settings as wn_settings
 
 
 register = Library()
