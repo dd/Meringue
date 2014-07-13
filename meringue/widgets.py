@@ -7,7 +7,7 @@ from django.utils.html import conditional_escape, format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from wo_sheet_pan.utils.thumbnails import get_thumbnail
+from meringue.utils.thumbnails import get_thumbnail
 
 
 class PreviewImageFileInput(forms.widgets.FileInput):

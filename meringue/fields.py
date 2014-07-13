@@ -53,7 +53,7 @@ class UploadField(ImageField):
         defaults.update(kwargs)
         return super(ImageField, self).formfield(**defaults)
         # return super(UploadField, self).formfield(**defaults)
-add_introspection_rules([], ["^wo_sheet_pan\.fields\.UploadField"])
+add_introspection_rules([], ["^meringue\.fields\.UploadField"])
 
 
 class PreviewImageField(ImageField):

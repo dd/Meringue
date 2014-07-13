@@ -1,6 +1,6 @@
-=================
-Weboven Sheet Pan
-=================
+========
+Meringue
+========
 
 django base package
 
@@ -21,8 +21,8 @@ task list
 * css для PreviewImageField
 * совместимость с python 3
 * thumbnail:
-* watermark
 
+  - watermark
   - определение лица и использование в роли центра изображения
   - указание максимальной ширины или высоты
   - определение фокуса
