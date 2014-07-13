@@ -7,13 +7,12 @@ from django.utils.html import conditional_escape, format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from wo_nucleum.utils.thumbnails import get_thumbnail
+from wo_sheet_pan.utils.thumbnails import get_thumbnail
 
 
 class PreviewImageFileInput(forms.widgets.FileInput):
     '''
     TO-DO:
-        check - предустанавливаемый размер
         информация о изображении
         изображение при инициализации
         при загрузке изображения сразу же его выводить в превью (js)

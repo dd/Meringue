@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 
 
 hosts_middleware = 'django_hosts.middleware.HostsMiddleware'
-site_middleware = 'wo_nucleum.middleware.SiteMiddleware'
+site_middleware = 'wo_sheet_pan.middleware.SiteMiddleware'
 
 
 class SiteMiddleware:

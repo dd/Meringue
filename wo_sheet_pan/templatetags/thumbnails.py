@@ -2,7 +2,7 @@
 
 from django.template import Library
 
-from wo_nucleum.utils.thumbnails import get_thumbnail
+from wo_sheet_pan.utils.thumbnails import get_thumbnail
 
 
 register = Library()

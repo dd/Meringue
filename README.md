@@ -4,11 +4,13 @@ django base package
 
 
 ## requirements
+* Django >= 1.5.0
+* South >= 0.8.0
+* pillow >= 2.0.0
 
 
 ## task list
 * css для PreviewImageField
-* пересмотреть upload_handlers генерировать хеш сумму для новых файлов
 * совместимость с python 3
 * thumbnail:
   * watermark
@@ -16,7 +18,6 @@ django base package
   * указание максимальной ширины или высоты
   * определение фокуса
 * PreviewImageFileInput:
-  * check - предустанавливаемый размер
   * информация о изображении
   * изображение при инициализации
   * при загрузке изображения сразу же его выводить в превью (js)
@@ -26,6 +27,12 @@ django base package
 
 
 ## release history
+### 0.3.alfa.6
+* egg
+* пересмотреть upload_handlers генерировать имя загружаемых файлов на основе хеш суммы файла
+* PreviewImageFileInput:
+  * предустанавливаемый размер
+
 ### 0.3.alfa.5
 * немного продокументирован код
 * почистен код и приведён в порядок
