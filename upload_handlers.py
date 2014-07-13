@@ -1,36 +1,25 @@
 # -*- coding: utf-8 -*-
 
 import os.path
-import uuid
+try:
+    from hashlib import md5
+except ImportError:
+    from md5 import md5
 
 from django.core.files import uploadhandler
 
 
-def _rename(fn):
-    return '%s%s' % (uuid.uuid4(), os.path.splitext(fn)[1])
+def _rename(v, rn):
+    return u'{0}.{1}'.format(md5(v).hexdigest(), os.path.splitext(rn)[1])
 
 
 class MemoryFileUploadHandler(uploadhandler.MemoryFileUploadHandler):
-    def new_file(self, field_name, file_name, content_type,
-                 content_length, charset=None):
-        file_name = _rename(file_name)
-        super(MemoryFileUploadHandler, self).new_file(
-            field_name,
-            file_name,
-            content_type,
-            content_length,
-            charset
-        )
+    def file_complete(self, file_size):
+        self.file_name = _rename(self.file.getvalue(), self.file_name)
+        return super(MemoryFileUploadHandler, self).file_complete(file_size)
 
 
 class TemporaryFileUploadHandler(uploadhandler.TemporaryFileUploadHandler):
-    def new_file(self, field_name, file_name, content_type, content_length,
-                 charset=None):
-        file_name = _rename(file_name)
-        super(TemporaryFileUploadHandler, self).new_file(
-            field_name,
-            file_name,
-            content_type,
-            content_length,
-            charset
-        )
+    def file_complete(self, file_size):
+        self.file_name = _rename(self.file.getvalue(), self.file_name)
+        return super(MemoryFileUploadHandler, self).file_complete(file_size)
