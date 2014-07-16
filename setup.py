@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 long_description = '\n%s\n%s\n' % (
     open('README.rst').read(),
-    open('CHANGELOG').read()
+    open('CHANGELOG.rst').read()
 )
 
 setup(
