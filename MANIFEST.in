@@ -1,6 +1,6 @@
 include README.rst
-include LICENSE
-include CHANGELOG
+include LICENSE.txt
+include CHANGELOG.rst
 include MANIFEST.in
 recursive-include meringue/static *
 recursive-include meringue/templates *
