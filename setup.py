@@ -22,7 +22,6 @@ setup(
         'Django>=1.5.0',
         'South>=0.8.0',
         'pillow>=2.0.0',
-        'verlib>=0.1',
     ],
     packages = find_packages(),
     include_package_data = True,

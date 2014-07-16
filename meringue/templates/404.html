@@ -11,5 +11,5 @@
 
 {% block content %}<div class="error_list error404">
 	<p class="error_number_line" >{% trans 'ошибка' %} <span class="error_number" >404</span></p>
-	<p class="error_text" >такой страницы не существует, попробуйте начать <a href="/">сначала</a> или вернитесь <a href="{{ request.META.HTTP_REFERER }}">назад</a></p>
+	<p class="error_text" >{% trans 'такой страницы не существует, попробуйте начать' %} <a href="/">{% trans 'сначала' %}</a> {% trans 'или вернитесь' %} <a href="{{ request.META.HTTP_REFERER }}">{% trans 'назад' %}</a></p>
 </div>{% endblock %}

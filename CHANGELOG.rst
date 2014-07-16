@@ -33,10 +33,11 @@ task list
 release history
 ---------------
 
-0.3.1.a.1
+0.3.1.alpha.1
 ---------
 
 * структура egg
+* функция get_version
 
 
 0.3.0
@@ -46,7 +47,7 @@ release history
 * внесён в список PyPI
 
 
-0.3.alfa.6
+0.3.alpha.6
 ----------
 
 * egg
@@ -56,7 +57,7 @@ release history
   - предустанавливаемый размер
 
 
-0.3.alfa.5
+0.3.alpha.5
 ----------
 
 * немного продокументирован код
@@ -64,7 +65,7 @@ release history
 * продолжаются экперименты с версиями
 
 
-0.3.alfa.4
+0.3.alpha.4
 ----------
 
 * параметры namespace и url_name объеденены в view
@@ -74,7 +75,7 @@ release history
 * исправил GetAbsoluteUrlMixin при работе с django_hosts
 
 
-0.3.alfa.3
+0.3.alpha.3
 ----------
 
 * UrlPatterns - поправлено регулярное выражение, теперь не выдаёт ошибки при имени файла отличающегося от urls.py
