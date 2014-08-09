@@ -6,11 +6,21 @@ from django.conf import settings
 from django.utils import timezone
 
 
+##################
+# copyright year #
+##################
+
 START_YEAR = getattr(
     settings,
     'MERINGUE_START_YEAR',
     timezone.now().year
 )
+
+
+#############
+# thumbnail #
+#############
+
 THUMBNAIL_CROP_MOTHOD = getattr(
     settings,
     'MERINGUE_THUMBNAIL_CROP_MOTHOD',
@@ -40,4 +50,15 @@ THUMBNAIL_URL = getattr(
     settings,
     'MERINGUE_THUMBNAIL_URL',
     settings.MEDIA_URL + 'temp/'
+)
+
+
+############
+# UNIFYING #
+############
+
+DEFAULT_PHONE_LOCALIZATION = getattr(
+    settings,
+    'MERINGUE_DEFAULT_PHONE_LOCALIZATION',
+    'RU'
 )
