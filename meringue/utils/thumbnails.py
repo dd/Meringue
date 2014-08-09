@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from PIL import Image
+import logging
 import math
 import os.path
 import re
@@ -186,14 +187,14 @@ def get_thumbnail(filename, task_list):
         try:
             thumb = Thumbnail(filename, task_list)
             url = thumb.thumbnail_url
-        except Exception, e:
+        except Exception, er:
             # TODO 1: log error message cuz noone wishes to debug till here
             # TODO 2: Если в размерах ноль при ошибке нет превьюшки
-            print Exception
-            print e
+            logging.error(Exception)
+            logging.error(er)
             url = _dummyimage(task_list)
     else:
-        print u'File \'%s\' not find' % filename
+        logging.error(u'File \'%s\' not find' % filename)
         # находить последний размер и цвет фона
         url = _dummyimage(task_list)
         # return ''
