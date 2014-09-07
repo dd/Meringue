@@ -5,10 +5,10 @@ import meringue
 from setuptools import setup, find_packages
 
 
-long_description = '\n%s\n%s\n' % (
+long_description = '\n'.join([
     open('README.rst').read(),
     open('CHANGELOG.rst').read()
-)
+])
 
 setup(
     name = 'Meringue',
