@@ -20,7 +20,6 @@ setup(
     url = 'https://github.com/dd/Meringue',
     install_requires = [
         'Django>=1.5.0',
-        'South>=0.8.0',
         'pillow>=2.0.0',
     ],
     packages = find_packages(),
