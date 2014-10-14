@@ -12,6 +12,8 @@ except ImportError:
 
 
 def unify_email(origin_email):
+    if not origin_email or not '@' in origin_email[1:-3]:
+        return None
     user, domain = origin_email.strip().rsplit('@', 1)
     user = user.split('+')[0]
     email = '@'.join([user, domain])
