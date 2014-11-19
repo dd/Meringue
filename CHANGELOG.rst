@@ -35,6 +35,12 @@ task list
 release history
 ---------------
 
+0.3.1.alpha.4
+-------------
+
+*
+
+
 0.3.1.alpha.3
 -------------
 
@@ -43,6 +49,9 @@ release history
 * upload_handlers: md5 -> sha256
 * unify_email: если передать пустое значение возвращает None
 * unify_email: проверяет на должное содержание символа @
+* поправил reset.css
+* уменьшил reset.css и сохранил reset.min.css
+* coontext_processor.base теперь возвращает и DEBUG
 
 
 0.3.1.alpha.2
