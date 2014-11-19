@@ -7,6 +7,14 @@ from django.utils import timezone
 
 
 ##################
+# current folder #
+##################
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+path = lambda *args: os.path.join(BASE_DIR, *args).replace('\\', '/')
+
+
+##################
 # copyright year #
 ##################
 

@@ -47,6 +47,7 @@ release history
 * поправил reset.css
 * уменьшил reset.css и сохранил reset.min.css
 * coontext_processor.base теперь возвращает и DEBUG
+* Шаблонный тег put_reset
 
 
 0.3.1.alpha.2
