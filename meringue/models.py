@@ -61,7 +61,7 @@ class GetAbsoluteUrlMixin(object):
         if not hasattr(self._meta, 'view'):
             namespace = self.__module__[:-7].lower().replace('.', '_')
 
-            cls = self.__class__.__name__.lower()
+            cls = self._meta.model_name
             view = '%s-detail' % cls
 
             self._meta.view = '%s:%s' % (namespace, view)
