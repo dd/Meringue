@@ -38,6 +38,8 @@ release history
 
 0.3.1.alpha.4
 -------------
+* Шаблонный тег put_static
+* weboven_base -> meringue_base
 
 
 
