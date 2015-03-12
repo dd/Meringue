@@ -18,7 +18,7 @@ class form_fieldsets(object):
             result.append({
                 'fields': [forms.forms.BoundField(self, self.fields[f], f)
                            for f in fieldset['fields'] if f in self.fields],
-                'title': fieldset['title']
+                'title': fieldset.get('title', None)
             })
         return result
 

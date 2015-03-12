@@ -30,7 +30,7 @@ def cop_year():
 
 
 @register.simple_tag
-def put_static(path):
+def put_css(path):
     '''
     Тег выводит содержимое файла инлайном при этом приобразуя относительные пути
     '''
@@ -40,12 +40,12 @@ def put_static(path):
         if match:
             break
     if not match and settings.TEMPLATE_DEBUG:
-        return '<script type=\"text/javascript\"> console.log(\"файл %s не\
+        return u'<script type=\"text/javascript\"> console.log(\"файл %s не\
 найден\"); </script>' % path
     elif not match:
         return ''
 
-    return re.sub(
+    return '<style>%s</style>' % re.sub(
         re.compile(ur'url\(("|\'|\ |)(\.\.\/)(?P<path>[^\"\'\)]+)("|\'|)\)',
                    re.MULTILINE | re.UNICODE),
         lambda m: 'url(%s%s)' % (settings.STATIC_URL, m.groupdict()['path']),

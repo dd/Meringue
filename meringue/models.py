@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 import django.db.models.options as options
 
 if 'django_hosts' in settings.INSTALLED_APPS:
-    from django_hosts.reverse import reverse_full
+    from django_hosts.resolvers import reverse
 else:
     from django.core.urlresolvers import reverse
 
@@ -73,9 +73,8 @@ class GetAbsoluteUrlMixin(object):
 
     def get_absolute_url(self):
         if 'django_hosts' in settings.INSTALLED_APPS:
-            return reverse_full(host=self._host_name(),
-                                view=self._view(),
-                                view_args=self._reverse_args())
+            return reverse(host=self._host_name(), view=self._view(),
+                           view_args=self._reverse_args())
         return reverse(self._view(), args=self._reverse_args())
 
 
