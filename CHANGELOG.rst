@@ -46,6 +46,7 @@ release history
 * исправил form_fieldsets теперь можно не указывать title
 * исправил совмещение с новым django_hosts, старые не поддерживает
 * декоратор anonymous_required пропускающий только неавторизованных пользователей
+* переработана функция get_absolute_url подбита под новый формат django_hosts
 
 
 0.3.1.alpha.3

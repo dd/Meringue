@@ -72,10 +72,15 @@ class GetAbsoluteUrlMixin(object):
         return [getattr(self, key) for key in reverse_args]
 
     def get_absolute_url(self):
+        reverse_args = {
+            'viewname': self._view(),
+            'args': self._reverse_args(),
+        }
         if 'django_hosts' in settings.INSTALLED_APPS:
-            return reverse(host=self._host_name(), view=self._view(),
-                           view_args=self._reverse_args())
-        return reverse(self._view(), args=self._reverse_args())
+            reverse_args.update({
+                'host': self._host_name(),
+            })
+        return reverse(**reverse_args)
 
 
 #############
