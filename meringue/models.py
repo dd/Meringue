@@ -11,6 +11,8 @@ if 'django_hosts' in settings.INSTALLED_APPS:
 else:
     from django.core.urlresolvers import reverse
 
+from . import settings as meringue_settings
+
 
 options.DEFAULT_NAMES = options.DEFAULT_NAMES + (
     'host_name',
@@ -79,6 +81,7 @@ class GetAbsoluteUrlMixin(object):
         if 'django_hosts' in settings.INSTALLED_APPS:
             reverse_args.update({
                 'host': self._host_name(),
+                'port': meringue_settings.PORT,
             })
         return reverse(**reverse_args)
 
@@ -126,6 +129,8 @@ class PublishModel(GetAbsoluteUrlMixin, models.Model):
         default=True,
         db_index=True,
     )
+    ctime = models.DateTimeField(auto_now_add=True)
+    mtime = models.DateTimeField(auto_now=True)
 
     objects = PublishManager()
 

@@ -38,6 +38,7 @@ release history
 
 0.3.1.alpha.4
 -------------
+
 * Шаблонный тег put_static
 * weboven_base -> meringue_base
 * шаблонный тег field_render выводит поля форм в заранее заданном виде
@@ -47,6 +48,10 @@ release history
 * исправил совмещение с новым django_hosts, старые не поддерживает
 * декоратор anonymous_required пропускающий только неавторизованных пользователей
 * переработана функция get_absolute_url подбита под новый формат django_hosts
+* добавленна настройка MERINGUE_SITE_PORT указывающая порт для reverse
+* пофиксил переименование в upload_handlers
+* PublishModel mtime field
+* PublishModel ctime field
 
 
 0.3.1.alpha.3

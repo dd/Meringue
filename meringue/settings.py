@@ -6,6 +6,17 @@ from django.conf import settings
 from django.utils import timezone
 
 
+########
+# HOST #
+########
+
+PORT = getattr(
+    settings,
+    'MERINGUE_SITE_PORT',
+    None
+)
+
+
 ##################
 # current folder #
 ##################

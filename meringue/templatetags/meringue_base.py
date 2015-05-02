@@ -32,7 +32,8 @@ def cop_year():
 @register.simple_tag
 def put_css(path):
     '''
-    Тег выводит содержимое файла инлайном при этом приобразуя относительные пути
+        Тег выводит содержимое css файла инлайном при этом приобразуя
+        относительные пути
     '''
     for sfinder in settings.STATICFILES_FINDERS:
         finder = import_string(sfinder)
@@ -40,7 +41,7 @@ def put_css(path):
         if match:
             break
     if not match and settings.TEMPLATE_DEBUG:
-        return u'<script type=\"text/javascript\"> console.log(\"файл %s не\
+        return u'<script type=\"text/javascript\">console.log(\"файл %s не\
 найден\"); </script>' % path
     elif not match:
         return ''
@@ -51,6 +52,28 @@ def put_css(path):
         lambda m: 'url(%s%s)' % (settings.STATIC_URL, m.groupdict()['path']),
         open(match, 'r').read()
     )
+
+
+@register.simple_tag
+def put_js(path):
+    '''
+        Тег выводит содержимое js файла инлайном при этом приобразуя
+        относительные пути
+    '''
+    result_wrapper = "<script type=\"text/javascript\">%s</script>"
+    for sfinder in settings.STATICFILES_FINDERS:
+        finder = import_string(sfinder)
+        match = finder().find(path)
+        if match:
+            break
+    if not match and settings.TEMPLATE_DEBUG:
+        result = u'console.log(\"файл %s не найден\");' % path
+    elif not match:
+        return ''
+    else:
+        result = open(match, 'r').read()
+
+    return result_wrapper % result
 
 
 @register.simple_tag
