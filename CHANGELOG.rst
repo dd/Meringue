@@ -25,7 +25,10 @@ task list
 * тестирование
 * настройки вроде DEBUG из админки
 * перезагрузка сервера из админки
-*
+* put_js преобразовывать относительные пути
+* put_css/put_js в min переделывать ссылку на .map
+* сделать нормальный класс получения файла а не набор функций
+
 
 ---------------
 release history
@@ -48,6 +51,7 @@ release history
 * пофиксил переименование в upload_handlers
 * PublishModel mtime field
 * PublishModel ctime field
+* put_css/put_js по возможности выводит минифицированный файл
 
 
 0.3.1.alpha.3

@@ -3,13 +3,15 @@
 
 import logging
 import re
+import sys
+import os
 
 from django.conf import settings
 from django.template import Library
 from django.utils import timezone
 from django.utils.module_loading import import_string
 
-from meringue import settings as m_settings
+from meringue import settings as m_settings, errors
 
 
 register = Library()
@@ -29,28 +31,63 @@ def cop_year():
         (m_settings.START_YEAR, year)
 
 
-@register.simple_tag
-def put_css(path):
-    '''
-        Тег выводит содержимое css файла инлайном при этом приобразуя
-        относительные пути
-    '''
+def _load_file(path):
     for sfinder in settings.STATICFILES_FINDERS:
         finder = import_string(sfinder)
         match = finder().find(path)
         if match:
             break
-    if not match and settings.TEMPLATE_DEBUG:
-        return u'<script type=\"text/javascript\">console.log(\"файл %s не\
-найден\"); </script>' % path
-    elif not match:
-        return ''
 
-    return '<style>%s</style>' % re.sub(
+    if not match:
+        raise errors.FileNotFindError(os.path.split(path)[1])
+    return open(match, 'r')
+
+
+def _get_min_path(path):
+    return re.sub(
+        re.compile(ur'^(?P<name>[\w\W]*).(?P<type>css|js)$', re.UNICODE),
+        lambda m: '%s.min.%s' % (m.groupdict()['name'],
+                                 m.groupdict()['type']),
+        path
+    )
+
+
+def _load_static_file(path, try_load_min=True):
+    file = None
+    if try_load_min:
+        try:
+            file = _load_file( _get_min_path(path) )
+        except errors.FileNotFindError:
+            pass
+
+    if not file:
+        file = _load_file(path)
+
+    return file
+
+
+@register.simple_tag
+def put_css(path):
+    '''
+        Тег выводит содержимое css файла инлайном при этом приобразуя
+        относительные пути, при этом пытается вывести минифицированный
+        вариант файла
+    '''
+    result_wrapper = "<style>%s</style>"
+
+    try:
+        file = _load_static_file(path, not settings.DEBUG)
+    except errors.FileNotFindError, error:
+        if settings.TEMPLATE_DEBUG:
+            return u'<script type=\"text/javascript\">console.log(\"файл\
+ %s ненайден\"); </script>' % path
+        raise error
+
+    return result_wrapper % re.sub(
         re.compile(ur'url\(("|\'|\ |)(\.\.\/)(?P<path>[^\"\'\)]+)("|\'|)\)',
                    re.MULTILINE | re.UNICODE),
         lambda m: 'url(%s%s)' % (settings.STATIC_URL, m.groupdict()['path']),
-        open(match, 'r').read()
+        file.read()
     )
 
 
@@ -58,22 +95,20 @@ def put_css(path):
 def put_js(path):
     '''
         Тег выводит содержимое js файла инлайном при этом приобразуя
-        относительные пути
+        относительные пути, при этом пытается вывести минифицированный
+        вариант файла
     '''
     result_wrapper = "<script type=\"text/javascript\">%s</script>"
-    for sfinder in settings.STATICFILES_FINDERS:
-        finder = import_string(sfinder)
-        match = finder().find(path)
-        if match:
-            break
-    if not match and settings.TEMPLATE_DEBUG:
-        result = u'console.log(\"файл %s не найден\");' % path
-    elif not match:
-        return ''
-    else:
-        result = open(match, 'r').read()
 
-    return result_wrapper % result
+    try:
+        file = _load_static_file(path, not settings.DEBUG)
+    except errors.FileNotFindError, error:
+        if settings.TEMPLATE_DEBUG:
+            return u'<script type=\"text/javascript\">console.log(\"файл\
+ %s ненайден\"); </script>' % path
+        raise error
+
+    return result_wrapper % file.read()
 
 
 @register.simple_tag
