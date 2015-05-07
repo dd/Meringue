@@ -33,6 +33,12 @@ release history
 ---------------
 
 
+0.3.2.alpha.1
+-------------
+
+*
+
+
 0.3.1.alpha.4
 -------------
 
@@ -49,6 +55,7 @@ release history
 * PublishModel mtime field
 * PublishModel ctime field
 * put_css/put_js:
+
   - по возможности выводит минифицированный файл
   - в min переделывает ссылку на .map
   - переработана внутренняя составляющая в отдельный класс
