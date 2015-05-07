@@ -7,9 +7,11 @@ from django.utils.translation import ugettext_lazy as _
 import django.db.models.options as options
 
 if 'django_hosts' in settings.INSTALLED_APPS:
-    from django_hosts.reverse import reverse_full
+    from django_hosts.resolvers import reverse
 else:
     from django.core.urlresolvers import reverse
+
+from . import settings as meringue_settings
 
 
 options.DEFAULT_NAMES = options.DEFAULT_NAMES + (
@@ -61,7 +63,7 @@ class GetAbsoluteUrlMixin(object):
         if not hasattr(self._meta, 'view'):
             namespace = self.__module__[:-7].lower().replace('.', '_')
 
-            cls = self.__class__.__name__.lower()
+            cls = self._meta.model_name
             view = '%s-detail' % cls
 
             self._meta.view = '%s:%s' % (namespace, view)
@@ -72,11 +74,16 @@ class GetAbsoluteUrlMixin(object):
         return [getattr(self, key) for key in reverse_args]
 
     def get_absolute_url(self):
+        reverse_args = {
+            'viewname': self._view(),
+            'args': self._reverse_args(),
+        }
         if 'django_hosts' in settings.INSTALLED_APPS:
-            return reverse_full(host=self._host_name(),
-                                view=self._view(),
-                                view_args=self._reverse_args())
-        return reverse(self._view(), args=self._reverse_args())
+            reverse_args.update({
+                'host': self._host_name(),
+                'port': meringue_settings.PORT,
+            })
+        return reverse(**reverse_args)
 
 
 #############
@@ -122,6 +129,8 @@ class PublishModel(GetAbsoluteUrlMixin, models.Model):
         default=True,
         db_index=True,
     )
+    ctime = models.DateTimeField(auto_now_add=True)
+    mtime = models.DateTimeField(auto_now=True)
 
     objects = PublishManager()
 

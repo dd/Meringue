@@ -7,7 +7,7 @@ from django.core.files import uploadhandler
 
 
 def _rename(v, rn):
-    return u'{0}.{1}'.format(sha256(v).hexdigest(), os.path.splitext(rn)[1])
+    return u'{0}{1}'.format(sha256(v).hexdigest(), os.path.splitext(rn)[1])
 
 
 class MemoryFileUploadHandler(uploadhandler.MemoryFileUploadHandler):
