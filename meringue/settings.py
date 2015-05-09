@@ -81,3 +81,14 @@ DEFAULT_PHONE_LOCALIZATION = getattr(
     'MERINGUE_DEFAULT_PHONE_LOCALIZATION',
     'RU'
 )
+
+
+##############
+# PUT CSS/JS #
+##############
+
+LOAD_MINI = getattr(
+    settings,
+    'MERINGUE_LOAD_MINI',
+    not settings.DEBUG
+)

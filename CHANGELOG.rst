@@ -33,6 +33,14 @@ release history
 ---------------
 
 
+0.3.2
+-------------
+
+* put_css/put_js:
+
+  - поправлена ссылка на .map
+  - добавлен параметр MERINGUE_LOAD_MINI в settings указывающий загружать минифицированный файл или нет (default = DEBUG)
+
 0.3.1.alpha.4
 -------------
 
@@ -49,6 +57,7 @@ release history
 * PublishModel mtime field
 * PublishModel ctime field
 * put_css/put_js:
+
   - по возможности выводит минифицированный файл
   - в min переделывает ссылку на .map
   - переработана внутренняя составляющая в отдельный класс
