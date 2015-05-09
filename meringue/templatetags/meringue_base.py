@@ -70,7 +70,7 @@ class PutStatic:
     def _load_static_file(self):
         file = None
 
-        if self.load_min:
+        if self.load_min and m_settings.LOAD_MINI:
             try:
                 file = self._load_file(os.path.join(
                     self.dir,
@@ -99,12 +99,23 @@ class PutStatic:
             result = text
         return result
 
+
     def _fix_map_link(self, text):
+
+        def _calculate_map_link(m):
+            result = 'sourceMappingURL=%s%s'
+            if m.groupdict()['scheme']:
+                return result % (m.groupdict()['scheme'], m.groupdict()['path'])
+
+            if m.groupdict()['path'].startswith('/'):
+                return result % (settings.STATIC_URL, m.groupdict()['path'])
+
+            return result % (settings.STATIC_URL, "/".join([self.dir, m.groupdict()['path']]))
+
         result = re.sub(
             re.compile(ur'sourceMappingURL=(?P<scheme>https:\/\/|http:\/\/|\/\/)?(?P<path>[\w\.]+)',
                        re.UNICODE),
-            lambda m: 'sourceMappingURL=%s%s' % (settings.STATIC_URL,
-                                                 m.groupdict()['path']),
+            _calculate_map_link,
             text
         )
         return result
