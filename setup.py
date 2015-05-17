@@ -22,6 +22,7 @@ setup(
     install_requires = [
         'Django>=1.5.0',
         'pillow>=2.0.0',
+        'beautifulsoup4>=4.3.2',
     ],
     packages = find_packages(),
     include_package_data = True,

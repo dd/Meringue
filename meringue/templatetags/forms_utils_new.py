@@ -3,6 +3,8 @@
 import logging
 import re
 
+from bs4 import BeautifulSoup
+
 from django import forms
 from django import template
 from django.utils.safestring import mark_safe
@@ -89,3 +91,17 @@ def field_render(boundfield):
 
     result = FieldRender(boundfield)
     return result.render()
+
+
+register = template.Library()
+@register.filter
+def add_placeholder(field):
+    """
+        Устанавливает placeholder равный значению label
+    """
+    soup = BeautifulSoup(unicode(field), 'html.parser')
+    for tag in soup.children:
+        if tag.name != 'script':
+            tag['placeholder'] = field.label
+    return mark_safe(soup.renderContents())
+
