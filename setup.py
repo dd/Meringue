@@ -14,7 +14,7 @@ long_description = '\n'.join([
 ])
 
 requirements_path = 'requirements.txt'
-while codecs.open(requirements_path) as requirements_file:
+with codecs.open(requirements_path) as requirements_file:
     requirements = requirements_file.read().split('\n')
 
 setup(

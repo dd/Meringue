@@ -28,7 +28,7 @@ options.DEFAULT_NAMES = options.DEFAULT_NAMES + (
 class GetAbsoluteUrlMixin(object):
 
     '''
-        Миксин автоматизирующий получение абсолютного адреса
+        Примесь автоматизирующая получение абсолютного адреса
         Для получения адреса использует стандартную функцию reverse (в
     случае если установлен django_hosts то reverse_full)
 
