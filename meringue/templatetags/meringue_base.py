@@ -148,7 +148,7 @@ def put_css(path):
         file = PutStatic(path, 'css')  # , load_min=not settings.DEBUG)
     except FileNotFindError, error:
         if settings.TEMPLATE_DEBUG:
-            return u'<script type=\"text/javascript\">console.log(\"файл\
+            return u'<script type=\"text/javascript\">console.error(\"файл\
  %s ненайден\"); </script>' % path
         raise error
 
@@ -168,7 +168,7 @@ def put_js(path):
         file = PutStatic(path, 'js')  # , load_min=not settings.DEBUG)
     except FileNotFindError, error:
         if settings.TEMPLATE_DEBUG:
-            return u'<script type=\"text/javascript\">console.log(\"файл\
+            return u'<script type=\"text/javascript\">console.error(\"файл\
  %s ненайден\"); </script>' % path
         raise error
 

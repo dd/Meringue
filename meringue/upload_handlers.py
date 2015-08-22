@@ -12,11 +12,15 @@ def _rename(v, rn):
 
 class MemoryFileUploadHandler(uploadhandler.MemoryFileUploadHandler):
     def file_complete(self, file_size):
-        self.file_name = _rename(self.file.getvalue(), self.file_name)
+        if not self.activated:
+            return
+
+        self.file_name = _rename(self.file.read(), self.file_name)
         return super(MemoryFileUploadHandler, self).file_complete(file_size)
 
 
 class TemporaryFileUploadHandler(uploadhandler.TemporaryFileUploadHandler):
     def file_complete(self, file_size):
-        self.file_name = _rename(self.file.getvalue(), self.file_name)
-        return super(MemoryFileUploadHandler, self).file_complete(file_size)
+        file = super(TemporaryFileUploadHandler, self).file_complete(file_size)
+        self.file_name = _rename(file.read(), self.file_name)
+        return file
