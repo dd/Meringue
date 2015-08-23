@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
+import django.db.models.options as options
 from django.conf import settings
 from django.db import models
 from django.db.models.query import QuerySet
 from django.utils.translation import ugettext_lazy as _
-import django.db.models.options as options
+
+from . import settings as meringue_settings
 
 if 'django_hosts' in settings.INSTALLED_APPS:
     from django_hosts.resolvers import reverse
 else:
     from django.core.urlresolvers import reverse
-
-from . import settings as meringue_settings
 
 
 options.DEFAULT_NAMES = options.DEFAULT_NAMES + (
@@ -86,6 +86,11 @@ class GetAbsoluteUrlMixin(object):
         return reverse(**reverse_args)
 
 
+class CMTimeMixin(object):
+    ctime = models.DateTimeField(auto_now_add=True)
+    mtime = models.DateTimeField(auto_now=True)
+
+
 #############
 # querysets #
 #############
@@ -114,13 +119,12 @@ class PublishManager(models.Manager):
 # models #
 ##########
 
-class PublishModel(GetAbsoluteUrlMixin, models.Model):
+class PublishModel(models.Model):
 
     '''
         Абстрактная модель с признаком публикации (поле is_published)
         менеджер имеет метод published() аналог стандартного filter() с
     заранее указанными is_published=True
-        так же наследует GetAbsoluteUrlMixin
     '''
 
     is_published = models.BooleanField(
@@ -129,8 +133,6 @@ class PublishModel(GetAbsoluteUrlMixin, models.Model):
         default=True,
         db_index=True,
     )
-    ctime = models.DateTimeField(auto_now_add=True)
-    mtime = models.DateTimeField(auto_now=True)
 
     objects = PublishManager()
 
