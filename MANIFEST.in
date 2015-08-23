@@ -1,8 +1,9 @@
-include README.rst
-include LICENSE.txt
+include AUTHORS
+include INSTALL
 include CHANGELOG.rst
+include LICENSE
 include MANIFEST.in
-recursive-include meringue/static *
-recursive-include meringue/templates *
+recursive-include meringue *
+recursive-include docs *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
