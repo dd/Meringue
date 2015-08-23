@@ -30,12 +30,13 @@ Contents:
    :maxdepth: 2
 
    quickstart
-   .. installation
-   .. configuration
-   .. customization
-   .. multiple_admin_sites
-   .. menu
-   .. dashboard
-   .. integration
-   .. contributing
-   .. testing
+
+.. installation
+.. configuration
+.. customization
+.. multiple_admin_sites
+.. menu
+.. dashboard
+.. integration
+.. contributing
+.. testing
