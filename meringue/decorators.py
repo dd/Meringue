@@ -2,12 +2,12 @@
 
 from functools import update_wrapper
 
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponseRedirect
 
 
 class CheckAccount(object):
     """
-    "По образу и подобию django.contrib.auth.decorators._CheckLogin"(c)
+    По образу и подобию django.contrib.auth.decorators._CheckLogin
     """
 
     def __init__(self, view_func, test_func, redirect_url=None):

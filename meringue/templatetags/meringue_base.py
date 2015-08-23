@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
 
-
-import logging
-import re
-import sys
 import os
+import re
 
 from django.conf import settings
 from django.template import Library
 from django.utils import timezone
 from django.utils.module_loading import import_string
-
 from meringue import settings as m_settings
 from meringue.errors import FileNotFindError
 
-
 register = Library()
+
 
 @register.simple_tag
 def cop_year():
@@ -89,8 +85,10 @@ class PutStatic:
     def _fix_relative_path(self, text):
         if self.type == 'css':
             result = re.sub(
-                re.compile(ur'url\(("|\'|\ |)(\.\.\/)(?P<path>[^\"\'\)]+)("|\'|)\)',
-                           re.MULTILINE | re.UNICODE),
+                re.compile(
+                    ur'url\(("|\'|\ |)(\.\.\/)(?P<path>[^\"\'\)]+)("|\'|)\)',
+                    re.MULTILINE | re.UNICODE
+                ),
                 lambda m: 'url(%s%s)' % (settings.STATIC_URL,
                                          m.groupdict()['path']),
                 text
@@ -99,21 +97,24 @@ class PutStatic:
             result = text
         return result
 
-
     def _fix_map_link(self, text):
 
         def _calculate_map_link(m):
             result = 'sourceMappingURL=%s%s'
             if m.groupdict()['scheme']:
-                return result % (m.groupdict()['scheme'], m.groupdict()['path'])
+                return result % (m.groupdict()['scheme'],
+                                 m.groupdict()['path'])
 
             if m.groupdict()['path'].startswith('/'):
                 return result % (settings.STATIC_URL, m.groupdict()['path'])
 
-            return result % (settings.STATIC_URL, "/".join([self.dir, m.groupdict()['path']]))
+            return result % (settings.STATIC_URL, "/".join(
+                [self.dir, m.groupdict()['path']]
+            ))
 
         result = re.sub(
-            re.compile(ur'sourceMappingURL=(?P<scheme>https:\/\/|http:\/\/|\/\/)?(?P<path>[\w\.]+)',
+            re.compile(ur'sourceMappingURL=(?P<scheme>https:\/\/|http:\/\/|\/\
+\/)?(?P<path>[\w\.]+)',
                        re.UNICODE),
             _calculate_map_link,
             text
@@ -180,4 +181,5 @@ def put_reset():
     '''
     Шаблонный тег выводит содержимое файла reset.css заключённое в тег style
     '''
-    return '<style>%s</style>' % open(m_settings.path('meringue/static/css/reset%s.css' % '' if settings.DEBUG else '.min'), 'r').read()
+    return '<style>%s</style>' % open(m_settings.path('meringue/static/css/res\
+et%s.css' % '' if settings.DEBUG else '.min'), 'r').read()

@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import logging
 import re
 
-from bs4 import BeautifulSoup
-
-from django import forms
 from django import template
 from django.utils.safestring import mark_safe
 
+from bs4 import BeautifulSoup
 
 register = template.Library()
+
 
 def get_name(field):
     caption = field.widget.__class__.__name__
     r = ur'([A-Z]{1})([a-z]+)'
     p = re.compile(r)
-    caption = p.sub(lambda m: '_'+m.group().lower(), caption)
+    caption = p.sub(lambda m: '_' + m.group().lower(), caption)
     return caption
 
 
@@ -37,7 +35,7 @@ def field_render_classes(boundfield):
         result += ' errors'
     if not boundfield.errors and boundfield.form.errors and boundfield.value:
         result += ' valid'
-    result += ' meringue-'+get_name(boundfield.field)[1:]
+    result += ' meringue-' + get_name(boundfield.field)[1:]
     return result
 
 
@@ -48,7 +46,8 @@ class FieldRender(object):
         self.caption = get_name(boundfield.field)
 
     def render(self):
-        result = getattr(self, self.caption+'_render', self._default_with_label_render)
+        result = getattr(self, self.caption + '_render',
+                         self._default_with_label_render)
         return result()
 
     # def _default_render(self):
@@ -93,7 +92,6 @@ def field_render(boundfield):
     return result.render()
 
 
-register = template.Library()
 @register.filter
 def add_placeholder(field):
     """
@@ -104,4 +102,3 @@ def add_placeholder(field):
         if tag.name != 'script':
             tag['placeholder'] = field.label
     return mark_safe(soup.renderContents())
-
