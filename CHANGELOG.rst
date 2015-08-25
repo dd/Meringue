@@ -6,13 +6,13 @@ Meringue changelog
 0.3.5
 -----
 
-*
+* Issue #5 :: set verlib as required
 
 
 0.3.4
 -----
 
-*
+* some minor changes
 
 
 0.3.3

@@ -4,4 +4,3 @@
 from .admin import PictureInline
 from .thumbnails import get_thumbnail
 from .urls import UrlPatterns
-from .version import get_version
