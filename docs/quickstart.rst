@@ -1,117 +1,119 @@
 .. _quickstart:
 
-Quick start guide
-=================
-
-Before installing django-admin-tools, you'll need to have a copy of
-`Django <http://www.djangoproject.com>`_ already installed. For the
-|version| release, Django 1.7 or newer is required.
-
-.. note::
-    *Important note to users of django 1.6 or below:*
-    starting from 0.6.0, django-admin-tools is *NOT* compatible with
-    django <= 1.6. If you want, you can still use the 0.5.2 version
-    that will always be available on Pypi.
+.. role:: strike
+        :class: strike
 
 
-Installing django-admin-tools
------------------------------
+Быстрый старт
+=============
 
-django-admin-tools requires Django version 1.3 or superior, optionally,
-if you want to display feed modules, you'll also need the
-`Universal Feed Parser module <http://www.feedparser.org/>`_.
+Так как пакет развивается для личных нужд и пока ещё не вышло ни одной стабильной верии, все зависимости рекомендуется ставить исключительно последних версий, основная зависиомость это `Django <http://www.djangoproject.com>`_ - для текущей версии (|version|) требуется Django не ниже версии 1.7 (на самом деле точно сложно сказать какая версия нужна, логика очень простая  обновляй по возможности обновляй зависимости в проектах).
 
-There are several ways to install django-admin-tools, this is explained
-in :ref:`the installation section <installation>`.
+.. :strike:`обнови зависимости ленивая задница`
+.. centered: test
 
-For the impatient, the easiest method is to install django-admin-tools via
-`easy_install <http://peak.telecommunity.com/DevCenter/EasyInstall>`_
-or `pip <http://pip.openplans.org/>`_.
-
-Using ``easy_install``, type::
-
-    easy_install -Z django-admin-tools
-
-Note that the ``-Z`` flag is required, to tell ``easy_install`` not to
-create a zipped package; zipped packages prevent certain features of
-Django from working properly.
-
-Using ``pip``, type::
-
-    pip install django-admin-tools
+TO BE CONTINUED...
+------------------
 
 
-Basic configuration
--------------------
+.. Installing django-admin-tools
+.. -----------------------------
 
-For a more detailed guide on how to configure django-admin-tools, please
-consult :ref:`the configuration section <configuration>`.
+.. django-admin-tools requires Django version 1.3 or superior, optionally,
+.. if you want to display feed modules, you'll also need the
+.. `Universal Feed Parser module <http://www.feedparser.org/>`_.
 
-Prerequisite
-~~~~~~~~~~~~
+.. There are several ways to install django-admin-tools, this is explained
+.. in :ref:`the installation section <installation>`.
 
-In order to use django-admin-tools you obviously need to have configured
-your Django admin site. If you didn't, please refer to the
-`relevant django documentation <https://docs.djangoproject.com/en/dev/intro/tutorial02/>`_.
+.. For the impatient, the easiest method is to install django-admin-tools via
+.. `easy_install <http://peak.telecommunity.com/DevCenter/EasyInstall>`_
+.. or `pip <http://pip.openplans.org/>`_.
 
-Configuration
-~~~~~~~~~~~~~
+.. Using ``easy_install``, type::
 
-First make sure you have the ``django.core.context_processors.request``
-template context processor in your ``TEMPLATE_CONTEXT_PROCESSORS``.
+..     easy_install -Z django-admin-tools
 
-.. note::
-    Starting from django 1.8, ``TEMPLATE_CONTEXT_PROCESSORS`` is deprecated,
-    you must add the request context processor in your ``TEMPLATES`` variable
-    instead, please refer to the
-    `relevant django documentation <https://docs.djangoproject.com/en/1.8/ref/templates/upgrading/>`_.
+.. Note that the ``-Z`` flag is required, to tell ``easy_install`` not to
+.. create a zipped package; zipped packages prevent certain features of
+.. Django from working properly.
 
-Then, add admin_tools and its modules to the ``INSTALLED_APPS`` like this::
+.. Using ``pip``, type::
 
-    INSTALLED_APPS = (
-        'admin_tools',
-        'admin_tools.theming',
-        'admin_tools.menu',
-        'admin_tools.dashboard',
-        'django.contrib.auth',
-        'django.contrib.sites',
-        'django.contrib.admin'
-        # ...other installed applications...
-    )
-
-.. important::
-    it is very important that you put the admin_tools modules **before**
-    the ``django.contrib.admin module``, because django-admin-tools
-    overrides the default Django admin templates, and this will not work
-    otherwise.
-
-Then, just add django-admin-tools to your urls.py file::
-
-    urlpatterns = patterns('',
-        url(r'^admin_tools/', include('admin_tools.urls')),
-        #...other url patterns...
-    )
-
-Finally simply run::
-
-    python manage.py migrate
-
-To collect static files run::
-
-    python manage.py collectstatic
-
-.. important::
-    it is very important that ``django.contrib.staticfiles.finders.AppDirectoriesFinder''
-    be there in your ``STATICFILES_FINDERS``.
+..     pip install django-admin-tools
 
 
-Testing your new shiny admin interface
---------------------------------------
+.. Basic configuration
+.. -------------------
 
-Congrats! At this point you should have a working installation of
-django-admin-tools. Now you can just login to your admin site and see what
-changed.
+.. For a more detailed guide on how to configure django-admin-tools, please
+.. consult :ref:`the configuration section <configuration>`.
 
-django-admin-tools is fully customizable, but this is out of the scope of
-this quickstart. To learn how to customize django-admin-tools modules
-please read :ref:`the customization section<customization>`.
+.. Prerequisite
+.. ~~~~~~~~~~~~
+
+.. In order to use django-admin-tools you obviously need to have configured
+.. your Django admin site. If you didn't, please refer to the
+.. `relevant django documentation <https://docs.djangoproject.com/en/dev/intro/tutorial02/>`_.
+
+.. Configuration
+.. ~~~~~~~~~~~~~
+
+.. First make sure you have the ``django.core.context_processors.request``
+.. template context processor in your ``TEMPLATE_CONTEXT_PROCESSORS``.
+
+.. .. note::
+..     Starting from django 1.8, ``TEMPLATE_CONTEXT_PROCESSORS`` is deprecated,
+..     you must add the request context processor in your ``TEMPLATES`` variable
+..     instead, please refer to the
+..     `relevant django documentation <https://docs.djangoproject.com/en/1.8/ref/templates/upgrading/>`_.
+
+.. Then, add admin_tools and its modules to the ``INSTALLED_APPS`` like this::
+
+..     INSTALLED_APPS = (
+..         'admin_tools',
+..         'admin_tools.theming',
+..         'admin_tools.menu',
+..         'admin_tools.dashboard',
+..         'django.contrib.auth',
+..         'django.contrib.sites',
+..         'django.contrib.admin'
+..         # ...other installed applications...
+..     )
+
+.. .. important::
+..     it is very important that you put the admin_tools modules **before**
+..     the ``django.contrib.admin module``, because django-admin-tools
+..     overrides the default Django admin templates, and this will not work
+..     otherwise.
+
+.. Then, just add django-admin-tools to your urls.py file::
+
+..     urlpatterns = patterns('',
+..         url(r'^admin_tools/', include('admin_tools.urls')),
+..         #...other url patterns...
+..     )
+
+.. Finally simply run::
+
+..     python manage.py migrate
+
+.. To collect static files run::
+
+..     python manage.py collectstatic
+
+.. .. important::
+..     it is very important that ``django.contrib.staticfiles.finders.AppDirectoriesFinder''
+..     be there in your ``STATICFILES_FINDERS``.
+
+
+.. Testing your new shiny admin interface
+.. --------------------------------------
+
+.. Congrats! At this point you should have a working installation of
+.. django-admin-tools. Now you can just login to your admin site and see what
+.. changed.
+
+.. django-admin-tools is fully customizable, but this is out of the scope of
+.. this quickstart. To learn how to customize django-admin-tools modules
+.. please read :ref:`the customization section<customization>`.

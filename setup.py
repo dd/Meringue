@@ -19,7 +19,7 @@ with codecs.open(join(dirname(__file__),
 setup(
     name = 'Meringue',
     version = __import__('meringue').version,
-    url = 'https://github.com/dd/Meringue',
+    url = 'http://code.weboven.net/weboven_team/meringue',
     author = 'weboven team',
     author_email = 'dd@weboven.net',
     description = 'set of utilities for Django Framework',
