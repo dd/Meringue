@@ -7,7 +7,7 @@ from os.path import dirname, join
 from setuptools import find_packages, setup
 
 long_description = '\n'.join([
-    open(join(dirname(__file__), 'README.rst')).read(),
+    open(join(dirname(__file__), 'README.md')).read(),
     # open(join(dirname(__file__), 'CHANGELOG.rst')).read()
 ])
 
