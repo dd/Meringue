@@ -1,6 +1,6 @@
 # Meringue
 
-Package with base functional (like mixins, form utils, upload handlers and other utils) for Django Framework<br />
+Package with base functional (such as mixins, form utils, upload handlers and other) for Django Framework<br />
 documentation - http://pythonhosted.org/Meringue/<br />
 code - http://code.weboven.net/weboven_team/meringue/
 
