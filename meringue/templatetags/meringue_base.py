@@ -2,7 +2,7 @@
 
 from __future__ import absolute_import, unicode_literals
 
-import logging  # flake8:noqa
+import logging  # noqa
 import os
 import re
 import types
@@ -224,7 +224,8 @@ class GetWithArgsAndKwargs(template.Node):
 
     def get_args_and_kwargs(self, context):
         out_args = [arg.resolve(context) for arg in self.args]
-        out_kwargs = {smart_str(k, 'ascii'): v.resolve(context) for k,v in self.kwargs.items()}
+        out_kwargs = {smart_str(k, 'ascii'): v.resolve(context) for k, v in
+                      self.kwargs.items()}
         return out_args, out_kwargs
 
     def get_function(self, context):
@@ -245,14 +246,16 @@ class GetWithArgsAndKwargs(template.Node):
             result = ''
         else:
             result = self.get_function(context)(*args, **kwargs)
-        return ''
+        return result
 
 
 @register.tag
 def get_with_args_and_kwargs(parser, token):
     bits = token.contents.split(' ')
     if len(bits) < 1:
-        raise template.TemplateSyntaxError("'%s' takes at least one argument" % bits[0])
+        raise template.TemplateSyntaxError("'%s' takes at least one argument" %
+                                           bits[0])
     if len(bits) > 1:
-        fn, args, kwargs, as_var = parse_args_kwargs_and_as_var(parser, bits[1:])
+        fn, args, kwargs, as_var = parse_args_kwargs_and_as_var(parser,
+                                                                bits[1:])
     return GetWithArgsAndKwargs(fn, args, kwargs, as_var)

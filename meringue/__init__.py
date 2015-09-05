@@ -2,7 +2,7 @@
 
 from __future__ import unicode_literals
 
-import logging  # flake8:noqa
+import logging  # noqa
 
 from verlib import NormalizedVersion
 
