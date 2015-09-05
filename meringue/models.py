@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
+import logging  # flake8:noqa
+
 import django.db.models.options as options
 from django.conf import settings
 from django.db import models
@@ -86,9 +90,12 @@ class GetAbsoluteUrlMixin(object):
         return reverse(**reverse_args)
 
 
-class CMTimeMixin(object):
+class CMTimeMixin(models.Model):
     ctime = models.DateTimeField(auto_now_add=True)
     mtime = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
 
 
 #############

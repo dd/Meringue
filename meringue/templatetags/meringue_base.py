@@ -1,16 +1,22 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
+import logging  # flake8:noqa
 import os
 import re
+import types
 
+from django import template
 from django.conf import settings
-from django.template import Library
 from django.utils import timezone
+from django.utils.encoding import smart_str
 from django.utils.module_loading import import_string
+
 from meringue import settings as m_settings
 from meringue.errors import FileNotFindError
 
-register = Library()
+register = template.Library()
 
 
 @register.simple_tag
@@ -183,3 +189,70 @@ def put_reset():
     '''
     return '<style>%s</style>' % open(m_settings.path('meringue/static/css/res\
 et%s.css' % '' if settings.DEBUG else '.min'), 'r').read()
+
+
+def parse_args_kwargs_and_as_var(parser, bits):
+    fn = None
+    args = []
+    kwargs = {}
+    as_var = None
+    bits = iter(bits)
+    for i, bit in enumerate(bits):
+        if i == 0:
+            fn = parser.compile_filter(bit.split(',')[0])
+        elif bit == 'as':
+            as_var = bits.next()
+            break
+        else:
+            for arg in bit.split(","):
+                if '=' in arg:
+                    k, v = arg.split('=', 1)
+                    k = k.strip()
+                    kwargs[k] = parser.compile_filter(v)
+                elif arg:
+                    args.append(parser.compile_filter(arg))
+    return fn, args, kwargs, as_var
+
+
+class GetWithArgsAndKwargs(template.Node):
+
+    def __init__(self, fn, args, kwargs, as_var):
+        self.fn = fn
+        self.args = args
+        self.kwargs = kwargs
+        self.as_var = as_var
+
+    def get_args_and_kwargs(self, context):
+        out_args = [arg.resolve(context) for arg in self.args]
+        out_kwargs = {smart_str(k, 'ascii'): v.resolve(context) for k,v in self.kwargs.items()}
+        return out_args, out_kwargs
+
+    def get_function(self, context):
+        fn = None
+        for i in self.fn.var.lookups:
+            if fn:
+                if isinstance(fn, types.FunctionType):
+                    fn = fn()
+                fn = getattr(fn, i)
+            else:
+                fn = context[i]
+        return fn
+
+    def render(self, context):
+        args, kwargs = self.get_args_and_kwargs(context)
+        if self.as_var:
+            context[self.as_var] = self.get_function(context)(*args, **kwargs)
+            result = ''
+        else:
+            result = self.get_function(context)(*args, **kwargs)
+        return ''
+
+
+@register.tag
+def get_with_args_and_kwargs(parser, token):
+    bits = token.contents.split(' ')
+    if len(bits) < 1:
+        raise template.TemplateSyntaxError("'%s' takes at least one argument" % bits[0])
+    if len(bits) > 1:
+        fn, args, kwargs, as_var = parse_args_kwargs_and_as_var(parser, bits[1:])
+    return GetWithArgsAndKwargs(fn, args, kwargs, as_var)
