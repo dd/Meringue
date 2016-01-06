@@ -4,7 +4,6 @@ from django.template import Library
 
 from meringue.utils.thumbnails import get_thumbnail
 
-
 register = Library()
 
 
@@ -22,14 +21,15 @@ def thumbnail(filename, args=''):
 
     Аргументы фильтра:
         s:<width>x<height> - указывает целевой размер изображения для
-            последующий фенуций
+            последующих функций
+        maxw:<width> - указывает максимальную ширину
         crop - изменения размера холста до последнего установленного
         resize - изменение размера изображения до последнего установленного
         q:<quality> - укажет качество конечного изображения 0-100
             (используется в последний момент при сохранении)
         c:<color> - цвет заливки для кропа в формате rgba
             (c:255 255 255 255)
-        rm:scale|inscribe|stretch - метод ресайза вписать в размер или
+        rm:cover|contain|stretch - метод ресайза вписать в размер или
             растянуть
         cm:left|center|rigth top|center|bottom - точка отсчёта для кропа
 

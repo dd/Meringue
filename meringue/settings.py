@@ -5,7 +5,6 @@ import os
 from django.conf import settings
 from django.utils import timezone
 
-
 ########
 # HOST #
 ########
@@ -40,15 +39,30 @@ START_YEAR = getattr(
 # thumbnail #
 #############
 
-THUMBNAIL_CROP_MOTHOD = getattr(
+THUMBNAIL_DEBUG = getattr(
     settings,
-    'MERINGUE_THUMBNAIL_CROP_MOTHOD',
+    'MERINGUE_THUMBNAIL_DEBUG',
+    False
+)
+THUMBNAIL_PROPERTIES = getattr(
+    settings,
+    'MERINGUE_THUMBNAIL_PROPERTIES',
+    {}
+)
+THUMBNAIL_METHODS = getattr(
+    settings,
+    'MERINGUE_THUMBNAIL_METHODS',
+    {}
+)
+THUMBNAIL_CROP_METHOD = getattr(
+    settings,
+    'MERINGUE_THUMBNAIL_CROP_METHOD',
     ['center', 'center']
 )
-THUMBNAIL_RESIZE_MOTHOD = getattr(
+THUMBNAIL_RESIZE_METHOD = getattr(
     settings,
-    'MERINGUE_THUMBNAIL_RESIZE_MOTHOD',
-    'inscribe'
+    'MERINGUE_THUMBNAIL_RESIZE_METHOD',
+    'cover'
 )
 THUMBNAIL_QUALITY = getattr(
     settings,
