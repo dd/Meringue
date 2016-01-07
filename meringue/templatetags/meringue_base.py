@@ -12,6 +12,7 @@ from django.conf import settings
 from django.utils import timezone
 from django.utils.encoding import smart_str
 from django.utils.module_loading import import_string
+from django.utils.safestring import mark_safe
 
 from meringue import settings as m_settings
 from meringue.errors import FileNotFindError
@@ -30,8 +31,8 @@ def cop_year():
     '''
 
     year = timezone.now().year
-    return year == m_settings.START_YEAR and year or '%d&mdash;%d' %\
-        (m_settings.START_YEAR, year)
+    return year == m_settings.START_YEAR and year or \
+        mark_safe('%d&mdash;%d' % (m_settings.START_YEAR, year))
 
 
 class PutStatic:
@@ -120,7 +121,7 @@ class PutStatic:
 
         result = re.sub(
             re.compile(ur'sourceMappingURL=(?P<scheme>https:\/\/|http:\/\/|\/\
-\/)?(?P<path>[\w\.]+)',
+                       \/)?(?P<path>[\w\.]+)',
                        re.UNICODE),
             _calculate_map_link,
             text
@@ -176,7 +177,7 @@ def put_js(path):
     except FileNotFindError, error:
         if settings.TEMPLATE_DEBUG:
             return u'<script type=\"text/javascript\">console.error(\"файл\
- %s ненайден\"); </script>' % path
+                     %s не найден\"); </script>' % path
         raise error
 
     return result_wrapper % file.read()
@@ -188,7 +189,7 @@ def put_reset():
     Шаблонный тег выводит содержимое файла reset.css заключённое в тег style
     '''
     return '<style>%s</style>' % open(m_settings.path('meringue/static/css/res\
-et%s.css' % '' if settings.DEBUG else '.min'), 'r').read()
+            et%s.css' % '' if settings.DEBUG else '.min'), 'r').read()
 
 
 def parse_args_kwargs_and_as_var(parser, bits):
