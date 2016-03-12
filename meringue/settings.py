@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import os
+import uuid
 
 from django.conf import settings
 from django.utils import timezone
@@ -83,6 +84,20 @@ THUMBNAIL_URL = getattr(
     settings,
     'MERINGUE_THUMBNAIL_URL',
     settings.MEDIA_URL + 'temp/'
+)
+
+
+###################
+# UPLOAD HANDLERS #
+###################
+
+def _rename(result):
+    return u'{0}{1}'.format(uuid.uuid4(), os.path.splitext(result.name)[1])
+
+UPLOAD_HANDLER_RENAME_FN = getattr(
+    settings,
+    'MERINGUE_UPLOAD_HANDLER_RENAME_FN',
+    _rename
 )
 
 
