@@ -28,6 +28,7 @@ class Thumbnail(object):
         'resize_method': wn_settings.THUMBNAIL_RESIZE_METHOD,
         'quality': wn_settings.THUMBNAIL_QUALITY,
         'color': wn_settings.THUMBNAIL_COLOR,
+        'bg_color': wn_settings.THUMBNAIL_BG_COLOR,
         'max_width': None,
         'max_height': None,
     }

@@ -75,6 +75,11 @@ THUMBNAIL_COLOR = getattr(
     'MERINGUE_THUMBNAIL_COLOR',
     (255, 255, 255, 0)
 )
+THUMBNAIL_BG_COLOR = getattr(
+    settings,
+    'MERINGUE_THUMBNAIL_BG_COLOR',
+    (200, 200, 200, 0)
+)
 THUMBNAIL_DIR = getattr(
     settings,
     'MERINGUE_THUMBNAIL_DIR',
