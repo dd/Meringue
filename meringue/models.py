@@ -7,7 +7,6 @@ import logging  # noqa
 import django.db.models.options as options
 from django.conf import settings
 from django.db import models
-from django.db.models.query import QuerySet
 from django.utils.translation import ugettext_lazy as _
 
 from . import settings as meringue_settings
@@ -98,16 +97,6 @@ class CMTimeMixin(models.Model):
         abstract = True
 
 
-#############
-# querysets #
-#############
-
-class PublishQuerySet(QuerySet):
-
-    def published(self, **kwargs):
-        return self.filter(is_published=True, **kwargs)
-
-
 ############
 # managers #
 ############
@@ -115,11 +104,11 @@ class PublishQuerySet(QuerySet):
 class PublishManager(models.Manager):
     use_for_related_fields = True
 
-    def get_query_set(self):
-        return PublishQuerySet(self.model)
-
     def published(self, *args, **kwargs):
-        return self.get_query_set().published(*args, **kwargs)
+        kwargs.update({
+            'is_published': True
+        })
+        return self.get_queryset().filter(*args, **kwargs)
 
 
 ##########
