@@ -18,6 +18,8 @@ def get_size(options, max_sizes=True):
 
 def crop(image, options):
     new_size = get_size(options)
+    new_size = [int(new_size[0]), int(new_size[1])]
+
     current_size = options['current_size']
     thumb = Image.new(mode='RGBA', size=new_size, color=options['bg_color'])
 
