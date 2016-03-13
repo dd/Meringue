@@ -1,13 +1,12 @@
 # -*- coding:utf-8 -*-
 
 from django import forms
-from django.db import models
 from django.utils.encoding import force_text
 from django.utils.html import conditional_escape, format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from meringue.utils.thumbnails import get_thumbnail
+from .utils.thumbnails import get_thumbnail
 
 
 class PreviewImageFileInput(forms.widgets.FileInput):
