@@ -1,6 +1,6 @@
 Thanks for downloading Meringue.
 
-To install it, make sure you have Python 2.7. Then run this command from the
+To install it, make sure you have Python 3.6 or later. Then run this command from the
 command prompt:
 
     python setup.py install
@@ -11,7 +11,7 @@ AS AN ALTERNATIVE, you can just copy the entire "meringue" directory to Python's
 site-packages directory, which is located wherever your Python installation
 lives. Some places you might check are:
 
-    /usr/lib/python2.7/site-packages (Unix, Python 2.7)
-    C:\\PYTHON\site-packages         (Windows)
+    /usr/lib/python3.6/site-packages (Unix, Python 3.6)
+    C:\\PYTHON\\site-packages        (Windows)
 
 For more detailed instructions, see docs/intro/install.txt.

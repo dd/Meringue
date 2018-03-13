@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 
+import logging  # noqa
+
 from functools import update_wrapper
 
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
+
+
+logger = logging.getLogger('meringue')
 
 
 class CheckAccount(object):
     """
-    По образу и подобию django.contrib.auth.decorators._CheckLogin
+    По образу и подобию django.contrib.auth.decorators._CheckLogin"(c)
     """
 
     def __init__(self, view_func, test_func, redirect_url=None):
@@ -28,9 +33,15 @@ class CheckAccount(object):
         return HttpResponseForbidden()
 
 
+def default_check_func(user):
+    return user.is_anonymous()
+
+
 def anonymous_required(function=None, redirect_url=None):
-    t = lambda u: u.is_anonymous()
-    decorator = lambda f: CheckAccount(f, t, redirect_url)
+    def decorator(fn):
+        return CheckAccount(fn, default_check_func, redirect_url)
+
     if function:
         return decorator(function)
+
     return decorator

@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals
-
 import logging  # noqa
 
+
 __VERSION__ = (
-    (0, 3, 5),
+    (0, 4, 1),
     # ('a', 1),
     # ('dev', 2)
 )

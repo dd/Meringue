@@ -2,7 +2,6 @@
 
 from django.template import Library
 
-from meringue.utils.thumbnails import get_thumbnail
 
 register = Library()
 
@@ -41,4 +40,5 @@ def thumbnail(filename, args=''):
     '''
 
     task_list = args.split(',')
+    from ..utils import get_thumbnail
     return get_thumbnail(filename=filename, task_list=task_list)

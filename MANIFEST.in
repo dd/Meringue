@@ -1,9 +1,10 @@
 include AUTHORS
-include INSTALL
 include CHANGELOG.rst
+include INSTALL
 include LICENSE
 include MANIFEST.in
-recursive-include meringue *
-recursive-include docs *
-recursive-exclude * __pycache__
+include README.md
 recursive-exclude * *.py[co]
+recursive-exclude * __pycache__
+recursive-include docs *
+recursive-include meringue *

@@ -1,0 +1,93 @@
+.wo-admin-gallery-element {
+	display: inline-block;
+		width: 420px;
+	padding: 5px;
+	vertical-align: top;
+}
+.wo-admin-gallery-element.empty-form {
+	display: none;
+}
+.wo-admin-gallery-element .vLargeTextField {
+	width: 38em;
+}
+
+
+
+
+html {
+	color: #000;
+	background: #FFF;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,img {
+	border: 0;
+}
+
+address,caption,cite,code,dfn,em,strong,th,var,optgroup {
+	font-style: inherit;
+	font-weight: inherit;
+}
+/*
+del,ins {
+	text-decoration: none;
+}
+*/
+li, ul li {
+	list-style: none;
+}
+/*
+caption,th {
+	text-align: left;
+}
+*/
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+q:before,
+q:after {
+	content: '';
+}
+
+abbr,acronym {
+	border: 0;
+	font-variant: normal;
+}
+
+sup {
+	vertical-align: baseline;
+}
+
+sub {
+	vertical-align: baseline;
+}
+
+legend {
+	color: inherit;
+}
+
+input,button,textarea,select,optgroup,option {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+}
+
+input,button,textarea,select {
+	font-size: 100%;
+}
+
+input {
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#FFF));
+}
