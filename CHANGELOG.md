@@ -36,6 +36,7 @@
 * add SortingMixin
 * add labels for apps
 * add PublishQuerySet
+* add PublishManager.unpublished method
 
 
 #### 0.3.5

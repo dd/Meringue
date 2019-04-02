@@ -13,3 +13,6 @@ class PublishManager(Manager):
 
     def published(self, *args, **kwargs):
         return self.get_queryset().published(*args, **kwargs)
+
+    def unpublished(self, *args, **kwargs):
+        return self.get_queryset().unpublished(*args, **kwargs)

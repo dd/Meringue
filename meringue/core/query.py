@@ -11,3 +11,9 @@ class PublishQuerySet(QuerySet):
             'is_published': True
         })
         return self.filter(*args, **kwargs)
+
+    def unpublished(self, *args, **kwargs):
+        kwargs.update({
+            'is_published': False
+        })
+        return self.filter(*args, **kwargs)
