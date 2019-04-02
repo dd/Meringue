@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import logging  # noqa
-
 from django.core.files import uploadhandler
 
 from meringue.conf import settings
-
-
-logger = logging.getLogger('meringue')
 
 
 class MemoryFileUploadHandler(uploadhandler.MemoryFileUploadHandler):

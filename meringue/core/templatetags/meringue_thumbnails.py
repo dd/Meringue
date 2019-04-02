@@ -39,6 +39,7 @@ def thumbnail(filename, args=''):
         определение фокуса
     '''
 
+    from meringue.core.utils.thumbnails import get_thumbnail
+
     task_list = args.split(',')
-    from ..utils import get_thumbnail
     return get_thumbnail(filename=filename, task_list=task_list)

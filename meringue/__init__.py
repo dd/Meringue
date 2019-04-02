@@ -25,6 +25,6 @@ def get_version(raw_version):
 
 version = __VERSION__ = get_version((
     (0, 4, 1),
-    ('b', 13),
+    ('b', 14),
     # ('dev', 2)
 ))

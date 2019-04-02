@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import logging  # noqa
-
 from django import template
 from django.utils import timezone
 from django.utils.safestring import mark_safe
@@ -31,9 +29,9 @@ def cop_year():
 def date_range(date_start, date_end):
     """
     return range of date in one of the following formats:
-        DD - DD.MM.YYYY
-        DD.MM - DD.MM.YYYY
-        DD.MM.YYYY - DD.MM.YYYY
+        DD MM YYYY - DD MM YYYY
+        DD MM - DD MM YYYY
+        DD - DD MM YYYY
     """
 
     if date_start.year != date_end.year:
