@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import logging  # noqa
-
 from django.db.models.manager import Manager
 
-
-logger = logging.getLogger('meringue')
+from meringue.core.query import PublishQuerySet
 
 
 class PublishManager(Manager):
     use_for_related_fields = True
 
+    def get_queryset(self):
+        return PublishQuerySet(self.model, using=self._db)
+
     def published(self, *args, **kwargs):
-        kwargs.update({
-            'is_published': True
-        })
-        return self.get_queryset().filter(*args, **kwargs)
+        return self.get_queryset().published(*args, **kwargs)

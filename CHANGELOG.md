@@ -35,6 +35,7 @@
 * rename PublishModel -> PublishedBase
 * add SortingMixin
 * add labels for apps
+* add PublishQuerySet
 
 
 #### 0.3.5
