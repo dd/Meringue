@@ -33,6 +33,7 @@
 * add python 3 support
 * change configurates and functional
 * rename PublishModel -> PublishedBase
+* add SortingMixin
 
 
 #### 0.3.5

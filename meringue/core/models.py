@@ -30,6 +30,15 @@ class CMTimeMixin(models.Model):
         abstract = True
 
 
+class SortingMixin(models.Model):
+    sorting = models.SmallIntegerField(verbose_name=_('Порядок'),
+                                       help_text=_('Порядок сортировки'),
+                                       default=0, )
+    class Meta:
+        ordering = ['sorting', ]
+        abstract = True
+
+
 # class GetAbsoluteUrlMixin(object):
 
 #     '''
