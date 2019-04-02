@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-default_app_config = 'meringue.core.apps.MeringueCoreConfig'
+default_app_config = 'meringue.core.apps.Config'
