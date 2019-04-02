@@ -34,6 +34,7 @@
 * change configurates and functional
 * rename PublishModel -> PublishedBase
 * add SortingMixin
+* add labels for apps
 
 
 #### 0.3.5
