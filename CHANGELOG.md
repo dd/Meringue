@@ -37,6 +37,7 @@
 * add labels for apps
 * add PublishQuerySet
 * add PublishManager.unpublished method
+* fix translations
 
 
 #### 0.3.5

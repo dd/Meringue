@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import logging  # noqa
-
 from importlib import import_module
 
+from django.apps import apps
 from django.conf import settings
 
 from modeltranslation.translator import translator, TranslationOptions
-
-
-logger = logging.getLogger('meringue')
+try:
+    from polymorphic.utils import get_base_polymorphic_model
+except ImportError:
+    get_base_polymorphic_model = None
 
 
 for app in settings.INSTALLED_APPS:
@@ -32,13 +32,19 @@ for app in settings.INSTALLED_APPS:
     except AttributeError:
         continue
 
-    for mod in getattr(models, 'translate_models', []):
-        unit = getattr(models, mod)
-        translator.register(
-            unit,
-            type(
-                str(mod + 'Translation'),
-                (TranslationOptions,),
-                {'fields': getattr(unit._meta, 'translate_fields', list())}
+    for model in apps.get_models():
+        fields = getattr(model._meta, 'translate_fields', list())
+        force = False
+
+        if not fields and get_base_polymorphic_model and get_base_polymorphic_model(model):
+            force = True
+
+        if (fields or force) and not model in translator.get_registered_models():
+            translator.register(
+                model,
+                type(
+                    str(model.__name__ + 'Translation'),
+                    (TranslationOptions, ),
+                    {'fields': fields}
+                )
             )
-        )
