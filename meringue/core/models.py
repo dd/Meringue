@@ -22,7 +22,6 @@ logger = logging.getLogger('meringue')
 # mixins #
 ##########
 
-
 class CMTimeMixin(models.Model):
     ctime = models.DateTimeField(auto_now_add=True)
     mtime = models.DateTimeField(auto_now=True)
@@ -96,7 +95,7 @@ class CMTimeMixin(models.Model):
 # Abstract models #
 ###################
 
-class PublishModel(models.Model):
+class PublishedBase(models.Model):
     """
         publish abstract model
         managr has method published() like a filter()

@@ -5,7 +5,7 @@ import logging  # noqa
 
 __VERSION__ = (
     (0, 4, 1),
-    # ('a', 1),
+    ('b', 2),
     # ('dev', 2)
 )
 

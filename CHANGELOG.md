@@ -32,6 +32,7 @@
 * change lib structure
 * add python 3 support
 * change configurates and functional
+* rename PublishModel -> PublishedBase
 
 
 #### 0.3.5
