@@ -5,46 +5,45 @@ import logging
 import os.path
 import re
 import six
-
-from django.conf import settings
-
-from .methods import method_list
-from .properties import property_list
-from meringue import configuration
-
 try:
     from hashlib import md5
 except ImportError:
     from md5 import md5
 
+from django.conf import settings as django_settings
+
+from .methods import method_list
+from .properties import property_list
+from meringue.conf import settings
+
 
 logger = logging.getLogger('meringue')
 
 
-property_list.update(configuration.THUMBNAIL_PROPERTIES)
-method_list.update(configuration.THUMBNAIL_METHODS)
+property_list.update(settings.THUMBNAIL_PROPERTIES)
+method_list.update(settings.THUMBNAIL_METHODS)
 
 
 class Thumbnail(object):
 
     options = {
-        'crop_method': configuration.THUMBNAIL_CROP_METHOD,
-        'resize_method': configuration.THUMBNAIL_RESIZE_METHOD,
-        'quality': configuration.THUMBNAIL_QUALITY,
-        'color': configuration.THUMBNAIL_COLOR,
-        'bg_color': configuration.THUMBNAIL_BG_COLOR,
+        'crop_method': settings.THUMBNAIL_CROP_METHOD,
+        'resize_method': settings.THUMBNAIL_RESIZE_METHOD,
+        'quality': settings.THUMBNAIL_QUALITY,
+        'color': settings.THUMBNAIL_COLOR,
+        'bg_color': settings.THUMBNAIL_BG_COLOR,
         'max_width': None,
         'max_height': None,
     }
 
-    store_dir = configuration.THUMBNAIL_DIR
-    store_url = configuration.THUMBNAIL_URL
+    store_dir = settings.THUMBNAIL_DIR
+    store_url = settings.THUMBNAIL_URL
 
     def __init__(self, filename, proc='extra@1'):
         if os.path.isabs(filename):
             self.filename = filename
         else:
-            self.filename = os.path.join(settings.MEDIA_ROOT, filename)
+            self.filename = os.path.join(django_settings.MEDIA_ROOT, filename)
 
         if not os.path.isfile(os.path.realpath(self.filename)):
             raise Exception('File \'%s\' does not exist.' % filename)
@@ -58,7 +57,7 @@ class Thumbnail(object):
         '''
             проверяет существование и актуальность превью.
         '''
-        if not configuration.THUMBNAIL_DEBUG and \
+        if not settings.THUMBNAIL_DEBUG and \
            os.path.isfile(self.thumbnail_filename):
             return os.path.getmtime(self.filename) < os.path.getmtime(
                 self.thumbnail_filename
@@ -119,7 +118,7 @@ class Thumbnail(object):
 
 
 def _dummyimage(task_list):
-    if settings.DEBUG:
+    if django_settings.DEBUG:
         task_list.reverse()
         final_size = re.compile(r's:(\d+)x(\d+)')
         for task in task_list:
@@ -130,8 +129,8 @@ def _dummyimage(task_list):
                 pass
         # TODO: BUG: size could be undefined
         return u'http://dummyimage.com/%sx%s/9e9e9e/424242.png' % size
-    return '%simages/noise.png' % settings.STATIC_URL
-    # return '%simages/none.gif' % settings.STATIC_URL
+    return '%simages/noise.png' % django_settings.STATIC_URL
+    # return '%simages/none.gif' % django_settings.STATIC_URL
 
 
 def get_thumbnail(filename, task_list):

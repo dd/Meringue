@@ -42,6 +42,7 @@
 * some fixes thumbnails
 * add template redefining drf base template to remove drf title
 * update version print function
+* update settings
 
 
 #### 0.3.5

@@ -6,7 +6,7 @@ from django import template
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 
-from meringue import configuration
+from meringue.conf import settings
 
 
 register = template.Library()
@@ -23,8 +23,8 @@ def cop_year():
     """
 
     year = timezone.now().year
-    return year == configuration.START_YEAR and year or \
-        mark_safe('%d&mdash;%d' % (configuration.START_YEAR, year))
+    return year == settings.START_YEAR and year or \
+        mark_safe('%d&mdash;%d' % (settings.START_YEAR, year))
 
 
 @register.simple_tag
