@@ -51,6 +51,8 @@ class Thumbnail(object):
         self.proc = proc
         if not self.is_valid_thumbnail():
             self.make_thumbnail()
+        else:
+            self.image = Image.open(self.thumbnail_filename)
 
     def is_valid_thumbnail(self):
         '''
@@ -78,7 +80,7 @@ class Thumbnail(object):
         '''
         hash = [i for i in self.proc]  # self.proc
         hash.append(os.path.basename(self.filename))
-        return md5(str(hash)).hexdigest()
+        return md5(str(hash).encode()).hexdigest()
 
     def make_thumbnail(self):
         # try:
@@ -126,6 +128,7 @@ def _dummyimage(task_list):
                 break
             except AttributeError:
                 pass
+        # TODO: BUG: size could be undefined
         return u'http://dummyimage.com/%sx%s/9e9e9e/424242.png' % size
     return '%simages/noise.png' % settings.STATIC_URL
     # return '%simages/none.gif' % settings.STATIC_URL
@@ -146,7 +149,7 @@ def get_thumbnail(filename, task_list):
         #     logger.error(er)
         #     url = _dummyimage(task_list)
     else:
-        logger.error(u'File \'%s\' not find' % filename)
+        logger.error(u'File \'%s\' not found' % filename)
         # находить последний размер и цвет фона
         url = _dummyimage(task_list)
         # return ''

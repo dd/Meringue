@@ -39,6 +39,7 @@
 * add PublishManager.unpublished method
 * fix translations
 * add unify_email and unify_phone utilities
+* some fixes thumbnails
 
 
 #### 0.3.5
