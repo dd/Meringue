@@ -1,0 +1,5 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}{% if name %}{{ name }} – {% endif %}{{ SITE_NAME }} API REST{% endblock %}
+
+{% block branding %}<span class='navbar-brand' >{{ SITE_NAME }} API REST</span>{% endblock %}

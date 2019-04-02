@@ -40,6 +40,7 @@
 * fix translations
 * add unify_email and unify_phone utilities
 * some fixes thumbnails
+* add template redefining drf base template to remove drf title
 
 
 #### 0.3.5
