@@ -38,6 +38,7 @@
 * add PublishQuerySet
 * add PublishManager.unpublished method
 * fix translations
+* add unify_email and unify_phone utilities
 
 
 #### 0.3.5
