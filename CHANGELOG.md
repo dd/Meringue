@@ -44,6 +44,7 @@
 * update version print function
 * update settings
 * clear code
+* update setup script
 
 
 #### 0.3.5

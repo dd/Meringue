@@ -1,20 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import codecs
-from os.path import dirname, join
-
+from pathlib import Path
 from setuptools import find_packages, setup
+import codecs
+
 
 long_description = '\n'.join([
-    open(join(dirname(__file__), 'README.md')).read(),
-    # open(join(dirname(__file__), 'CHANGELOG.rst')).read()
+    open(Path(__file__).parent / 'README.md').read(),
 ])
 
-requirements_path = 'requirements.txt'
-with codecs.open(join(dirname(__file__),
-                      requirements_path)) as requirements_file:
-    requirements = requirements_file.read().split('\n')
 
 setup(
     name = 'Meringue',
@@ -27,15 +22,31 @@ setup(
     packages = find_packages(),
     include_package_data = True,
     zip_safe = False,
-    install_requires = requirements,
-    setup_requires=[
-        'flake8',
-        'isort',
+    install_requires = [
+        'Django>=2.1.7',
     ],
+    extras_require = {
+        'pillow': [
+            'Pillow==5.4.1',
+        ],
+        # 'crypto': [
+        #     'pycrypto==2.6.1',
+        # ],
+        # 'openpyxl': [
+        #     'openpyxl==2.6.1',
+        # ],
+        'phonenumbers': [
+            'phonenumbers==8.10.8',
+        ],
+        # 'django-pipeline': [
+        #     'django-pipeline==1.6.14',
+        #     'django-pipeline-browserify==0.6.2',
+        # ],
+    },
     long_description = long_description,
     platforms = 'All',
     classifiers = [
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
@@ -44,12 +55,9 @@ setup(
         'Operating System :: OS Independent',
         'Natural Language :: Russian',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
         'Topic :: Internet :: WWW/HTTP',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Internet :: WWW/HTTP :: WSGI',
-        'Topic :: Software Development :: Libraries :: Application Frameworks',
-        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ]
 )
