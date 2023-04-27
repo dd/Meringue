@@ -6,7 +6,7 @@ from django import forms
 from django.core.files.images import ImageFile, get_image_dimensions
 from django.db.models.fields.files import FieldFile, ImageField
 
-from south.modelsinspector import add_introspection_rules
+from . import widgets as self_widgets
 
 
 class UploadFieldFile(ImageFile, FieldFile):
@@ -51,14 +51,14 @@ class UploadField(ImageField):
     def formfield(self, **kwargs):
         defaults = {'form_class': forms.FileField}
         defaults.update(kwargs)
-        return super(ImageField, self).formfield(**defaults)
-        # return super(UploadField, self).formfield(**defaults)
-add_introspection_rules([], ["^meringue\.fields\.UploadField"])
+        return super(UploadField, self).formfield(**defaults)
+        # return super(ImageField, self).formfield(**defaults)
+        # what?
 
 
 class PreviewImageField(ImageField):
 
     def formfield(self, **kwargs):
-        kwargs['widget'] = PreviewImageFileInput
+        kwargs['widget'] = self_widgets.PreviewImageFileInput
         defaults = kwargs
         return super(PreviewImageField, self).formfield(**defaults)

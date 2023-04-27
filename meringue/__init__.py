@@ -1,13 +1,23 @@
 # -*- coding: utf-8 -*-
+"""
+See PEP 386 (https://peps.python.org/pep-0440/)
 
-__VERSION__ = (
-    (0, 3, 4),
-    # ('a', 1),
-    # ('dev', 1)
-)
+Release logic:
+ 1. Remove ".devX" from __version__ (below)
+ 2. git add treebeard/__init__.py
+ 3. git commit -m 'Bump to <version>'
+ 4. git tag <version>
+ 5. git push
+ 6. assure that all tests pass on https://travis-ci.org/django-treebeard/django-treebeard/builds/
+ 7. git push --tags
+ 8. pip install --upgrade pip wheel twine
+ 9. python setup.py clean --all
+ 9. python setup.py sdist bdist_wheel
+10. twine upload dist/*
+11. bump the version, append ".dev0" to __version__
+12. git add treebeard/__init__.py
+13. git commit -m 'Start with <version>'
+14. git push
+"""
 
-try:
-    from verlib import NormalizedVersion
-    version = str(NormalizedVersion.from_parts(*__VERSION__))
-except ImportError:
-    version = '.'.join([str(j) for i in __VERSION__ for j in i])
+__version__ = "0.4.0"
