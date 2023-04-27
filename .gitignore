@@ -1,18 +1,13 @@
-*.egg
-*.egg-info
 *.log
 *.mo
 *.py[cod]
+*.sublime-project
+*.sublime-workspace
+*~
 .*
 
-/bin
+/env
 /build
 /dist
-/docs/build
-/docs/_build
-/docs/_static
-/include
-/lib
-/share
-
-pip-selfcheck.json
+/stuff
+/venv
