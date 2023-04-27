@@ -5,6 +5,7 @@ Package with various functional (such as mixins, form utils, upload handlers and
 
 ## Roadmap
 
+* Using [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 * Refactoring all functional
 * Documentation with [mkdocs](https://www.mkdocs.org/) or [antora](https://antora.org/)
 * Linter and formatter with a [Ruff](https://beta.ruff.rs/docs/) and [Black](https://github.com/psf/black)
