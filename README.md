@@ -5,13 +5,7 @@ Package with various functional (such as mixins, form utils, upload handlers and
 
 ## Roadmap
 
-* Using [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 * Refactoring all functional
-* Documentation with [mkdocs](https://www.mkdocs.org/) or [antora](https://antora.org/)
-* Linter and formatter with a [Ruff](https://beta.ruff.rs/docs/) and [Black](https://github.com/psf/black)
-* Add [mypy](https://mypy-lang.org/) ???
-* Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments) or [tox](https://tox.wiki/en/latest/)
-
 
 * css для PreviewImageField
 * thumbnail:
@@ -33,3 +27,18 @@ Package with various functional (such as mixins, form utils, upload handlers and
 * перезагрузка сервера из админки
 * put_js преобразовывать относительные пути
 * тег add_attrs добавляющий всё чтопередано атрибутами тега
+
+
+
+## Contributing
+
+- [x] Use Git Flow (read [here][git_flow] and [here][git_flow_atlassian]) to resolve the versioning
+- [ ] Documentation with [mkdocs](https://www.mkdocs.org/) or [antora](https://antora.org/)
+- [ ] Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments) or [tox](https://tox.wiki/en/latest/)
+- [ ] Linter and formatter with a [Ruff](https://beta.ruff.rs/docs/) and [Black](https://github.com/psf/black)
+- [ ] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
+- [ ] Add [mypy](https://mypy-lang.org/) ???
+
+
+[git_flow]: https://jeffkreeftmeijer.com/git-flow/
+[git_flow_atlassian]: https://www.atlassian.com/ru/git/tutorials/comparing-workflows/gitflow-workflow
