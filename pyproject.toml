@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.14.1"]
 build-backend = "hatchling.build"
 
 [project]
@@ -95,4 +95,19 @@ exclude = [
 	"hooks",
 	".gitignore",
 	"CHANGELOG.md",
+]
+
+[tool.hatch.envs.dev]
+description = "Dev environment"
+pre-install-commands = [
+	"git config --local gitflow.branch.master \"master\"",
+	"git config --local gitflow.branch.develop \"dev\"",
+	"git config --local gitflow.prefix.feature \"feature/\"",
+	"git config --local gitflow.prefix.bugfix \"bugfix/\"",
+	"git config --local gitflow.prefix.release \"release/\"",
+	"git config --local gitflow.prefix.hotfix \"hotfix/\"",
+	"git config --local gitflow.prefix.support \"support/\"",
+	"git config --local gitflow.prefix.versiontag \"v\"",
+	"git config --local gitflow.path.hooks $(pwd)\"/.git/hooks\"",
+
 ]
