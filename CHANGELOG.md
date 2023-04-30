@@ -4,7 +4,12 @@
 # Release history
 
 
-## 0.4.0
+## 0.4.1
+
+* Linting code with Ruff
+
+
+## 0.4.0.post1
 
 * License type changed
 * change lib structure

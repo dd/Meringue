@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-import logging  # noqa
 import math
 
 from PIL import Image

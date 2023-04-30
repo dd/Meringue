@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Meringue documentation build configuration file, created by
 # sphinx-quickstart on Wed Jun 24 13:37:51 2015.
 #
@@ -12,11 +10,9 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-from __future__ import unicode_literals
-
+from os.path import abspath
 import datetime as dt
 import sys
-from os.path import abspath
 
 import meringue
 
@@ -59,9 +55,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Meringue'
-copyright = u' 2013—%(year)d, Weboven team' % {'year': dt.date.today().year}
-author = u'Weboven team'
+project = 'Meringue'
+copyright = ' 2013—%(year)d, Weboven team' % {'year': dt.date.today().year}  # noqa: DTZ011, A001
+author = 'Weboven team'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -241,8 +237,8 @@ latex_elements = {
 latex_documents = [(
     master_doc,
     'Meringue.tex',
-    u'Meringue Documentation',
-    u'Weboven team',
+    'Meringue Documentation',
+    'Weboven team',
     'manual'
 )]
 
@@ -272,7 +268,7 @@ latex_documents = [(
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'meringue', u'Meringue Documentation', [author], 1)
+    (master_doc, 'meringue', 'Meringue Documentation', [author], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -285,7 +281,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [(
-    master_doc, 'Meringue', u'Meringue Documentation',
+    master_doc, 'Meringue', 'Meringue Documentation',
     author, 'Meringue', 'One line description of project.',
     'Miscellaneous'
 )]

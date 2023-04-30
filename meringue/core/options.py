@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
-
-import django.db.models.options as options
+from django.db.models import options
 
 
-options.DEFAULT_NAMES = options.DEFAULT_NAMES + (
+options.DEFAULT_NAMES = (
+    *options.DEFAULT_NAMES,
     'translate_fields',
     # 'host_name',
     # 'view',

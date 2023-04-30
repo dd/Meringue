@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from django.template import Library
 
 
@@ -8,7 +6,7 @@ register = Library()
 
 @register.filter
 def thumbnail(filename, args=''):
-    '''
+    """
         Фильтр обработки изображений, применяется к локальнуму адресу
     изображения (путь до файла) в аргументах ожидает параметры изменения
     изображения разделённые запятой, последовательность действий соответствует
@@ -37,7 +35,7 @@ def thumbnail(filename, args=''):
         определение лица и использование в роли центра изображения
         указание максимальной ширины или высоты
         определение фокуса
-    '''
+    """
 
     from meringue.core.utils.thumbnails import get_thumbnail
 

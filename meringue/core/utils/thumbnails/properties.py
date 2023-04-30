@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-import logging  # noqa
 import re
 
 
@@ -45,7 +42,7 @@ def set_quality(quality, opt):
 
 # c
 def set_bg_color(color, opt):
-    tmp = tuple()
+    tmp = ()
     for i in color.split(' '):
         tmp += (int(i), )
     return {'bg_color': tmp}

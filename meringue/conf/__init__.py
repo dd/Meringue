@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from django.conf import settings as _settings
 
 from meringue.conf import default_settings

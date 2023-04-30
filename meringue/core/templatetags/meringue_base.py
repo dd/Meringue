@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from django import template
 from django.utils import timezone
 from django.utils.safestring import mark_safe
@@ -21,8 +19,11 @@ def cop_year():
     """
 
     year = timezone.now().year
-    return year == settings.START_YEAR and year or \
-        mark_safe('%d&mdash;%d' % (settings.START_YEAR, year))
+
+    if year == settings.START_YEAR:
+        return year
+
+    return mark_safe(f'{settings.START_YEAR}&mdash;{year}')  # noqa: S308
 
 
 @register.simple_tag
@@ -46,4 +47,4 @@ def date_range(date_start, date_end):
     else:
         result = date_end.strftime('%d %B %Y')
 
-    return mark_safe(result)
+    return mark_safe(result)  # noqa: S308

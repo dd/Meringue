@@ -1,5 +1,3 @@
-# -*- coding:utf-8 -*-
-
 import os
 import uuid
 
@@ -7,9 +5,19 @@ from django.conf import settings
 from django.utils import timezone
 
 
-__all__ = ['THUMBNAIL_DEBUG', 'THUMBNAIL_PROPERTIES', 'THUMBNAIL_METHODS', 'THUMBNAIL_CROP_METHOD',
-           'THUMBNAIL_RESIZE_METHOD', 'THUMBNAIL_QUALITY', 'THUMBNAIL_COLOR', 'THUMBNAIL_BG_COLOR',
-           'THUMBNAIL_DIR', 'THUMBNAIL_URL', 'START_YEAR',]
+__all__ = [
+    'THUMBNAIL_DEBUG',
+    'THUMBNAIL_PROPERTIES',
+    'THUMBNAIL_METHODS',
+    'THUMBNAIL_CROP_METHOD',
+    'THUMBNAIL_RESIZE_METHOD',
+    'THUMBNAIL_QUALITY',
+    'THUMBNAIL_COLOR',
+    'THUMBNAIL_BG_COLOR',
+    'THUMBNAIL_DIR',
+    'THUMBNAIL_URL',
+    'START_YEAR',
+]
 
 
 ########
@@ -19,8 +27,8 @@ __all__ = ['THUMBNAIL_DEBUG', 'THUMBNAIL_PROPERTIES', 'THUMBNAIL_METHODS', 'THUM
 
 # upload handlers #
 
-def UPLOAD_RENAME_HANDLER(result):
-    return u'{0}{1}'.format(uuid.uuid4(), os.path.splitext(result.name)[1])
+def UPLOAD_RENAME_HANDLER(result):  # noqa: N802
+    return f'{uuid.uuid4()}{os.path.splitext(result.name)[1]}'
 
 
 # thumbnail #

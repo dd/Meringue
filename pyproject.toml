@@ -98,6 +98,7 @@ exclude = [
 ]
 
 [tool.hatch.envs.dev]
+detached = true
 description = "Dev environment"
 pre-install-commands = [
 	"git config --local gitflow.branch.master \"master\"",
@@ -109,5 +110,72 @@ pre-install-commands = [
 	"git config --local gitflow.prefix.support \"support/\"",
 	"git config --local gitflow.prefix.versiontag \"v\"",
 	"git config --local gitflow.path.hooks $(pwd)\"/.git/hooks\"",
-
 ]
+dependencies = [
+	"ruff",
+]
+
+[tool.hatch.envs.lint]
+detached = true
+description = "Lint environment"
+dependencies = [
+	"ruff==0.0.263",
+]
+
+[tool.hatch.envs.lint.scripts]
+style = [
+	"ruff {args:.}",
+]
+
+
+[tool.ruff]
+target-version = "py37"
+line-length = 100
+show-fixes = true
+update-check = true
+select = [
+	"A",
+	"B",
+	"C",
+	"DTZ",
+	"E",
+	"EM",
+	"F",
+	"FBT",
+	# "I",
+	"ICN",
+	"ISC",
+	"N",
+	"PLC",
+	"PLE",
+	"PLR",
+	"PLW",
+	"Q",
+	"RUF",
+	"S",
+	"SIM",
+	"T",
+	"TID",
+	"UP",
+	"W",
+	"YTT",
+]
+ignore = [
+	"RUF002",  # Allow russian at docstrings
+	"RUF003",  # Allow russian at comment
+	"FBT002",  # Allow boolean positional argument define
+	"PLR0913",  # Allow any number of function arguments
+]
+
+[tool.ruff.flake8-import-conventions]
+[tool.ruff.flake8-import-conventions.extend-aliases]
+"datetime" = "dt"
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.flake8-unused-arguments]
+ignore-variadic-names = true
+
+[tool.ruff.isort]
+known-first-party = ["meringue"]

@@ -1,16 +1,11 @@
-# -*- coding: utf-8 -*-
-
-from PIL import Image
+from hashlib import md5
 import logging
 import os.path
 import re
 import six
-try:
-    from hashlib import md5
-except ImportError:
-    from md5 import md5
 
 from django.conf import settings as django_settings
+from PIL import Image
 
 from .methods import method_list
 from .properties import property_list
@@ -24,7 +19,7 @@ property_list.update(settings.THUMBNAIL_PROPERTIES)
 method_list.update(settings.THUMBNAIL_METHODS)
 
 
-class Thumbnail(object):
+class Thumbnail:
 
     options = {
         'crop_method': settings.THUMBNAIL_CROP_METHOD,
@@ -46,7 +41,8 @@ class Thumbnail(object):
             self.filename = os.path.join(django_settings.MEDIA_ROOT, filename)
 
         if not os.path.isfile(os.path.realpath(self.filename)):
-            raise Exception('File \'%s\' does not exist.' % filename)
+            raise Exception("File \'%s\' does not exist." % filename)
+
         self.proc = proc
         if not self.is_valid_thumbnail():
             self.make_thumbnail()
@@ -54,9 +50,9 @@ class Thumbnail(object):
             self.image = Image.open(self.thumbnail_filename)
 
     def is_valid_thumbnail(self):
-        '''
+        """
             проверяет существование и актуальность превью.
-        '''
+        """
         if not settings.THUMBNAIL_DEBUG and \
            os.path.isfile(self.thumbnail_filename):
             return os.path.getmtime(self.filename) < os.path.getmtime(
@@ -66,7 +62,7 @@ class Thumbnail(object):
 
     def get_thumbnail_filename(self):
         if getattr(self, '_thumbnail_filename', None) is None:
-            filename = '%s.png' % (self.get_hash(), )
+            filename = f'{self.get_hash()}.png'
             if not os.path.exists(self.store_dir):
                 os.mkdir(self.store_dir)
             self._thumbnail_filename = os.path.join(self.store_dir, filename)
@@ -74,12 +70,14 @@ class Thumbnail(object):
     thumbnail_filename = property(get_thumbnail_filename)
 
     def get_hash(self):
-        '''
+        """
             Указывать конечный размер?? зачем?
-        '''
-        hash = [i for i in self.proc]  # self.proc
-        hash.append(os.path.basename(self.filename))
-        return md5(str(hash).encode()).hexdigest()
+        """
+        task_hash = self.proc
+        if isinstance(task_hash, str):
+            task_hash = [task_hash]  # self.proc
+        task_hash.append(os.path.basename(self.filename))
+        return md5(str(task_hash).encode()).hexdigest()  # noqa: S324
 
     def make_thumbnail(self):
         # try:
@@ -91,7 +89,7 @@ class Thumbnail(object):
         self.options['current_size'] = [float(i) for i in self.image.size]
         self.options['new_size'] = [float(i) for i in self.image.size]
 
-        logger.info("make thumbnail with tasks: %s" % ", ".join(self.proc))
+        logger.info('make thumbnail with tasks: %s' % ', '.join(self.proc))
         for proc in self.proc:
             if ':' in proc:
                 prop, args = proc.split(':')
@@ -109,10 +107,7 @@ class Thumbnail(object):
 
     def get_thumbnail_url(self):
         if getattr(self, '_thumbnail_url', None) is None:
-            self._thumbnail_url = "%s%s" % (
-                self.store_url,
-                os.path.basename(self.thumbnail_filename)
-            )
+            self._thumbnail_url = f'{ self.store_url}{os.path.basename(self.thumbnail_filename)}'
         return self._thumbnail_url
     thumbnail_url = property(get_thumbnail_url)
 
@@ -128,7 +123,7 @@ def _dummyimage(task_list):
             except AttributeError:
                 pass
         # TODO: BUG: size could be undefined
-        return u'http://dummyimage.com/%sx%s/9e9e9e/424242.png' % size
+        return f'http://dummyimage.com/{size}x{size}/9e9e9e/424242.png'
     return '%simages/noise.png' % django_settings.STATIC_URL
     # return '%simages/none.gif' % django_settings.STATIC_URL
 
@@ -136,6 +131,7 @@ def _dummyimage(task_list):
 def get_thumbnail(filename, task_list):
     if isinstance(task_list, six.string_types):
         task_list = task_list.split(',')
+
     url = ''
     if os.path.isfile(filename):
         thumb = Thumbnail(filename, task_list)
@@ -148,7 +144,7 @@ def get_thumbnail(filename, task_list):
         #     logger.error(er)
         #     url = _dummyimage(task_list)
     else:
-        logger.error(u'File \'%s\' not found' % filename)
+        logger.error("File \'%s\' not found" % filename)
         # находить последний размер и цвет фона
         url = _dummyimage(task_list)
         # return ''

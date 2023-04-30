@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import mimetypes
 
 from django import forms
@@ -12,20 +10,20 @@ from . import widgets as self_widgets
 class UploadFieldFile(ImageFile, FieldFile):
 
     def save(self, name, content, save=True):
-        type, format = self.mime()
-        if type == 'image' and format in ('jpeg', 'png', 'gif', 'tiff'):
+        file_type, file_format = self.mime()
+        if file_type == 'image' and file_format in ('jpeg', 'png', 'gif', 'tiff'):
             self._dimensions_cache = get_image_dimensions(content)
             if self.field.width_field:
                 setattr(self.instance, self.field.width_field, self.width)
             if self.field.height_field:
                 setattr(self.instance, self.field.height_field, self.height)
-        super(UploadFieldFile, self).save(name, content, save)
+        super().save(name, content, save)
 
     def delete(self, save=True):
         # Clear the image dimensions cache
         if hasattr(self, '_dimensions_cache'):
             del self._dimensions_cache
-        super(UploadFieldFile, self).delete(save)
+        super().delete(save)
 
     def mime(self):
         try:
@@ -51,7 +49,7 @@ class UploadField(ImageField):
     def formfield(self, **kwargs):
         defaults = {'form_class': forms.FileField}
         defaults.update(kwargs)
-        return super(UploadField, self).formfield(**defaults)
+        return super().formfield(**defaults)
         # return super(ImageField, self).formfield(**defaults)
         # what?
 
@@ -61,4 +59,4 @@ class PreviewImageField(ImageField):
     def formfield(self, **kwargs):
         kwargs['widget'] = self_widgets.PreviewImageFileInput
         defaults = kwargs
-        return super(PreviewImageField, self).formfield(**defaults)
+        return super().formfield(**defaults)

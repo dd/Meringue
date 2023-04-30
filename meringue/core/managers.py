@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from django.db.models.manager import Manager
 
 from meringue.core.query import PublishQuerySet

@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-import logging  # noqa
-
 # from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -13,9 +9,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from .managers import PublishManager
 # from meringue import configuration
-
-
-logger = logging.getLogger('meringue')
 
 
 ##########
@@ -31,9 +24,12 @@ class CMTimeMixin(models.Model):
 
 
 class SortingMixin(models.Model):
-    sorting = models.SmallIntegerField(verbose_name=_('Порядок'),
-                                       help_text=_('Порядок сортировки'),
-                                       default=0, )
+    sorting = models.SmallIntegerField(
+        verbose_name=_('Порядок'),  # noqa: RUF001
+        help_text=_('Порядок сортировки'),  # noqa: RUF001
+        default=0,
+    )
+
     class Meta:
         ordering = ['sorting', ]
         abstract = True
@@ -111,8 +107,8 @@ class PublishedBase(models.Model):
     """
 
     is_published = models.BooleanField(
-        verbose_name=_('публикация'),
-        help_text=_('Отображать/Скрыть'),
+        verbose_name=_('публикация'),  # noqa: RUF001
+        help_text=_('Отображать/Скрыть'),  # noqa: RUF001
         default=True,
         db_index=True,
     )

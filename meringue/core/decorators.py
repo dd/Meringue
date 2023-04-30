@@ -1,16 +1,9 @@
-# -*- coding: utf-8 -*-
-
-import logging  # noqa
-
 from functools import update_wrapper
 
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 
 
-logger = logging.getLogger('meringue')
-
-
-class CheckAccount(object):
+class CheckAccount:
     """
     По образу и подобию django.contrib.auth.decorators._CheckLogin"(c)
     """
@@ -28,8 +21,10 @@ class CheckAccount(object):
     def __call__(self, request, *args, **kwargs):
         if self.test_func(request.user):
             return self.view_func(request, *args, **kwargs)
+
         if self.redirect_url:
             return HttpResponseRedirect(self.redirect_url)
+
         return HttpResponseForbidden()
 
 

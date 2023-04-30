@@ -1,19 +1,21 @@
-# -*- coding:utf-8 -*-
-
 from django import forms
 
 
-class form_fieldsets(object):
-    '''
+class FormFieldsets:
+    """
         mixin разбивает форму на несколько групп
         группы указываются в виде списка в Meta.fieldsets.
         элементы списка - словари с ключами fields и title, содержащие список
         полей и название группы соответственно
-    '''
+    """
 
     def fieldsets(self):
-        fieldsets = getattr(self.Meta, 'fieldsets', [{'fields': self.fields.keys(), 'title': 'main'}])
-        result = list()
+        fieldsets = getattr(
+            self.Meta,
+            'fieldsets',
+            [{'fields': self.fields.keys(), 'title': 'main'}],
+        )
+        result = []
         for fieldset in fieldsets:
             result.append({
                 'fields': [forms.forms.BoundField(self, self.fields[f], f)
@@ -30,7 +32,7 @@ class BaseFormSet(forms.BaseFormSet):
     """
     def __init__(self, *args, **kwargs):
         prefix = self.prefix
-        super(BaseFormSet, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if prefix:
             self.prefix = prefix
 
@@ -43,8 +45,10 @@ def formset_factory(form, formset=BaseFormSet, extra=1, can_order=False,
     """
     if min_num is None:
         min_num = forms.formsets.DEFAULT_MIN_NUM
+
     if max_num is None:
         max_num = forms.formsets.DEFAULT_MAX_NUM
+
     # hard limit on forms instantiated, to prevent memory-exhaustion attacks
     # limit is simply max_num + DEFAULT_MAX_NUM (which is 2*DEFAULT_MAX_NUM
     # if max_num is None in the first place)
@@ -54,4 +58,4 @@ def formset_factory(form, formset=BaseFormSet, extra=1, can_order=False,
              'min_num': min_num, 'max_num': max_num,
              'absolute_max': absolute_max, 'validate_min': validate_min,
              'validate_max': validate_max, 'prefix': prefix}
-    return type(form.__name__ + str('FormSet'), (formset,), attrs)
+    return type(form.__name__ + 'FormSet', (formset,), attrs)
