@@ -1,1 +1,1 @@
-default_app_config = 'meringue.admin.apps.Config'
+default_app_config = "meringue.admin.apps.Config"

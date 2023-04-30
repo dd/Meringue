@@ -8,12 +8,14 @@ from django.utils.translation import ugettext_lazy as _
 #     from django.urls import reverse
 
 from .managers import PublishManager
+
 # from meringue import configuration
 
 
 ##########
 # mixins #
 ##########
+
 
 class CMTimeMixin(models.Model):
     ctime = models.DateTimeField(auto_now_add=True)
@@ -25,13 +27,15 @@ class CMTimeMixin(models.Model):
 
 class SortingMixin(models.Model):
     sorting = models.SmallIntegerField(
-        verbose_name=_('Порядок'),  # noqa: RUF001
-        help_text=_('Порядок сортировки'),  # noqa: RUF001
+        verbose_name=_("Порядок"),  # noqa: RUF001
+        help_text=_("Порядок сортировки"),  # noqa: RUF001
         default=0,
     )
 
     class Meta:
-        ordering = ['sorting', ]
+        ordering = [
+            "sorting",
+        ]
         abstract = True
 
 
@@ -100,15 +104,16 @@ class SortingMixin(models.Model):
 # Abstract models #
 ###################
 
+
 class PublishedBase(models.Model):
     """
-        publish abstract model
-        managr has method published() like a filter()
+    Publish abstract model
+    Manager has method published() like a filter()
     """
 
     is_published = models.BooleanField(
-        verbose_name=_('публикация'),  # noqa: RUF001
-        help_text=_('Отображать/Скрыть'),  # noqa: RUF001
+        verbose_name=_("публикация"),  # noqa: RUF001
+        help_text=_("Отображать/Скрыть"),  # noqa: RUF001
         default=True,
         db_index=True,
     )

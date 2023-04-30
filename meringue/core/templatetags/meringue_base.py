@@ -23,7 +23,7 @@ def cop_year():
     if year == settings.START_YEAR:
         return year
 
-    return mark_safe(f'{settings.START_YEAR}&mdash;{year}')  # noqa: S308
+    return mark_safe(f"{settings.START_YEAR}&mdash;{year}")  # noqa: S308
 
 
 @register.simple_tag
@@ -36,15 +36,18 @@ def date_range(date_start, date_end):
     """
 
     if date_start.year != date_end.year:
-        result = '&nbsp;&mdash; '.join([date_start.strftime('%d %B %Y'),
-                                        date_end.strftime('%d %B %Y')])
+        result = "&nbsp;&mdash; ".join(
+            [date_start.strftime("%d %B %Y"), date_end.strftime("%d %B %Y")],
+        )
     elif date_start.month != date_end.month:
-        result = '&nbsp;&mdash; '.join([date_start.strftime('%d %B'),
-                                        date_end.strftime('%d %B %Y')])
+        result = "&nbsp;&mdash; ".join(
+            [date_start.strftime("%d %B"), date_end.strftime("%d %B %Y")],
+        )
     elif date_start.day != date_end.day:
-        result = '&mdash;'.join([date_start.strftime('<nobr>%d'),
-                                 date_end.strftime('%d %B</nobr> %Y')])
+        result = "&mdash;".join(
+            [date_start.strftime("<nobr>%d"), date_end.strftime("%d %B</nobr> %Y")],
+        )
     else:
-        result = date_end.strftime('%d %B %Y')
+        result = date_end.strftime("%d %B %Y")
 
     return mark_safe(result)  # noqa: S308

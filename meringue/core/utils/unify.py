@@ -1,20 +1,22 @@
 def unify_email(origin_email):
     """
-        unify email address
-        remove tags
+    Unify email address
+
+    What do:
+      * remove tags
     """
-    if not origin_email or '@' not in origin_email[1:-3]:
+    if not origin_email or "@" not in origin_email[1:-3]:
         return None
-    user, domain = origin_email.strip().rsplit('@', 1)
-    user = user.split('+')[0]
-    email = '@'.join([user, domain])
+    user, domain = origin_email.strip().rsplit("@", 1)
+    user = user.split("+")[0]
+    email = "@".join([user, domain])
     email = email.lower()
     return email
 
 
 def unify_phone(origin_phone, default_country):
     """
-        default country code use if cant parse phone number
+    default country code use if cant parse phone number
     """
 
     import phonenumbers as pn

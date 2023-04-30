@@ -5,9 +5,9 @@ register = Library()
 
 
 @register.filter
-def thumbnail(filename, args=''):
+def thumbnail(filename, args=""):
     """
-        Фильтр обработки изображений, применяется к локальнуму адресу
+    Фильтр обработки изображений, применяется к локальнуму адресу
     изображения (путь до файла) в аргументах ожидает параметры изменения
     изображения разделённые запятой, последовательность действий соответствует
     последовательности введённых аргументов т.е. последовательность -
@@ -39,5 +39,5 @@ def thumbnail(filename, args=''):
 
     from meringue.core.utils.thumbnails import get_thumbnail
 
-    task_list = args.split(',')
+    task_list = args.split(",")
     return get_thumbnail(filename=filename, task_list=task_list)

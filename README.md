@@ -29,9 +29,9 @@
 	<a href="https://github.com/charliermarsh/ruff">
 		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v0.json" alt="linting - Ruff" />
 	</a>
-	<!-- <a href="https://github.com/psf/black">
+	<a href="https://github.com/psf/black">
 		<img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="code style - Black" />
-	</a> -->
+	</a>
 	<!-- <a href="https://github.com/python/mypy">
 		<img src="https://img.shields.io/badge/types-Mypy-blue.svg" alt="types - Mypy" />
 	</a> -->
@@ -75,7 +75,7 @@ Package with various functional (such as mixins, form utils, upload handlers and
 
 - [x] Use Git Flow (read [here][git_flow] and [here][git_flow_atlassian]) to resolve the versioning
 - [x] Linter with a [Ruff](https://beta.ruff.rs/docs/)
-- [ ] Formatter with a [Black](https://black.readthedocs.io/en/stable/)
+- [x] Formatter with a [Black](https://black.readthedocs.io/en/stable/)
 - [ ] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
 - [ ] Documentation with [mkdocs](https://www.mkdocs.org/) or [antora](https://antora.org/)
 - [ ] Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments) or [tox](https://tox.wiki/en/latest/)

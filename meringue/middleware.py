@@ -6,8 +6,8 @@ from django.core.exceptions import ImproperlyConfigured
 from django.shortcuts import get_object_or_404
 
 
-hosts_middleware = 'django_hosts.middleware.HostsMiddleware'
-site_middleware = 'meringue.middleware.SiteMiddleware'
+hosts_middleware = "django_hosts.middleware.HostsMiddleware"
+site_middleware = "meringue.middleware.SiteMiddleware"
 
 
 class SiteMiddleware:
@@ -19,13 +19,13 @@ class SiteMiddleware:
         middlewares = list(settings.MIDDLEWARE_CLASSES)
         if middlewares.index(hosts_middleware) > middlewares.index(site_middleware):
             msg = (
-                'The django_hosts and simple middlewares are in the wrong order. Make sure '
-                f'{hosts_middleware} comes before {site_middleware} in the MIDDLEWARE_CLASSES '
-                'setting.'
+                "The django_hosts and simple middlewares are in the wrong order. Make sure "
+                f"{hosts_middleware} comes before {site_middleware} in the MIDDLEWARE_CLASSES "
+                "setting."
             )
             raise ImproperlyConfigured(msg)
 
-        r = r'^(.[^:]+)'
+        r = r"^(.[^:]+)"
         host = re.findall(r, request.get_host())[0]
         site = get_object_or_404(Site, domain=host)
         settings.SITE_ID = site.id

@@ -116,21 +116,28 @@ dependencies = [
 ]
 
 [tool.hatch.envs.lint]
-detached = true
 description = "Lint environment"
+detached = true
 dependencies = [
 	"ruff==0.0.263",
+	"black==23.3.0",
 ]
 
 [tool.hatch.envs.lint.scripts]
 style = [
 	"ruff {args:.}",
+	"black --check --diff {args:.}",
 ]
+
+
+[tool.black]
+line-length = 99
+target-version = ["py37"]
 
 
 [tool.ruff]
 target-version = "py37"
-line-length = 100
+line-length = 99
 show-fixes = true
 update-check = true
 select = [
@@ -171,8 +178,8 @@ ignore = [
 [tool.ruff.flake8-import-conventions.extend-aliases]
 "datetime" = "dt"
 
-[tool.ruff.flake8-quotes]
-inline-quotes = "single"
+# [tool.ruff.flake8-quotes]
+# inline-quotes = "single"
 
 [tool.ruff.flake8-unused-arguments]
 ignore-variadic-names = true
