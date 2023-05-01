@@ -60,7 +60,7 @@ dynamic = ["version"]
 [project.urls]
 "Homepage" = "https://github.com/dd/Meringue"
 # "Documentation" = "https://github.com/dd/Meringue"
-"Repository" = "https://github.com/dd/Meringue.git"
+"Repository" = "https://github.com/dd/Meringue"
 "Changelog" = "https://github.com/dd/Meringue/blob/master/CHANGELOG.md"
 "Bug Tracker" = "https://github.com/dd/Meringue/issues"
 
