@@ -1,15 +1,16 @@
-from hashlib import md5
 import logging
 import os.path
 import re
-import six
+from hashlib import md5
 
 from django.conf import settings as django_settings
+
+import six
 from PIL import Image
 
+from meringue.conf import settings
 from .methods import method_list
 from .properties import property_list
-from meringue.conf import settings
 
 
 logger = logging.getLogger("meringue")

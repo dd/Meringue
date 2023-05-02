@@ -98,8 +98,8 @@ exclude = [
 ]
 
 [tool.hatch.envs.dev]
-detached = true
 description = "Dev environment"
+detached = true
 pre-install-commands = [
 	"git config --local gitflow.branch.master \"master\"",
 	"git config --local gitflow.branch.develop \"dev\"",
@@ -110,9 +110,6 @@ pre-install-commands = [
 	"git config --local gitflow.prefix.support \"support/\"",
 	"git config --local gitflow.prefix.versiontag \"v\"",
 	"git config --local gitflow.path.hooks $(pwd)\"/.git/hooks\"",
-]
-dependencies = [
-	"ruff",
 ]
 
 [tool.hatch.envs.lint]
@@ -139,7 +136,7 @@ target-version = ["py37"]
 target-version = "py37"
 line-length = 99
 show-fixes = true
-update-check = true
+# update-check = true
 select = [
 	"A",
 	"B",
@@ -149,7 +146,7 @@ select = [
 	"EM",
 	"F",
 	"FBT",
-	# "I",
+	"I",
 	"ICN",
 	"ISC",
 	"N",
@@ -185,4 +182,18 @@ ignore = [
 ignore-variadic-names = true
 
 [tool.ruff.isort]
+force-single-line = true
 known-first-party = ["meringue"]
+lines-after-imports = 2
+no-lines-before = ["local-folder"]
+section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
+[tool.ruff.isort.sections]
+"django" = ["django"]
+
+[tool.isort]
+known_first_party = ["meringue"]
+lines_after_imports = 2
+no_lines_before = ["LOCALFOLDER"]
+known_django = "django"
+sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+force_single_line  = true

@@ -10,11 +10,12 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-from os.path import abspath
 import datetime as dt
 import sys
+from os.path import abspath
 
 import meringue
+
 
 # import sphinx_rtd_theme
 

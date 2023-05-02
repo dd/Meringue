@@ -1,13 +1,14 @@
-# from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
+from .managers import PublishManager
+
 
 # if 'django_hosts' in settings.INSTALLED_APPS:
 #     from django_hosts.resolvers import reverse
 # else:
 #     from django.urls import reverse
 
-from .managers import PublishManager
 
 # from meringue import configuration
 

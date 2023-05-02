@@ -3,7 +3,9 @@ from importlib import import_module
 from django.apps import apps
 from django.conf import settings
 
-from modeltranslation.translator import translator, TranslationOptions
+from modeltranslation.translator import TranslationOptions
+from modeltranslation.translator import translator
+
 
 try:
     from polymorphic.utils import get_base_polymorphic_model

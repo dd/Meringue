@@ -1,6 +1,7 @@
 from functools import update_wrapper
 
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponseForbidden
+from django.http import HttpResponseRedirect
 
 
 class CheckAccount:

@@ -1,8 +1,10 @@
 import mimetypes
 
 from django import forms
-from django.core.files.images import ImageFile, get_image_dimensions
-from django.db.models.fields.files import FieldFile, ImageField
+from django.core.files.images import ImageFile
+from django.core.files.images import get_image_dimensions
+from django.db.models.fields.files import FieldFile
+from django.db.models.fields.files import ImageField
 
 from . import widgets as self_widgets
 
