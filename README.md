@@ -30,7 +30,7 @@
 		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v0.json" alt="linting - Ruff" />
 	</a>
 	<a href="https://github.com/psf/black">
-		<img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="code style - Black" />
+		<img src="https://img.shields.io/badge/code%20style-Black-000000.svg" alt="code style - Black" />
 	</a>
 	<!-- <a href="https://github.com/python/mypy">
 		<img src="https://img.shields.io/badge/types-Mypy-blue.svg" alt="types - Mypy" />
@@ -73,14 +73,10 @@ Package with various functional (such as mixins, form utils, upload handlers and
 
 ## Contributing
 
-- [x] Use Git Flow (read [here][git_flow] and [here][git_flow_atlassian]) to resolve the versioning
-- [x] Linter with a [Ruff](https://beta.ruff.rs/docs/)
-- [x] Formatter with a [Black](https://black.readthedocs.io/en/stable/)
+- [x] Use Git Flow (read [here](https://jeffkreeftmeijer.com/git-flow/) and [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)) to resolve the versioning
+- [x] Linter with a [Ruff](https://github.com/charliermarsh/ruff)
+- [x] Formatter with a [Black](https://github.com/psf/black)
 - [ ] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
 - [ ] Documentation with [mkdocs](https://www.mkdocs.org/) or [antora](https://antora.org/)
 - [ ] Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments) or [tox](https://tox.wiki/en/latest/)
 - [ ] Add [mypy](https://mypy-lang.org/) ???
-
-
-[git_flow]: https://jeffkreeftmeijer.com/git-flow/
-[git_flow_atlassian]: https://www.atlassian.com/ru/git/tutorials/comparing-workflows/gitflow-workflow
