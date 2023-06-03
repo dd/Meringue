@@ -28,8 +28,8 @@ class CMTimeMixin(models.Model):
 
 class SortingMixin(models.Model):
     sorting = models.SmallIntegerField(
-        verbose_name=_("Порядок"),  # noqa: RUF001
-        help_text=_("Порядок сортировки"),  # noqa: RUF001
+        verbose_name=_("Порядок"),
+        help_text=_("Порядок сортировки"),
         default=0,
     )
 
@@ -113,8 +113,8 @@ class PublishedBase(models.Model):
     """
 
     is_published = models.BooleanField(
-        verbose_name=_("публикация"),  # noqa: RUF001
-        help_text=_("Отображать/Скрыть"),  # noqa: RUF001
+        verbose_name=_("Публикация"),
+        help_text=_("Отображать/Скрыть"),
         default=True,
         db_index=True,
     )

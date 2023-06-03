@@ -7,6 +7,7 @@
 ## 0.4.1
 
 * Linting code with Ruff
+* Formating code with Black
 
 
 ## 0.4.0.post1

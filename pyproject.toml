@@ -97,9 +97,8 @@ exclude = [
 	"CHANGELOG.md",
 ]
 
-[tool.hatch.envs.dev]
+[tool.hatch.envs.default]
 description = "Dev environment"
-detached = true
 pre-install-commands = [
 	"git config --local gitflow.branch.master \"master\"",
 	"git config --local gitflow.branch.develop \"dev\"",
@@ -111,26 +110,37 @@ pre-install-commands = [
 	"git config --local gitflow.prefix.versiontag \"v\"",
 	"git config --local gitflow.path.hooks $(pwd)\"/.git/hooks\"",
 ]
+dependencies = [
+	"pre-commit==3.2.2",
+]
+
+[tool.hatch.envs.default.scripts]
+precommit_install = "pre-commit install {args:--hook-type commit-msg}"
+precommit_uninstall = "pre-commit uninstall {args:--hook-type commit-msg}"
+init = ["precommit_install"]
+remove = ["precommit_uninstall"]
 
 [tool.hatch.envs.lint]
 description = "Lint environment"
 detached = true
 dependencies = [
-	"ruff==0.0.263",
+	"ruff==0.0.270",
 	"black==23.3.0",
 ]
 
 [tool.hatch.envs.lint.scripts]
-style = [
+check = [
 	"ruff {args:.}",
 	"black --check --diff {args:.}",
 ]
-
+format = [
+	"ruff --fix {args:.}",
+	"black {args:.}",
+]
 
 [tool.black]
 line-length = 99
 target-version = ["py37"]
-
 
 [tool.ruff]
 target-version = "py37"
@@ -169,9 +179,25 @@ ignore = [
 	"RUF003",  # Allow russian at comment
 	"FBT002",  # Allow boolean positional argument define
 	"PLR0913",  # Allow any number of function arguments
+	# # Allow non-abstract empty methods in abstract base classes
+	# "B027",
+	# # Allow boolean positional values in function calls, like `dict.get(... True)`
+	# "FBT003",
+	# # Ignore checks for possible passwords
+	# "S105", "S106", "S107",
+	# # Ignore complexity
+	# "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
+	# "PLC1901", # empty string comparisons
+	# "PLW2901", # `for` loop variable overwritten
+	# "SIM114", # Combine `if` branches using logical `or` operator
 ]
+# unfixable = [
+# 	# Don't touch unused imports
+# 	"F401",
+# ]
 
 [tool.ruff.flake8-import-conventions]
+
 [tool.ruff.flake8-import-conventions.extend-aliases]
 "datetime" = "dt"
 
@@ -187,8 +213,9 @@ known-first-party = ["meringue"]
 lines-after-imports = 2
 no-lines-before = ["local-folder"]
 section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
+
 [tool.ruff.isort.sections]
-"django" = ["django"]
+django = ["django"]
 
 [tool.isort]
 known_first_party = ["meringue"]
