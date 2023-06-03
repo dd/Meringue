@@ -111,7 +111,7 @@ pre-install-commands = [
 	"git config --local gitflow.path.hooks $(pwd)\"/.git/hooks\"",
 ]
 dependencies = [
-	"pre-commit==3.2.2",
+	"pre-commit==3.3.2",
 ]
 
 [tool.hatch.envs.default.scripts]
