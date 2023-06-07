@@ -107,6 +107,8 @@ markdown_extensions:
 
 plugins:
   - search
+  - literate-nav:
+      nav_file: SUMMARY.md
   - git-revision-date-localized:
       type: custom  # timeago
       custom_format: "%Y/%m/%d %H:%M:%S"
@@ -115,9 +117,12 @@ plugins:
       fallback_to_build_date: true
       enable_creation_date: true
       enabled: !ENV [MERINGUE_MKDOCS_ENABLED_GIT_REVISION_DATE, true]
-  - literate-nav:
-      nav_file: SUMMARY.md
-      implicit_index: true
+  - autorefs
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [!ENV [VIRTUAL_ENV]]
+          load_external_modules: true
   - offline:
       enabled: !ENV [MERINGUE_MKDOCS_OFFLINE, false]
 

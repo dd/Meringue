@@ -1,5 +1,8 @@
 # Examples of blocks for writing documentation
 
+Коллекция примеров неочевидных блоков которые можно использовать при написании документации.
+
+
 ## Admonitions
 
 [docs 1](https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#admonition) [docs 2](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)
@@ -78,6 +81,9 @@ git clone git@github.com:dd/Meringue.git
 cd Meringue
 ls -al
 hatch run docs:serve
+
+# This is bash
+echo 1
 ```
 
 ### Inline

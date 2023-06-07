@@ -143,9 +143,10 @@ description = "Docs environment"
 detached = true
 dependencies = [
 	"mkdocs[i18n]==1.4.3",
-	"mkdocs-material==9.1.15",
 	"mkdocs-literate-nav==0.6.0",
+	"mkdocs-material==9.1.15",
 	"mkdocs-git-revision-date-localized-plugin==1.2.0",
+	"mkdocstrings[python]==0.22.0",
 ]
 [tool.hatch.envs.docs.scripts]
 build = ["mkdocs build"]
