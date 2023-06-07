@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block libs %}
+	{{ super() }}
+
+	{# {% include "partials/libs.html" ignore missing %} #}
+{% endblock %}
+
+{% block content %}
+	{{ super() }}
+
+	<footer class="sponsorship">
+		<hr>
+		<a href="https://manin.space/" target="_blank" rel="noopener" >
+			<span class="twemoji heart-throb-hover">
+				{# :material-space-invaders: #}
+				{% include ".icons/octicons/heart-fill-16.svg" %}
+			</span>
+		</a>
+		<hr>
+	</footer>
+{% endblock %}

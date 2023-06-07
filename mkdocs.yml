@@ -1,0 +1,83 @@
+site_name: Meringue
+site_description: A set of various functionality for a Django based web application.
+site_author: Dmitriy Dobrynin (aka dd) <dd@manin.space>
+copyright: Copyright &copy; 2014 - present <a href="https://manin.space/" target="_blank" rel="noopener" >manin.space</a>
+
+repo_name: dd/Meringue
+repo_url: https://github.com/dd/Meringue
+edit_uri: edit/master/docs/src
+
+docs_dir: docs/src
+site_dir: docs/dist
+dev_addr: 127.0.0.1:7000
+
+theme:
+  name: material
+  language: ru
+  custom_dir: docs/theme
+  icon:
+    logo: logo
+    repo: material/github
+  favicon: assets/favicon.png
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.path
+    - navigation.prune
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - navigation.footer
+    - content.action.view
+    - content.action.edit
+
+markdown_extensions:
+  - toc:
+      title: On this page
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.snippets:
+      check_paths: true
+
+plugins:
+  - search
+      # lang:
+      #   - en
+      #   - ru
+  - git-revision-date-localized:
+      type: custom  # timeago
+      custom_format: "%Y/%m/%d %H:%M:%S"
+      timezone: UTC
+      locale: en
+      fallback_to_build_date: true
+      enable_creation_date: true
+      enabled: !ENV [MERINGUE_MKDOCS_ENABLED_GIT_REVISION_DATE, true]
+  - git-committers:
+      repository: dd/meringue
+      branch: master
+  - literate-nav:
+      nav_file: SUMMARY.md
+      implicit_index: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dd/Meringue
+      name: github
+    - icon: fontawesome/brands/python  # simple/pypi
+      link: https://pypi.org/project/meringue/
+      name: pypi
+
+extra_css:
+  - css/base.css
+
+watch:
+  - docs/theme
+  - meringue
+  - README.md

@@ -50,18 +50,14 @@ Package with various functional (such as mixins, form utils, upload handlers and
 
 * css для PreviewImageField
 * thumbnail:
-
-  - watermark
-  - определение лица и использование в роли центра изображения
-  - указание максимальной ширины или высоты
-  - определение фокуса
-
+	* watermark
+	* определение лица и использование в роли центра изображения
+	* указание максимальной ширины или высоты
+	* определение фокуса
 * PreviewImageFileInput:
-
-  - информация о изображении
-  - изображение при инициализации
-  - при загрузке изображения сразу же его выводить в превью (js)
-
+	* информация о изображении
+	* изображение при инициализации
+	* при загрузке изображения сразу же его выводить в превью (js)
 * Абстрактная модель для создания галлереи со всеми необходимыми полями, кроме родительской таблицы
 * тестирование
 * настройки вроде DEBUG из админки
@@ -77,6 +73,6 @@ Package with various functional (such as mixins, form utils, upload handlers and
 - [x] Linter with a [Ruff](https://github.com/charliermarsh/ruff)
 - [x] Formatter with a [Black](https://github.com/psf/black)
 - [x] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
-- [ ] Documentation with [mkdocs](https://www.mkdocs.org/) or [antora](https://antora.org/)
+- [x] Documentation with [mkdocs](https://www.mkdocs.org/)
 - [ ] Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments) or [tox](https://tox.wiki/en/latest/)
 - [ ] Add [mypy](https://mypy-lang.org/) ???

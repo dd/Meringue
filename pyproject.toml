@@ -124,7 +124,7 @@ remove = ["precommit_uninstall"]
 description = "Lint environment"
 detached = true
 dependencies = [
-	"ruff==0.0.270",
+	"ruff==0.0.271",
 	"black==23.3.0",
 ]
 
@@ -137,6 +137,20 @@ format = [
 	"ruff --fix {args:.}",
 	"black {args:.}",
 ]
+
+[tool.hatch.envs.docs]
+description = "Docs environment"
+detached = true
+dependencies = [
+	"mkdocs[i18n]==1.4.3",
+	"mkdocs-material==9.1.15",
+	"mkdocs-literate-nav==0.6.0",
+	"mkdocs-git-revision-date-localized-plugin==1.2.0",
+	"mkdocs-git-committers-plugin-2==1.1.2",
+]
+[tool.hatch.envs.docs.scripts]
+build = ["mkdocs build"]
+serve = ["mkdocs serve"]
 
 [tool.black]
 line-length = 99
