@@ -13,12 +13,36 @@ dev_addr: 127.0.0.1:7000
 
 theme:
   name: material
-  language: ru
+  language: en
   custom_dir: docs/theme
   icon:
     logo: logo
     repo: material/github
   favicon: assets/favicon.png
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/theme-light-dark
+        name: Switch to light mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
   features:
     - navigation.instant
     - navigation.tracking
@@ -33,23 +57,56 @@ theme:
     - navigation.footer
     - content.action.view
     - content.action.edit
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotate
 
 markdown_extensions:
   - toc:
       title: On this page
       permalink: true
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - tables
+  - pymdownx.betterem
+  - pymdownx.details
+  - pymdownx.superfences:
+      preserve_tabs: true
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tilde
+  - pymdownx.smartsymbols
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+      linenums_style: pymdownx-inline
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.keys
   - pymdownx.snippets:
       check_paths: true
+  # - pymdownx.magiclink:
+  #     hide_protocol: true
+  # - pymdownx.escapeall:
+  #     hardbreak: True
+  #     nbsp: True
+  # # - markdown.extensions.smarty:
+  # #     smart_quotes: false
 
 plugins:
   - search
-      # lang:
-      #   - en
-      #   - ru
   - git-revision-date-localized:
       type: custom  # timeago
       custom_format: "%Y/%m/%d %H:%M:%S"
@@ -58,14 +115,20 @@ plugins:
       fallback_to_build_date: true
       enable_creation_date: true
       enabled: !ENV [MERINGUE_MKDOCS_ENABLED_GIT_REVISION_DATE, true]
-  - git-committers:
-      repository: dd/meringue
-      branch: master
   - literate-nav:
       nav_file: SUMMARY.md
       implicit_index: true
+  - offline:
+      enabled: !ENV [MERINGUE_MKDOCS_OFFLINE, false]
 
 extra:
+  # alternate:
+  #   - name: English
+  #     link: /en/
+  #     lang: en
+  #   - name: Russian
+  #     link: /ru/
+  #     lang: ru
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/dd/Meringue
