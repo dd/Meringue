@@ -111,12 +111,17 @@ plugins:
       nav_file: SUMMARY.md
   - git-revision-date-localized:
       type: custom  # timeago
-      custom_format: "%Y/%m/%d %H:%M:%S"
+      custom_format: "%Y-%m-%d %H:%M:%S%z"
       timezone: UTC
       locale: en
       fallback_to_build_date: true
       enable_creation_date: true
+      exclude:
+        - index.md
       enabled: !ENV [MERINGUE_MKDOCS_ENABLED_GIT_REVISION_DATE, true]
+  - git-authors:
+      exclude:
+        - index.md
   - autorefs
   - mkdocstrings:
       handlers:
