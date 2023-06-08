@@ -1,6 +1,7 @@
 # Contributing
 
 
+
 ## Environment
 
 Во первых необходим глобально установленный [hatch](https://hatch.pypa.io/) (я предлагаю делать это с использованием [pipx](https://github.com/pypa/pipx)).
