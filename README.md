@@ -9,6 +9,9 @@
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/v/meringue.svg" alt="PyPI - Version" />
 	</a>
+	<a href="https://py-meringue.readthedocs.io/en/latest/?badge=latest">
+		<img src="https://readthedocs.org/projects/py-meringue/badge/?version=latest" alt="Documentation Status" />
+	</a>
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/dm/meringue.svg" alt="PyPI - Downloads" />
 	</a>
@@ -23,19 +26,22 @@
 	</a> -->
 </p>
 <p align="center">
-	<a href="https://github.com/pypa/hatch">
+	<a href="https://github.com/pypa/hatch" target="_blank">
 		<img src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" alt="Hatch project" />
 	</a>
-	<a href="https://github.com/charliermarsh/ruff">
+	<a href="https://squidfunk.github.io/mkdocs-material/" target="_blank">
+		<img src="https://img.shields.io/badge/docs-mkdocs%20material-blue.svg" alt="Material for MkDocs" />
+	</a>
+	<a href="https://github.com/charliermarsh/ruff" target="_blank">
 		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v0.json" alt="linting - Ruff" />
 	</a>
-	<a href="https://github.com/psf/black">
+	<a href="https://github.com/psf/black" target="_blank">
 		<img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="code style - black" />
 	</a>
-	<!-- <a href="https://github.com/python/mypy">
+	<!-- <a href="https://github.com/python/mypy" target="_blank">
 		<img src="https://img.shields.io/badge/types-Mypy-blue.svg" alt="types - Mypy" />
 	</a> -->
-	<a href="https://raw.githubusercontent.com/dd/Meringue/master/LICENSE">
+	<a href="https://raw.githubusercontent.com/dd/Meringue/master/LICENSE" target="_blank">
 		<img src="https://img.shields.io/pypi/l/meringue?color=008033" alt="License - GNU Lesser General Public License v3.0" />
 	</a>
 </p>

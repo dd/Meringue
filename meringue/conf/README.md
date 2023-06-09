@@ -1,4 +1,6 @@
 # Configuration
 
-::: meringue.conf.default_settings
+::: meringue.conf
+
+<!-- ::: meringue.conf.default_settings -->
 

@@ -133,16 +133,26 @@ plugins:
             # - https://mkdocstrings.github.io/griffe/objects.inv
           options:
             # show_bases: false
-            show_source: false
+            show_source: true
             show_signature_annotations: true
             members_order: source
             group_by_category: false
             docstring_section_style: list
             merge_init_into_class: true
             separate_signature: true
+            # line_length: 30
             signature_crossrefs: true
   - offline:
       enabled: !ENV [MERINGUE_MKDOCS_OFFLINE, false]
+  - minify:
+      minify_html: !ENV [MERINGUE_MKDOCS_ENABLE_MINIFY, true]
+      # minify_js: !ENV [MERINGUE_MKDOCS_ENABLE_MINIFY, true]
+      minify_css: !ENV [MERINGUE_MKDOCS_ENABLE_MINIFY, true]
+      htmlmin_opts:
+          remove_comments: true
+      cache_safe: true
+      css_files:
+          - css/base.css
 
 extra:
   # alternate:

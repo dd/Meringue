@@ -1,8 +1,8 @@
 # Documentation
 
-Для разработки документации мы используем [mkdocs](https://www.mkdocs.org/) с темой [material](https://squidfunk.github.io/mkdocs-material/).
+Для разработки документации используется [mkdocs](https://www.mkdocs.org/) с темой [mkdocs-material](https://squidfunk.github.io/mkdocs-material/).
 
-Исходники для генерации документации парсит [mkdocstring](https://mkdocstrings.github.io/). Он который может работать с [несколькими форматами](https://mkdocstrings.github.io/python/#features), у нас используется _Google-style_ (это касается только докстрингов), однако не [чистый](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings), а его вариация [napoleon](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) (Но конечно это вопрос обсуждаемый, и можем изменить, если у кого есть предложения).
+Исходники для генерации документации парсит [mkdocstring](https://mkdocstrings.github.io/), который может работать с [несколькими форматами](https://mkdocstrings.github.io/python/#features), у нас используется _Google-style_ (это касается только докстрингов), однако не [чистый](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings), а его вариация [napoleon](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) (Но конечно это вопрос обсуждаемый, и можем изменить, если у кого есть предложения).
 
 !!! abstract
 	Давайте, по возможности, в документации писать все заголовки на английском, в таком случае все якоря будут генериться на английском.
@@ -34,6 +34,15 @@ hatch run docs:serve
 `default: false`
 
 Параметр для сборки документации в билд работающий из папки, без необходимости запускать сервер. подробнее о механизме читать [тут](https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/).
+
+
+### `MERINGUE_MKDOCS_ENABLE_MINIFY`
+
+`default: true`
+
+Параметр для включения плагина [minify](https://github.com/byrnereese/mkdocs-minify-plugin) минифицирующий html, js и css при генерации документации.
+
+При работе с [локальным сервером][local-development] документации параметр отключён.
 
 
 ## Building and publishing

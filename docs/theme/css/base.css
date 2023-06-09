@@ -75,3 +75,13 @@ footer.sponsorship:not(:hover) .twemoji.heart-throb-hover svg {
 	/* Generic.Prompt, Generic.Output */
 	user-select: none;
 }
+
+
+/*.doc-heading > .doc-object-name {
+	font-weight: 700;
+}*/
+
+div.doc-contents:not(.first) {
+	padding-left: 1.25rem;
+	border-left: 0.05rem solid var(--md-typeset-table-color)
+}

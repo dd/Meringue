@@ -1,12 +1,12 @@
 [build-system]
-requires = ["hatchling>=1.14.1"]
+requires = ["hatchling>=1.17.1"]
 build-backend = "hatchling.build"
 
 [project]
 name = "meringue"
 description = "A set of various functionality for a Django based web application."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.11"
 license = "LGPL-3.0"
 authors = [
 	{ name = "Dmitry Dobrynin", email = "dd@manin.space" },
@@ -38,10 +38,6 @@ classifiers = [
 	"Operating System :: OS Independent",
 	"Programming Language :: Python",
 	"Programming Language :: Python :: 3",
-	"Programming Language :: Python :: 3.7",
-	"Programming Language :: Python :: 3.8",
-	"Programming Language :: Python :: 3.9",
-	"Programming Language :: Python :: 3.10",
 	"Programming Language :: Python :: 3.11",
 	"Programming Language :: Python :: 3.12",
 	"Programming Language :: Python :: 3 :: Only",
@@ -66,20 +62,20 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 pillow = [
-	"Pillow==7.2.0",
+	"Pillow>=7.2.0,<8",
 ]
 crypto = [
-	"pycryptodome==3.9.7",
+	"pycryptodome>=3.9.7,<4",
 ]
 openpyxl = [
-	"openpyxl==2.6.1",
+	"openpyxl>=2.6.1,<3",
 ]
 python-phonenumbers = [
-	"phonenumbers==8.10.8",
+	"phonenumbers>=8.10.8,<9",
 ]
 django-pipeline = [
-	"django-pipeline==1.7.0",
-	"django-pipeline-browserify==0.6.2",
+	"django-pipeline>=1.7.0,<2",
+	"django-pipeline-browserify>=0.6.2,<1",
 ]
 
 [tool.hatch.version]
@@ -124,7 +120,7 @@ remove = ["precommit_uninstall"]
 description = "Lint environment"
 detached = true
 dependencies = [
-	"ruff==0.0.271",
+	"ruff==0.0.272",
 	"black==23.3.0",
 ]
 
@@ -146,19 +142,21 @@ dependencies = [
 	"mkdocs-literate-nav==0.6.0",
 	"mkdocs-material==9.1.15",
 	"mkdocs-git-revision-date-localized-plugin==1.2.0",
-	"mkdocs-git-authors-plugin==0.7.1",
+	"mkdocs-git-authors-plugin==0.7.2",
 	"mkdocstrings[python]==0.22.0",
+	"black==23.3.0",
+	"mkdocs-minify-plugin==0.6.4",
 ]
 [tool.hatch.envs.docs.scripts]
-build = ["mkdocs build"]
-serve = ["mkdocs serve"]
+build = ["mkdocs build {args}"]
+serve = ["MERINGUE_MKDOCS_ENABLE_MINIFY=false mkdocs serve {args}"]
 
 [tool.black]
 line-length = 99
-target-version = ["py37"]
+target-version = ["py311"]
 
 [tool.ruff]
-target-version = "py37"
+target-version = "py311"
 line-length = 99
 show-fixes = true
 # update-check = true
