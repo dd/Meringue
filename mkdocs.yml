@@ -49,7 +49,7 @@ theme:
     - navigation.tabs
     - navigation.path
     - navigation.prune
-    - navigation.indexes
+    # - navigation.indexes
     - toc.follow
     - navigation.top
     - search.suggest
@@ -64,7 +64,7 @@ theme:
 markdown_extensions:
   - toc:
       title: On this page
-      permalink: true
+      permalink: "¤"  # true
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
   - admonition
   - attr_list
@@ -126,8 +126,21 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [!ENV [VIRTUAL_ENV]]
           load_external_modules: true
+          import:
+            - https://docs.python.org/3/objects.inv
+            # - https://mkdocstrings.github.io/objects.inv
+            # - https://mkdocstrings.github.io/griffe/objects.inv
+          options:
+            # show_bases: false
+            show_source: false
+            show_signature_annotations: true
+            members_order: source
+            group_by_category: false
+            docstring_section_style: list
+            merge_init_into_class: true
+            separate_signature: true
+            signature_crossrefs: true
   - offline:
       enabled: !ENV [MERINGUE_MKDOCS_OFFLINE, false]
 

@@ -62,3 +62,16 @@ footer.sponsorship:hover hr {
 footer.sponsorship:not(:hover) .twemoji.heart-throb-hover svg {
 	color: var(--md-default-fg-color--lightest) !important;
 }
+
+
+
+/**
+ * Disable select at the code highlight for console style promt and output
+ *
+ * https://mkdocstrings.github.io/recipes/#prevent-selection-of-prompts-and-output-in-python-code-blocks
+ */
+
+.highlight .gp, .highlight .go {
+	/* Generic.Prompt, Generic.Output */
+	user-select: none;
+}

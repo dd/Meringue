@@ -2,6 +2,11 @@
 
 Для разработки документации мы используем [mkdocs](https://www.mkdocs.org/) с темой [material](https://squidfunk.github.io/mkdocs-material/).
 
+Исходники для генерации документации парсит [mkdocstring](https://mkdocstrings.github.io/). Он который может работать с [несколькими форматами](https://mkdocstrings.github.io/python/#features), у нас используется _Google-style_ (это касается только докстрингов), однако не [чистый](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings), а его вариация [napoleon](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) (Но конечно это вопрос обсуждаемый, и можем изменить, если у кого есть предложения).
+
+!!! abstract
+	Давайте, по возможности, в документации писать все заголовки на английском, в таком случае все якоря будут генериться на английском.
+
 
 ## Local development
 

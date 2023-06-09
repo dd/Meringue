@@ -76,21 +76,36 @@ Footnotes[^1] have a label[^@#$%] and the footnote's content.
 
 [docs](https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight)
 
-```bash
-git clone git@github.com:dd/Meringue.git
-cd Meringue
-ls -al
-hatch run docs:serve
+```console linenums="42" hl_lines="1 4-6"
+$ echo hello world!
+hello world!
 
-# This is bash
-echo 1
+$ git clone git@github.com:dd/Meringue.git
+$ cd Meringue
+$ hatch run docs:serve
+INFO     -  Building documentation...
+INFO     -  Cleaning site directory
+INFO     -  mkdocstrings_handlers: Formatting signatures requires Black to be
+            installed.
+INFO     -  Documentation built in 1.96 seconds
+INFO     -  [02:05:37] Watching paths for changes: 'docs/src', 'mkdocs.yml',
+            'docs/theme', 'meringue', 'README.md'
+INFO     -  [02:05:37] Serving on http://127.0.0.1:7000/
 ```
+
+```pycon
+>>> for word in ("Hello", "mkdocstrings!"):
+...     print(word, end=" ")
+...
+Hello mkdocstrings!
+```
+
 
 ### Inline
 
 [docs](https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#inlinehilite)
 
-`#!bash python3 manage.py runserver`
+`#!console $ python3 manage.py runserver`
 
 `#!python3 import this`
 
