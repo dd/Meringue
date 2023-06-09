@@ -12,4 +12,4 @@ build:
     python: "3.11"
   commands:
     - pip install hatch
-    - hatch run docs:build
+    - hatch run docs:build -d _readthedocs/html
