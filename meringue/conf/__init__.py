@@ -1,11 +1,25 @@
-import warnings
 from typing import Any
 from typing import Final
+from typing import Optional
+import warnings
 
-from django.conf import settings as dj_settings
+from django.conf import settings
 from django.utils.module_loading import import_string
 
 from meringue.conf import default_settings
+
+
+SETTING_KEY: Final[str] = 'MERINGUE'
+"""
+Parameter name in django settings for meringue settings.
+
+Examples:
+    ```py title="settings.py"
+    MERINGUE = {
+        "FRONTEND_URL": "http://meringue.local:9000/",
+    }
+    ```
+"""
 
 
 DEPRECATED_PARAMS: Final[dict[str, str]] = {}
@@ -61,25 +75,50 @@ def import_from_string(val: str, attr: str) -> Any:
 
 
 class Settings:
+    """
+    A settings object.
+
+    The settings are obtained from the django settings by the name of the key which should contain
+    an object with all the application settings.
+    """
+
     def __init__(
         self,
+        setting_key: str,
         defaults: dict[str, str],
-        deprecated_params: dict[str, str],
-        params_to_impoprt: list[str],
+        deprecated_params: Optional[dict[str, str]] = {},
+        params_to_impoprt: Optional[list[str]] = [],
     ):
         """
         Attributes:
-            defaults: Dict with default options values.
+            setting_key: Settings key in django settings list.
+            defaults: Dict with default parameter values. Used as a list of available settings.
             deprecated_params: Dict with deprecated options and warning texts for them.
             params_to_impoprt: List of options that contain the path to the module and must be imported.
         """
+        self.setting_key = setting_key
         self.defaults = defaults
         self.deprecated_params = deprecated_params
         self.params_to_impoprt = params_to_impoprt
 
-    def __getattr__(self, attr):
+    def __getattr__(self, attr: str) -> Any:
+        """
+        Gets the parameter value and caches it in the attributes of the settings object.
+
+        Attributes:
+            attr: Setting parameter name.
+
+        Raises:
+            AttributeError: Error when trying to get an unregistered parameter.
+
+        Warns:
+            DeprecationWarning: A warning that the parameter is deprecated.
+
+        Returns:
+            Setting value.
+        """
         if attr not in self.defaults:
-            raise AttributeError("Invalid API setting: '%s'" % attr)
+            raise AttributeError("Invalid setting key: '%s'" % attr)
 
         if attr in self.deprecated_params:
             warnings.warn(self.deprecated_params[attr], DeprecationWarning)
@@ -91,4 +130,4 @@ class Settings:
         return val
 
 
-settings = Settings(default_settings, DEPRECATED_PARAMS, PARAMS_TO_IMPORT)
+m_settings = Settings(SETTING_KEY, default_settings, DEPRECATED_PARAMS, PARAMS_TO_IMPORT)
