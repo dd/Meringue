@@ -64,7 +64,6 @@ footer.sponsorship:not(:hover) .twemoji.heart-throb-hover svg {
 }
 
 
-
 /**
  * Disable select at the code highlight for console style promt and output
  *
@@ -77,11 +76,19 @@ footer.sponsorship:not(:hover) .twemoji.heart-throb-hover svg {
 }
 
 
-/*.doc-heading > .doc-object-name {
-	font-weight: 700;
-}*/
-
+/**
+ * Added a vertical bar next to the code description in mkdocstring
+ */
 div.doc-contents:not(.first) {
 	padding-left: 1.25rem;
 	border-left: 0.05rem solid var(--md-typeset-table-color)
+}
+
+
+/**
+ * Development Warning
+ */
+[data-md-component=announce] .icon {
+	font-size: 2em;
+	margin-right: 0.5em;
 }
