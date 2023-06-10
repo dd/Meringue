@@ -169,6 +169,8 @@ graph LR
 
 [docs](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/)
 
+[icon search](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search)
+
 :fontawesome-brands-twitter:{ .twitter } :smile: :heart: :thumbsup:
 
 

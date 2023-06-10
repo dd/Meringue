@@ -1,7 +1,6 @@
 * [Home](index.md)
-* [Usage](getting-started/index.md)
-* Code Reference
-	* [Configuration](reference/conf.md)
+* [Usage](usage/index.md)
+	* [Configuration options](usage/conf.md)
 * Development
 	* [Contributing](dev/contributing.md)
 	* Documentations
