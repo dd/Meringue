@@ -62,14 +62,12 @@ However, if someone decides to use this functionality in their project, and even
 Refactoring old functionality and getting rid of unnecessary
 
 * models
-	* [ ] Mixin with ctime and mtime fields
+	* [x] Mixin with ctime and mtime fields
 	* [ ] Abstract model with sort field
-		* [ ] Add abstract model
+		* [x] Add abstract model
 		* [ ] Add a manager with a method to correct sorting
-	* [ ] Abstract model with publishing flag
-	* [ ] Abstract model with the functionality of publishing in a certain period
-		* [ ] Add abstract model
-		* [ ] Method for correcting sorting
+	* [x] Abstract model with publishing flag
+	* [x] Abstract model with the functionality of publishing in a certain period
 	* [ ] Universal manager worked with all abstract models
 * i18n
 	* [ ] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)

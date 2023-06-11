@@ -1,24 +1,16 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
-from .managers import PublishManager
-
-
-# if 'django_hosts' in settings.INSTALLED_APPS:
-#     from django_hosts.resolvers import reverse
-# else:
-#     from django.urls import reverse
+from meringue.core.managers import PublicationDatesManager
+from meringue.core.managers import PublicationManager
 
 
-# from meringue import configuration
-
-
-##########
-# mixins #
-##########
-
+# Mixins ##########################################################################################
 
 class CMTimeMixin(models.Model):
+    """
+    A simple mixin to add _ctime_ and _mtime_ fields.
+    """
     ctime = models.DateTimeField(auto_now_add=True)
     mtime = models.DateTimeField(auto_now=True)
 
@@ -26,100 +18,72 @@ class CMTimeMixin(models.Model):
         abstract = True
 
 
-class SortingMixin(models.Model):
+# Abstract models #################################################################################
+
+class SortingBase(models.Model):
+    """
+    Simple mixin to add sorting field.
+
+    Todo:
+        * Add a manager with a method to correct sorting.
+    """
+
     sorting = models.SmallIntegerField(
-        verbose_name=_("Порядок"),
-        help_text=_("Порядок сортировки"),
+        verbose_name=_("Sorting"),
+        help_text=_("Sorting order."),
         default=0,
     )
 
     class Meta:
-        ordering = [
-            "sorting",
-        ]
+        ordering = ["sorting", ]
         abstract = True
 
 
-# class GetAbsoluteUrlMixin(object):
-
-#     '''
-#         Примесь автоматизирующая получение абсолютного адреса
-#         Для получения адреса использует стандартную функцию reverse (в
-#     случае если установлен django_hosts то reverse_full)
-
-#         При реверсе предполагается следующая схема:
-
-#             * host_name - название верхнего модуля в нижнем регистре
-#         (используется в случае установенного django_hosts)
-
-#             * view - '<namespace>:<url_name>':
-#                 - namespace - название приложения приведённое к нижнему
-#             регистру и точки заменённые на нижнее подчёркивание
-#                 - url_name - название класса приведённое к нижнему регистру
-#             с приставкой '-detail'
-
-#             * args - по умолчанию pk модели
-
-#         При определении класса модели можно предустановить параметры:
-#             * host_name - название целевого хоста (string)
-#             * view - целевой url (string)
-#             * reverse_args - список атрибутов модели (list)
-#     '''
-
-#     def _host_name(self):
-#         if not hasattr(self._meta, 'host_name'):
-#             module_name = self.__module__.split('.')[0]
-#             module = __import__(module_name)
-#             self._meta.host_name = getattr(module, 'host_name',
-#                                            module_name.lower())
-#         return self._meta.host_name
-
-#     def _view(self):
-#         if not hasattr(self._meta, 'view'):
-#             namespace = self.__module__[:-7].lower().replace('.', '_')
-
-#             cls = self._meta.model_name
-#             view = '%s-detail' % cls
-
-#             self._meta.view = '%s:%s' % (namespace, view)
-#         return self._meta.view
-
-#     def _reverse_args(self):
-#         reverse_args = getattr(self._meta, 'reverse_args', ['pk'])
-#         return [getattr(self, key) for key in reverse_args]
-
-#     def get_absolute_url(self):
-#         reverse_args = {
-#             'viewname': self._view(),
-#             'args': self._reverse_args(),
-#         }
-#         if 'django_hosts' in settings.INSTALLED_APPS:
-#             reverse_args.update({
-#                 'host': self._host_name(),
-#                 'port': configuration.PORT,
-#             })
-#         return reverse(**reverse_args)
-
-
-###################
-# Abstract models #
-###################
-
-
-class PublishedBase(models.Model):
+class PublicationBase(models.Model):
     """
-    Publish abstract model
-    Manager has method published() like a filter()
+    Abstract model with the functionality of manual publishing.
+
+    Examples:
+        >>> FooModel.object.published()
+        >>> FooModel.object.unpublished()
     """
 
     is_published = models.BooleanField(
-        verbose_name=_("Публикация"),
-        help_text=_("Отображать/Скрыть"),
+        verbose_name=_("Publication"),
+        help_text=_("Show/Hide"),
         default=True,
         db_index=True,
     )
 
-    objects = PublishManager()
+    objects = PublicationManager()
+
+    class Meta:
+        abstract = True
+
+
+class PublicationDatesBase(models.Model):
+    """
+    Abstract model with the functionality of publishing in a certain period.
+
+    Examples:
+        >>> FooModel.object.published()
+        >>> FooModel.object.unpublished()
+    """
+
+    date_from = models.DateTimeField(
+        verbose_name=_("Date from"),
+        help_text=_("Display date and time."),
+        blank=True,
+        null=True,
+    )
+    date_to = models.DateTimeField(
+        verbose_name=_("Date to"),
+        help_text=_("Date and time when to hide."),
+        blank=True,
+        null=True,
+    )
+
+    objects = PublicationDatesManager()
 
     class Meta:
         abstract = True
