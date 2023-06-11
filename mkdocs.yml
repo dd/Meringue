@@ -109,8 +109,11 @@ plugins:
   - search
   - literate-nav:
       nav_file: SUMMARY.md
+      implicit_index: true
   - git-revision-date-localized:
       type: custom  # timeago
+      # :material-clock-edit-outline:
+      # :material-clock-plus-outline:
       custom_format: "%Y-%m-%d %H:%M:%S%z"
       timezone: UTC
       locale: en
@@ -118,11 +121,16 @@ plugins:
       enable_creation_date: true
       exclude:
         - index.md
+        - reference/*
       enabled: !ENV [MERINGUE_MKDOCS_ENABLED_GIT_REVISION_DATE, true]
   - git-authors:
       exclude:
         - index.md
+        - reference/*
   - autorefs
+  - gen-files:
+      scripts:
+      - docs/gen_ref_pages.py
   - mkdocstrings:
       handlers:
         python:
@@ -131,6 +139,10 @@ plugins:
             - https://docs.python.org/3/objects.inv
             # - https://mkdocstrings.github.io/objects.inv
             # - https://mkdocstrings.github.io/griffe/objects.inv
+            - https://docs.djangoproject.com/en/4.2/_objects
+            # - https://django-modeltranslation.readthedocs.io/en/latest/objects.inv
+            # - https://django-polymorphic.readthedocs.io/en/stable/objects.inv
+            # - url: https://docs.python-requests.org/en/master/objects.inv
           options:
             # show_bases: false
             show_source: true
@@ -178,5 +190,6 @@ extra_css:
 
 watch:
   - docs/theme
+  - docs/gen_ref_pages.py
   - meringue
   - README.md

@@ -63,9 +63,14 @@ Refactoring old functionality and getting rid of unnecessary
 
 * models
 	* [ ] Mixin with ctime and mtime fields
-	* [ ] Mixin with sort field
+	* [ ] Abstract model with sort field
+		* [ ] Add abstract model
+		* [ ] Add a manager with a method to correct sorting
 	* [ ] Abstract model with publishing flag
 	* [ ] Abstract model with the functionality of publishing in a certain period
+		* [ ] Add abstract model
+		* [ ] Method for correcting sorting
+	* [ ] Universal manager worked with all abstract models
 * i18n
 	* [ ] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)
 	* [ ] Localization of all texts in the library
