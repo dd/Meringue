@@ -81,7 +81,7 @@ Refactoring old functionality and getting rid of unnecessary
 * api
 	* [ ] exception handler for drf that returns an error code in addition to the error text
 * other
-	* [ ] Upload handlers with renaming uploaded files
+	* [x] Upload handlers with renaming uploaded files (Need tests)
 	* [ ] Tests of all functionality
 
 
