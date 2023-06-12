@@ -7,10 +7,12 @@ from meringue.core.managers import PublicationManager
 
 # Mixins ##########################################################################################
 
+
 class CMTimeMixin(models.Model):
     """
     A simple mixin to add _ctime_ and _mtime_ fields.
     """
+
     ctime = models.DateTimeField(auto_now_add=True)
     mtime = models.DateTimeField(auto_now=True)
 
@@ -19,6 +21,7 @@ class CMTimeMixin(models.Model):
 
 
 # Abstract models #################################################################################
+
 
 class SortingBase(models.Model):
     """
@@ -35,7 +38,9 @@ class SortingBase(models.Model):
     )
 
     class Meta:
-        ordering = ["sorting", ]
+        ordering = [
+            "sorting",
+        ]
         abstract = True
 
 

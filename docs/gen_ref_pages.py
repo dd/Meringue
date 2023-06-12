@@ -47,7 +47,6 @@ def directory_processing(path: Path, doc_section: str, nav: mkdocs_gen_files.Nav
     for directory in directories:
         directory_processing(directory, doc_section, nav)
 
-
     # files processing
     files = sorted(filter(lambda i: i.is_file(), path.glob("*.py")))
     for file in files:
@@ -68,7 +67,7 @@ def directory_processing(path: Path, doc_section: str, nav: mkdocs_gen_files.Nav
         # write markdown file
         module_to_parse = parts[:-1]
         if parts[-1] != "__init__.py":
-            module_to_parse += (doc_file.stem, )
+            module_to_parse += (doc_file.stem,)
 
         with mkdocs_gen_files.open(doc_path, "w") as fd:
             fd.write(f"::: {'.'.join(module_to_parse)}\n")

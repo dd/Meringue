@@ -1,11 +1,10 @@
 from django.db.models.manager import Manager
 
-from meringue.core.query import PublicationQuerySet
 from meringue.core.query import PublicationDatesQuerySet
+from meringue.core.query import PublicationQuerySet
 
 
 class PublicationManager(Manager):
-
     def get_queryset(self):
         return PublicationQuerySet(self.model, using=self._db)
 
@@ -17,7 +16,6 @@ class PublicationManager(Manager):
 
 
 class PublicationDatesManager(Manager):
-
     def get_queryset(self):
         return PublicationDatesQuerySet(self.model, using=self._db)
 

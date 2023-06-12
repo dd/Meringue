@@ -1,7 +1,6 @@
+import warnings
 from typing import Any
 from typing import Final
-from typing import Optional
-import warnings
 
 from django.conf import settings
 from django.utils.module_loading import import_string
@@ -81,8 +80,8 @@ class Settings:
         self,
         setting_key: str,
         defaults: dict[str, str],
-        deprecated_params: Optional[dict[str, str]] = None,
-        params_to_impoprt: Optional[list[str]] = None,
+        deprecated_params: dict[str, str] | None = None,
+        params_to_impoprt: list[str] | None = None,
     ):
         """
         Attributes:

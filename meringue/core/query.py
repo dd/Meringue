@@ -4,7 +4,6 @@ from django.utils import timezone
 
 
 class PublicationQuerySet(QuerySet):
-
     def published(self, *args, **kwargs):
         kwargs["is_published"] = True
         return self.filter(*args, **kwargs)
@@ -15,14 +14,14 @@ class PublicationQuerySet(QuerySet):
 
 
 class PublicationDatesQuerySet(QuerySet):
-
     def published(self, *args, **kwargs):
         now = timezone.localtime()
-        args = args + (
-            Q(date_from__lt=now, date_to__gte=now) | \
-            Q(date_from__isnull=True, date_to__gte=now) | \
-            Q(date_from__lt=now, date_to__isnull=True) | \
-            Q(date_from__isnull=True, date_to__isnull=True),
+        args = (
+            *args,
+            Q(date_from__lt=now, date_to__gte=now)
+            | Q(date_from__isnull=True, date_to__gte=now)
+            | Q(date_from__lt=now, date_to__isnull=True)
+            | Q(date_from__isnull=True, date_to__isnull=True),
         )
         return self.filter(*args, **kwargs)
 
