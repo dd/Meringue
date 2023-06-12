@@ -1,6 +1,6 @@
 # Examples of blocks for writing documentation
 
-Коллекция примеров неочевидных блоков которые можно использовать при написании документации.
+A collection of examples of non-obvious blocks that can be used when writing documentation.
 
 
 ## Admonitions

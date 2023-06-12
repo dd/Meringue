@@ -1,45 +1,48 @@
 # Contributing
 
+Please feel free to suggest and comment on anything that doesn't seem right.
 
 
 ## Environment
 
-Во первых необходим глобально установленный [hatch](https://hatch.pypa.io/) (я предлагаю делать это с использованием [pipx](https://github.com/pypa/pipx)).
+First, you need a globally installed [hatch](https://hatch.pypa.io/) (suggest doing this using [pipx](https://github.com/pypa/pipx)).
 
-Перед стартом работы необходимо запустить скрипт инициализации:
+Before starting work, you must run the initialization script:
 
 ```bash
 hatch run init
 ```
 
-Этот скрипт полностью настроит окружение, а так же сконфигурирует gitflow и подключит git хуки.
+This script will completely set up the environment, as well as configure gitflow and connect git hooks.
 
 
 ## Documentation
 
-Сервер для локальной разработки можно запустить следующей командой:
+The server for local development can be started with the following command:
 
 ```bash
 hatch run docs:serve
 ```
 
 !!! note
-	Первый раз команда будет запускаться долго, так как будет настраиваться окружение
+	The first time the command will run for a long time, as the environment will be configured
+
+For more information on developing documentation, see the relevant [section][documentation].
 
 
 ## Development
 
-Разрабатывая фичу озаботься описанием её в документации
+When developing a feature, be sure to add all the annotations, docstrings, detailed descriptions of how to use it in the appropriate [section](../../usage) documentation and write tests.
 
 
 ### Git flow
 
-Разрабатывая и дорабатывая, веди репозиторий в соответствии с [gitflow](https://github.com/petervanderdoes/gitflow-avh)
+While developing and finalizing, keep the repository in accordance with [gitflow](https://github.com/petervanderdoes/gitflow-avh).
 
 
 ### Commit message convention
 
-Фиксируя изменения, озаботься правильным заголовком коммита
+When committing changes, take care of the correct commit header according to [conventionalcommits](https://www.conventionalcommits.org/en/v1.0.0/) and [gitlint](https://jorisroovers.com/gitlint/latest/) settings project.
 
 
 ### Versioning
