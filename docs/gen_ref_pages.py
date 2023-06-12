@@ -1,85 +1,96 @@
 """
 Generate the code reference pages and navigation.
 
-Based on https://github.com/mkdocstrings/mkdocstrings/blob/cd9e62062766ddb14ab16b6d6eaeb3d751dbe417/docs/gen_ref_nav.py
+Based on https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages
 """
 
-from pathlib import Path
+import logging
 import os
+from pathlib import Path
 
 import mkdocs_gen_files
 
 
-IGNORED_DIRECTORIES = {'migrations', 'test'}
+IGNORED_DIRECTORIES = {"migrations", "test"}
+"""
+Directories that will not be added to the documentation.
+"""
 
-TRUE_CHOICES = "true,1,t,y,yes,yeah,yup,certainly,uh-huh".split(',')
+TRUE_CHOICES = "true,1,t,y,yes,yeah,yup,certainly,uh-huh".split(",")
+"""
+Values corresponding to true.
+"""
 
 
-def sort_key(item):
-    return os.path.isdir(item) and not (set(item.parts) & IGNORED_DIRECTORIES)
+logger = logging.getLogger("meringue")
 
 
-def directory_processing(path: Path, doc_section: str, nav: 'Nav'):
+def sort_key(item: Path):
     """
-    Function looks for files in the specified directory and registers them in the documentation
+    Mthod to sort directories and filter ignored
+    """
+    return item.is_dir() and not (set(item.parts) & IGNORED_DIRECTORIES)
+
+
+def directory_processing(path: Path, doc_section: str, nav: mkdocs_gen_files.Nav):
+    """
+    Function looks for files in the specified directory and registers them in the documentation.
 
     Args:
-        path: Source directory
-        doc_section: Section in documentation for registering new sections
-        nav: Nav object where the files will be registered
+        path: Source directory.
+        doc_section: Section in documentation for registering new sections.
+        nav: Nav object where the files will be registered.
     """
-    # doc_path_bits = tuple(doc_section.parts)
-    # print(Path(doc_section, 'catalogue/test.md'))
-    # print(doc_section, / 'catalogue/test.md')
 
-    directories = list(filter(sort_key, path.glob('*')))
-    files = list(sorted(filter(os.path.isfile, path.glob('*.py'))))
-
+    # processing subdirectories
+    directories = list(filter(sort_key, path.glob("*")))
     for directory in directories:
         directory_processing(directory, doc_section, nav)
 
+
+    # files processing
+    files = sorted(filter(lambda i: i.is_file(), path.glob("*.py")))
     for file in files:
         parts = tuple(file.parts)
 
         if parts[-1] == "__main__.py":
-            # ignore __main__ file
             continue
 
-        doc_relative_path = file.with_suffix(".md")  # ???
-        full_doc_path = doc_section / doc_relative_path
+        if not parts[-1].endswith(".py"):
+            continue
 
-        # fill nav
-        nav[parts[1:]] = doc_relative_path.as_posix()
+        doc_file = file.with_suffix(".md")
+        doc_path = doc_section / doc_file
+
+        # add file to navigation
+        nav[parts[1:]] = doc_file.as_posix()
 
         # write markdown file
-        with mkdocs_gen_files.open(full_doc_path, "w") as fd:
-            if parts[-1] == '__init__.py':
-                parts = parts[:-1]
+        module_to_parse = parts[:-1]
+        if parts[-1] != "__init__.py":
+            module_to_parse += (doc_file.stem, )
 
-            elif parts[-1].endswith('.py'):
-                parts = parts[:-1] + (parts[-1][:-3], )
-
-            ident = ".".join(parts)
-            fd.write(f"::: {ident}\n")
+        with mkdocs_gen_files.open(doc_path, "w") as fd:
+            fd.write(f"::: {'.'.join(module_to_parse)}\n")
             fd.write("\toptions:\n")
             # fd.write("\t\tshow_if_no_docstring: true\n")
             fd.write("\t\theading_level: 1\n")
             fd.write("\t\tshow_root_heading: true\n")
             fd.write("\t\tmembers_order: source\n")
 
-        mkdocs_gen_files.set_edit_path(full_doc_path, Path("../") / path)
+        mkdocs_gen_files.set_edit_path(doc_path, Path("../") / path)
 
 
 def generate_code_section():
     """
     Function for parsing the source folder and registering files in the documentation
     """
-    if os.environ.get('STAYA_ECOM_MKDOCS_CODE_PARCE_ENABLED', 't').lower() not in TRUE_CHOICES:
+    if os.environ.get("MERINGUE_MKDOCS_CODE_PARCE_ENABLED", "t").lower() not in TRUE_CHOICES:
         return
 
     # parse and register
-    source_path = Path(os.environ.get('STAYA_ECOM_MKDOCS_CODE_PARCE_SOURCE_PATH', 'meringue'))
-    doc_path = Path(os.environ.get('STAYA_ECOM_MKDOCS_CODE_PARCE_DOCS_PATH', 'reference'))
+    source_path = Path(os.environ.get("MERINGUE_MKDOCS_CODE_PARCE_SOURCE_PATH", "meringue"))
+    doc_path = Path(os.environ.get("MERINGUE_MKDOCS_CODE_PARCE_DOCS_PATH", "reference"))
     nav = mkdocs_gen_files.Nav()
     directory_processing(source_path, doc_path, nav)
 
@@ -88,9 +99,9 @@ def generate_code_section():
         nav_file.writelines(nav.build_literate_nav())
 
     # show navigation for debug
-    if os.environ.get('STAYA_ECOM_MKDOCS_CODE_PARCE_SHOW_NAV', 'f').lower() in TRUE_CHOICES:
+    if os.environ.get("MERINGUE_MKDOCS_CODE_PARCE_SHOW_NAV", "f").lower() in TRUE_CHOICES:
         with mkdocs_gen_files.open(doc_path / "SUMMARY.md", "r") as nav_file:
-            print(nav_file.read())
+            logger.info(nav_file.read())
 
 
 # start generation of docs from code

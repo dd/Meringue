@@ -22,6 +22,34 @@ hatch run docs:serve
 Есть несколько параметров для конфигурации документации:
 
 
+### `MERINGUE_MKDOCS_CODE_PARCE_ENABLED`
+
+`default: true`
+
+Включение / отключение вывода исходников в документации "на лету" (организовано на основе примера из документации [mkdocstrings](https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages)).
+
+
+### `MERINGUE_MKDOCS_CODE_PARCE_SOURCE_PATH`
+
+`default: "meringue"`
+
+Каталог с исходниками, для генерации "на лету".
+
+
+### `MERINGUE_MKDOCS_CODE_PARCE_DOCS_PATH`
+
+`default: "reference"`
+
+Дирректория в документации для вывода сгенерированной "на лету" документации по исходникам.
+
+
+### `MERINGUE_MKDOCS_CODE_PARCE_SHOW_NAV`
+
+`default: false`
+
+Параметр для отладки генерируемой "на лету" навигации.
+
+
 ### `MERINGUE_MKDOCS_ENABLED_GIT_REVISION_DATE`
 
 `default: true`
