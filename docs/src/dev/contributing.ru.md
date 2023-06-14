@@ -40,9 +40,17 @@ hatch run docs:serve
 Разрабатывая и дорабатывая, веди репозиторий в соответствии с [gitflow](https://github.com/petervanderdoes/gitflow-avh).
 
 
+### Tests
+
+При работе над проектом, крайне важно охватить всё тестами, во избежание проблем и ошибок в коде. Подробнее о работе с тестами можно ознакомиться в соответствующем [разделе](../tests).
+
+
 ### Commit message convention
 
-Фиксируя изменения, озаботься правильным заголовком коммита в соответствии с [conventionalcommits](https://www.conventionalcommits.org/en/v1.0.0/) и настройками [gitlint](https://jorisroovers.com/gitlint/latest/) проекта.
+Для написания коммита придерживаемся спецификации [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), а так же [gitmoji](https://gitmoji.dev/) как частного случая _conventional commits_. Для данного процесса можно использовать [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli).
+
+!!! info
+	Необходимо доработать список эмоджи, сейчас он раздут и есть спорные моменты как например :fire: который означает удаление кода...
 
 
 ### Versioning

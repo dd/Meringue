@@ -74,3 +74,7 @@ $ hatch run docs:serve
 
 
 ## Building and publishing
+
+Для сборки документации есть отдельная команда `hatch run docs:build`.
+
+Документация публикуется автоматически и настраивается в [readthedocs](https://readthedocs.org/).
