@@ -50,23 +50,18 @@ def directory_processing(path: Path, doc_section: str, nav: mkdocs_gen_files.Nav
     # files processing
     files = sorted(filter(lambda i: i.is_file(), path.glob("*.py")))
     for file in files:
-        parts = tuple(file.parts)
-
-        if parts[-1] == "__main__.py":
-            continue
-
-        if not parts[-1].endswith(".py"):
+        if file.name == "__main__.py":
             continue
 
         doc_file = file.with_suffix(".md")
         doc_path = doc_section / doc_file
 
         # add file to navigation
-        nav[parts[1:]] = doc_file.as_posix()
+        nav[file.parts[1:]] = doc_file.as_posix()
 
         # write markdown file
-        module_to_parse = parts[:-1]
-        if parts[-1] != "__init__.py":
+        module_to_parse = file.parts[:-1]
+        if file.name != "__init__.py":
             module_to_parse += (doc_file.stem,)
 
         with mkdocs_gen_files.open(doc_path, "w") as fd:
