@@ -1,6 +1,6 @@
 [general]
 ignore = B6,T5
-contrib = CT1,CC2
+contrib = CC2
 
-[contrib-title-conventional-commits]
-types = fix,feat,chore,docs,style,refactor,perf,test,revert,ci,build,update,lint,wip
+[title-match-regex]
+regex=^([^(]+?)(\([^)]+?\))?!?: .+

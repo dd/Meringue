@@ -5,11 +5,27 @@ A collection of examples of non-obvious blocks that can be used when writing doc
 
 ## Admonitions
 
-[docs 1](https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#admonition) [docs 2](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)
+[docs](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)
 
-!!! note
+[supported types](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types)
 
-    You should note that the title will be automatically capitalized.
+
+### Usage
+
+=== "Preview"
+	!!! note
+
+	    You should note that the title will be automatically capitalized.
+
+=== "Code"
+	```md
+	!!! note
+
+	    You should note that the title will be automatically capitalized.
+	```
+
+
+### inline usage
 
 === ":octicons-arrow-right-16: inline end"
 
