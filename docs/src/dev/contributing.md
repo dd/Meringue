@@ -40,9 +40,17 @@ When developing a feature, be sure to add all the annotations, docstrings, detai
 While developing and finalizing, keep the repository in accordance with [gitflow](https://github.com/petervanderdoes/gitflow-avh).
 
 
+### Tests
+
+When working on a project, it is extremely important to cover everything with tests in order to avoid problems and errors in the code. More details about working with tests can be found in the corresponding [section](../tests).
+
+
 ### Commit message convention
 
-When committing changes, take care of the correct commit header according to [conventionalcommits](https://www.conventionalcommits.org/en/v1.0.0/) and [gitlint](https://jorisroovers.com/gitlint/latest/) settings project.
+To write a commit, we adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification, as well as [gitmoji](https://gitmoji.dev/) as a special case of _conventional commits_. You can use [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli) for this process.
+
+!!! info
+	The list of emoji needs to be improved, now it is bloated and there are controversial points like :fire: which means deleting the code...
 
 
 ### Versioning

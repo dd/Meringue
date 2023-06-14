@@ -71,3 +71,7 @@ When working with [local server][local-development] documentation, this option i
 
 
 ## Building and publishing
+
+There is a separate `hatch run docs:build` command for the documentation build.
+
+Documentation is published automatically and configured in [readthedocs](https://readthedocs.org/).

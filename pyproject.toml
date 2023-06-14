@@ -134,6 +134,25 @@ format = [
 	"black {args:.}",
 ]
 
+[tool.hatch.envs.test]
+description = "Tests environment"
+detached = true
+python = "3.11"
+dependencies = [
+	"pytest==7.3.2",
+	"pytest-django==4.5.2",
+	# "pytest-pythonpath",
+]
+[tool.hatch.envs.test.overrides]
+matrix.django.dependencies = [
+	{ value = "django~={matrix:django}" },
+]
+[[tool.hatch.envs.test.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11"]
+django = ["2.0", "3.0", "4.0"]
+[tool.hatch.envs.test.scripts]
+check = "pytest {args:-q}"
+
 [tool.hatch.envs.docs]
 description = "Docs environment"
 detached = true
