@@ -11,7 +11,7 @@ from pathlib import Path
 import mkdocs_gen_files
 
 
-IGNORED_DIRECTORIES = {"migrations", "test"}
+IGNORED_DIRECTORIES = {"migrations", "tests"}
 """
 Directories that will not be added to the documentation.
 """

@@ -76,17 +76,15 @@ Refactoring old functionality and getting rid of unnecessary
 	* [ ] Method and template tag for getting date range
 * template tags
 	* [ ] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
-* api
-	* [ ] exception handler for drf that returns an error code in addition to the error text
 * other
 	* [x] Upload handlers with renaming uploaded files (Need tests)
-	* [ ] Tests of all functionality
 
 
 ### Second stage
 
 Adding new functionality. Can change.
 
+* Tests of all functionality
 * Methods for encrypting and decrypting text content (To create various secrets, such as a link to change your password or activate your profile).
 * Functionality for obtaining absolute links to resources presented on the front, located on another domain (When working through api) (utils methods, template tags and filters).
 * [drf](https://www.django-rest-framework.org/) serializer serializer for automatic form generation on the front when working through rest api. (An npm package on [vuejs](https://vuejs.org/) will also be developed
@@ -99,6 +97,7 @@ Adding new functionality. Can change.
 	* A field for the drf serializer that returns a set of images (for example, a standard image and a double-sized image for a retina screen), as well as in different formats (for example, in the original format and in webp).
 * Functionality similar to that described in the previous paragraph only for video.
 * Functionality for loading private files available through [nginx internal](http://nginx.org/en/docs/http/ngx_http_core_module.html#internal).
+* Exception handler for drf that returns an error code in addition to the error text
 
 
 
@@ -110,5 +109,5 @@ Adding new functionality. Can change.
 - [x] Formatter with a [Black](https://github.com/psf/black)
 - [x] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
 - [x] Documentation with [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
-- [ ] Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments) or [tox](https://tox.wiki/en/latest/)
+- [x] Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments)
 - [ ] Add [mypy](https://mypy-lang.org/) ???
