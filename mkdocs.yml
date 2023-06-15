@@ -1,5 +1,5 @@
-site_name: Meringue
-site_description: A set of various functionality for a Django based web application.
+site_name: Meringue documentation
+site_description: Meringue library python documentation
 site_author: Dmitriy Dobrynin (aka dd) <dd@manin.space>
 copyright: Copyright &copy; 2014 - present <a href="https://manin.space/" target="_blank" rel="noopener" >manin.space</a>
 
