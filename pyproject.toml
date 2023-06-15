@@ -33,8 +33,8 @@ classifiers = [
 	"Framework :: Django :: 4.2",
 	"Intended Audience :: Developers",
 	"License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
-	# "Natural Language :: English",
-	"Natural Language :: Russian",
+	"Natural Language :: English",
+	# "Natural Language :: Russian",
 	"Operating System :: OS Independent",
 	"Programming Language :: Python",
 	"Programming Language :: Python :: 3",
@@ -55,7 +55,7 @@ dynamic = ["version"]
 
 [project.urls]
 "Homepage" = "https://github.com/dd/Meringue"
-# "Documentation" = "https://github.com/dd/Meringue"
+"Documentation" = "https://py-meringue.readthedocs.io/en/latest/"
 "Repository" = "https://github.com/dd/Meringue"
 "Changelog" = "https://github.com/dd/Meringue/blob/master/CHANGELOG.md"
 "Bug Tracker" = "https://github.com/dd/Meringue/issues"
@@ -106,10 +106,10 @@ pre-install-commands = [
 	"git config --local gitflow.prefix.versiontag \"v\"",
 	"git config --local gitflow.path.hooks $(pwd)\"/.git/hooks\"",
 ]
+python = "3.11"
 dependencies = [
 	"pre-commit==3.3.2",
 ]
-
 [tool.hatch.envs.default.scripts]
 precommit_install = "pre-commit install {args:--hook-type commit-msg}"
 precommit_uninstall = "pre-commit uninstall {args:--hook-type commit-msg}"
@@ -119,11 +119,11 @@ remove = ["precommit_uninstall"]
 [tool.hatch.envs.lint]
 description = "Lint environment"
 detached = true
+python = "3.11"
 dependencies = [
 	"ruff==0.0.272",
 	"black==23.3.0",
 ]
-
 [tool.hatch.envs.lint.scripts]
 check = [
 	"ruff {args:.}",
@@ -156,6 +156,7 @@ check = "pytest {args:-q}"
 [tool.hatch.envs.docs]
 description = "Docs environment"
 detached = true
+python = "3.11"
 dependencies = [
 	"mkdocs[i18n]==1.4.3",
 	"mkdocs-literate-nav==0.6.0",
@@ -167,9 +168,11 @@ dependencies = [
 	"mkdocs-minify-plugin==0.6.4",
 	"mkdocs-gen-files==0.5.0",
 ]
+[tool.hatch.envs.docs.env-vars]
+MERINGUE_MKDOCS_ENABLE_MINIFY = 'false'
 [tool.hatch.envs.docs.scripts]
 build = ["mkdocs build {args}"]
-serve = ["MERINGUE_MKDOCS_ENABLE_MINIFY=false mkdocs serve {args}"]
+serve = ["mkdocs serve {args}"]
 
 [tool.black]
 line-length = 99
