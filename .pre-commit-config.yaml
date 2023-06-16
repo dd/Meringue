@@ -1,11 +1,6 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
-    hooks:
-    -   id: check-yaml
-    -   id: check-added-large-files
 -   repo: local
     hooks:
     -   id: lint-check
@@ -13,7 +8,7 @@ repos:
         entry: hatch run lint:check
         language: system
         'types_or': [python, pyi]
-        stage: [pre-commit]
+        stages: ['pre-commit']
 -   repo: https://github.com/jorisroovers/gitlint
     rev: v0.19.1  # Fill in a tag / sha here
     hooks:
