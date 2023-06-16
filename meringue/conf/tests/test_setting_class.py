@@ -26,7 +26,7 @@ def test__access_non_existent():
     foo_settings = Settings("TEST_MERINGUE", {}, {}, [])
     with pytest.raises(AttributeError, match="Invalid setting key: 'NOT_EXIST_PARAM'"):
         # the assert should not work, since the parameter access should return an error
-        assert foo_settings.NOT_EXIST_PARAM == "test"
+        assert foo_settings.NOT_EXIST_PARAM
 
 
 def test__deprecate_warnings():
