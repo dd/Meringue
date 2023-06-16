@@ -23,7 +23,7 @@ There are several options for documentation configuration:
 
 `default: true`
 
-Enabling / disabling the output of sources in the documentation "on-the-fly" (organized based on the example from the [mkdocstrings](https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages) documentation)
+Enabling / disabling the output of sources in the documentation "on-the-fly" (organized based on the example from the [mkdocstrings](https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages) documentation).
 
 
 ### `MERINGUE_MKDOCS_CODE_PARCE_SOURCE_PATH`

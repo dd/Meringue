@@ -92,3 +92,7 @@ div.doc-contents:not(.first) {
 	font-size: 2em;
 	margin-right: 0.5em;
 }
+
+code {
+	tab-size: 4;
+}

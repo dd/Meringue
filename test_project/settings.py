@@ -2,7 +2,7 @@
 
 # BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure--3g8+ycdu+43)=&6o78-lj6==xn@cv5w1rl_*3))o*m#g=r%=r'
+SECRET_KEY = "django-insecure--3g8+ycdu+43)=&6o78-lj6==xn@cv5w1rl_*3))o*m#g=r%=r"  # noqa: S105
 
 # DEBUG = False
 
@@ -13,7 +13,7 @@ INSTALLED_APPS = [
     # 'django.contrib.sessions',
     # 'django.contrib.messages',
     # 'django.contrib.staticfiles',
-    'test',
+    "test",
 ]
 
 MIDDLEWARE = [
@@ -51,10 +51,10 @@ MIDDLEWARE = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': ':memory:',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": ":memory:",
     }
 }
 
