@@ -109,12 +109,16 @@ pre-install-commands = [
 python = "3.11"
 dependencies = [
 	"pre-commit==3.3.2",
+	"pytest==7.3.2",
+	"pytest-django==4.5.2",
+	"pytest-cov==4.1.0",
 ]
 [tool.hatch.envs.default.scripts]
 precommit_install = "pre-commit install {args:--hook-type commit-msg}"
 precommit_uninstall = "pre-commit uninstall {args:--hook-type commit-msg}"
 init = ["precommit_install"]
 remove = ["precommit_uninstall"]
+test_check = "pytest {args:-q}"
 
 [tool.hatch.envs.lint]
 description = "Lint environment"
@@ -141,6 +145,7 @@ python = "3.11"
 dependencies = [
 	"pytest==7.3.2",
 	"pytest-django==4.5.2",
+	"pytest-cov==4.1.0",
 	# "pytest-pythonpath",
 ]
 [tool.hatch.envs.test.overrides]
@@ -261,3 +266,7 @@ no_lines_before = ["LOCALFOLDER"]
 known_django = "django"
 sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 force_single_line  = true
+
+[tool.coverage.run]
+omit = ["*/tests/*"]
+source = ["meringue"]
