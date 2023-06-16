@@ -6,7 +6,16 @@ repos:
     hooks:
     -   id: check-yaml
     -   id: check-added-large-files
+-   repo: local
+    hooks:
+    -   id: lint-check
+        name: Lint check
+        entry: hatch run lint:check
+        language: system
+        'types_or': [python, pyi]
+        stage: [pre-commit]
 -   repo: https://github.com/jorisroovers/gitlint
     rev: v0.19.1  # Fill in a tag / sha here
     hooks:
     -   id: gitlint
+        name: Check commit title and description
