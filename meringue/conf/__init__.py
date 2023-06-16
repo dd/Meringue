@@ -33,7 +33,9 @@ Examples:
     ```
 """
 
-PARAMS_TO_IMPORT: Final[list[str]] = []
+PARAMS_TO_IMPORT: Final[list[str]] = [
+    "UPLOAD_RENAME_HANDLER",
+]
 """
 List of options that contain the path to the module and must be imported.
 
@@ -64,7 +66,7 @@ def import_from_string(val: str, attr: str) -> Any:
     try:
         return import_string(val)
     except ImportError as e:
-        msg = f"Could not import '{val}' for API setting '{attr}'. {e.__class__.__name__}: {e}."
+        msg = f"Could not import '{val}' for API setting '{attr}'.\n{e.__class__.__name__}: {e}."
         raise ImportError(msg) from None
 
 
