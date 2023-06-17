@@ -1,4 +1,4 @@
-site_name: Meringue documentation
+site_name: Meringue
 site_description: Meringue library python documentation
 site_author: Dmitriy Dobrynin (aka dd) <dd@manin.space>
 copyright: Copyright &copy; 2014 - present <a href="https://manin.space/" target="_blank" rel="noopener" >manin.space</a>
@@ -149,11 +149,12 @@ plugins:
             show_source: true
             show_signature_annotations: true
             members_order: source
+            # https://github.com/mkdocstrings/mkdocstrings/issues/579
+            # will need to be returned when the bug is fixed
             # group_by_category: false
             docstring_section_style: list
             merge_init_into_class: true
             separate_signature: true
-            # line_length: 30
             signature_crossrefs: true
   - offline:
       enabled: !ENV [MERINGUE_MKDOCS_OFFLINE, false]
