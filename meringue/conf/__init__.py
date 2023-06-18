@@ -1,4 +1,5 @@
 import warnings
+from types import ModuleType
 from typing import Any
 from typing import Final
 
@@ -93,8 +94,15 @@ class Settings:
             params_to_impoprt: List of options that contain the path to the module and must be
                 imported.
         """
+
         self.setting_key = setting_key
-        self.defaults = defaults
+        if isinstance(defaults, ModuleType):
+            self.defaults = {}
+            for key in dir(defaults):
+                if key.isupper():
+                    self.defaults[key] = getattr(defaults, key)
+        else:
+            self.defaults = defaults
         self.user_params = getattr(settings, setting_key, {})
         self.deprecated_params = deprecated_params or {}
         self.params_to_impoprt = params_to_impoprt or []

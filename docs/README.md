@@ -14,6 +14,13 @@ $ hatch run docs:serve
 ```
 
 
+## Building and publishing
+
+There is a separate `hatch run docs:build` command for the documentation build.
+
+Documentation is published automatically and configured in [readthedocs](https://readthedocs.org/).
+
+
 ## Configuration
 
 There are several options for documentation configuration:
@@ -68,10 +75,3 @@ Parameter for building documentation into a build working from a folder, without
 Parameter to enable plugin [minify](https://github.com/byrnereese/mkdocs-minify-plugin) minifying html, js and css when generating documentation.
 
 When working with [local server][local-development] documentation, this option is disabled.
-
-
-## Building and publishing
-
-There is a separate `hatch run docs:build` command for the documentation build.
-
-Documentation is published automatically and configured in [readthedocs](https://readthedocs.org/).
