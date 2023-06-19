@@ -109,16 +109,12 @@ pre-install-commands = [
 python = "3.11"
 dependencies = [
 	"pre-commit==3.3.2",
-	"pytest==7.3.2",
-	"pytest-django==4.5.2",
-	"pytest-cov==4.1.0",
 ]
 [tool.hatch.envs.default.scripts]
 precommit_install = "pre-commit install {args:--hook-type commit-msg}"
 precommit_uninstall = "pre-commit uninstall {args:--hook-type commit-msg}"
 init = ["precommit_install"]
 remove = ["precommit_uninstall"]
-test_check = "pytest {args:-q}"
 
 [tool.hatch.envs.lint]
 description = "Lint environment"
@@ -146,17 +142,25 @@ dependencies = [
 	"pytest==7.3.2",
 	"pytest-django==4.5.2",
 	"pytest-cov==4.1.0",
-	# "pytest-pythonpath",
 ]
 [tool.hatch.envs.test.overrides]
 matrix.django.dependencies = [
 	{ value = "django~={matrix:django}" },
 ]
-[[tool.hatch.envs.test.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11"]
-django = ["2.0", "3.0", "4.0"]
 [tool.hatch.envs.test.scripts]
 check = "pytest {args:-q}"
+
+[tool.hatch.envs.mtest]
+description = "Test matrix environment"
+template = "test"
+python = "3.11"
+[tool.hatch.envs.mtest.overrides]
+matrix.django.dependencies = [
+	{ value = "django~={matrix:django}" },
+]
+[[tool.hatch.envs.mtest.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11"]
+django = ["2.0", "3.0", "4.0"]
 
 [tool.hatch.envs.docs]
 description = "Docs environment"
