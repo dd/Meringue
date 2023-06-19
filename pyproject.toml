@@ -111,8 +111,8 @@ dependencies = [
 	"pre-commit==3.3.2",
 ]
 [tool.hatch.envs.default.scripts]
-precommit_install = "pre-commit install {args:--hook-type commit-msg}"
-precommit_uninstall = "pre-commit uninstall {args:--hook-type commit-msg}"
+precommit_install = "pre-commit install {args}"
+precommit_uninstall = "pre-commit uninstall {args}"
 init = ["precommit_install"]
 remove = ["precommit_uninstall"]
 
