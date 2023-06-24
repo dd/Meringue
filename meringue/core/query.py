@@ -42,17 +42,23 @@ class PublicationQuerySet(QuerySet):
 
 class PublicationDatesQuerySet(QuerySet):
     def published(self, *args, **kwargs):
+        """
+        Method to getting published items.
+        """
         now = timezone.localtime()
         args = (
             *args,
-            Q(date_from__lt=now, date_to__gte=now)
-            | Q(date_from__isnull=True, date_to__gte=now)
-            | Q(date_from__lt=now, date_to__isnull=True)
+            Q(date_from__lte=now, date_to__gt=now)
+            | Q(date_from__isnull=True, date_to__gt=now)
+            | Q(date_from__lte=now, date_to__isnull=True)
             | Q(date_from__isnull=True, date_to__isnull=True),
         )
         return self.filter(*args, **kwargs)
 
     def unpublished(self, *args, **kwargs):
+        """
+        Method for getting unpublished items.
+        """
         now = timezone.localtime()
-        args = args + (Q(date_from__gte=now) | Q(date_to__lt=now))
+        args = (*args, Q(date_from__gt=now) | Q(date_to__lte=now))
         return self.filter(*args, **kwargs)

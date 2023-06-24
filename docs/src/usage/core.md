@@ -55,3 +55,21 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 [code][meringue.core.models.PublicationDatesMixin]
 
+
+#### `published`
+
+::: meringue.core.query.PublicationDatesQuerySet.published
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+
+
+#### `unpublished`
+
+::: meringue.core.query.PublicationDatesQuerySet.unpublished
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+

@@ -72,9 +72,9 @@ Refactoring old functionality and getting rid of unnecessary
 	* [x] Abstract model with publishing flag
 		* [x] Add abstract model
 		* [x] Testing
-	* [ ] Abstract model with the functionality of publishing in a certain period
+	* [x] Abstract model with the functionality of publishing in a certain period
 		* [x] Add abstract model
-		* [ ] Testing
+		* [x] Testing
 	* [ ] Universal manager worked with all abstract models
 * i18n
 	* [ ] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)

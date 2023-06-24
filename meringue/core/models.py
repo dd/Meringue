@@ -71,7 +71,7 @@ class PublicationDatesMixin(models.Model):
 
     date_from = models.DateTimeField(
         verbose_name=_("Date from"),
-        help_text=_("Display date and time."),
+        help_text=_("Date and time of publication (inclusive)."),
         blank=True,
         null=True,
     )
