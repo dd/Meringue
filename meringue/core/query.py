@@ -26,10 +26,16 @@ class SortingQuerySet(QuerySet):
 
 class PublicationQuerySet(QuerySet):
     def published(self, *args, **kwargs):
+        """
+        Method to getting published items.
+        """
         kwargs["is_published"] = True
         return self.filter(*args, **kwargs)
 
     def unpublished(self, *args, **kwargs):
+        """
+        Method for getting unpublished items.
+        """
         kwargs["is_published"] = False
         return self.filter(*args, **kwargs)
 

@@ -69,9 +69,9 @@ Refactoring old functionality and getting rid of unnecessary
 		* [x] Add abstract model
 		* [x] Add a manager with a method to correct sorting
 		* [x] Testing
-	* [ ] Abstract model with publishing flag
+	* [x] Abstract model with publishing flag
 		* [x] Add abstract model
-		* [ ] Testing
+		* [x] Testing
 	* [ ] Abstract model with the functionality of publishing in a certain period
 		* [x] Add abstract model
 		* [ ] Testing

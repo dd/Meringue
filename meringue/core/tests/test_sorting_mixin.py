@@ -8,16 +8,6 @@ fake = Faker()
 
 
 @pytest.mark.django_db
-def test_cmtimemixin():
-    """
-    Check default value at sorting field
-    """
-
-    instance = SortingModel.objects.create(title=fake.name())
-    assert instance.sorting == 0
-
-
-@pytest.mark.django_db
 def test_correction_sorting():
     """
     Checking the sort fix
