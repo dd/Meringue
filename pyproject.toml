@@ -127,7 +127,7 @@ dependencies = [
 [tool.hatch.envs.lint.scripts]
 check = [
 	"ruff {args:.}",
-	"black --check --diff {args:.}",
+	"black --check --diff --exclude=\".*migrations\\/.*$\" {args:.}",
 ]
 format = [
 	"ruff --fix {args:.}",
@@ -142,22 +142,32 @@ dependencies = [
 	"pytest==7.3.2",
 	"pytest-django==4.5.2",
 	"pytest-cov==4.1.0",
+	"Faker==18.11.1",
+	"django==4.2",
 ]
-[tool.hatch.envs.test.overrides]
-matrix.django.dependencies = [
-	{ value = "django~={matrix:django}" },
-]
+[tool.hatch.envs.test.env-vars]
+DJANGO_SETTINGS_MODULE = 'test_project.settings'
+PYTHONPATH  = '.'
 [tool.hatch.envs.test.scripts]
-check = "pytest {args:-q}"
+check = "pytest {args:--cov=meringue}"
 
 [tool.hatch.envs.mtest]
 description = "Test matrix environment"
-template = "test"
-python = "3.11"
+detached = true
+dependencies = [
+	"pytest==7.3.2",
+	"pytest-django==4.5.2",
+	"Faker==18.11.1",
+]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
 	{ value = "django~={matrix:django}" },
 ]
+[tool.hatch.envs.mtest.env-vars]
+DJANGO_SETTINGS_MODULE = 'test_project.settings'
+PYTHONPATH  = '.'
+[tool.hatch.envs.mtest.scripts]
+check = "pytest {args:-q}"
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.8", "3.9", "3.10", "3.11"]
 django = ["2.0", "3.0", "4.0"]
@@ -241,6 +251,9 @@ ignore = [
 # 	# Don't touch unused imports
 # 	"F401",
 # ]
+[tool.ruff.extend-per-file-ignores]
+"test_*.py" = ["S101"]
+"*/migrations/*" = ["I", "E", "Q"]
 
 [tool.ruff.flake8-import-conventions]
 

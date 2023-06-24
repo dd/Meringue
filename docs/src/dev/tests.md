@@ -13,3 +13,12 @@ A matrix for a set of python and django versions is also configured in hatch, yo
 ```console
 $ hatch run mtest:check
 ```
+
+
+## Development
+
+When developing tests, you may need to create new migrations, this can be done with the following command
+
+```console
+$ hatch run test:django-admin makemigrations
+```

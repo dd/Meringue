@@ -1,11 +1,9 @@
-# ruff: noqa: S101
-
 import pytest
 
 from meringue.conf import import_from_string
 
 
-def test__import():
+def test_import():
     """
     Checking if modules were imported successfully
     """
@@ -13,7 +11,7 @@ def test__import():
     assert imported_method == import_from_string
 
 
-def test__import_error():
+def test_import_error():
     """
     Checking if modules were imported successfully
     """

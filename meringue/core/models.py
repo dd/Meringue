@@ -5,9 +5,6 @@ from meringue.core.managers import PublicationDatesManager
 from meringue.core.managers import PublicationManager
 
 
-# Mixins ##########################################################################################
-
-
 class CMTimeMixin(models.Model):
     """
     A simple mixin to add _ctime_ and _mtime_ fields.
@@ -20,14 +17,12 @@ class CMTimeMixin(models.Model):
         abstract = True
 
 
-# Abstract models #################################################################################
-
-
-class SortingBase(models.Model):
+class SortingMixin(models.Model):
     """
     Simple mixin to add sorting field.
 
     Todo:
+
         * Add a manager with a method to correct sorting.
     """
 
@@ -44,9 +39,9 @@ class SortingBase(models.Model):
         abstract = True
 
 
-class PublicationBase(models.Model):
+class PublicationMixin(models.Model):
     """
-    Abstract model with the functionality of manual publishing.
+    Mixin with the functionality of manual publishing.
 
     Examples:
         >>> FooModel.object.published()
@@ -66,9 +61,9 @@ class PublicationBase(models.Model):
         abstract = True
 
 
-class PublicationDatesBase(models.Model):
+class PublicationDatesMixin(models.Model):
     """
-    Abstract model with the functionality of publishing in a certain period.
+    Mixin with the functionality of publishing in a certain period.
 
     Examples:
         >>> FooModel.object.published()
