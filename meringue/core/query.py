@@ -3,6 +3,27 @@ from django.db.models.query import QuerySet
 from django.utils import timezone
 
 
+class SortingQuerySet(QuerySet):
+    def correction_sorting(self):
+        """
+        This is a method to update/fix the sorting of the selected list of items.
+
+        The sorting will be done according to the `queryset` sorting, so sorting can be controlled
+        by executing `.order_by()` before calling the `correction_sorting` method.
+
+        The selection for updating sorting can be pre-limited by filtering the list.
+        """
+        items = []
+        sorting = 0
+        for item in self:
+            if item.sorting != sorting:
+                item.sorting = sorting
+                items.append(item)
+            sorting += 1
+
+        return self.bulk_update(items, ["sorting"])
+
+
 class PublicationQuerySet(QuerySet):
     def published(self, *args, **kwargs):
         kwargs["is_published"] = True

@@ -1,6 +1,7 @@
 * [Home](index.md)
 * [Usage](usage/index.md)
 	* [Configurations](usage/conf.md)
+	* [Core](usage/core.md)
 * [Code Reference](reference/)
 * Contributing
 	* [Introduction](dev/contributing.md)

@@ -63,11 +63,18 @@ Refactoring old functionality and getting rid of unnecessary
 
 * models
 	* [x] Mixin with ctime and mtime fields
-	* [ ] Abstract model with sort field
 		* [x] Add abstract model
-		* [ ] Add a manager with a method to correct sorting
-	* [x] Abstract model with publishing flag
-	* [x] Abstract model with the functionality of publishing in a certain period
+		* [x] Testing
+	* [x] Abstract model with sort field
+		* [x] Add abstract model
+		* [x] Add a manager with a method to correct sorting
+		* [x] Testing
+	* [ ] Abstract model with publishing flag
+		* [x] Add abstract model
+		* [ ] Testing
+	* [ ] Abstract model with the functionality of publishing in a certain period
+		* [x] Add abstract model
+		* [ ] Testing
 	* [ ] Universal manager worked with all abstract models
 * i18n
 	* [ ] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)
@@ -77,7 +84,9 @@ Refactoring old functionality and getting rid of unnecessary
 * template tags
 	* [ ] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
 * other
-	* [x] Upload handlers with renaming uploaded files (Need tests)
+	* [ ] Upload handlers with renaming uploaded files (Need tests)
+		* [x] Handlers
+		* [ ] Testing
 
 
 ### Second stage
@@ -109,5 +118,6 @@ Adding new functionality. Can change.
 - [x] Formatter with a [Black](https://github.com/psf/black)
 - [x] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
 - [x] Documentation with [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
-- [x] Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments)
+- [x] Testing local with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments)
+- [ ] Testing in CI/CD on push
 - [ ] Add [mypy](https://mypy-lang.org/) ???

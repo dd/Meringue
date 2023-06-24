@@ -252,7 +252,7 @@ ignore = [
 # 	"F401",
 # ]
 [tool.ruff.extend-per-file-ignores]
-"test_*.py" = ["S101"]
+"test_*.py" = ["S101", "PLR2004"]
 "*/migrations/*" = ["I", "E", "Q"]
 
 [tool.ruff.flake8-import-conventions]

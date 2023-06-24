@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from meringue.core.managers import PublicationDatesManager
 from meringue.core.managers import PublicationManager
+from meringue.core.managers import SortingManager
 
 
 class CMTimeMixin(models.Model):
@@ -10,8 +11,8 @@ class CMTimeMixin(models.Model):
     A simple mixin to add _ctime_ and _mtime_ fields.
     """
 
-    ctime = models.DateTimeField(auto_now_add=True)
-    mtime = models.DateTimeField(auto_now=True)
+    ctime = models.DateTimeField(auto_now_add=True, help_text=_("Date and time of creation."))
+    mtime = models.DateTimeField(auto_now=True, help_text=_("Date and time of editing."))
 
     class Meta:
         abstract = True
@@ -20,10 +21,6 @@ class CMTimeMixin(models.Model):
 class SortingMixin(models.Model):
     """
     Simple mixin to add sorting field.
-
-    Todo:
-
-        * Add a manager with a method to correct sorting.
     """
 
     sorting = models.SmallIntegerField(
@@ -31,6 +28,8 @@ class SortingMixin(models.Model):
         help_text=_("Sorting order."),
         default=0,
     )
+
+    objects = SortingManager()
 
     class Meta:
         ordering = [
