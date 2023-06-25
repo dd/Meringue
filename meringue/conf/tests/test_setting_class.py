@@ -87,6 +87,22 @@ def test_cache_properties(getter):
     getter.assert_called_once_with(foo_settings, "TEST_PROP")
 
 
+@patch(
+    "meringue.conf.Settings.__getattr__",
+    autospec=True,
+    side_effect=Settings.__getattr__,
+)
+def test_reset_cache(getter):
+    """
+    Reset cache
+    """
+    foo_settings = Settings("TEST_MERINGUE", {"TEST_PROP": "value"}, {}, [])
+    assert foo_settings.TEST_PROP
+    foo_settings.reset()
+    assert foo_settings.TEST_PROP
+    assert getter.call_count == 2
+
+
 @override_settings(TEST_MERINGUE={"OVERRIDED_PROP": "value 2"})
 def test_redefining():
     """

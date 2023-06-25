@@ -4,6 +4,8 @@ from typing import Any
 from typing import Final
 
 from django.conf import settings
+from django.core.signals import setting_changed
+from django.dispatch import receiver
 from django.utils.module_loading import import_string
 
 from meringue.conf import default_settings
@@ -103,9 +105,10 @@ class Settings:
                     self.defaults[key] = getattr(defaults, key)
         else:
             self.defaults = defaults
-        self.user_params = getattr(settings, setting_key, {})
         self.deprecated_params = deprecated_params or {}
         self.params_to_impoprt = params_to_impoprt or []
+        self._cached_attrs = set()
+        self.reset()
 
     def __getattr__(self, attr: str) -> Any:
         """
@@ -134,8 +137,29 @@ class Settings:
         if attr in self.params_to_impoprt:
             val = import_from_string(val, attr)
 
+        self._cached_attrs.add(attr)
         setattr(self, attr, val)
         return val
 
+    def reset(self):
+        """
+        Reset downloaded settings, as well as clearing the cache.
+        """
+
+        for attr in self._cached_attrs:
+            delattr(self, attr)
+        self._cached_attrs = set()
+        self.user_params = getattr(settings, self.setting_key, {})
+
 
 m_settings = Settings(SETTING_KEY, default_settings, DEPRECATED_PARAMS, PARAMS_TO_IMPORT)
+
+
+@receiver(setting_changed)
+def reset_settings(*args, **kwargs):
+    """
+    Settings change signal handler.
+    """
+
+    if kwargs["setting"] == SETTING_KEY:
+        m_settings.reset()
