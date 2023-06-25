@@ -28,6 +28,28 @@ $ hatch run ipython
 As you develop and refine, please try to keep your repository consistent with [gitflow](https://github.com/petervanderdoes/gitflow-avh).
 
 
+## Internationalization
+
+Что бы добавить переводы есть две полезные комманды:
+
+### `makemessages`
+
+```console
+$ hatch run makemessages
+```
+
+Это команда обёртка над джанговской командой [makemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#makemessages) и создаёт / обновляет файлы локализации в каждом приложении _meringue_.
+
+
+### `compilemessages`
+
+```console
+$ hatch run compilemessages
+```
+
+Это команда обёртка над джанговской командой [compilemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#compilemessages) и компилирует все переводы.
+
+
 ## Tests
 
 When working on a project, it is extremely important to cover everything with tests in order to avoid problems and errors in the code. See working on tests in the appropriate [section](../tests).

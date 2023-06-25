@@ -20,5 +20,5 @@ $ hatch run mtest:check
 When developing tests, you may need to create new migrations, this can be done with the following command
 
 ```console
-$ hatch run test:django-admin makemigrations
+$ hatch run test:makemigrations
 ```

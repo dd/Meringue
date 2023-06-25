@@ -63,28 +63,22 @@ Refactoring old functionality and getting rid of unnecessary
 
 * models
 	* [x] Mixin with ctime and mtime fields
-		* [x] Add abstract model
-		* [x] Testing
 	* [x] Abstract model with sort field
 		* [x] Add abstract model
 		* [x] Add a manager with a method to correct sorting
 		* [x] Testing
 	* [x] Abstract model with publishing flag
-		* [x] Add abstract model
-		* [x] Testing
 	* [x] Abstract model with the functionality of publishing in a certain period
-		* [x] Add abstract model
-		* [x] Testing
 	* [ ] Universal manager worked with all abstract models
 * i18n
 	* [ ] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)
-	* [ ] Localization of all texts in the library
+	* [x] Localization of all texts in the library
 * utils
 	* [ ] Method and template tag for getting date range
 * template tags
 	* [ ] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
 * other
-	* [ ] Upload handlers with renaming uploaded files (Need tests)
+	* [ ] Upload handlers with renaming uploaded files
 		* [x] Handlers
 		* [ ] Testing
 

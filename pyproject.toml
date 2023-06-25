@@ -95,7 +95,14 @@ exclude = [
 
 [tool.hatch.envs.default]
 description = "Dev environment"
-pre-install-commands = [
+python = "3.11"
+dependencies = [
+	"pre-commit==3.3.2",
+]
+[tool.hatch.envs.default.scripts]
+precommit_install = "pre-commit install {args}"
+precommit_uninstall = "pre-commit uninstall {args}"
+init = [
 	"git config --local gitflow.branch.master \"master\"",
 	"git config --local gitflow.branch.develop \"dev\"",
 	"git config --local gitflow.prefix.feature \"feature/\"",
@@ -105,16 +112,13 @@ pre-install-commands = [
 	"git config --local gitflow.prefix.support \"support/\"",
 	"git config --local gitflow.prefix.versiontag \"v\"",
 	"git config --local gitflow.path.hooks $(pwd)\"/.git/hooks\"",
+	"precommit_install",
 ]
-python = "3.11"
-dependencies = [
-	"pre-commit==3.3.2",
-]
-[tool.hatch.envs.default.scripts]
-precommit_install = "pre-commit install {args}"
-precommit_uninstall = "pre-commit uninstall {args}"
-init = ["precommit_install"]
 remove = ["precommit_uninstall"]
+makemessages = [
+	"cd meringue/core && django-admin makemessages -l en -l ru --no-obsolete {args}",
+]
+compilemessages = "cd meringue && django-admin compilemessages -l en -l ru {args}"
 
 [tool.hatch.envs.lint]
 description = "Lint environment"
@@ -151,6 +155,7 @@ DJANGO_SETTINGS_MODULE = 'test_project.settings'
 PYTHONPATH  = '.'
 [tool.hatch.envs.test.scripts]
 check = "pytest {args:--cov=meringue}"
+makemigrations = "django-admin makemigrations {args}"
 
 [tool.hatch.envs.mtest]
 description = "Test matrix environment"
