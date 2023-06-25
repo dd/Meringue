@@ -154,7 +154,7 @@ dependencies = [
 DJANGO_SETTINGS_MODULE = 'test_project.settings'
 PYTHONPATH  = '.'
 [tool.hatch.envs.test.scripts]
-check = "pytest {args:--cov=meringue}"
+check = "pytest {args:--cov=meringue --cov-report term-missing}"
 makemigrations = "django-admin makemigrations {args}"
 
 [tool.hatch.envs.mtest]
@@ -259,6 +259,7 @@ ignore = [
 # 	"F401",
 # ]
 [tool.ruff.extend-per-file-ignores]
+"__init__.py" = ["F403"]
 "test_*.py" = ["S101", "PLR2004"]
 "*/migrations/*" = ["I", "E", "Q"]
 

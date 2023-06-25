@@ -74,7 +74,7 @@ Refactoring old functionality and getting rid of unnecessary
 	* [ ] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)
 	* [x] Localization of all texts in the library
 * utils
-	* [ ] Method and template tag for getting date range
+	* [x] Method and template tag for getting date range
 * template tags
 	* [x] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
 * other

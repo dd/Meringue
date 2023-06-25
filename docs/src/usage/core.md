@@ -5,21 +5,17 @@ This is a basic package that contains a variety of general purpose functionality
 
 ## Mixins
 
-### `CMTimeMixin`
-
-[code][meringue.core.models.CMTimeMixin]
+### CMTimeMixin
 
 A primitive abstract model that adds the _ctime_ and _mtime_ fields to your model.
 
 
-### `SortingMixin`
-
-[code][meringue.core.models.SortingMixin]
+### SortingMixin
 
 An abstract model that adds a sortable field, as well as a manager with sorting correction functionality.
 
 
-#### `correction_sorting`
+#### correction_sorting
 
 ::: meringue.core.query.SortingQuerySet.correction_sorting
 	options:
@@ -28,12 +24,10 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 		show_source: false
 
 
-### `PublicationMixin`
-
-[code][meringue.core.models.PublicationMixin]
+### PublicationMixin
 
 
-#### `published`
+#### published
 
 ::: meringue.core.query.PublicationQuerySet.published
 	options:
@@ -42,7 +36,7 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 		show_source: false
 
 
-#### `unpublished`
+#### unpublished
 
 ::: meringue.core.query.PublicationQuerySet.unpublished
 	options:
@@ -51,12 +45,10 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 		show_source: false
 
 
-### `PublicationDatesMixin`
-
-[code][meringue.core.models.PublicationDatesMixin]
+### PublicationDatesMixin
 
 
-#### `published`
+#### published
 
 ::: meringue.core.query.PublicationDatesQuerySet.published
 	options:
@@ -65,9 +57,21 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 		show_source: false
 
 
-#### `unpublished`
+#### unpublished
 
 ::: meringue.core.query.PublicationDatesQuerySet.unpublished
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+
+
+## Utils
+
+
+### format_date_from_to
+
+::: meringue.core.utils.datetime.format_date_from_to
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false
@@ -77,9 +81,18 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 ## Templatetags
 
 
-### `cop_year`
+### cop_year
 
 ::: meringue.core.templatetags.meringue_base.cop_year
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+
+
+### date_range
+
+::: meringue.core.templatetags.meringue_base.date_range
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false
@@ -89,7 +102,7 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 ## Views
 
 
-### `im_a_teapot`
+### im_a_teapot
 
 ::: meringue.core.views.im_a_teapot
 	options:

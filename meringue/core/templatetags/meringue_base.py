@@ -1,24 +1,34 @@
+import datetime as dt
+
 from django import template
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 
 from meringue.conf import m_settings
+from meringue.core.utils import format_date_from_to
 
 
 register = template.Library()
 
 
 @register.simple_tag
-def cop_year():
+def cop_year() -> str:
     """
     A tag that displays the year or range of years for the copyright string in YYYY-YYYY format.
+
+    For the tag to work, you must fill in the `COP_YEAR` parameter in the settings.
 
     Examples:
         ```jinja
         <p>Copyright © {% cop_year %} My company</p>
         ```
 
-    For the tag to work, you must fill in the `COP_YEAR` parameter in the settings.
+    Raises:
+        Exception: To use the `cop_year` tag, you must fill in the `COP_YEAR` parameter in the
+            meringue settings
+
+    Returns:
+        Year for copyrights.
     """
 
     if m_settings.COP_YEAR is None:
@@ -37,27 +47,32 @@ def cop_year():
 
 
 @register.simple_tag
-def date_range(date_start, date_end):
+def date_range(date_start: dt.date, date_end: dt.date) -> str:
     """
     return range of date in one of the following formats:
-        DD MM YYYY - DD MM YYYY
-        DD MM - DD MM YYYY
-        DD - DD MM YYYY
+        DD.MM.YYYY - DD.MM.YYYY
+        DD.MM - DD.MM.YYYY
+        DD - DD.MM.YYYY
+        DD.MM.YYYY
+
+    Attributes:
+        date_start: Period start date.
+        date_end: Period end date.
+
+    Examples:
+        ```jinja
+        {% date_range date_start date_end %}
+        ```
+
+    Returns:
+        Date period.
     """
 
-    if date_start.year != date_end.year:
-        result = "&nbsp;&mdash; ".join(
-            [date_start.strftime("%d %B %Y"), date_end.strftime("%d %B %Y")],
-        )
-    elif date_start.month != date_end.month:
-        result = "&nbsp;&mdash; ".join(
-            [date_start.strftime("%d %B"), date_end.strftime("%d %B %Y")],
-        )
-    elif date_start.day != date_end.day:
-        result = "&mdash;".join(
-            [date_start.strftime("<nobr>%d"), date_end.strftime("%d %B</nobr> %Y")],
-        )
-    else:
-        result = date_end.strftime("%d %B %Y")
+    tmp_result = format_date_from_to(date_start, date_end, "-")
 
-    return mark_safe(result)  # noqa: S308
+    if date_start == date_end:
+        return tmp_result
+
+    tmp_date_start, tmp_date_end = tmp_result.split(" - ")
+
+    return mark_safe(f"{tmp_date_start}&nbsp;&mdash; {tmp_date_end}")  # noqa: S308
