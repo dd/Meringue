@@ -2,7 +2,7 @@ from django import template
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 
-from meringue.conf import settings
+from meringue.conf import m_settings
 
 
 register = template.Library()
@@ -11,19 +11,29 @@ register = template.Library()
 @register.simple_tag
 def cop_year():
     """
-    return range of years for copyright in one of the following formats:
-        YYYY-YYYY
-        YYYY
+    A tag that displays the year or range of years for the copyright string in YYYY-YYYY format.
 
-    set start year for parametr MERINGUE_START_YEAR in setting.py
+    Examples:
+        ```jinja
+        <p>Copyright © {% cop_year %} My company</p>
+        ```
+
+    For the tag to work, you must fill in the `COP_YEAR` parameter in the settings.
     """
 
-    year = timezone.now().year
+    if m_settings.COP_YEAR is None:
+        msg = (
+            "To use the `cop_year` tag, you must fill in the `COP_YEAR` parameter in the "
+            "meringue settings"
+        )
+        raise Exception(msg)
 
-    if year == settings.START_YEAR:
+    year = timezone.localtime().year
+
+    if year == m_settings.COP_YEAR or year - m_settings.COP_YEAR < m_settings.COP_YEARS_DIFF:
         return year
 
-    return mark_safe(f"{settings.START_YEAR}&mdash;{year}")  # noqa: S308
+    return mark_safe(f"{m_settings.COP_YEAR}&mdash;{year}")  # noqa: S308
 
 
 @register.simple_tag

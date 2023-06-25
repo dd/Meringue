@@ -76,7 +76,7 @@ Refactoring old functionality and getting rid of unnecessary
 * utils
 	* [ ] Method and template tag for getting date range
 * template tags
-	* [ ] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
+	* [x] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
 * other
 	* [ ] Upload handlers with renaming uploaded files
 		* [x] Handlers
