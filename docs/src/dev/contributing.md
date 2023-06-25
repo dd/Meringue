@@ -30,7 +30,8 @@ As you develop and refine, please try to keep your repository consistent with [g
 
 ## Internationalization
 
-Что бы добавить переводы есть две полезные комманды:
+To add translations there are two useful commands:
+
 
 ### `makemessages`
 
@@ -38,7 +39,7 @@ As you develop and refine, please try to keep your repository consistent with [g
 $ hatch run makemessages
 ```
 
-Это команда обёртка над джанговской командой [makemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#makemessages) и создаёт / обновляет файлы локализации в каждом приложении _meringue_.
+This is a wrapper around the [makemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#makemessages) django command and creates/updates localization files in each _meringue_ application.
 
 
 ### `compilemessages`
@@ -47,7 +48,7 @@ $ hatch run makemessages
 $ hatch run compilemessages
 ```
 
-Это команда обёртка над джанговской командой [compilemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#compilemessages) и компилирует все переводы.
+This is a wrapper around the [compilemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#compilemessages) django command and compiles all translations.
 
 
 ## Tests
