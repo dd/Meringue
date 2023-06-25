@@ -78,9 +78,7 @@ Refactoring old functionality and getting rid of unnecessary
 * template tags
 	* [x] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
 * other
-	* [ ] Upload handlers with renaming uploaded files
-		* [x] Handlers
-		* [ ] Testing
+	* [x] Upload handlers with renaming uploaded files
 
 
 ### Second stage

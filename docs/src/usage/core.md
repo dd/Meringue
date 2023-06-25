@@ -26,6 +26,13 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 ### PublicationMixin
 
+::: meringue.core.models.PublicationMixin
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_bases: false
+
 
 #### published
 
@@ -46,6 +53,13 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 
 ### PublicationDatesMixin
+
+::: meringue.core.models.PublicationDatesMixin
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_bases: false
 
 
 #### published
