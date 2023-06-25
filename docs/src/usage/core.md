@@ -76,7 +76,22 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 ## Templatetags
 
+
+### `cop_year`
+
 ::: meringue.core.templatetags.meringue_base.cop_year
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+
+
+## Views
+
+
+### `im_a_teapot`
+
+::: meringue.core.views.im_a_teapot
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false

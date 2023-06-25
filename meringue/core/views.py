@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 def im_a_teapot(request):
     """
-    Most important functional.
+    We all at some point want to brew boiling water.
 
     Examples:
         ```py title="urls.py"
