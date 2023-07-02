@@ -1,4 +1,4 @@
-name: Django CI
+name: Test CI
 
 on:
   push:
@@ -12,22 +12,22 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.8, 3.9, 3.10, 3.11]
-        django: [3.0, 4.0]
-        modeltranslation: [0.18.10]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        django: ["3.0", "4.0"]
+        modeltranslation: ["0.18.10"]
         include:
-          - python-version: 3.8
-            django-version: 2.0
-            modeltranslation-version: 0.17.7
-          - python-version: 3.9
-            django-version: 2.0
-            modeltranslation-version: 0.17.7
-          - python-version: 3.10
-            django-version: 2.0
-            modeltranslation-version: 0.17.7
-          - python-version: 3.11
-            django-version: 2.0
-            modeltranslation-version: 0.17.7
+          - python-version: "3.8"
+            django-version: "2.0"
+            modeltranslation-version: "0.17.7"
+          - python-version: "3.9"
+            django-version: "2.0"
+            modeltranslation-version: "0.17.7"
+          - python-version: "3.10"
+            django-version: "2.0"
+            modeltranslation-version: "0.17.7"
+          - python-version: "3.11"
+            django-version: "2.0"
+            modeltranslation-version: "0.17.7"
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
