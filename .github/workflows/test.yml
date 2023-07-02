@@ -33,3 +33,6 @@ jobs:
     - name: Run Tests
       run: |
         hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}:check
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+        env: CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
