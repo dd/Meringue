@@ -15,10 +15,8 @@ theme:
   name: material
   language: en
   custom_dir: docs/theme
-  icon:
-    logo: logo
-    repo: material/github
-  favicon: assets/favicon.png
+  logo: assets/favicon.svg
+  favicon: assets/favicon.svg
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"

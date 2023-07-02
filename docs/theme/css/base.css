@@ -96,3 +96,14 @@ div.doc-contents:not(.first) {
 code {
 	tab-size: 4;
 }
+
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+	height: 0.85rem;
+}
+
+.md-nav__title .md-nav__button.md-logo img,
+.md-nav__title .md-nav__button.md-logo svg {
+	height: 2.2rem;
+}
