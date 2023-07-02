@@ -1,7 +1,5 @@
 <h1 align="center" >Meringue</h1>
 
-<!-- | CI/CD | [![CI - Test](https://github.com/pypa/hatch/actions/workflows/test.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/test.yml) [![CD - Build Hatch](https://github.com/pypa/hatch/actions/workflows/build-hatch.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/build-hatch.yml) [![CD - Build Hatchling](https://github.com/pypa/hatch/actions/workflows/build-hatchling.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/build-hatchling.yml) |
-| Docs | [![Docs - Release](https://github.com/pypa/hatch/actions/workflows/docs-release.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/docs-release.yml) [![Docs - Dev](https://github.com/pypa/hatch/actions/workflows/docs-dev.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/docs-dev.yml) | -->
 <p align="center">
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/status/meringue.svg" alt="PyPI - Status" />
@@ -12,9 +10,9 @@
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/dm/meringue.svg" alt="PyPI - Downloads" />
 	</a>
-	<a href="https://pypi.org/project/meringue">
+	<!-- <a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/frameworkversions/django/meringue.svg" alt="PyPI - Django Framework Version" />
-	</a>
+	</a> -->
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/pyversions/meringue.svg" alt="PyPI - Python Version" />
 	</a>
@@ -27,7 +25,7 @@
 		<img src="https://readthedocs.org/projects/py-meringue/badge/?version=latest" alt="Documentation Status" />
 	</a>
 	<a href="https://github.com/dd/Meringue/actions/workflows/test.yml" >
-		<img src="https://github.com/dd/meringue/actions/workflows/test.yml/badge.svg" alt="Tests - Running" />
+		<img src="https://img.shields.io/github/actions/workflow/status/dd/Meringue/test.yml" alt="Tests - Running" />
 	</a>
 	<a href="https://codecov.io/gh/dd/Meringue" >
 		<img src="https://codecov.io/gh/dd/Meringue/branch/release/1.0.0/graph/badge.svg?token=HV1QGD74EK" alt="Tests - Coverage" />
@@ -119,5 +117,5 @@ Adding new functionality. Can change.
 - [x] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
 - [x] Documentation with [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 - [x] Testing local with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments)
-- [ ] Testing in CI/CD on push
+- [x] Testing in CI/CD on push
 - [ ] Add [mypy](https://mypy-lang.org/) ???
