@@ -32,9 +32,11 @@ jobs:
       run: pip install --upgrade hatch
     - name: Run Tests
       run: |
-        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}:check --cov=meringue --cov-report term-missing
+        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}:check --cov=meringue --cov-report term-missing --cov-report json
     - name: Develop
       run: ls -al
+    - name: Disambiguate coverage filename
+      run: mv .coverage.json ".coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}.json"
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
