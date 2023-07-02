@@ -9,21 +9,29 @@
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/v/meringue.svg" alt="PyPI - Version" />
 	</a>
-	<a href="https://py-meringue.readthedocs.io/en/latest/?badge=latest">
-		<img src="https://readthedocs.org/projects/py-meringue/badge/?version=latest" alt="Documentation Status" />
-	</a>
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/dm/meringue.svg" alt="PyPI - Downloads" />
 	</a>
-	<!-- <a href="https://pypi.org/project/meringue">
+	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/frameworkversions/django/meringue.svg" alt="PyPI - Django Framework Version" />
-	</a> -->
-	<!-- <a href="https://pypi.org/project/meringue">
+	</a>
+	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/pyversions/meringue.svg" alt="PyPI - Python Version" />
-	</a> -->
+	</a>
 	<!-- <a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/format/meringue.svg" alt="PyPI - Format" />
 	</a> -->
+</p>
+<p align="center">
+	<a href="https://py-meringue.readthedocs.io/en/latest/?badge=latest">
+		<img src="https://readthedocs.org/projects/py-meringue/badge/?version=latest" alt="Documentation Status" />
+	</a>
+	<a href="https://github.com/dd/Meringue/actions/workflows/test.yml" >
+		<img src="https://github.com/dd/meringue/actions/workflows/test.yml/badge.svg" alt="Tests - Running" />
+	</a>
+	<a href="https://codecov.io/gh/dd/Meringue" >
+		<img src="https://codecov.io/gh/dd/Meringue/branch/release/1.0.0/graph/badge.svg?token=HV1QGD74EK" alt="Tests - Coverage" />
+	</a>
 </p>
 <p align="center">
 	<a href="https://github.com/pypa/hatch" target="_blank">
@@ -33,7 +41,7 @@
 		<img src="https://img.shields.io/badge/docs-mkdocs%20material-blue.svg" alt="Material for MkDocs" />
 	</a>
 	<a href="https://github.com/charliermarsh/ruff" target="_blank">
-		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v0.json" alt="linting - Ruff" />
+		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json" alt="linting - Ruff" />
 	</a>
 	<a href="https://github.com/psf/black" target="_blank">
 		<img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="code style - black" />
