@@ -4,7 +4,7 @@ from django.urls import reverse
 
 def test_check_teapot():
     """
-    Nominal mixin check
+    Im a teapot
     """
     client = Client()
     response = client.get(reverse("make_coffee"))

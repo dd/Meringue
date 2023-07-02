@@ -113,6 +113,19 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 		show_source: false
 
 
+## Translations
+
+If you use [djano-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/), then when connecting `meringue.core`, you can register fields for translations by setting the list of fields in the `m_translate_fields` field in the meta of the corresponding model:
+
+```py
+class FooModel(models.Model):
+    name = models.CharField(max_length=32)
+
+    class Meta:
+        m_translate_fields = ["name", ]
+```
+
+
 ## Views
 
 

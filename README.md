@@ -69,9 +69,8 @@ Refactoring old functionality and getting rid of unnecessary
 		* [x] Testing
 	* [x] Abstract model with publishing flag
 	* [x] Abstract model with the functionality of publishing in a certain period
-	* [ ] Universal manager worked with all abstract models
 * i18n
-	* [ ] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)
+	* [x] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)
 	* [x] Localization of all texts in the library
 * utils
 	* [x] Method and template tag for getting date range
@@ -85,6 +84,7 @@ Refactoring old functionality and getting rid of unnecessary
 
 Adding new functionality. Can change.
 
+* Universal manager worked with all abstract models
 * Tests of all functionality
 * Methods for encrypting and decrypting text content (To create various secrets, such as a link to change your password or activate your profile).
 * Functionality for obtaining absolute links to resources presented on the front, located on another domain (When working through api) (utils methods, template tags and filters).

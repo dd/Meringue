@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     # 'django.contrib.sessions',
     # 'django.contrib.messages',
     # 'django.contrib.staticfiles',
+    "modeltranslation",
     "test_project",
     "meringue.core",
 ]
@@ -82,7 +83,6 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = "UTC"
 
@@ -100,6 +100,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LANGUAGE_CODE = "ru"
+
+
+gettext = lambda s: s  # noqa:E731
+LANGUAGES = (
+    ("ru", gettext("Russian")),
+    ("en", gettext("English")),
+)
 
 
 MERINGUE = {}
