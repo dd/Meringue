@@ -60,24 +60,6 @@ dynamic = ["version"]
 "Changelog" = "https://github.com/dd/Meringue/blob/master/CHANGELOG.md"
 "Bug Tracker" = "https://github.com/dd/Meringue/issues"
 
-[project.optional-dependencies]
-pillow = [
-	"Pillow>=7.2.0,<8",
-]
-crypto = [
-	"pycryptodome>=3.9.7,<4",
-]
-openpyxl = [
-	"openpyxl>=2.6.1,<3",
-]
-python-phonenumbers = [
-	"phonenumbers>=8.10.8,<9",
-]
-django-pipeline = [
-	"django-pipeline>=1.7.0,<2",
-	"django-pipeline-browserify>=0.6.2,<1",
-]
-
 [tool.hatch.version]
 path = "meringue/__init__.py"
 
