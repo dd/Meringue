@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "meringue"
 description = "A set of various functionality for a Django based web application."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 license = "LGPL-3.0"
 authors = [
 	{ name = "Dmitry Dobrynin", email = "dd@manin.space" },
@@ -38,8 +38,8 @@ classifiers = [
 	"Operating System :: OS Independent",
 	"Programming Language :: Python",
 	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.10",
 	"Programming Language :: Python :: 3.11",
-	"Programming Language :: Python :: 3.12",
 	"Programming Language :: Python :: 3 :: Only",
 	"Programming Language :: Python :: Implementation :: CPython",
 	"Programming Language :: Python :: Implementation :: PyPy",
@@ -160,11 +160,11 @@ PYTHONPATH  = '.'
 [tool.hatch.envs.mtest.scripts]
 check = "pytest {args:-q}"
 [[tool.hatch.envs.mtest.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11"]
+python = ["3.10", "3.11"]
 django = ["2.0"]
 modeltranslation = ["0.17.7"]
 [[tool.hatch.envs.mtest.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11"]
+python = ["3.10", "3.11"]
 django = ["3.0", "4.0"]
 modeltranslation = ["0.18.10"]
 
