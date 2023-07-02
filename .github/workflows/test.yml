@@ -32,7 +32,7 @@ jobs:
       run: pip install --upgrade hatch
     - name: Run Tests
       run: |
-        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}:check
+        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}:check --cov=meringue --cov-report term-missing
     - name: Develop
       run: ls -al
     - name: Upload coverage reports to Codecov
