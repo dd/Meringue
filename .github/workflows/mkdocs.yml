@@ -58,7 +58,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: site
+        publish_dir: docs/dist
         commit_message: ${{ github.event.head_commit.message }}
         # Write .nojekyll at the root, see:
         # https://help.github.com/en/github/working-with-github-pages/about-github-pages#static-site-generators
