@@ -45,5 +45,5 @@ jobs:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         # GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
       run: |
-        mkdocs gh-deploy --force
-        mkdocs --version
+        hatch run docs:mkdocs gh-deploy --force
+        hatch run docs:mkdocs --version

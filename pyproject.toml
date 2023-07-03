@@ -188,8 +188,8 @@ dependencies = [
 [tool.hatch.envs.docs.env-vars]
 MERINGUE_MKDOCS_ENABLE_MINIFY = 'false'
 [tool.hatch.envs.docs.scripts]
-build = ["mkdocs build {args}"]
-serve = ["mkdocs serve {args}"]
+build = "mkdocs build {args}"
+serve = "mkdocs serve {args}"
 
 [tool.black]
 line-length = 99
