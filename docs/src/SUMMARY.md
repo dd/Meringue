@@ -9,3 +9,4 @@
 		* [Introduction](dev/docs/index.md)
 		* [Examples](dev/docs/examples.md)
 	* [Tests](dev/tests.md)
+* [Changelog](changelog.md)
