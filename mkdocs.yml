@@ -167,6 +167,8 @@ plugins:
           - css/base.css
 
 extra:
+  version:
+    provider: mike
   # alternate:
   #   - name: English
   #     link: /en/

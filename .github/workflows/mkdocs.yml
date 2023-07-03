@@ -22,28 +22,46 @@ jobs:
       with:
         python-version: 3.11
 
-    - name: Set the date environmental variable
-      run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+    # - name: Set the date environmental variable
+    #   run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
 
-    - name: Set up build cache
-      uses: actions/cache@v3
-      id: cache
-      with:
-        key: mkdocs-material-${{ env.cache_id }}
-        path: .cache
-        restore-keys: |
-          mkdocs-material-
+    # - name: Set up build cache
+    #   uses: actions/cache@v3
+    #   id: cache
+    #   with:
+    #     key: mkdocs-material-${{ env.cache_id }}
+    #     path: .cache
+    #     restore-keys: |
+    #       mkdocs-material-
 
     # - name: Install dependencies
     #   run: sudo apt-get install pngquant
 
+    - name: Ensure latest pip
+      run: python -m pip install --upgrade pip
+
     - name: Install Hatch
       run: pip install --upgrade hatch
 
-    - name: Deploy documentation
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        # GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
+    - name: Configure Git for GitHub Actions bot
       run: |
-        hatch run docs:mkdocs gh-deploy --force
-        hatch run docs:mkdocs --version
+        git config --local user.name 'github-actions[bot]'
+        git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Build documentation
+      run: hatch run docs:build-check
+
+    - name: Commit documentation
+      run: hatch run docs:ci-build dev
+
+    - name: Deploy documentation
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: site
+        commit_message: ${{ github.event.head_commit.message }}
+        # Write .nojekyll at the root, see:
+        # https://help.github.com/en/github/working-with-github-pages/about-github-pages#static-site-generators
+        enable_jekyll: false
+        # Only deploy if there were changes
+        allow_empty_commit: false
