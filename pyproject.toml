@@ -185,6 +185,7 @@ dependencies = [
 	"mkdocs-gen-files==0.5.0",
 	"Pygments==2.15.1",
 	"mike==1.1.2",
+	"linkchecker==10.2.1",
 ]
 [tool.hatch.envs.docs.env-vars]
 MERINGUE_MKDOCS_ENABLE_MINIFY = 'false'
@@ -193,6 +194,7 @@ MKDOCS_CONFIG = "mkdocs.yml"
 build = "mkdocs build --config-file {env:MKDOCS_CONFIG} --clean --strict {args}"
 serve = "mkdocs serve --config-file {env:MKDOCS_CONFIG} --dev-addr localhost:8000 {args}"
 ci-build = "mike deploy --config-file {env:MKDOCS_CONFIG} --update-aliases {args}"
+validate = "linkchecker --config .linkcheckerrc site"
 build-check = [
 	"build --no-directory-urls",
 	"validate",
