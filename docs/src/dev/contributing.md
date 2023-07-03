@@ -53,12 +53,12 @@ This is a wrapper around the [compilemessages](https://docs.djangoproject.com/en
 
 ## Tests
 
-When working on a project, it is extremely important to cover everything with tests in order to avoid problems and errors in the code. See working on tests in the appropriate [section](../tests).
+When working on a project, it is extremely important to cover everything with tests in order to avoid problems and errors in the code. See working on tests in the appropriate [section](/dev/tests).
 
 
 ## Documentation
 
-The documentation is implemented using the [mkdocs](https://www.mkdocs.org/) generator and the [mkdocs material](https://squidfunk.github.io/mkdocs-material/) theme. When working on library functionality, two main sections [usage](../../usage) and [reference](../../reference/meringue/conf/__init__/) are important. For more information about developing documentation, see the corresponding [section](../docs).
+The documentation is implemented using the [mkdocs](https://www.mkdocs.org/) generator and the [mkdocs material](https://squidfunk.github.io/mkdocs-material/) theme. When working on library functionality, two main sections [usage](../../usage) and [reference](../../reference/meringue/conf/__init__/) are important. For more information about developing documentation, see the corresponding [section](/dev/docs).
 
 
 ## Versioning
