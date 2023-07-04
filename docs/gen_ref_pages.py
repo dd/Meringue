@@ -65,6 +65,13 @@ def directory_processing(path: Path, doc_section: str, nav: mkdocs_gen_files.Nav
             module_to_parse += (doc_file.stem,)
 
         with mkdocs_gen_files.open(doc_path, "w") as fd:
+            """
+            ::: path.to.module
+                options:
+                    heading_level: 1
+                    show_root_heading: true
+                    members_order: source
+            """
             fd.write(f"\n::: {'.'.join(module_to_parse)}")
             fd.write("\n\toptions:")
             # fd.write("\n\t\tshow_if_no_docstring: true")
