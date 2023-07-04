@@ -1,7 +1,5 @@
 <h1 align="center" >Meringue</h1>
 
-<!-- | CI/CD | [![CI - Test](https://github.com/pypa/hatch/actions/workflows/test.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/test.yml) [![CD - Build Hatch](https://github.com/pypa/hatch/actions/workflows/build-hatch.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/build-hatch.yml) [![CD - Build Hatchling](https://github.com/pypa/hatch/actions/workflows/build-hatchling.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/build-hatchling.yml) |
-| Docs | [![Docs - Release](https://github.com/pypa/hatch/actions/workflows/docs-release.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/docs-release.yml) [![Docs - Dev](https://github.com/pypa/hatch/actions/workflows/docs-dev.yml/badge.svg)](https://github.com/pypa/hatch/actions/workflows/docs-dev.yml) | -->
 <p align="center">
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/status/meringue.svg" alt="PyPI - Status" />
@@ -9,31 +7,39 @@
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/v/meringue.svg" alt="PyPI - Version" />
 	</a>
-	<a href="https://py-meringue.readthedocs.io/en/latest/?badge=latest">
-		<img src="https://readthedocs.org/projects/py-meringue/badge/?version=latest" alt="Documentation Status" />
-	</a>
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/dm/meringue.svg" alt="PyPI - Downloads" />
 	</a>
 	<!-- <a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/frameworkversions/django/meringue.svg" alt="PyPI - Django Framework Version" />
 	</a> -->
-	<!-- <a href="https://pypi.org/project/meringue">
+	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/pyversions/meringue.svg" alt="PyPI - Python Version" />
-	</a> -->
+	</a>
 	<!-- <a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/format/meringue.svg" alt="PyPI - Format" />
 	</a> -->
+</p>
+<p align="center">
+	<a href="https://github.com/dd/Meringue/actions/workflows/mkdocs-release.yml" >
+		<img src="https://img.shields.io/github/actions/workflow/status/dd/Meringue/mkdocs-release.yml?logo=github&label=docs" alt="Documentation - Release" />
+	</a>
+	<a href="https://github.com/dd/Meringue/actions/workflows/test.yml" >
+		<img src="https://img.shields.io/github/actions/workflow/status/dd/Meringue/test.yml?logo=github&label=tests" alt="Tests - Running" />
+	</a>
+	<a href="https://codecov.io/gh/dd/Meringue" >
+		<img src="https://codecov.io/gh/dd/Meringue/branch/release/1.0.0/graph/badge.svg?token=HV1QGD74EK" alt="Tests - Coverage" />
+	</a>
 </p>
 <p align="center">
 	<a href="https://github.com/pypa/hatch" target="_blank">
 		<img src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" alt="Hatch project" />
 	</a>
 	<a href="https://squidfunk.github.io/mkdocs-material/" target="_blank">
-		<img src="https://img.shields.io/badge/docs-mkdocs%20material-blue.svg" alt="Material for MkDocs" />
+		<img src="https://img.shields.io/badge/docs-mkdocs_material-blue?logo=mdbook&logoColor=white" alt="Material for MkDocs" />
 	</a>
 	<a href="https://github.com/charliermarsh/ruff" target="_blank">
-		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v0.json" alt="linting - Ruff" />
+		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json" alt="linting - Ruff" />
 	</a>
 	<a href="https://github.com/psf/black" target="_blank">
 		<img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="code style - black" />
@@ -57,33 +63,9 @@ However, if someone decides to use this functionality in their project, and even
 
 ## Roadmap
 
-### First stage
-
-Refactoring old functionality and getting rid of unnecessary
-
-* models
-	* [x] Mixin with ctime and mtime fields
-	* [ ] Abstract model with sort field
-		* [x] Add abstract model
-		* [ ] Add a manager with a method to correct sorting
-	* [x] Abstract model with publishing flag
-	* [x] Abstract model with the functionality of publishing in a certain period
-	* [ ] Universal manager worked with all abstract models
-* i18n
-	* [ ] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)
-	* [ ] Localization of all texts in the library
-* utils
-	* [ ] Method and template tag for getting date range
-* template tags
-	* [ ] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
-* other
-	* [x] Upload handlers with renaming uploaded files (Need tests)
-
-
-### Second stage
-
 Adding new functionality. Can change.
 
+* Universal manager worked with all abstract models
 * Tests of all functionality
 * Methods for encrypting and decrypting text content (To create various secrets, such as a link to change your password or activate your profile).
 * Functionality for obtaining absolute links to resources presented on the front, located on another domain (When working through api) (utils methods, template tags and filters).
@@ -100,8 +82,6 @@ Adding new functionality. Can change.
 * Exception handler for drf that returns an error code in addition to the error text
 
 
-
-
 ## Contributing
 
 - [x] Use Git Flow (read [here](https://jeffkreeftmeijer.com/git-flow/) and [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)) to resolve the versioning
@@ -109,5 +89,6 @@ Adding new functionality. Can change.
 - [x] Formatter with a [Black](https://github.com/psf/black)
 - [x] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
 - [x] Documentation with [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
-- [x] Testing with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments)
+- [x] Testing local with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments)
+- [x] Testing in CI/CD on push
 - [ ] Add [mypy](https://mypy-lang.org/) ???

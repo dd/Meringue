@@ -85,16 +85,16 @@ A collection of examples of non-obvious blocks that can be used when writing doc
 [docs](https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes)
 
 ```md
-Footnotes[^1] have a label[^@#$%] and the footnote's content.
+Footnotes[^1] have a label[^test-label] and the footnote's content.
 
 [^1]: This is a footnote content.
-[^@#$%]: A footnote on the label: "@#$%".
+[^test-label]: A footnote on the label: "test-label".
 ```
 
-Footnotes[^1] have a label[^@#$%] and the footnote's content.
+Footnotes[^1] have a label[^test-label] and the footnote's content.
 
 [^1]: This is a footnote content.
-[^@#$%]: A footnote on the label: "@#$%".
+[^test-label]: A footnote on the label: "test-label".
 
 
 ## Highlight

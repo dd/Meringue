@@ -18,7 +18,7 @@ def rename_handler(file_name: str) -> str:
     Returns:
         New file name.
     """
-    return str(Path(file_name).with_stem(uuid.uuid4()))
+    return str(Path(file_name).with_stem(str(uuid.uuid4())))
 
 
 class MemoryFileUploadHandler(uploadhandler.MemoryFileUploadHandler):
@@ -53,13 +53,6 @@ class MemoryFileUploadHandler(uploadhandler.MemoryFileUploadHandler):
             content_type_extra,
         )
 
-    # def file_complete(self, file_size):
-    #     result = super().file_complete(file_size)
-    #     if result:
-    #         result.name = m_settings.UPLOAD_RENAME_HANDLER(result)
-    #         result.file.seek(0)
-    #     return result
-
 
 class TemporaryFileUploadHandler(uploadhandler.TemporaryFileUploadHandler):
     """
@@ -92,10 +85,3 @@ class TemporaryFileUploadHandler(uploadhandler.TemporaryFileUploadHandler):
             charset,
             content_type_extra,
         )
-
-    # def file_complete(self, file_size):
-    #     result = super().file_complete(file_size)
-    #     if result:
-    #         result.name = m_settings.UPLOAD_RENAME_HANDLER(result)
-    #         result.file.seek(0)
-    #     return result

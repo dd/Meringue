@@ -1,4 +1,5 @@
-site_name: Meringue documentation
+site_url: https://dd.github.io/Meringue/
+site_name: Meringue
 site_description: Meringue library python documentation
 site_author: Dmitriy Dobrynin (aka dd) <dd@manin.space>
 copyright: Copyright &copy; 2014 - present <a href="https://manin.space/" target="_blank" rel="noopener" >manin.space</a>
@@ -15,10 +16,8 @@ theme:
   name: material
   language: en
   custom_dir: docs/theme
-  icon:
-    logo: logo
-    repo: material/github
-  favicon: assets/favicon.png
+  logo: assets/favicon.svg
+  favicon: assets/favicon.svg
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -149,11 +148,12 @@ plugins:
             show_source: true
             show_signature_annotations: true
             members_order: source
+            # https://github.com/mkdocstrings/mkdocstrings/issues/579
+            # will need to be returned when the bug is fixed
             # group_by_category: false
             docstring_section_style: list
             merge_init_into_class: true
             separate_signature: true
-            # line_length: 30
             signature_crossrefs: true
   - offline:
       enabled: !ENV [MERINGUE_MKDOCS_OFFLINE, false]
@@ -168,6 +168,8 @@ plugins:
           - css/base.css
 
 extra:
+  version:
+    provider: mike
   # alternate:
   #   - name: English
   #     link: /en/
@@ -176,9 +178,6 @@ extra:
   #     link: /ru/
   #     lang: ru
   social:
-    - icon: simple/readthedocs
-      link: https://py-meringue.readthedocs.io/
-      name: Read the Docs
     - icon: fontawesome/brands/github
       link: https://github.com/dd/Meringue
       name: github

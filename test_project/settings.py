@@ -13,7 +13,9 @@ INSTALLED_APPS = [
     # 'django.contrib.sessions',
     # 'django.contrib.messages',
     # 'django.contrib.staticfiles',
-    "test",
+    "modeltranslation",
+    "test_project",
+    "meringue.core",
 ]
 
 MIDDLEWARE = [
@@ -26,23 +28,23 @@ MIDDLEWARE = [
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ROOT_URLCONF = 'tests.urls'
+ROOT_URLCONF = "test_project.urls"
 
-# TEMPLATES = [
-#     {
-#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-#         'DIRS': [],
-#         'APP_DIRS': True,
-#         'OPTIONS': {
-#             'context_processors': [
-#                 'django.template.context_processors.debug',
-#                 'django.template.context_processors.request',
-#                 'django.contrib.auth.context_processors.auth',
-#                 'django.contrib.messages.context_processors.messages',
-#             ],
-#         },
-#     },
-# ]
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        # 'DIRS': [],
+        # 'APP_DIRS': True,
+        # 'OPTIONS': {
+        #     'context_processors': [
+        #         'django.template.context_processors.debug',
+        #         'django.template.context_processors.request',
+        #         'django.contrib.auth.context_processors.auth',
+        #         'django.contrib.messages.context_processors.messages',
+        #     ],
+        # },
+    },
+]
 
 # WSGI_APPLICATION = 'tests.wsgi.application'
 
@@ -81,9 +83,8 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'
 
-# TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 # USE_I18N = True
 
@@ -98,6 +99,17 @@ USE_TZ = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LANGUAGE_CODE = "ru"
+
+
+gettext = lambda s: s  # noqa:E731
+LANGUAGES = (
+    ("ru", gettext("Russian")),
+    ("en", gettext("English")),
+)
+
 
 MERINGUE = {}

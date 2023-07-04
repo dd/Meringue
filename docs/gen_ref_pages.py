@@ -65,12 +65,19 @@ def directory_processing(path: Path, doc_section: str, nav: mkdocs_gen_files.Nav
             module_to_parse += (doc_file.stem,)
 
         with mkdocs_gen_files.open(doc_path, "w") as fd:
-            fd.write(f"::: {'.'.join(module_to_parse)}\n")
-            fd.write("\toptions:\n")
-            # fd.write("\t\tshow_if_no_docstring: true\n")
-            fd.write("\t\theading_level: 1\n")
-            fd.write("\t\tshow_root_heading: true\n")
-            fd.write("\t\tmembers_order: source\n")
+            """
+            ::: path.to.module
+                options:
+                    heading_level: 1
+                    show_root_heading: true
+                    members_order: source
+            """
+            fd.write(f"\n::: {'.'.join(module_to_parse)}")
+            fd.write("\n\toptions:")
+            # fd.write("\n\t\tshow_if_no_docstring: true")
+            fd.write("\n\t\theading_level: 1")
+            fd.write("\n\t\tshow_root_heading: true")
+            fd.write("\n\t\tmembers_order: source")
 
         mkdocs_gen_files.set_edit_path(doc_path, Path("../") / path)
 

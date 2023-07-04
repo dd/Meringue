@@ -1,5 +1,3 @@
-# ruff: noqa: S101
-
 from unittest.mock import patch
 
 from django.conf import settings
@@ -10,7 +8,7 @@ import pytest
 from meringue.conf import Settings
 
 
-def test__all_good_without_user_setting():
+def test_all_good_without_user_setting():
     """
     We check that if there is no parameter in the django settings, the Meringue settings are loaded
     successfully
@@ -19,7 +17,7 @@ def test__all_good_without_user_setting():
     assert getattr(settings, "TEST_MERINGUE", None) is None
 
 
-def test__access_non_existent():
+def test_access_non_existent():
     """
     Accessing a non-existent parameter throws an error
     """
@@ -29,7 +27,7 @@ def test__access_non_existent():
         assert foo_settings.NOT_EXIST_PARAM
 
 
-def test__deprecate_warnings():
+def test_deprecate_warnings():
     """
     Accessing a non-existent parameter throws an error
     """
@@ -43,7 +41,7 @@ def test__deprecate_warnings():
         assert foo_settings.DEPRECATED_PARAM is None
 
 
-def test__default_config():
+def test_default_config():
     """
     Checking that default ones are returned if not overridden
     """
@@ -52,7 +50,7 @@ def test__default_config():
 
 
 @override_settings(TEST_MERINGUE={"OVERRIDED_PROP": "value 2"})
-def test__configure():
+def test_configure():
     """
     Checking that override the property value by the user in the project settings works
     """
@@ -60,7 +58,7 @@ def test__configure():
     assert foo_settings.OVERRIDED_PROP == "value 2"
 
 
-def test__import_properties():
+def test_import_properties():
     """
     Checking that the property import works successfully
     """
@@ -78,7 +76,7 @@ def test__import_properties():
     autospec=True,
     side_effect=Settings.__getattr__,
 )
-def test__cache_properties(getter):
+def test_cache_properties(getter):
     """
     We check that when the property is accessed again, the value is taken from the cache, and not
     parsed again
@@ -89,8 +87,24 @@ def test__cache_properties(getter):
     getter.assert_called_once_with(foo_settings, "TEST_PROP")
 
 
+@patch(
+    "meringue.conf.Settings.__getattr__",
+    autospec=True,
+    side_effect=Settings.__getattr__,
+)
+def test_reset_cache(getter):
+    """
+    Reset cache
+    """
+    foo_settings = Settings("TEST_MERINGUE", {"TEST_PROP": "value"}, {}, [])
+    assert foo_settings.TEST_PROP
+    foo_settings.reset()
+    assert foo_settings.TEST_PROP
+    assert getter.call_count == 2
+
+
 @override_settings(TEST_MERINGUE={"OVERRIDED_PROP": "value 2"})
-def test__redefining():
+def test_redefining():
     """
     Checking that override the property value by the user in the project settings works
     """

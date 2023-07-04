@@ -3,9 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from meringue.core.managers import PublicationDatesManager
 from meringue.core.managers import PublicationManager
-
-
-# Mixins ##########################################################################################
+from meringue.core.managers import SortingManager
 
 
 class CMTimeMixin(models.Model):
@@ -13,22 +11,16 @@ class CMTimeMixin(models.Model):
     A simple mixin to add _ctime_ and _mtime_ fields.
     """
 
-    ctime = models.DateTimeField(auto_now_add=True)
-    mtime = models.DateTimeField(auto_now=True)
+    ctime = models.DateTimeField(auto_now_add=True, help_text=_("Date and time of creation."))
+    mtime = models.DateTimeField(auto_now=True, help_text=_("Date and time of editing."))
 
     class Meta:
         abstract = True
 
 
-# Abstract models #################################################################################
-
-
-class SortingBase(models.Model):
+class SortingMixin(models.Model):
     """
     Simple mixin to add sorting field.
-
-    Todo:
-        * Add a manager with a method to correct sorting.
     """
 
     sorting = models.SmallIntegerField(
@@ -37,6 +29,8 @@ class SortingBase(models.Model):
         default=0,
     )
 
+    objects = SortingManager()
+
     class Meta:
         ordering = [
             "sorting",
@@ -44,9 +38,9 @@ class SortingBase(models.Model):
         abstract = True
 
 
-class PublicationBase(models.Model):
+class PublicationMixin(models.Model):
     """
-    Abstract model with the functionality of manual publishing.
+    Mixin with the functionality of manual publishing.
 
     Examples:
         >>> FooModel.object.published()
@@ -66,9 +60,9 @@ class PublicationBase(models.Model):
         abstract = True
 
 
-class PublicationDatesBase(models.Model):
+class PublicationDatesMixin(models.Model):
     """
-    Abstract model with the functionality of publishing in a certain period.
+    Mixin with the functionality of publishing in a certain period.
 
     Examples:
         >>> FooModel.object.published()
@@ -77,7 +71,7 @@ class PublicationDatesBase(models.Model):
 
     date_from = models.DateTimeField(
         verbose_name=_("Date from"),
-        help_text=_("Display date and time."),
+        help_text=_("Date and time of publication (inclusive)."),
         blank=True,
         null=True,
     )
