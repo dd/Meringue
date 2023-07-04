@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build:
-    name: Build documentation
+    name: Building Documentation
     runs-on: ubuntu-latest
     steps:
 
