@@ -53,8 +53,8 @@ jobs:
         name: documentation
         path: site.zip
 
-  publish:
-    name: Publication of documentation
+  gh-publish:
+    name: Publication of documentation on github pages
     runs-on: ubuntu-latest
 
     needs:
