@@ -4,6 +4,8 @@ on:
   push:
     tags:
     - "v*"
+    branches:
+    - master
 
 concurrency:
   group: release-deploy
@@ -51,7 +53,7 @@ jobs:
     - build
 
     environment:
-      name: pypi
+      name: release
       url: https://pypi.org/p/meringue
 
     permissions:
@@ -64,5 +66,10 @@ jobs:
         name: python-artifacts
         path: dist
 
+    - name: Tests
+      run: ls -al
+
     - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1.8
+      uses: pypa/gh-action-pypi-publish@v1.8.7
+      with:
+        verbose: true
