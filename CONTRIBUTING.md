@@ -82,7 +82,7 @@ To write a commit, we adhere to the [Conventional Commits](https://www.conventio
 
 ## Changelog generation
 
-You can generate a Changelog with the following command using[gitmoji-changelog](https://github.com/frinyvonnick/gitmoji-changelog):
+You can generate a Changelog with the following command using [gitmoji-changelog](https://github.com/frinyvonnick/gitmoji-changelog):
 
 ```console
 gitmoji-changelog update 1.0.0 --preset generic --group-similar-commits

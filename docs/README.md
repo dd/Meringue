@@ -14,13 +14,6 @@ $ hatch run docs:serve
 ```
 
 
-## Building and publishing
-
-There is a separate `hatch run docs:build` command for the documentation build.
-
-Documentation is published automatically and configured in [readthedocs](https://readthedocs.org/).
-
-
 ## Configuration
 
 There are several options for documentation configuration:
