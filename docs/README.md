@@ -75,3 +75,14 @@ Parameter for building documentation into a build working from a folder, without
 Parameter to enable plugin [minify](https://github.com/byrnereese/mkdocs-minify-plugin) minifying html, js and css when generating documentation.
 
 When working with [local server][local-development] documentation, this option is disabled.
+
+
+## Building and publishing
+
+There is a separate `hatch run docs:build` command for building documentation.
+
+The documentation build is produced in [GitHub Actions](https://docs.github.com/en/actions) and published in [GitHub Pages](https://pages.github.com/).
+
+Documentation is rolled out dev version when pushing to `dev` branch and release when pushing tags with `v*` versions.
+
+Explore `.github/workflows/mkdocs-dev.yml` and `.github/workflows/mkdocs-release.yml` if necessary.

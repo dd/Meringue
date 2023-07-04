@@ -63,31 +63,6 @@ However, if someone decides to use this functionality in their project, and even
 
 ## Roadmap
 
-### First stage
-
-Refactoring old functionality and getting rid of unnecessary
-
-* models
-	* [x] Mixin with ctime and mtime fields
-	* [x] Abstract model with sort field
-		* [x] Add abstract model
-		* [x] Add a manager with a method to correct sorting
-		* [x] Testing
-	* [x] Abstract model with publishing flag
-	* [x] Abstract model with the functionality of publishing in a certain period
-* i18n
-	* [x] Field translation simplification functionality when using [django-modeltranslation](https://django-modeltranslation.readthedocs.io/en/latest/)
-	* [x] Localization of all texts in the library
-* utils
-	* [x] Method and template tag for getting date range
-* template tags
-	* [x] Template tag for generating the year for the copyright string (like Copyright © 2014-2023)
-* other
-	* [x] Upload handlers with renaming uploaded files
-
-
-### Second stage
-
 Adding new functionality. Can change.
 
 * Universal manager worked with all abstract models
@@ -105,8 +80,6 @@ Adding new functionality. Can change.
 * Functionality similar to that described in the previous paragraph only for video.
 * Functionality for loading private files available through [nginx internal](http://nginx.org/en/docs/http/ngx_http_core_module.html#internal).
 * Exception handler for drf that returns an error code in addition to the error text
-
-
 
 
 ## Contributing

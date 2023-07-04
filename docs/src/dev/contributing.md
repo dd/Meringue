@@ -71,7 +71,16 @@ The documentation is implemented using the [mkdocs](https://www.mkdocs.org/) gen
 
 ## Commit message convention
 
-To write a commit, we adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification, as well as [gitmoji](https://gitmoji.dev/) as a special case of _conventional commits_. You can use [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli) for this process. This will help us generate a changelog (and in the future we may automate this based on commits).
+To write a commit, we adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification, as well as [gitmoji](https://gitmoji.dev/) as a special case of _conventional commits_. You can use [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli) for this process. This is necessary for the automatic generation of the [changelog](#changelog-generation).
 
 !!! info
 	The list of emoji needs to be improved, now it is bloated and there are controversial points like :fire: which means deleting the code...
+
+
+## Changelog generation
+
+You can generate a Changelog with the following command using[gitmoji-changelog](https://github.com/frinyvonnick/gitmoji-changelog):
+
+```console
+gitmoji-changelog update 1.0.0 --preset generic --group-similar-commits
+```
