@@ -1,16 +1,19 @@
-__version__ = "0.4.0.post1"
+__version__ = "1.0.0"
 """
 To update the version, use [hatch version](https://hatch.pypa.io/latest/version/#updating)
 
 show current version:
 
-```bash
-hatch version
+```console
+$ hatch version
+1.0.0a0
 ```
 
-update patch and beta version from `0.0.0` to `0.0.1b1`
+update patch and beta version from `1.0.0a0` to `1.0.1b0`
 
-```bash
-hatch version patch,beta
+```console
+$ hatch version patch,beta
+Old: 1.0.0a0
+New: 1.0.1b0
 ```
 """

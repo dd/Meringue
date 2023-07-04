@@ -62,3 +62,48 @@ footer.sponsorship:hover hr {
 footer.sponsorship:not(:hover) .twemoji.heart-throb-hover svg {
 	color: var(--md-default-fg-color--lightest) !important;
 }
+
+
+/**
+ * Disable select at the code highlight for console style promt and output
+ *
+ * https://mkdocstrings.github.io/recipes/#prevent-selection-of-prompts-and-output-in-python-code-blocks
+ */
+
+.highlight .gp, .highlight .go {
+	/* Generic.Prompt, Generic.Output */
+	user-select: none;
+}
+
+
+/**
+ * Added a vertical bar next to the code description in mkdocstring
+ */
+div.doc-contents:not(.first) {
+	padding-left: 1.25rem;
+	border-left: 0.05rem solid var(--md-typeset-table-color)
+}
+
+
+/**
+ * Development Warning
+ */
+[data-md-component=announce] .icon {
+	font-size: 2em;
+	margin-right: 0.5em;
+}
+
+code {
+	tab-size: 4;
+}
+
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+	height: 0.85rem;
+}
+
+.md-nav__title .md-nav__button.md-logo img,
+.md-nav__title .md-nav__button.md-logo svg {
+	height: 2.2rem;
+}
