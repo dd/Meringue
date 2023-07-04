@@ -80,4 +80,3 @@ jobs:
         enable_jekyll: false
         # Only deploy if there were changes
         allow_empty_commit: false
-        artifact_name: docs

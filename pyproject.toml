@@ -73,6 +73,7 @@ exclude = [
 	"hooks",
 	".gitignore",
 	"CHANGELOG.md",
+	"CONTRIBUTING.md",
 	"tests",
 ]
 
@@ -80,7 +81,8 @@ exclude = [
 description = "Dev environment"
 python = "3.11"
 dependencies = [
-	"pre-commit==3.3.2",
+	"pre-commit==3.3.3",
+	"ipython==8.14.0",
 ]
 [tool.hatch.envs.default.scripts]
 precommit_install = "pre-commit install {args}"
@@ -97,7 +99,9 @@ init = [
 	"git config --local gitflow.path.hooks $(pwd)\"/.git/hooks\"",
 	"precommit_install",
 ]
-remove = ["precommit_uninstall"]
+remove = [
+	"precommit_uninstall",
+]
 makemessages = [
 	"cd meringue/core && django-admin makemessages -l en -l ru --no-obsolete {args}",
 ]

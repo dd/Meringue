@@ -33,6 +33,6 @@ The database is used by in-memory SQLite.
 
 ## Autotests
 
-Tests are automatically processed when pushing to `master` and release branches `release/*`. See `.github/workflows/test.yml` for details.
+Tests are automatically processed when pushing to `master` and release branches `release/*`. See workflow [config](https://github.com/dd/Meringue/blob/master/.github/workflows/test.yml) for details.
 
 In the process, test results are uploaded to [codecov.io](https://app.codecov.io/gh/dd/Meringue).
