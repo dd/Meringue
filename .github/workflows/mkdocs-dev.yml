@@ -5,14 +5,18 @@ on:
     branches:
     - dev
 
+concurrency:
+  group: docs-deploy
+
 permissions:
   contents: write
 
 jobs:
-  documentation:
-    name: Build documentation
+  build:
+    name: Building Documentation
     runs-on: ubuntu-latest
     steps:
+
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
@@ -29,13 +33,23 @@ jobs:
     - name: Install Hatch
       run: pip install --upgrade hatch
 
+    - name: Build documentation
+      run: hatch run docs:build-check
+
     - name: Configure Git for GitHub Actions bot
       run: |
         git config --local user.name 'github-actions[bot]'
         git config --local user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Build documentation
-      run: hatch run docs:build-check
-
     - name: Commit documentation
-      run: hatch run docs:ci-build dev --push
+      run: hatch run docs:ci-build dev
+
+    - name: Create archive
+      run: |
+        ls -al
+        git archive -o site.zip gh-pages
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: documentation
+        path: site.zip
