@@ -21,11 +21,11 @@
 	</a> -->
 </p>
 <p align="center">
-	<a href="https://py-meringue.readthedocs.io/en/latest/?badge=latest">
-		<img src="https://readthedocs.org/projects/py-meringue/badge/?version=latest" alt="Documentation Status" />
+	<a href="https://github.com/dd/Meringue/actions/workflows/mkdocs-release.yml" >
+		<img src="https://img.shields.io/github/actions/workflow/status/dd/Meringue/mkdocs-release.yml?logo=github&label=Docs" alt="Documentation - Release" />
 	</a>
 	<a href="https://github.com/dd/Meringue/actions/workflows/test.yml" >
-		<img src="https://img.shields.io/github/actions/workflow/status/dd/Meringue/test.yml" alt="Tests - Running" />
+		<img src="https://img.shields.io/github/actions/workflow/status/dd/Meringue/test.yml?logo=github&label=Tests" alt="Tests - Running" />
 	</a>
 	<a href="https://codecov.io/gh/dd/Meringue" >
 		<img src="https://codecov.io/gh/dd/Meringue/branch/release/1.0.0/graph/badge.svg?token=HV1QGD74EK" alt="Tests - Coverage" />
@@ -36,7 +36,7 @@
 		<img src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" alt="Hatch project" />
 	</a>
 	<a href="https://squidfunk.github.io/mkdocs-material/" target="_blank">
-		<img src="https://img.shields.io/badge/docs-mkdocs%20material-blue.svg" alt="Material for MkDocs" />
+		<img src="https://img.shields.io/badge/docs-mkdocs_material-blue?logo=mdbook&logoColor=white" alt="Material for MkDocs" />
 	</a>
 	<a href="https://github.com/charliermarsh/ruff" target="_blank">
 		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json" alt="linting - Ruff" />

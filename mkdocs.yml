@@ -178,9 +178,6 @@ extra:
   #     link: /ru/
   #     lang: ru
   social:
-    - icon: simple/readthedocs
-      link: https://py-meringue.readthedocs.io/
-      name: Read the Docs
     - icon: fontawesome/brands/github
       link: https://github.com/dd/Meringue
       name: github
