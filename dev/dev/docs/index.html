@@ -1296,16 +1296,17 @@
 <p>When working with <a class="autorefs autorefs-internal" href="#local-development">local server</a> documentation, this option is disabled.</p>
 <h2 id="building-and-publishing_1">Building and publishing<a class="headerlink" href="#building-and-publishing_1" title="Permanent link">¤</a></h2>
 <p>There is a separate <code>hatch run docs:build</code> command for building documentation.</p>
-<p>The documentation build is produced in <a href="https://docs.github.com/en/actions">GitHub Actions</a> and published in <a href="https://pages.github.com/">GitHub Pages</a>.</p>
-<p>Documentation is rolled out dev version when pushing to <code>dev</code> branch and release when pushing tags with <code>v*</code> versions.</p>
-<p>Explore <code>.github/workflows/mkdocs-dev.yml</code> and <code>.github/workflows/mkdocs-release.yml</code> if necessary.</p>
+<p>But before pushing the updated documentation, please run the <code>hatch run docs:build-check</code> command, it will build the documentation and check the links for broken ones.</p>
+<p>Documentation is collected in <a href="https://docs.github.com/en/actions">GitHub Actions</a> and uploaded to the <a href="https://github.com/dd/Meringue/tree/gh-pages">gh-pages</a> branch and published using <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+<p>The documentation is automatically collected and rolled out when pushing the release tag (<code>v*</code>), and when pushing to the <code>dev</code> branch, the dev version of the documentation is updated.
+You can learn more about these processes in the <a href="https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-release.yml">releasel</a> and <a href="https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-dev.yml">dev</a> workflow configs.</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2023-07-04 00:51:54+0000</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2023-07-04 22:16:18+0000</span>
       
         <br>
         Created:

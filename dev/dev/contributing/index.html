@@ -1002,6 +1002,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#building-and-publishing" class="md-nav__link">
+    Building and publishing
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1212,6 +1219,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#building-and-publishing" class="md-nav__link">
+    Building and publishing
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1260,6 +1274,10 @@
 </code></pre></div>
 <h2 id="git-flow">Git flow<a class="headerlink" href="#git-flow" title="Permanent link">¤</a></h2>
 <p>As you develop and refine, please try to keep your repository consistent with <a href="https://github.com/petervanderdoes/gitflow-avh">gitflow</a>.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Probably this point will change, the library is actively developed, I took this approach as a familiar one, however, I think that it will need to be changed. If you have any suggestions I'll be happy to listen.</p>
+</div>
 <h2 id="internationalization">Internationalization<a class="headerlink" href="#internationalization" title="Permanent link">¤</a></h2>
 <p>To add translations there are two useful commands:</p>
 <h3 id="makemessages"><code>makemessages</code><a class="headerlink" href="#makemessages" title="Permanent link">¤</a></h3>
@@ -1305,13 +1323,20 @@
 <p>You can generate a Changelog with the following command using<a href="https://github.com/frinyvonnick/gitmoji-changelog">gitmoji-changelog</a>:</p>
 <div class="language-console highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="go">gitmoji-changelog update 1.0.0 --preset generic --group-similar-commits</span>
 </code></pre></div>
+<h2 id="building-and-publishing">Building and publishing<a class="headerlink" href="#building-and-publishing" title="Permanent link">¤</a></h2>
+<p>For the build, <a href="https://hatch.pypa.io/">hatch</a> is used and to build the library there is the following command:</p>
+<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">$ </span>hatch<span class="w"> </span>build
+</code></pre></div>
+<p>This command is provided by hatch and for more details on how it works, it is better to look at the hatch <a href="https://hatch.pypa.io/latest/cli/reference/#hatch-build">documentation</a>.</p>
+<p>The build and upload of releases is implemented in <a href="https://docs.github.com/en/actions">GitHub Actions</a> and occurs automatically when pushing release tags like <code>v*</code>.</p>
+<p>More details on how to set up a build and upload can be found in the workflow <a href="https://github.com/dd/Meringue/blob/master/.github/workflows/release.yml">config</a>.</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2023-07-04 00:51:54+0000</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2023-07-04 22:16:18+0000</span>
       
         <br>
         Created:
