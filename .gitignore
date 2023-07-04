@@ -6,8 +6,9 @@
 *~
 .*
 
+dist
 /env
 /build
-/dist
 /stuff
 /venv
+/_readthedocs

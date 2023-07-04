@@ -1,0 +1,18 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+default_install_hook_types: [commit-msg, pre-commit]
+repos:
+-   repo: local
+    hooks:
+    -   id: lint-check
+        name: Lint check
+        entry: hatch run lint:check
+        language: system
+        'types_or': [python, pyi]
+        stages: ['pre-commit']
+        files: ^(?!.*migrations).*$
+-   repo: https://github.com/jorisroovers/gitlint
+    rev: v0.19.1  # Fill in a tag / sha here
+    hooks:
+    -   id: gitlint
+        name: Check commit title and description

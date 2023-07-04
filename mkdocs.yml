@@ -1,0 +1,198 @@
+site_url: https://dd.github.io/Meringue/
+site_name: Meringue
+site_description: Meringue library python documentation
+site_author: Dmitriy Dobrynin (aka dd) <dd@manin.space>
+copyright: Copyright &copy; 2014 - present <a href="https://manin.space/" target="_blank" rel="noopener" >manin.space</a>
+
+repo_name: dd/Meringue
+repo_url: https://github.com/dd/Meringue
+edit_uri: edit/master/docs/src
+
+docs_dir: docs/src
+site_dir: docs/dist
+dev_addr: 127.0.0.1:7000
+
+theme:
+  name: material
+  language: en
+  custom_dir: docs/theme
+  logo: assets/favicon.svg
+  favicon: assets/favicon.svg
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/theme-light-dark
+        name: Switch to light mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.path
+    - navigation.prune
+    # - navigation.indexes
+    - toc.follow
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - navigation.footer
+    - content.action.view
+    - content.action.edit
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - toc:
+      title: On this page
+      permalink: "¤"  # true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - tables
+  - pymdownx.betterem
+  - pymdownx.details
+  - pymdownx.superfences:
+      preserve_tabs: true
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tilde
+  - pymdownx.smartsymbols
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+      linenums_style: pymdownx-inline
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.keys
+  - pymdownx.snippets:
+      check_paths: true
+  # - pymdownx.magiclink:
+  #     hide_protocol: true
+  # - pymdownx.escapeall:
+  #     hardbreak: True
+  #     nbsp: True
+  # # - markdown.extensions.smarty:
+  # #     smart_quotes: false
+
+plugins:
+  - search
+  - literate-nav:
+      nav_file: SUMMARY.md
+      implicit_index: true
+  - git-revision-date-localized:
+      type: custom  # timeago
+      # :material-clock-edit-outline:
+      # :material-clock-plus-outline:
+      custom_format: "%Y-%m-%d %H:%M:%S%z"
+      timezone: UTC
+      locale: en
+      fallback_to_build_date: true
+      enable_creation_date: true
+      exclude:
+        - index.md
+        - reference/*
+      enabled: !ENV [MERINGUE_MKDOCS_ENABLED_GIT_REVISION_DATE, true]
+  - git-authors:
+      exclude:
+        - index.md
+        - reference/*
+  - autorefs
+  - gen-files:
+      scripts:
+      - docs/gen_ref_pages.py
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          load_external_modules: true
+          import:
+            - https://docs.python.org/3/objects.inv
+            # - https://mkdocstrings.github.io/objects.inv
+            # - https://mkdocstrings.github.io/griffe/objects.inv
+            - https://docs.djangoproject.com/en/4.2/_objects
+            # - https://django-modeltranslation.readthedocs.io/en/latest/objects.inv
+            # - https://django-polymorphic.readthedocs.io/en/stable/objects.inv
+            # - url: https://docs.python-requests.org/en/master/objects.inv
+          options:
+            # show_bases: false
+            show_source: true
+            show_signature_annotations: true
+            members_order: source
+            # https://github.com/mkdocstrings/mkdocstrings/issues/579
+            # will need to be returned when the bug is fixed
+            # group_by_category: false
+            docstring_section_style: list
+            merge_init_into_class: true
+            separate_signature: true
+            signature_crossrefs: true
+  - offline:
+      enabled: !ENV [MERINGUE_MKDOCS_OFFLINE, false]
+  - minify:
+      minify_html: !ENV [MERINGUE_MKDOCS_ENABLE_MINIFY, true]
+      # minify_js: !ENV [MERINGUE_MKDOCS_ENABLE_MINIFY, true]
+      minify_css: !ENV [MERINGUE_MKDOCS_ENABLE_MINIFY, true]
+      htmlmin_opts:
+          remove_comments: true
+      cache_safe: true
+      css_files:
+          - css/base.css
+
+extra:
+  version:
+    provider: mike
+  # alternate:
+  #   - name: English
+  #     link: /en/
+  #     lang: en
+  #   - name: Russian
+  #     link: /ru/
+  #     lang: ru
+  social:
+    - icon: simple/readthedocs
+      link: https://py-meringue.readthedocs.io/
+      name: Read the Docs
+    - icon: fontawesome/brands/github
+      link: https://github.com/dd/Meringue
+      name: github
+    - icon: fontawesome/brands/python  # simple/pypi
+      link: https://pypi.org/project/meringue/
+      name: pypi
+
+extra_css:
+  - css/base.css
+
+watch:
+  - docs/theme
+  - docs/gen_ref_pages.py
+  - meringue
+  - README.md

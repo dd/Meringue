@@ -1,0 +1,6 @@
+[general]
+ignore = B6,T5
+contrib = CC2
+
+[title-match-regex]
+regex=^([^(]+?)(\([^)]+?\))?!?: .+

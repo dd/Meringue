@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{# {% block announce %} #}
+	{# <span class="icon" >⚠️</span> The development of a new version is in progress, you can see the roadmap <a href="/#roadmap">here</a>. #}
+{# {% endblock %} #}
+
+{% block outdated %}
+	You're not viewing the latest version.
+	<a href="{{ '../' ~ base_url }}">
+		<strong>Click here to go to latest.</strong>
+	</a>
+{% endblock %}
+
+{% block content %}
+	{{ super() }}
+
+	{% if git_page_authors %}
+		<div class="md-source-date">
+			<small>Authors: {{ git_page_authors | default('enable mkdocs-git-authors-plugin') }}</small>
+		</div>
+	{% endif %}
+
+	<hr>
+	<footer class="sponsorship">
+		<hr>
+		<a href="https://manin.space/" target="_blank" rel="noopener" >
+			<span class="twemoji heart-throb-hover">
+				{# :material-space-invaders: #}
+				{% include ".icons/material/space-invaders.svg" %}
+			</span>
+		</a>
+		<hr>
+	</footer>
+{% endblock %}

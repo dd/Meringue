@@ -1,15 +1,36 @@
-# -*- coding: utf-8 -*-
+from django.db.models import Manager
 
-from django.db.models.manager import Manager
+from meringue.core.query import PublicationDatesQuerySet
+from meringue.core.query import PublicationQuerySet
+from meringue.core.query import SortingQuerySet
 
-from meringue.core.query import PublishQuerySet
 
-
-class PublishManager(Manager):
-    use_for_related_fields = True
+class SortingManager(Manager):
+    """
+    Manager with sorting correction functionality.
+    """
 
     def get_queryset(self):
-        return PublishQuerySet(self.model, using=self._db)
+        return SortingQuerySet(model=self.model, using=self._db, hints=self._hints)
+
+    def correction_sorting(self):
+        return self.get_queryset().correction_sorting()
+
+
+class PublicationManager(Manager):
+    def get_queryset(self):
+        return PublicationQuerySet(self.model, using=self._db)
+
+    def published(self, *args, **kwargs):
+        return self.get_queryset().published(*args, **kwargs)
+
+    def unpublished(self, *args, **kwargs):
+        return self.get_queryset().unpublished(*args, **kwargs)
+
+
+class PublicationDatesManager(Manager):
+    def get_queryset(self):
+        return PublicationDatesQuerySet(self.model, using=self._db)
 
     def published(self, *args, **kwargs):
         return self.get_queryset().published(*args, **kwargs)
