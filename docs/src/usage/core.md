@@ -64,7 +64,7 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 #### published
 
-::: meringue.core.query.PublicationDatesQuerySet.published
+::: meringue.core.query.PublicationQuerySet.published
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false
@@ -73,7 +73,7 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 #### unpublished
 
-::: meringue.core.query.PublicationDatesQuerySet.unpublished
+::: meringue.core.query.PublicationQuerySet.unpublished
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false
