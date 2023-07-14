@@ -83,13 +83,46 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 ## Utils
 
 
-### format_date_from_to
+### datetime
+
+#### format_date_from_to
 
 ::: meringue.core.utils.datetime.format_date_from_to
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false
 		show_source: false
+
+
+### crypt
+
+This module contains two extremely simplified functions for encrypting and decrypting a message using the AES algorithm and the GCM method. The main task that these functions are designed to solve is to encrypt small amounts of data for situations such as password recovery links and the like.
+
+!!! note
+	Эти функции лишь обёртка для методов шифрования из библиотеки [pycryptodome](https://www.pycryptodome.org/) (её так же необходимо поставить).
+
+
+#### encrypt_message
+
+::: meringue.core.utils.crypt.encrypt_message
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+		show_docstring_returns: false
+		show_docstring_attributes: false
+
+#### decrypt_message
+
+::: meringue.core.utils.crypt.decrypt_message
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+		show_docstring_returns: false
+		show_docstring_attributes: false
 
 
 ## Templatetags

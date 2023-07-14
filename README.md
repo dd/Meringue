@@ -52,6 +52,8 @@
 	</a>
 </p>
 
+Full documentation for the project is available at https://dd.github.io/Meringue/.
+
 Package with various functional (such as mixins, form utils, upload handlers and other) for Django Framework.
 
 This library is a set of various functionality that I use from project to project.
@@ -66,8 +68,8 @@ However, if someone decides to use this functionality in their project, and even
 Adding new functionality. Can change.
 
 * [x] Universal manager worked with all abstract models
-* [ ] Tests of all functionality
-* [ ] Methods for encrypting and decrypting text content (To create various secrets, such as a link to change your password or activate your profile).
+* [x] Tests of all functionality
+* [x] Methods for encrypting and decrypting text content (To create various secrets, such as a link to change your password or activate your profile).
 * [ ] Functionality for obtaining absolute links to resources presented on the front, located on another domain (When working through api) (utils methods, template tags and filters).
 * [ ] [drf](https://www.django-rest-framework.org/) serializer serializer for automatic form generation on the front when working through rest api. (An npm package on [vuejs](https://vuejs.org/) will also be developed
  generating form based on response from api).
