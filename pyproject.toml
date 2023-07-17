@@ -123,7 +123,7 @@ check = [
 ]
 format = [
 	"ruff --fix {args:.}",
-	"black {args:.}",
+	"black --exclude=\".*migrations\\/.*$\" {args:.}",
 ]
 
 [tool.hatch.envs.test]

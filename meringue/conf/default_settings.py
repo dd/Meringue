@@ -24,3 +24,13 @@ CRYPTO_KEY: Final[str] = settings.SECRET_KEY[:32]
 """
 Encryption key
 """
+
+FRONTEND_URLS: Final[dict] = None
+"""
+A dict of links to the frontend
+"""
+
+FRONTEND_DOMAIN: Final[str] = None
+"""
+Domain for generating absolute links
+"""
