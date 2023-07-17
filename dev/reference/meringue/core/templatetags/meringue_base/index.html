@@ -643,6 +643,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/frontend/" class="md-nav__link">
+        frontend.py
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1122,7 +1136,7 @@
 
 
 <h1 id="meringue.core.templatetags.meringue_base" class="doc doc-heading">
-          <span class="doc doc-object-name doc-module-name">meringue.core.templatetags.meringue_base</span>
+            <span class="doc doc-object-name doc-module-name">meringue.core.templatetags.meringue_base</span>
 
 
 <a href="#meringue.core.templatetags.meringue_base" class="headerlink" title="Permanent link">¤</a></h1>
@@ -1141,12 +1155,13 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="meringue.core.templatetags.meringue_base.cop_year" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">cop_year</span>
+          <span class="doc doc-object-name doc-function-name">cop_year</span>
 
 
 <a href="#meringue.core.templatetags.meringue_base.cop_year" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1158,9 +1173,13 @@
       <p>A tag that displays the year or range of years for the copyright string in <code>YYYY-YYYY</code> format.</p>
 <p>For the tag to work, you must fill in the <code>COP_YEAR</code> parameter in the settings.</p>
 
+
+
 <p><strong>Examples:</strong></p>
     <div class="language-jinja highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="x">&lt;p&gt;Copyright © </span><span class="cp">{%</span> <span class="k">cop_year</span> <span class="cp">%}</span><span class="x"> My company&lt;/p&gt;</span>
 </code></pre></div>
+
+
 
   <p>Raises:</p>
   <ul>
@@ -1174,6 +1193,8 @@ meringue settings</p>
       </li>
   </ul>
 
+
+
   <p>Returns:</p>
   <ul>
       <li class="field-body">
@@ -1185,9 +1206,9 @@ meringue settings</p>
       </li>
   </ul>
 
-      <details class="quote">
-        <summary>Source code in <code>meringue/core/templatetags/meringue_base.py</code></summary>
-        <div class="highlight"><pre><span></span><code><a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a><span class="nd">@register</span><span class="o">.</span><span class="n">simple_tag</span>
+          <details class="quote">
+            <summary>Source code in <code>meringue/core/templatetags/meringue_base.py</code></summary>
+            <div class="highlight"><pre><span></span><code><a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a><span class="nd">@register</span><span class="o">.</span><span class="n">simple_tag</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a><a href="#__codelineno-0-15"><span class="linenos" data-linenos="15 "></span></a><span class="k">def</span> <span class="nf">cop_year</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a><span class="sd">    A tag that displays the year or range of years for the copyright string in `YYYY-YYYY` format.</span>
@@ -1221,17 +1242,18 @@ meringue settings</p>
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a><a href="#__codelineno-0-45"><span class="linenos" data-linenos="45 "></span></a>
 <a id="__codelineno-0-46" name="__codelineno-0-46"></a><a href="#__codelineno-0-46"><span class="linenos" data-linenos="46 "></span></a>    <span class="k">return</span> <span class="n">mark_safe</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m_settings</span><span class="o">.</span><span class="n">COP_YEAR</span><span class="si">}</span><span class="s2">&amp;mdash;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># noqa: S308</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="meringue.core.templatetags.meringue_base.date_range" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">date_range</span>
+          <span class="doc doc-object-name doc-function-name">date_range</span>
 
 
 <a href="#meringue.core.templatetags.meringue_base.date_range" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1247,6 +1269,8 @@ meringue settings</p>
 <li><code>DD - DD.MM.YYYY</code></li>
 <li><code>DD.MM.YYYY</code></li>
 </ul>
+
+
 
   <p>Attributes:</p>
   <ul>
@@ -1266,9 +1290,13 @@ meringue settings</p>
       </li>
   </ul>
 
+
+
 <p><strong>Examples:</strong></p>
     <div class="language-jinja highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="cp">{%</span> <span class="k">date_range</span> <span class="nv">date_start</span> <span class="nv">date_end</span> <span class="cp">%}</span>
 </code></pre></div>
+
+
 
   <p>Returns:</p>
   <ul>
@@ -1281,9 +1309,9 @@ meringue settings</p>
       </li>
   </ul>
 
-      <details class="quote">
-        <summary>Source code in <code>meringue/core/templatetags/meringue_base.py</code></summary>
-        <div class="highlight"><pre><span></span><code><a id="__codelineno-0-49" name="__codelineno-0-49"></a><a href="#__codelineno-0-49"><span class="linenos" data-linenos="49 "></span></a><span class="nd">@register</span><span class="o">.</span><span class="n">simple_tag</span>
+          <details class="quote">
+            <summary>Source code in <code>meringue/core/templatetags/meringue_base.py</code></summary>
+            <div class="highlight"><pre><span></span><code><a id="__codelineno-0-49" name="__codelineno-0-49"></a><a href="#__codelineno-0-49"><span class="linenos" data-linenos="49 "></span></a><span class="nd">@register</span><span class="o">.</span><span class="n">simple_tag</span>
 <a id="__codelineno-0-50" name="__codelineno-0-50"></a><a href="#__codelineno-0-50"><span class="linenos" data-linenos="50 "></span></a><span class="k">def</span> <span class="nf">date_range</span><span class="p">(</span><span class="n">date_start</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">date_end</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-0-51" name="__codelineno-0-51"></a><a href="#__codelineno-0-51"><span class="linenos" data-linenos="51 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-52" name="__codelineno-0-52"></a><a href="#__codelineno-0-52"><span class="linenos" data-linenos="52 "></span></a><span class="sd">    Return range of date in one of the following formats:</span>
@@ -1315,7 +1343,7 @@ meringue settings</p>
 <a id="__codelineno-0-78" name="__codelineno-0-78"></a><a href="#__codelineno-0-78"><span class="linenos" data-linenos="78 "></span></a>
 <a id="__codelineno-0-79" name="__codelineno-0-79"></a><a href="#__codelineno-0-79"><span class="linenos" data-linenos="79 "></span></a>    <span class="k">return</span> <span class="n">mark_safe</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tmp_date_start</span><span class="si">}</span><span class="s2">&amp;nbsp;&amp;mdash; </span><span class="si">{</span><span class="n">tmp_date_end</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># noqa: S308</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>

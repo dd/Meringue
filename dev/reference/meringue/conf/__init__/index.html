@@ -741,6 +741,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/utils/frontend/" class="md-nav__link">
+        frontend.py
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1216,7 +1230,7 @@
 
 
 <h1 id="meringue.conf" class="doc doc-heading">
-          <span class="doc doc-object-name doc-module-name">meringue.conf</span>
+            <span class="doc doc-object-name doc-module-name">meringue.conf</span>
 
 
 <a href="#meringue.conf" class="headerlink" title="Permanent link">¤</a></h1>
@@ -1238,7 +1252,7 @@
 
 
 <h2 id="meringue.conf.SETTING_KEY" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">SETTING_KEY</span>
+          <span class="doc doc-object-name doc-attribute-name">SETTING_KEY</span>
 
   
   <span class="doc doc-labels">
@@ -1252,6 +1266,8 @@
   <div class="doc doc-contents ">
   
       <p>Parameter name in django settings for meringue settings.</p>
+
+
 
 <p><strong>Examples:</strong></p>
     <div class="language-py highlight"><span class="filename">settings.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">MERINGUE</span> <span class="o">=</span> <span class="p">{</span>
@@ -1267,7 +1283,7 @@
 
 
 <h2 id="meringue.conf.DEPRECATED_PARAMS" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">DEPRECATED_PARAMS</span>
+          <span class="doc doc-object-name doc-attribute-name">DEPRECATED_PARAMS</span>
 
   
   <span class="doc doc-labels">
@@ -1281,6 +1297,8 @@
   <div class="doc doc-contents ">
   
       <p>Dict with deprecated options and warning texts for them.</p>
+
+
 
 <p><strong>Examples:</strong></p>
     <div class="language-py highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">DEPRECATED_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
@@ -1296,7 +1314,7 @@
 
 
 <h2 id="meringue.conf.PARAMS_TO_IMPORT" class="doc doc-heading">
-        <span class="doc doc-object-name doc-attribute-name">PARAMS_TO_IMPORT</span>
+          <span class="doc doc-object-name doc-attribute-name">PARAMS_TO_IMPORT</span>
 
   
   <span class="doc doc-labels">
@@ -1313,6 +1331,8 @@
   
       <p>List of options that contain the path to the module and must be imported.</p>
 
+
+
 <p><strong>Examples:</strong></p>
     <div class="language-py highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">PARAMS_TO_IMPORT</span> <span class="o">=</span> <span class="p">[</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s2">&quot;UPLOAD_RENAME_HANDLER&quot;</span><span class="p">,</span>
@@ -1328,7 +1348,7 @@
 
 
 <h2 id="meringue.conf.Settings" class="doc doc-heading">
-        <span class="doc doc-object-name doc-class-name">Settings</span>
+          <span class="doc doc-object-name doc-class-name">Settings</span>
 
 
 <a href="#meringue.conf.Settings" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1346,8 +1366,9 @@
       <p>A settings object.</p>
 <p>The settings are obtained from the django settings by the name of the key which should contain
 an object with all the application settings.</p>
-
   
+
+
 
   <p>Attributes:</p>
   <ul>
@@ -1382,9 +1403,9 @@ imported.</p>
       </li>
   </ul>
 
-          <details class="quote">
-            <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
-            <div class="highlight"><pre><span></span><code><a id="__codelineno-0-84" name="__codelineno-0-84"></a><a href="#__codelineno-0-84"><span class="linenos" data-linenos=" 84 "></span></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+              <details class="quote">
+                <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
+                <div class="highlight"><pre><span></span><code><a id="__codelineno-0-84" name="__codelineno-0-84"></a><a href="#__codelineno-0-84"><span class="linenos" data-linenos=" 84 "></span></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 <a id="__codelineno-0-85" name="__codelineno-0-85"></a><a href="#__codelineno-0-85"><span class="linenos" data-linenos=" 85 "></span></a>    <span class="bp">self</span><span class="p">,</span>
 <a id="__codelineno-0-86" name="__codelineno-0-86"></a><a href="#__codelineno-0-86"><span class="linenos" data-linenos=" 86 "></span></a>    <span class="n">setting_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <a id="__codelineno-0-87" name="__codelineno-0-87"></a><a href="#__codelineno-0-87"><span class="linenos" data-linenos=" 87 "></span></a>    <span class="n">defaults</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
@@ -1413,11 +1434,12 @@ imported.</p>
 <a id="__codelineno-0-110" name="__codelineno-0-110"></a><a href="#__codelineno-0-110"><span class="linenos" data-linenos="110 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_cached_attrs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <a id="__codelineno-0-111" name="__codelineno-0-111"></a><a href="#__codelineno-0-111"><span class="linenos" data-linenos="111 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </code></pre></div>
-          </details>
+              </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -1432,7 +1454,7 @@ imported.</p>
 
 
 <h3 id="meringue.conf.Settings.__getattr__" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">__getattr__</span>
+          <span class="doc doc-object-name doc-function-name">__getattr__</span>
 
 
 <a href="#meringue.conf.Settings.__getattr__" class="headerlink" title="Permanent link">¤</a></h3>
@@ -1442,6 +1464,8 @@ imported.</p>
   <div class="doc doc-contents ">
   
       <p>Gets the parameter value and caches it in the attributes of the settings object.</p>
+
+
 
   <p>Attributes:</p>
   <ul>
@@ -1454,6 +1478,8 @@ imported.</p>
       </li>
   </ul>
 
+
+
   <p>Raises:</p>
   <ul>
       <li class="field-body">
@@ -1464,6 +1490,8 @@ imported.</p>
         </div>
       </li>
   </ul>
+
+
 
   <p>Warns:</p>
   <ul>
@@ -1476,6 +1504,8 @@ imported.</p>
       </li>
   </ul>
 
+
+
   <p>Returns:</p>
   <ul>
       <li class="field-body">
@@ -1487,9 +1517,9 @@ imported.</p>
       </li>
   </ul>
 
-      <details class="quote">
-        <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
-        <div class="highlight"><pre><span></span><code><a id="__codelineno-0-113" name="__codelineno-0-113"></a><a href="#__codelineno-0-113"><span class="linenos" data-linenos="113 "></span></a><span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
+            <div class="highlight"><pre><span></span><code><a id="__codelineno-0-113" name="__codelineno-0-113"></a><a href="#__codelineno-0-113"><span class="linenos" data-linenos="113 "></span></a><span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <a id="__codelineno-0-114" name="__codelineno-0-114"></a><a href="#__codelineno-0-114"><span class="linenos" data-linenos="114 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-115" name="__codelineno-0-115"></a><a href="#__codelineno-0-115"><span class="linenos" data-linenos="115 "></span></a><span class="sd">    Gets the parameter value and caches it in the attributes of the settings object.</span>
 <a id="__codelineno-0-116" name="__codelineno-0-116"></a><a href="#__codelineno-0-116"><span class="linenos" data-linenos="116 "></span></a>
@@ -1520,17 +1550,18 @@ imported.</p>
 <a id="__codelineno-0-141" name="__codelineno-0-141"></a><a href="#__codelineno-0-141"><span class="linenos" data-linenos="141 "></span></a>    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
 <a id="__codelineno-0-142" name="__codelineno-0-142"></a><a href="#__codelineno-0-142"><span class="linenos" data-linenos="142 "></span></a>    <span class="k">return</span> <span class="n">val</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h3 id="meringue.conf.Settings.reset" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">reset</span>
+          <span class="doc doc-object-name doc-function-name">reset</span>
 
 
 <a href="#meringue.conf.Settings.reset" class="headerlink" title="Permanent link">¤</a></h3>
@@ -1541,9 +1572,9 @@ imported.</p>
   
       <p>Reset downloaded settings, as well as clearing the cache.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
-        <div class="highlight"><pre><span></span><code><a id="__codelineno-0-144" name="__codelineno-0-144"></a><a href="#__codelineno-0-144"><span class="linenos" data-linenos="144 "></span></a><span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
+            <div class="highlight"><pre><span></span><code><a id="__codelineno-0-144" name="__codelineno-0-144"></a><a href="#__codelineno-0-144"><span class="linenos" data-linenos="144 "></span></a><span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <a id="__codelineno-0-145" name="__codelineno-0-145"></a><a href="#__codelineno-0-145"><span class="linenos" data-linenos="145 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-146" name="__codelineno-0-146"></a><a href="#__codelineno-0-146"><span class="linenos" data-linenos="146 "></span></a><span class="sd">    Reset downloaded settings, as well as clearing the cache.</span>
 <a id="__codelineno-0-147" name="__codelineno-0-147"></a><a href="#__codelineno-0-147"><span class="linenos" data-linenos="147 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
@@ -1553,7 +1584,7 @@ imported.</p>
 <a id="__codelineno-0-151" name="__codelineno-0-151"></a><a href="#__codelineno-0-151"><span class="linenos" data-linenos="151 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_cached_attrs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <a id="__codelineno-0-152" name="__codelineno-0-152"></a><a href="#__codelineno-0-152"><span class="linenos" data-linenos="152 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">user_params</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">setting_key</span><span class="p">,</span> <span class="p">{})</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1565,6 +1596,7 @@ imported.</p>
   </div>
 
 </div>
+
 
 
 <div class="doc doc-object doc-function">
@@ -1572,7 +1604,7 @@ imported.</p>
 
 
 <h2 id="meringue.conf.import_from_string" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">import_from_string</span>
+          <span class="doc doc-object-name doc-function-name">import_from_string</span>
 
 
 <a href="#meringue.conf.import_from_string" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1582,6 +1614,8 @@ imported.</p>
   <div class="doc doc-contents ">
   
       <p>Imports a dotted module path and returns the attribute/class.</p>
+
+
 
   <p>Attributes:</p>
   <ul>
@@ -1601,6 +1635,8 @@ imported.</p>
       </li>
   </ul>
 
+
+
   <p>Raises:</p>
   <ul>
       <li class="field-body">
@@ -1611,6 +1647,8 @@ imported.</p>
         </div>
       </li>
   </ul>
+
+
 
   <p>Returns:</p>
   <ul>
@@ -1623,9 +1661,9 @@ imported.</p>
       </li>
   </ul>
 
-      <details class="quote">
-        <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
-        <div class="highlight"><pre><span></span><code><a id="__codelineno-0-54" name="__codelineno-0-54"></a><a href="#__codelineno-0-54"><span class="linenos" data-linenos="54 "></span></a><span class="k">def</span> <span class="nf">import_from_string</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+          <details class="quote">
+            <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
+            <div class="highlight"><pre><span></span><code><a id="__codelineno-0-54" name="__codelineno-0-54"></a><a href="#__codelineno-0-54"><span class="linenos" data-linenos="54 "></span></a><span class="k">def</span> <span class="nf">import_from_string</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <a id="__codelineno-0-55" name="__codelineno-0-55"></a><a href="#__codelineno-0-55"><span class="linenos" data-linenos="55 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-56" name="__codelineno-0-56"></a><a href="#__codelineno-0-56"><span class="linenos" data-linenos="56 "></span></a><span class="sd">    Imports a dotted module path and returns the attribute/class.</span>
 <a id="__codelineno-0-57" name="__codelineno-0-57"></a><a href="#__codelineno-0-57"><span class="linenos" data-linenos="57 "></span></a>
@@ -1646,17 +1684,18 @@ imported.</p>
 <a id="__codelineno-0-72" name="__codelineno-0-72"></a><a href="#__codelineno-0-72"><span class="linenos" data-linenos="72 "></span></a>        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Could not import &#39;</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&#39; for API setting &#39;</span><span class="si">{</span><span class="n">attr</span><span class="si">}</span><span class="s2">&#39;.</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.&quot;</span>
 <a id="__codelineno-0-73" name="__codelineno-0-73"></a><a href="#__codelineno-0-73"><span class="linenos" data-linenos="73 "></span></a>        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="meringue.conf.reset_settings" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">reset_settings</span>
+          <span class="doc doc-object-name doc-function-name">reset_settings</span>
 
 
 <a href="#meringue.conf.reset_settings" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1667,9 +1706,9 @@ imported.</p>
   
       <p>Settings change signal handler.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
-        <div class="highlight"><pre><span></span><code><a id="__codelineno-0-158" name="__codelineno-0-158"></a><a href="#__codelineno-0-158"><span class="linenos" data-linenos="158 "></span></a><span class="nd">@receiver</span><span class="p">(</span><span class="n">setting_changed</span><span class="p">)</span>
+          <details class="quote">
+            <summary>Source code in <code>meringue/conf/__init__.py</code></summary>
+            <div class="highlight"><pre><span></span><code><a id="__codelineno-0-158" name="__codelineno-0-158"></a><a href="#__codelineno-0-158"><span class="linenos" data-linenos="158 "></span></a><span class="nd">@receiver</span><span class="p">(</span><span class="n">setting_changed</span><span class="p">)</span>
 <a id="__codelineno-0-159" name="__codelineno-0-159"></a><a href="#__codelineno-0-159"><span class="linenos" data-linenos="159 "></span></a><span class="k">def</span> <span class="nf">reset_settings</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <a id="__codelineno-0-160" name="__codelineno-0-160"></a><a href="#__codelineno-0-160"><span class="linenos" data-linenos="160 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-161" name="__codelineno-0-161"></a><a href="#__codelineno-0-161"><span class="linenos" data-linenos="161 "></span></a><span class="sd">    Settings change signal handler.</span>
@@ -1678,7 +1717,7 @@ imported.</p>
 <a id="__codelineno-0-164" name="__codelineno-0-164"></a><a href="#__codelineno-0-164"><span class="linenos" data-linenos="164 "></span></a>    <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;setting&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">SETTING_KEY</span><span class="p">:</span>
 <a id="__codelineno-0-165" name="__codelineno-0-165"></a><a href="#__codelineno-0-165"><span class="linenos" data-linenos="165 "></span></a>        <span class="n">m_settings</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>

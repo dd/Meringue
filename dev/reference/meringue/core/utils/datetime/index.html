@@ -18,7 +18,7 @@
         <link rel="prev" href="../crypt/">
       
       
-        <link rel="next" href="../../templatetags/__init__/">
+        <link rel="next" href="../frontend/">
       
       <link rel="icon" href="../../../../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
@@ -688,6 +688,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/" class="md-nav__link">
+        frontend.py
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1108,7 +1122,7 @@
 
 
 <h1 id="meringue.core.utils.datetime" class="doc doc-heading">
-          <span class="doc doc-object-name doc-module-name">meringue.core.utils.datetime</span>
+            <span class="doc doc-object-name doc-module-name">meringue.core.utils.datetime</span>
 
 
 <a href="#meringue.core.utils.datetime" class="headerlink" title="Permanent link">¤</a></h1>
@@ -1127,12 +1141,13 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
 <h2 id="meringue.core.utils.datetime.format_date_from_to" class="doc doc-heading">
-        <span class="doc doc-object-name doc-function-name">format_date_from_to</span>
+          <span class="doc doc-object-name doc-function-name">format_date_from_to</span>
 
 
 <a href="#meringue.core.utils.datetime.format_date_from_to" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1154,10 +1169,14 @@
 <li><code>DD.MM.YYYY</code></li>
 </ul>
 
+
+
 <p><strong>Examples:</strong></p>
     <div class="language-pycon highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">format_date_from_to</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="go">01.01 - 01.02.2020</span>
 </code></pre></div>
+
+
 
   <p>Attributes:</p>
   <ul>
@@ -1184,6 +1203,8 @@
       </li>
   </ul>
 
+
+
   <p>Returns:</p>
   <ul>
       <li class="field-body">
@@ -1195,9 +1216,9 @@
       </li>
   </ul>
 
-      <details class="quote">
-        <summary>Source code in <code>meringue/core/utils/datetime.py</code></summary>
-        <div class="highlight"><pre><span></span><code><a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="k">def</span> <span class="nf">format_date_from_to</span><span class="p">(</span>
+          <details class="quote">
+            <summary>Source code in <code>meringue/core/utils/datetime.py</code></summary>
+            <div class="highlight"><pre><span></span><code><a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="k">def</span> <span class="nf">format_date_from_to</span><span class="p">(</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="n">date_start</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="n">date_end</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="n">delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span>
@@ -1238,7 +1259,7 @@
 <a id="__codelineno-0-47" name="__codelineno-0-47"></a><a href="#__codelineno-0-47"><span class="linenos" data-linenos="47 "></span></a>
 <a id="__codelineno-0-48" name="__codelineno-0-48"></a><a href="#__codelineno-0-48"><span class="linenos" data-linenos="48 "></span></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">date_end</span><span class="si">:</span><span class="s2">%d.%m.%Y</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1309,13 +1330,13 @@
         
         
           
-          <a href="../../templatetags/__init__/" class="md-footer__link md-footer__link--next" aria-label="Next: __init__.py" rel="next">
+          <a href="../frontend/" class="md-footer__link md-footer__link--next" aria-label="Next: frontend.py" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                __init__.py
+                frontend.py
               </div>
             </div>
             <div class="md-footer__button md-icon">
