@@ -1,9 +1,9 @@
+# ruff: noqa: RUF012
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from meringue.core.managers import PublicationDatesManager
-from meringue.core.managers import PublicationManager
-from meringue.core.managers import SortingManager
+from meringue.core.query import UniversalQuerySet
 
 
 class CMTimeMixin(models.Model):
@@ -29,7 +29,7 @@ class SortingMixin(models.Model):
         default=0,
     )
 
-    objects = SortingManager()
+    objects = UniversalQuerySet.as_manager()
 
     class Meta:
         ordering = [
@@ -54,7 +54,7 @@ class PublicationMixin(models.Model):
         db_index=True,
     )
 
-    objects = PublicationManager()
+    objects = UniversalQuerySet.as_manager()
 
     class Meta:
         abstract = True
@@ -82,7 +82,7 @@ class PublicationDatesMixin(models.Model):
         null=True,
     )
 
-    objects = PublicationDatesManager()
+    objects = UniversalQuerySet.as_manager()
 
     class Meta:
         abstract = True

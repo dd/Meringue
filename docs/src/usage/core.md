@@ -64,7 +64,7 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 #### published
 
-::: meringue.core.query.PublicationDatesQuerySet.published
+::: meringue.core.query.PublicationQuerySet.published
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false
@@ -73,7 +73,7 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 #### unpublished
 
-::: meringue.core.query.PublicationDatesQuerySet.unpublished
+::: meringue.core.query.PublicationQuerySet.unpublished
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false
@@ -83,13 +83,77 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 ## Utils
 
 
-### format_date_from_to
+### datetime
+
+#### format_date_from_to
 
 ::: meringue.core.utils.datetime.format_date_from_to
 	options:
 		show_root_heading: false
 		show_root_toc_entry: false
 		show_source: false
+
+
+### crypt
+
+This module contains two extremely simplified functions for encrypting and decrypting a message using the AES algorithm and the GCM method. The main task that these functions are designed to solve is to encrypt small amounts of data for situations such as password recovery links and the like.
+
+!!! note
+	These functions are just a wrapper for encryption methods from the [pycryptodome](https://www.pycryptodome.org/) library (you also need to install it).
+
+
+#### encrypt_message
+
+::: meringue.core.utils.crypt.encrypt_message
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+		show_docstring_returns: false
+		show_docstring_attributes: false
+
+#### decrypt_message
+
+::: meringue.core.utils.crypt.decrypt_message
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+		show_docstring_returns: false
+		show_docstring_attributes: false
+
+### frontend
+
+#### get_link
+
+[get_link][meringue.core.utils.frontend.get_link] is a method for getting a link to a resource.
+
+Modern sites mainly work according to the scheme when the backend provides an api to which the front sends requests, in this regard, [reverse](https://docs.djangoproject.com/en/4.2/ref/urlresolvers/#reverse), which provides django, cannot give actual links to the resource, but links are still needed in the backend (for example, in letters and sms sent to the user or in admin panel for managers). As a result, this small utility was implemented that will help you get a link to the desired resource.
+
+To use the utility, you must specify a list of links in the project settings, as well as if you plan to receive absolute links to the frontend domain:
+
+```py title="settings.py"
+MERINGUE={
+    "FRONTEND_URLS": {
+        "index": "/"
+        "user": "/user/{id}"
+    },
+    "FRONTEND_DOMAIN": "https://example.com",
+}
+```
+
+You can get links in code like this:
+
+```pycon
+>>> from meringue.core.utils.frontend import get_link
+>>> get_link("index")
+https://example.com/
+
+>>> get_link("user", id=123)
+https://example.com/user/123
+```
 
 
 ## Templatetags

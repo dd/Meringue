@@ -7,9 +7,6 @@
 $ pip install meringue
 ```
 
-
-## Configuration
-
 You can connect individual modules as needed (read more in the documentation of the corresponding module):
 
 ```pycon

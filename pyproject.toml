@@ -83,6 +83,7 @@ python = "3.11"
 dependencies = [
 	"pre-commit==3.3.3",
 	"ipython==8.14.0",
+	"pycryptodome==3.18.0",
 ]
 [tool.hatch.envs.default.scripts]
 precommit_install = "pre-commit install {args}"
@@ -122,7 +123,7 @@ check = [
 ]
 format = [
 	"ruff --fix {args:.}",
-	"black {args:.}",
+	"black --exclude=\".*migrations\\/.*$\" {args:.}",
 ]
 
 [tool.hatch.envs.test]
@@ -137,6 +138,7 @@ dependencies = [
 	"django==4.2",
 	"pytz==2023.3",
 	"django-modeltranslation==0.18.10",
+	"pycryptodome==3.18.0",
 ]
 [tool.hatch.envs.test.env-vars]
 DJANGO_SETTINGS_MODULE = 'test_project.settings'
@@ -154,6 +156,7 @@ dependencies = [
 	"pytest-cov==4.1.0",  # for ci tests with cover
 	"Faker==18.11.1",
 	"pytz==2023.3",
+	"pycryptodome==3.18.0",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
@@ -222,7 +225,6 @@ select = [
 	"E",
 	"EM",
 	"F",
-	"FBT",
 	"I",
 	"ICN",
 	"ISC",
@@ -245,10 +247,8 @@ ignore = [
 	"RUF001",  # Allow similar characters like latin `c` and cyrillic `с`
 	"RUF002",  # Allow russian at docstrings
 	"RUF003",  # Allow russian at comment
-	"FBT001",  # Allow boolean args
-	"FBT002",  # Allow boolean positional argument define
-	"FBT003",  # Allow boolean positional values in function calls, like `dict.get(... True)`
 	"PLR0913",  # Allow any number of function arguments
+	"E741",  # Allow variables of like "l", "O",  "i"
 	# # Allow non-abstract empty methods in abstract base classes
 	# "B027",
 	# # Ignore checks for possible passwords
@@ -265,7 +265,7 @@ ignore = [
 # ]
 [tool.ruff.extend-per-file-ignores]
 "__init__.py" = ["F401", "F403"]
-"test_*.py" = ["S101", "PLR2004"]
+"test_*.py" = ["S101", "PLR2004", "DTZ001"]
 "*/migrations/*" = ["I", "E", "Q", "RUF"]
 "test_project/*models.py" = ["RUF012"]
 [tool.ruff.flake8-import-conventions]
