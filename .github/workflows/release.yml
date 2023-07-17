@@ -3,7 +3,7 @@ name: Project Release Deployment
 on:
   push:
     tags:
-    - v*
+    - "v*"
 
 concurrency:
   group: release-deploy
