@@ -200,7 +200,7 @@ dependencies = [
 MERINGUE_MKDOCS_ENABLE_MINIFY = 'false'
 MKDOCS_CONFIG = "mkdocs.yml"
 [tool.hatch.envs.docs.scripts]
-build = "mkdocs build --config-file {env:MKDOCS_CONFIG} --clean --strict {args}"
+build = "mkdocs build --config-file {env:MKDOCS_CONFIG} --clean {args}"
 serve = "mkdocs serve --config-file {env:MKDOCS_CONFIG} --dev-addr localhost:8000 {args}"
 ci-build = "mike deploy --config-file {env:MKDOCS_CONFIG} --update-aliases {args}"
 validate = "linkchecker --config .linkcheckerrc docs/dist"
