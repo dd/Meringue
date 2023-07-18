@@ -14,7 +14,6 @@ dev_addr: 127.0.0.1:7000
 
 theme:
   name: material
-  language: en
   custom_dir: docs/theme
   logo: assets/favicon.svg
   favicon: assets/favicon.svg
@@ -109,13 +108,22 @@ plugins:
   - literate-nav:
       nav_file: SUMMARY.md
       implicit_index: true
+  - gen-files:
+      scripts:
+      - docs/gen_ref_pages.py
+  - i18n:
+      default_language_only: !ENV [MERINGUE_MKDOCS_DISABLE_LANGUAGES, false]
+      default_language: en
+      languages:
+        en: English
+        ru: Russian
   - git-revision-date-localized:
       type: custom  # timeago
       # :material-clock-edit-outline:
       # :material-clock-plus-outline:
       custom_format: "%Y-%m-%d %H:%M:%S%z"
       timezone: UTC
-      locale: en
+      # locale: en
       fallback_to_build_date: true
       enable_creation_date: true
       exclude:
@@ -127,9 +135,6 @@ plugins:
         - index.md
         - reference/*
   - autorefs
-  - gen-files:
-      scripts:
-      - docs/gen_ref_pages.py
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -170,13 +175,6 @@ plugins:
 extra:
   version:
     provider: mike
-  # alternate:
-  #   - name: English
-  #     link: /en/
-  #     lang: en
-  #   - name: Russian
-  #     link: /ru/
-  #     lang: ru
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/dd/Meringue

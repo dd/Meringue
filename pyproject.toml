@@ -113,8 +113,8 @@ description = "Lint environment"
 detached = true
 python = "3.11"
 dependencies = [
-	"ruff==0.0.275",
-	"black==23.3.0",
+	"ruff==0.0.278",
+	"black==23.7.0",
 ]
 [tool.hatch.envs.lint.scripts]
 check = [
@@ -184,16 +184,17 @@ python = "3.11"
 dependencies = [
 	"mkdocs[i18n]==1.4.3",
 	"mkdocs-literate-nav==0.6.0",
-	"mkdocs-material==9.1.17",
+	"mkdocs-material==9.1.18",
 	"mkdocs-git-revision-date-localized-plugin==1.2.0",
 	"mkdocs-git-authors-plugin==0.7.2",
 	"mkdocstrings[python]==0.22.0",
-	"black==23.3.0",
+	"black==23.7.0",
 	"mkdocs-minify-plugin==0.6.4",
 	"mkdocs-gen-files==0.5.0",
 	"Pygments==2.15.1",
 	"mike==1.1.2",
 	"linkchecker==10.2.1",
+	"mkdocs-static-i18n==0.56",
 ]
 [tool.hatch.envs.docs.env-vars]
 MERINGUE_MKDOCS_ENABLE_MINIFY = 'false'
