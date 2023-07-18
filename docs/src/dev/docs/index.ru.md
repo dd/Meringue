@@ -77,4 +77,8 @@ $ hatch run docs:serve
 
 Для сборки документации есть отдельная команда `hatch run docs:build`.
 
-Документация публикуется автоматически и настраивается в [readthedocs](https://readthedocs.org/).
+Но перед тем как запушить обновлённую документацию запусти пожалуйста команнду `hatch run docs:build-check`, она сбилдит документацию и проверит ссылки, на наличие битых.
+
+Документация собирается в [GitHub Actions](https://docs.github.com/en/actions) и выгружается в ветку [gh-pages](https://github.com/dd/Meringue/tree/gh-pages) и публикуется с использованием [GitHub Pages](https://pages.github.com/).
+
+Документация автоматически собирается и выкатывается при пуше релизного тега (`v*`), а так же при пуше в `dev` ветку обновляется дев версия документации. Подробнее о этих процессах ты можешь изучить в конфигах для [релиза](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-release.yml) и [дев](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-dev.yml) workflow.
