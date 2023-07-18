@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - dev
+    - feature/translate
 
 concurrency:
   group: docs-deploy
