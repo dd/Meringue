@@ -18,18 +18,18 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: ["3.10", "3.11"]
-        django: ["3.0", "4.0"]
-        modeltranslation: ["0.18.10"]
-        djangorestframework: ["3.14.0"]
+        django-version: ["3.0", "4.0"]
+        modeltranslation-version: ["0.18.10"]
+        drf-version: ["3.14.0"]
         include:
           - python-version: "3.10"
             django-version: "2.0"
             modeltranslation-version: "0.17.7"
-            djangorestframework: "3.13.1"
+            drf-version: "3.13.1"
           - python-version: "3.11"
             django-version: "2.0"
             modeltranslation-version: "0.17.7"
-            djangorestframework: "3.13.1"
+            drf-version: "3.13.1"
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -44,10 +44,10 @@ jobs:
 
     - name: Run Tests
       run: |
-        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}:check --cov=meringue --cov-report term-missing --cov-report json
+        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}:check --cov=meringue --cov-report term-missing --cov-report json
 
     - name: Disambiguate coverage filename
-      run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}.json"
+      run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}.json"
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
