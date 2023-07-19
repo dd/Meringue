@@ -8,14 +8,15 @@ SECRET_KEY = "django-insecure--3g8+ycdu+43)=&6o78-lj6==xn@cv5w1rl_*3))o*m#g=r%=r
 
 INSTALLED_APPS = [
     # 'django.contrib.admin',
-    # 'django.contrib.auth',
-    # 'django.contrib.contenttypes',
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
     # 'django.contrib.sessions',
     # 'django.contrib.messages',
     # 'django.contrib.staticfiles',
     "modeltranslation",
     "test_project",
     "meringue.core",
+    "meringue.api",
 ]
 
 MIDDLEWARE = [

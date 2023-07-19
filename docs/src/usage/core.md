@@ -135,7 +135,7 @@ Modern sites mainly work according to the scheme when the backend provides an ap
 To use the utility, you must specify a list of links in the project settings, as well as if you plan to receive absolute links to the frontend domain:
 
 ```py title="settings.py"
-MERINGUE={
+MERINGUE = {
     "FRONTEND_URLS": {
         "index": "/"
         "user": "/user/{id}"

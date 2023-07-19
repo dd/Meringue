@@ -81,7 +81,7 @@ Adding new functionality. Can change.
 	* [ ] A field for the drf serializer that returns a set of images (for example, a standard image and a double-sized image for a retina screen), as well as in different formats (for example, in the original format and in webp).
 * [ ] Functionality similar to that described in the previous paragraph only for video.
 * [ ] Functionality for loading private files available through [nginx internal](http://nginx.org/en/docs/http/ngx_http_core_module.html#internal).
-* [ ] Exception handler for drf that returns an error code in addition to the error text
+* [x] Exception handler for drf that returns an error code in addition to the error text
 
 
 ## Contributing
