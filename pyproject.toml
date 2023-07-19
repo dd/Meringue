@@ -159,12 +159,12 @@ dependencies = [
 	"Faker==19.1.0",
 	"pytz==2023.3",
 	"pycryptodome==3.18.0",
-	"djangorestframework==3.14.0",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
 	{ value = "django~={matrix:django}" },
 	{ value = "django-modeltranslation=={matrix:modeltranslation}" },
+	{ value = "djangorestframework=={matrix:djangorestframework}" },
 ]
 [tool.hatch.envs.mtest.env-vars]
 DJANGO_SETTINGS_MODULE = 'test_project.settings'
@@ -175,10 +175,12 @@ check = "pytest {args:-q}"
 python = ["3.10", "3.11"]
 django = ["2.0"]
 modeltranslation = ["0.17.7"]
+djangorestframework = ["3.13.1"]
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
 django = ["3.0", "4.0"]
 modeltranslation = ["0.18.11"]
+djangorestframework = ["3.14.0"]
 
 [tool.hatch.envs.docs]
 description = "Docs environment"
