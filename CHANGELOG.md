@@ -1,5 +1,26 @@
 # Changelog
 
+<a name="1.1.0"></a>
+## 1.1.0 (2023-07-19)
+
+### Added
+
+- ✨ (api): DRF error handler [[c5546ba](https://github.com/dd/Meringue/commit/c5546bac0f5469e7588910f5f110dec52bbfa0d8)]
+- ✨ (core): Added a method to get links to the front [[3b3171f](https://github.com/dd/Meringue/commit/3b3171f87914b2eece54b15c646c9f467ff9118e)]
+- ✨ (core): Functions for encryption and decryption [[011f875](https://github.com/dd/Meringue/commit/011f875c7327005e32a343eff46c0f6724a2c794)]
+- ✨ (core): Universal manager for all meringue models [[59d88fd](https://github.com/dd/Meringue/commit/59d88fdda6b7cb41a518a1cf01ddbdf423a010ce),[57f1af6](https://github.com/dd/Meringue/commit/57f1af6391c43c2d0bbceeabffea4f8f4fee0fb0)]
+
+### Changed
+
+- 🔧 (tests): Updated dependency matrix for testing [[de9f435](https://github.com/dd/Meringue/commit/de9f4350b1d703ecb48cd9446844f8513d8f4765)]
+- 🔧 (package): Upgrading dependency versions [[3a0d745](https://github.com/dd/Meringue/commit/3a0d74525ada9d8d9192bfb8f99dfa2dee7e9ab2)]
+
+### Miscellaneous
+
+- 🔧 (github): Updated github workflows configurations [[16e2272](https://github.com/dd/Meringue/commit/16e2272d1cf5e50fbb05e6d3b3fbe109056128ff),[f48c999](https://github.com/dd/Meringue/commit/f48c9999a0b6ea88e2f817c7e87303897d8a7b4e)]
+- 📝 (docs): Documentation update [[59bd450](https://github.com/dd/Meringue/commit/59bd45066ef82e8f79e4da200768e548343e0c0b),[f483929](https://github.com/dd/Meringue/commit/f483929d295685b9867f6bbb8bd5b216afd48e4f),[6ba2fd7](https://github.com/dd/Meringue/commit/6ba2fd772f443a410736ae84c01236441690f16f),[c28409c](https://github.com/dd/Meringue/commit/c28409cd81b6e3f5f5867fd8ffaa7b88f50c0a3d)]
+
+
 <a name="1.0.0"></a>
 ## 1.0.0 (2023-07-03)
 
