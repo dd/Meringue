@@ -113,8 +113,8 @@ description = "Lint environment"
 detached = true
 python = "3.11"
 dependencies = [
-	"ruff==0.0.275",
-	"black==23.3.0",
+	"ruff==0.0.278",
+	"black==23.7.0",
 ]
 [tool.hatch.envs.lint.scripts]
 check = [
@@ -131,13 +131,13 @@ description = "Tests environment"
 detached = true
 python = "3.11"
 dependencies = [
-	"pytest==7.3.2",
+	"pytest==7.4.0",
 	"pytest-django==4.5.2",
 	"pytest-cov==4.1.0",
-	"Faker==18.11.1",
+	"Faker==19.1.0",
 	"django==4.2",
 	"pytz==2023.3",
-	"django-modeltranslation==0.18.10",
+	"django-modeltranslation==0.18.11",
 	"pycryptodome==3.18.0",
 ]
 [tool.hatch.envs.test.env-vars]
@@ -151,10 +151,10 @@ makemigrations = "django-admin makemigrations {args}"
 description = "Test matrix environment"
 detached = true
 dependencies = [
-	"pytest==7.3.2",
+	"pytest==7.4.0",
 	"pytest-django==4.5.2",
 	"pytest-cov==4.1.0",  # for ci tests with cover
-	"Faker==18.11.1",
+	"Faker==19.1.0",
 	"pytz==2023.3",
 	"pycryptodome==3.18.0",
 ]
@@ -175,7 +175,7 @@ modeltranslation = ["0.17.7"]
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
 django = ["3.0", "4.0"]
-modeltranslation = ["0.18.10"]
+modeltranslation = ["0.18.11"]
 
 [tool.hatch.envs.docs]
 description = "Docs environment"
