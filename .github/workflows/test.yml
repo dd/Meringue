@@ -19,7 +19,7 @@ jobs:
       matrix:
         python-version: ["3.10", "3.11"]
         django-version: ["3.0", "4.0"]
-        modeltranslation-version: ["0.18.10"]
+        modeltranslation-version: ["0.18.11"]
         drf-version: ["3.14.0"]
         include:
           - python-version: "3.10"
