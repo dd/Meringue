@@ -13,6 +13,7 @@ You can connect individual modules as needed (read more in the documentation of 
 INSTALLED_APPS = (
     ...
     'meringue.core',
+    'meringue.api',
     ...
 )
 ```
