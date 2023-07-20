@@ -40,5 +40,5 @@ Domain for generating absolute links
 
 API_ENABLE_ROOT_VIEW: Final[str] = settings.DEBUG
 """
-Option to enable or disable the root view of the [Router][meringue.api.routers.DefaultRouter]
+Option to enable or disable the root view of the [Router][meringue.api.routers.MeringueRouter]
 """
