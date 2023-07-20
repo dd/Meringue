@@ -476,6 +476,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#routers" class="md-nav__link">
+    routers
+  </a>
+  
+    <nav class="md-nav" aria-label="routers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#meringuerouter" class="md-nav__link">
+    MeringueRouter
+  </a>
+  
+    <nav class="md-nav" aria-label="MeringueRouter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-view" class="md-nav__link">
+    Root view
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-predefined-detail-route" class="md-nav__link">
+    Object predefined detail route
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#handlers" class="md-nav__link">
     handlers
   </a>
@@ -988,6 +1028,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/meringue/api/routers/" class="md-nav__link">
+        routers.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/meringue/api/utils/" class="md-nav__link">
         utils.py
       </a>
@@ -1192,6 +1246,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#routers" class="md-nav__link">
+    routers
+  </a>
+  
+    <nav class="md-nav" aria-label="routers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#meringuerouter" class="md-nav__link">
+    MeringueRouter
+  </a>
+  
+    <nav class="md-nav" aria-label="MeringueRouter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root-view" class="md-nav__link">
+    Root view
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-predefined-detail-route" class="md-nav__link">
+    Object predefined detail route
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#handlers" class="md-nav__link">
     handlers
   </a>
@@ -1245,26 +1339,64 @@
 
 <h1 id="meringue-api">Meringue Api<a class="headerlink" href="#meringue-api" title="Permanent link">¤</a></h1>
 <p>This is an application with a set of various utilities for the API and in particular for the <a href="https://www.django-rest-framework.org/">Django Rest Framework</a>.</p>
+<h2 id="routers">routers<a class="headerlink" href="#routers" title="Permanent link">¤</a></h2>
+<h3 id="meringuerouter">MeringueRouter<a class="headerlink" href="#meringuerouter" title="Permanent link">¤</a></h3>
+<p>It's a <em>django rest framework</em> router, with some additional specific functionality.</p>
+<h4 id="root-view">Root view<a class="headerlink" href="#root-view" title="Permanent link">¤</a></h4>
+<p>The router enables and disables the root view according to the <a class="autorefs autorefs-internal" href="../../reference/meringue/conf/default_settings/#meringue.conf.default_settings.API_ENABLE_ROOT_VIEW">API_ENABLE_ROOT_VIEW</a> setting. By default, the parameter corresponds to the value of the <strong>DEBUG</strong> parameter and in production the root view is disabled.</p>
+<h4 id="object-predefined-detail-route">Object predefined detail route<a class="headerlink" href="#object-predefined-detail-route" title="Permanent link">¤</a></h4>
+<p>The router allows you to add <strong>ViewSet</strong> for predefined objects - that is, a <em>ViewSet</em> object for which it is known in advance, the simplest example is a profile. To manage a profile, it is often necessary to have a set of views - getting a profile, editing, deleting. The default behavior of <em>DRF</em> will either require you to use an id to request a profile, or make several separate views for this, this router allows you to use <em>ViewSet</em> for this. To implement such a <em>ViewSet</em>, you need to make a standard <em>ViewSet</em> and specify the flag <code>m_object_detail = True</code>.</p>
+<p>For example, <em>ViewSet</em> for a profile in general will look like this:</p>
+<div class="language-py highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">class</span> <span class="nc">ProfileViewSet</span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a>    <span class="n">mixins</span><span class="o">.</span><span class="n">RetrieveModelMixin</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="n">mixins</span><span class="o">.</span><span class="n">DestroyModelMixin</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="n">GenericViewSet</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="p">):</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">ProfilePermission</span><span class="p">,</span> <span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">ProfileSerializer</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="hll"><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="n">object_detail</span> <span class="o">=</span> <span class="kc">True</span>
+</span><a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="k">def</span> <span class="nf">get_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a>        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><a href="#__codelineno-0-13"><span class="linenos" data-linenos="13 "></span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">check_object_permissions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a>        <span class="k">return</span> <span class="n">user</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><a href="#__codelineno-0-15"><span class="linenos" data-linenos="15 "></span></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a>    <span class="k">def</span> <span class="nf">perform_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">AnonymousUser</span><span class="p">()</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">perform_destroy</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+</code></pre></div>
+<p>Of course, for such a router, it will not work to use <code>ListModelMixin</code>.</p>
+<p>The router itself in use is exactly the same as a regular one:</p>
+<div class="language-py highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">from</span> <span class="nn">meringue.api.routers</span> <span class="kn">import</span> <span class="n">MeringueRouter</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">router</span> <span class="o">=</span> <span class="n">MeringueRouter</span><span class="p">()</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a><span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s1">&#39;profile&#39;</span><span class="p">,</span> <span class="n">ProfileViewSet</span><span class="p">,</span> <span class="n">basename</span><span class="o">=</span><span class="s2">&quot;profile&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos="7 "></span></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">router</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos="8 "></span></a><span class="p">]</span>
+</code></pre></div>
 <h2 id="handlers">handlers<a class="headerlink" href="#handlers" title="Permanent link">¤</a></h2>
 <h3 id="exception_handler">exception_handler<a class="headerlink" href="#exception_handler" title="Permanent link">¤</a></h3>
 <p>Error handler for <em>django rest framework</em>.</p>
 <p>This handler returns errors in the format of code and error message pairs, this can be useful when it is necessary to implement different behavior on the front depending on the type of error (for example, in a certain case, show a popup with extended information about the cause of the error).</p>
-<div class="language-py highlight"><span class="filename">settings.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">MERINGUE</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s2">&quot;EXCEPTION_HANDLER&quot;</span><span class="p">:</span> <span class="s2">&quot;meringue.api.handlers.exception_handler&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">}</span>
+<div class="language-py highlight"><span class="filename">settings.py</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s2">&quot;EXCEPTION_HANDLER&quot;</span><span class="p">:</span> <span class="s2">&quot;meringue.api.handlers.exception_handler&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">}</span>
 </code></pre></div>
-<div class="language-pycon highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="gp">&gt;&gt;&gt; </span>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="gp">&gt;&gt;&gt; </span>        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="gp">&gt;&gt;&gt; </span>        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">,]</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{})</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="go">{&#39;username&#39;: [ErrorDetail(string=&#39;Required field.&#39;, code=&#39;required&#39;)]}</span>
+<div class="language-pycon highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="gp">&gt;&gt;&gt; </span>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="gp">&gt;&gt;&gt; </span>        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="gp">&gt;&gt;&gt; </span>        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">,]</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{})</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><a href="#__codelineno-3-11"><span class="linenos" data-linenos="11 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><a href="#__codelineno-3-12"><span class="linenos" data-linenos="12 "></span></a><span class="go">{&#39;username&#39;: [ErrorDetail(string=&#39;Required field.&#39;, code=&#39;required&#39;)]}</span>
 </code></pre></div>
 
   <hr>
@@ -1272,7 +1404,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2023-07-19 13:37:06+0000</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2023-07-20 11:44:23+0000</span>
       
         <br>
         Created:
