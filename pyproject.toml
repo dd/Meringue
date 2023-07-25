@@ -56,6 +56,7 @@ dynamic = ["version"]
 [project.optional-dependencies]
 modeltranslation = ["django-modeltranslation>=0.17,<0.19"]
 drf = ["djangorestframework>=3.13,<4"]
+drf-spectacular = ["drf-spectacular>=0.26.3,<1"]
 
 [project.urls]
 "Homepage" = "https://github.com/dd/Meringue"
@@ -89,6 +90,7 @@ dependencies = [
 	"ipython==8.14.0",
 	"pycryptodome==3.18.0",
 	"djangorestframework==3.14.0",
+	"drf-spectacular==0.26.4",
 ]
 [tool.hatch.envs.default.scripts]
 precommit_install = "pre-commit install {args}"
@@ -118,7 +120,7 @@ description = "Lint environment"
 detached = true
 python = "3.11"
 dependencies = [
-	"ruff==0.0.278",
+	"ruff==0.0.280",
 	"black==23.7.0",
 ]
 [tool.hatch.envs.lint.scripts]
@@ -139,12 +141,13 @@ dependencies = [
 	"pytest==7.4.0",
 	"pytest-django==4.5.2",
 	"pytest-cov==4.1.0",
-	"Faker==19.1.0",
+	"Faker==19.2.0",
 	"django==4.2",
 	"pytz==2023.3",
 	"django-modeltranslation==0.18.11",
 	"pycryptodome==3.18.0",
 	"djangorestframework==3.14.0",
+	"drf-spectacular==0.26.4",
 ]
 [tool.hatch.envs.test.env-vars]
 DJANGO_SETTINGS_MODULE = 'test_project.settings'
@@ -160,9 +163,10 @@ dependencies = [
 	"pytest==7.4.0",
 	"pytest-django==4.5.2",
 	"pytest-cov==4.1.0",  # for ci tests with cover
-	"Faker==19.1.0",
+	"Faker==19.2.0",
 	"pytz==2023.3",
 	"pycryptodome==3.18.0",
+	"drf-spectacular==0.26.4",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
@@ -193,11 +197,11 @@ python = "3.11"
 dependencies = [
 	"mkdocs[i18n]==1.4.3",
 	"mkdocs-literate-nav==0.6.0",
-	"mkdocs-material==9.1.17",
+	"mkdocs-material==9.1.19",
 	"mkdocs-git-revision-date-localized-plugin==1.2.0",
 	"mkdocs-git-authors-plugin==0.7.2",
 	"mkdocstrings[python]==0.22.0",
-	"black==23.3.0",
+	"black==23.7.0",
 	"mkdocs-minify-plugin==0.6.4",
 	"mkdocs-gen-files==0.5.0",
 	"Pygments==2.15.1",
