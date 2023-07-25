@@ -143,6 +143,7 @@ plugins:
             # - https://django-modeltranslation.readthedocs.io/en/latest/objects.inv
             # - https://django-polymorphic.readthedocs.io/en/stable/objects.inv
             # - url: https://docs.python-requests.org/en/master/objects.inv
+            - https://drf-spectacular.readthedocs.io/en/latest/objects.inv
           options:
             # show_bases: false
             show_source: true

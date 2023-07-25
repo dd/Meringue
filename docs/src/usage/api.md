@@ -323,7 +323,7 @@ Example:
 
 ### MeringueSpectacularAPIView
 
-This view is a wrapper around the original [SpectacularAPIView](drf_spectacular.views.SpectacularAPIView), but with the addition of a method that patches the OpenAPI schema.
+This view is a wrapper around the original [SpectacularAPIView][drf_spectacular.views.SpectacularAPIView], but with the addition of a method that patches the OpenAPI schema.
 
 ```python title="urls.py"
 from django.urls import path
