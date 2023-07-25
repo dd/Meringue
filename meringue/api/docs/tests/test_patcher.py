@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 import pytest
 
-from meringue.api.docs.patchers import OpenAPISchemaPatcher
+from meringue.api.docs import OpenAPISchemaPatcher
 from meringue.api.docs.tests.conftest import schema_1
 from meringue.api.docs.tests.conftest import schema_1_result
 from meringue.api.docs.tests.conftest import schema_2

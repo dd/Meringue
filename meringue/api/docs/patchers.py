@@ -3,6 +3,11 @@ import json
 from django.core.serializers.json import DjangoJSONEncoder
 
 
+__all__ = [
+    "OpenAPISchemaPatcher",
+]
+
+
 class OpenAPISchemaPatcher:
     """
     OpenApi3 patcher.

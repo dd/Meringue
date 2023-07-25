@@ -69,7 +69,7 @@ def test_serializer_error():
     client = APIClient()
     resp = client.post(reverse("registration"), format="json")
     assert resp.status_code == 400
-    assert resp.json() == {"username": [{"message": "Обязательное поле.", "code": "required"}]}
+    assert resp.json() == {"username": [{"message": "This field is required.", "code": "required"}]}
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})

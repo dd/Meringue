@@ -84,3 +84,261 @@ REST_FRAMEWORK = {
 >>> print(serializer.errors)
 {'username': [ErrorDetail(string='Required field.', code='required')]}
 ```
+
+
+## docs
+
+When generating API documentation using [drf-spectacular](https://drf-spectacular.readthedocs.io/en/latest/), it is possible to intervene in the resulting object in a limited and inconvenient way:
+
+* Firstly, it is proposed to do all this in the settings, which no longer implies a large amount of data (or it will be terribly inconvenient);
+* Secondly, it is difficult to do some manipulations "on the fly" (for example, depending on the environment, you may have a different set of authorization methods, or something else);
+* Thirdly, if you have several apexes and, accordingly, documentation, you will not be able to do, for example, a different description for different apexes / documentation.
+
+To solve all these problems, we implemented a [patcher][openapischemapatcher] and a [view][meringuespectacularapiview] to load it.
+
+
+### OpenAPISchemaPatcher
+
+This is an OpenAPI3 schema patcher that makes it relatively easy to add data to the schema. Everything is quite simple and without much logic, just additional data is first registered, then the scheme is supplemented with them.
+
+To register additional objects, there is the following set of methods:
+
+#### register_security_scheme
+
+::: meringue.api.docs.patchers.OpenAPISchemaPatcher.register_security_scheme
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+
+Example:
+
+```python
+from meringue.api.docs import OpenAPISchemaPatcher
+patcher = OpenAPISchemaPatcher()
+patcher.register_security_scheme("name", { ... })
+```
+
+#### register_component_scheme
+
+::: meringue.api.docs.patchers.OpenAPISchemaPatcher.register_component_scheme
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+
+Example:
+
+```python
+from meringue.api.docs import OpenAPISchemaPatcher
+patcher = OpenAPISchemaPatcher()
+patcher.register_component_scheme("name", { ... })
+```
+
+#### register_tag
+
+::: meringue.api.docs.patchers.OpenAPISchemaPatcher.register_tag
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+
+Example:
+
+```python
+from meringue.api.docs import OpenAPISchemaPatcher
+patcher = OpenAPISchemaPatcher()
+patcher.register_tag({
+   "name": "meringue",
+   "x-displayName": "Meringue",
+})
+```
+
+#### patch_description
+
+::: meringue.api.docs.patchers.OpenAPISchemaPatcher.patch_description
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+
+Example:
+
+```pycon
+>>> from meringue.api.docs import OpenAPISchemaPatcher
+>>> patcher = OpenAPISchemaPatcher()
+>>> schema = {
+...     "servers": [
+...         {
+...             "description": "Server 1",
+...             "url": "https://example-1.com",
+...         },
+...         {
+...             "description": "Server 2",
+...             "url": "example-2.com",
+...         },
+...     ],
+...     "info": {
+...         "description": "Test API",
+...     },
+... }
+>>> patcher.patch_description(schema)
+>>> print(schema)
+{
+    "servers": [
+        {
+            "description": "Server 1",
+            "url": "https://example-1.com",
+        },
+        {
+            "description": "Server 2",
+            "url": "example-2.com",
+        },
+    ],
+    "info": {
+        "description": "Test API\n\nServer 1 API [example-1.com](https://example-1.com)\n\nServer 2 API [example-2.com](example-2.com)",
+    },
+}
+```
+
+#### patch_security_schemes
+
+::: meringue.api.docs.patchers.OpenAPISchemaPatcher.patch_security_schemes
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+
+Example:
+
+```pycon
+>>> from meringue.api.docs import OpenAPISchemaPatcher
+>>> patcher = OpenAPISchemaPatcher()
+>>> patcher.register_security_scheme("name", { ... })
+>>> schema = {}
+>>> patcher.patch_security_schemes(schema)
+>>> print(schema)
+{
+    "components": {
+        "securitySchemes": {
+            "name": { ... },
+        },
+    },
+}
+```
+
+#### patch_component_schemes
+
+::: meringue.api.docs.patchers.OpenAPISchemaPatcher.patch_component_schemes
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+
+Example:
+
+```pycon
+>>> from meringue.api.docs import OpenAPISchemaPatcher
+>>> patcher = OpenAPISchemaPatcher()
+>>> patcher.register_component_scheme("name", { ... })
+>>> schema = {}
+>>> patcher.patch_component_schemes(schema)
+>>> print(schema)
+{
+    "components": {
+        "schemas": {
+            "name": { ... },
+        },
+    },
+}
+```
+
+#### patch_tags
+
+::: meringue.api.docs.patchers.OpenAPISchemaPatcher.patch_tags
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+
+Example:
+
+```pycon
+>>> from meringue.api.docs import OpenAPISchemaPatcher
+>>> schema = {
+...     "servers": [
+...         {
+...             "description": "Server 1",
+...             "url": "https://example-1.com",
+...         },
+...         {
+...             "description": "Server 2",
+...             "url": "example-2.com",
+...         },
+...     ],
+... }
+>>> patcher = OpenAPISchemaPatcher()
+>>> patcher.register_tag({
+...    "name": "meringue",
+...    "x-displayName": "Meringue",
+... })
+>>> patcher.patch_tags(schema)
+>>> print(schema)
+{
+    "servers": [
+        {
+            "description": "Server 1",
+            "url": "https://example-1.com",
+        },
+        {
+            "description": "Server 2",
+            "url": "example-2.com",
+        },
+    ],
+    "tags": [
+            {
+            "name": "meringue",
+            "x-displayName": "Meringue",
+        },
+    ],
+}
+```
+
+#### patch_schema
+
+::: meringue.api.docs.patchers.OpenAPISchemaPatcher.patch_schema
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		show_docstring_raises: false
+
+
+### MeringueSpectacularAPIView
+
+This view is a wrapper around the original [SpectacularAPIView](drf_spectacular.views.SpectacularAPIView), but with the addition of a method that patches the OpenAPI schema.
+
+```python title="urls.py"
+from django.urls import path
+
+from meringue.api.docs import OpenAPISchemaPatcher
+from meringue.api.docs import MeringueSpectacularAPIView
+
+
+patcher = OpenAPISchemaPatcher()
+patcher.register_tag({
+   "name": "meringue",
+   "x-displayName": "Meringue",
+})
+
+urlpatterns = [
+    path("schema", MeringueSpectacularAPIView.as_view(patcher=patcher), name="schema"),
+]
+```

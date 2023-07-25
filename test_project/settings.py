@@ -15,6 +15,8 @@ INSTALLED_APPS = [
     # 'django.contrib.staticfiles',
     "modeltranslation",
     "test_project",
+    "rest_framework",
+    "drf_spectacular",
     "meringue.core",
     "meringue.api",
 ]
@@ -103,7 +105,7 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-LANGUAGE_CODE = "ru"
+LANGUAGE_CODE = "en"
 
 
 gettext = lambda s: s  # noqa:E731
@@ -111,6 +113,11 @@ LANGUAGES = (
     ("ru", gettext("Russian")),
     ("en", gettext("English")),
 )
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
 
 
 MERINGUE = {}
