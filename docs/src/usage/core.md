@@ -201,7 +201,7 @@ class FooModel(models.Model):
 
 The standard django load handlers leave the original file name where possible. However, often when uploading a file to the server, the file can be called somehow ugly (and sometimes indecent), in order to avoid this problem, the following two upload handlers are implemented - [MemoryFileUploadHandler][meringue.core.upload_handlers.MemoryFileUploadHandler] and [TemporaryFileUploadHandler][meringue.core.upload_handlers.TemporaryFileUploadHandler]. These two loaders replace the corresponding django loaders but in the process they rename the file being loaded.
 
-The renaming process can be overridden by specifying your own renaming method in the [UPLOAD_RENAME_HANDLER][meringue.conf.default_settinngs.UPLOAD_RENAME_HANDLER] parameter.
+The renaming process can be overridden by specifying your own renaming method in the [UPLOAD_RENAME_HANDLER][meringue.conf.default_settings.UPLOAD_RENAME_HANDLER] parameter.
 
 To use them, specify them in the [FILE_UPLOAD_HANDLERS](https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-FILE_UPLOAD_HANDLERS) parameter:
 
