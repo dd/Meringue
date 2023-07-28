@@ -1,8 +1,8 @@
 * [Home](index.md)
 * [Usage](usage/index.md)
 	* [Configurations](usage/conf.md)
-	* [API](usage/api.md)
 	* [Core](usage/core.md)
+	* [API](usage/api.md)
 * [Code Reference](reference/)
 * Contributing
 	* [Introduction](dev/contributing.md)

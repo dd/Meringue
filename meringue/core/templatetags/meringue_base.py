@@ -16,8 +16,6 @@ def cop_year() -> str:
     """
     A tag that displays the year or range of years for the copyright string in `YYYY-YYYY` format.
 
-    For the tag to work, you must fill in the `COP_YEAR` parameter in the settings.
-
     Examples:
         ```jinja
         <p>Copyright © {% cop_year %} My company</p>
