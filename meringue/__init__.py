@@ -1,4 +1,4 @@
-__version__ = "1.1.0.dev6"
+__version__ = "1.1.0"
 """
 To update the version, use [hatch version](https://hatch.pypa.io/latest/version/#updating)
 
