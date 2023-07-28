@@ -8,14 +8,17 @@ SECRET_KEY = "django-insecure--3g8+ycdu+43)=&6o78-lj6==xn@cv5w1rl_*3))o*m#g=r%=r
 
 INSTALLED_APPS = [
     # 'django.contrib.admin',
-    # 'django.contrib.auth',
-    # 'django.contrib.contenttypes',
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
     # 'django.contrib.sessions',
     # 'django.contrib.messages',
     # 'django.contrib.staticfiles',
     "modeltranslation",
     "test_project",
+    "rest_framework",
+    "drf_spectacular",
     "meringue.core",
+    "meringue.api",
 ]
 
 MIDDLEWARE = [
@@ -102,7 +105,7 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-LANGUAGE_CODE = "ru"
+LANGUAGE_CODE = "en"
 
 
 gettext = lambda s: s  # noqa:E731
@@ -110,6 +113,11 @@ LANGUAGES = (
     ("ru", gettext("Russian")),
     ("en", gettext("English")),
 )
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
 
 
 MERINGUE = {}

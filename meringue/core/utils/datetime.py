@@ -16,10 +16,10 @@ def format_date_from_to(
 
     Possible output formats depending on the input data:
 
-    * DD.MM.YYYY - DD.MM.YYYY
-    * DD.MM - DD.MM.YYYY
-    * DD - DD.MM.YYYY
-    * DD.MM.YYYY
+    * `DD.MM.YYYY - DD.MM.YYYY`
+    * `DD.MM - DD.MM.YYYY`
+    * `DD - DD.MM.YYYY`
+    * `DD.MM.YYYY`
 
     Examples:
         ```pycon

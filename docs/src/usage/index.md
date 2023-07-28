@@ -7,15 +7,13 @@
 $ pip install meringue
 ```
 
-
-## Configuration
-
 You can connect individual modules as needed (read more in the documentation of the corresponding module):
 
 ```pycon
 INSTALLED_APPS = (
     ...
     'meringue.core',
+    'meringue.api',
     ...
 )
 ```

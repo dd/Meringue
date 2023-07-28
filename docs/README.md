@@ -14,13 +14,6 @@ $ hatch run docs:serve
 ```
 
 
-## Building and publishing
-
-There is a separate `hatch run docs:build` command for the documentation build.
-
-Documentation is published automatically and configured in [readthedocs](https://readthedocs.org/).
-
-
 ## Configuration
 
 There are several options for documentation configuration:
@@ -81,8 +74,9 @@ When working with [local server][local-development] documentation, this option i
 
 There is a separate `hatch run docs:build` command for building documentation.
 
-The documentation build is produced in [GitHub Actions](https://docs.github.com/en/actions) and published in [GitHub Pages](https://pages.github.com/).
+But before pushing the updated documentation, please run the `hatch run docs:build-check` command, it will build the documentation and check the links for broken ones.
 
-Documentation is rolled out dev version when pushing to `dev` branch and release when pushing tags with `v*` versions.
+Documentation is collected in [GitHub Actions](https://docs.github.com/en/actions) and uploaded to the [gh-pages](https://github.com/dd/Meringue/tree/gh-pages) branch and published using [GitHub Pages](https://pages.github.com/).
 
-Explore `.github/workflows/mkdocs-dev.yml` and `.github/workflows/mkdocs-release.yml` if necessary.
+The documentation is automatically collected and rolled out when pushing the release tag (`v*`), and when pushing to the `dev` branch, the dev version of the documentation is updated.
+You can learn more about these processes in the [releasel](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-release.yml) and [dev](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-dev.yml) workflow configs.

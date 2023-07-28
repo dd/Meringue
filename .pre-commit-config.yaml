@@ -10,7 +10,6 @@ repos:
         language: system
         'types_or': [python, pyi]
         stages: ['pre-commit']
-        files: ^(?!.*migrations).*$
 -   repo: https://github.com/jorisroovers/gitlint
     rev: v0.19.1  # Fill in a tag / sha here
     hooks:

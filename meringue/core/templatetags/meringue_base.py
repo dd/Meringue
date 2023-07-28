@@ -14,9 +14,7 @@ register = template.Library()
 @register.simple_tag
 def cop_year() -> str:
     """
-    A tag that displays the year or range of years for the copyright string in YYYY-YYYY format.
-
-    For the tag to work, you must fill in the `COP_YEAR` parameter in the settings.
+    A tag that displays the year or range of years for the copyright string in `YYYY-YYYY` format.
 
     Examples:
         ```jinja
@@ -49,11 +47,12 @@ def cop_year() -> str:
 @register.simple_tag
 def date_range(date_start: dt.date, date_end: dt.date) -> str:
     """
-    return range of date in one of the following formats:
-        DD.MM.YYYY - DD.MM.YYYY
-        DD.MM - DD.MM.YYYY
-        DD - DD.MM.YYYY
-        DD.MM.YYYY
+    Return range of date in one of the following formats:
+
+    * `DD.MM.YYYY - DD.MM.YYYY`
+    * `DD.MM - DD.MM.YYYY`
+    * `DD - DD.MM.YYYY`
+    * `DD.MM.YYYY`
 
     Attributes:
         date_start: Period start date.
