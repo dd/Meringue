@@ -122,6 +122,9 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 		show_docstring_returns: false
 		show_docstring_attributes: false
 
+Методы для шифрования используют ключ который можно задать в параметре [CRYPTO_KEY][meringue.conf.default_settings.CRYPTO_KEY]. По умолчанию параметр использует первые 32 символа из [SECRET_KEY](https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECRET_KEY).
+
+
 ### frontend
 
 <a name="get_link"></a>
@@ -131,7 +134,7 @@ An abstract model that adds a sortable field, as well as a manager with sorting 
 
 Современные сайты в основном работают по схеме когда бекенд предоставляет апи к которому фронт отправляет запросы, в связи с этим [reverse](https://docs.djangoproject.com/en/4.2/ref/urlresolvers/#reverse) который предоставляет джанго не может дать актуальные ссылки на ресурс, однако ссылки всё ещё нужны в бекенде (например в письмах и смс отправляемых пользователю или в админке для менедеров). В результате была реализована эта небольшая утилита которая поможет получить ссылку на нужный ресурс.
 
-Чтобы использовать утилиту необходимо указать список ссылок в настройках проекта, а так же если планируется получать абсолютные ссылки домен фронтенда:
+Чтобы использовать утилиту необходимо указать список ссылок в параметре [FRONTEND_URLS][meringue.conf.default_settings.FRONTEND_URLS], а так же если планируется получать абсолютные ссылки домен фронтенда в пармаетре [FRONTEND_DOMAIN][meringue.conf.default_settings.FRONTEND_DOMAIN]:
 
 ```pycon title="settings.py"
 MERINGUE={
@@ -166,6 +169,10 @@ https://example.com/user/123
 		show_root_toc_entry: false
 		show_source: false
 
+Для работы тега необходимо задать в настройках параметр [COP_YEAR][meringue.conf.default_settings.COP_YEAR].
+
+Так же в параметре [COP_YEARS_DIFF][meringue.conf.default_settings.COP_YEARS_DIFF] можно указать минимальная разницу в годах, когда будет отображаться период в копирайтах, а не текущий год.
+
 
 ### date_range
 
@@ -186,6 +193,22 @@ class FooModel(models.Model):
 
     class Meta:
         m_translate_fields = ["name", ]
+```
+
+
+## Upload handlers
+
+Стандартные обработчики загрузки django оставаляют по возможности исходное названиие файла. Однако часто загружая файл на сервер, файл может называться как-то некрасиво (а иногда и неприлично), что бы избежать этой проблемы реализовано два следующих обработчика загрузок - [MemoryFileUploadHandler][meringue.core.upload_handlers.MemoryFileUploadHandler] и [TemporaryFileUploadHandler][meringue.core.upload_handlers.TemporaryFileUploadHandler]. Эти два загрузчика заменяют соответствующие загрузчики джанго но в процессе переименовывают загружаемый файл.
+
+Процесс переименования можно заменить указав свой метод для переименования в парамаетре [UPLOAD_RENAME_HANDLER][meringue.conf.default_settinngs.UPLOAD_RENAME_HANDLER].
+
+Что бы их использовать укажи их в параметре [FILE_UPLOAD_HANDLERS](https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-FILE_UPLOAD_HANDLERS):
+
+```python
+FILE_UPLOAD_HANDLERS = [
+    "meringue.core.upload_handlers.TemporaryFileUploadHandler",
+    "meringue.core.upload_handlers.MemoryFileUploadHandler",
+]
 ```
 
 
