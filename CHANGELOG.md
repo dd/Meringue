@@ -1,10 +1,13 @@
 # Changelog
 
 <a name="1.1.0"></a>
-## 1.1.0 (2023-07-19)
+## 1.1.0 (2023-07-28)
 
 ### Added
 
+- ✨ (api): Added a view that applies OpenAPISchemaPatcher [[f214caf](https://github.com/dd/Meringue/commit/f214caff4ab4ac21bba54a2e5ff6711edcaff66f)]
+- ✨ (api): Added OpenAPI3 object patcher [[45e40a5](https://github.com/dd/Meringue/commit/45e40a597839ba0b7beb5a2bb852482330b5f134)]
+- ✨ (api): Advanced Router [[74318b3](https://github.com/dd/Meringue/commit/74318b3e4e34f246b432867237ef0b0d53ef9732)]
 - ✨ (api): DRF error handler [[c5546ba](https://github.com/dd/Meringue/commit/c5546bac0f5469e7588910f5f110dec52bbfa0d8)]
 - ✨ (core): Added a method to get links to the front [[3b3171f](https://github.com/dd/Meringue/commit/3b3171f87914b2eece54b15c646c9f467ff9118e)]
 - ✨ (core): Functions for encryption and decryption [[011f875](https://github.com/dd/Meringue/commit/011f875c7327005e32a343eff46c0f6724a2c794)]
@@ -12,13 +15,16 @@
 
 ### Changed
 
-- 🔧 (tests): Updated dependency matrix for testing [[de9f435](https://github.com/dd/Meringue/commit/de9f4350b1d703ecb48cd9446844f8513d8f4765)]
+- 🔧 (tests): Update dependency versions for tests [[81c1ee3](https://github.com/dd/Meringue/commit/81c1ee32bfe50d6020d7da0e54e7ffa850fa5f3e)]
+- 🔧 (tests): Updated dependency matrix for testing [[a61e889](https://github.com/dd/Meringue/commit/a61e889d0beb444887cd970fb7eab090879e3d40),[de9f435](https://github.com/dd/Meringue/commit/de9f4350b1d703ecb48cd9446844f8513d8f4765)]
 - 🔧 (package): Upgrading dependency versions [[3a0d745](https://github.com/dd/Meringue/commit/3a0d74525ada9d8d9192bfb8f99dfa2dee7e9ab2)]
+- 🔧 (github): Updated github workflows configurations [[16e2272](https://github.com/dd/Meringue/commit/16e2272d1cf5e50fbb05e6d3b3fbe109056128ff),[f48c999](https://github.com/dd/Meringue/commit/f48c9999a0b6ea88e2f817c7e87303897d8a7b4e),[0e58a15](https://github.com/dd/Meringue/commit/0e58a1501c9ba89109a3f46987b69fc40a91bbd7),[c2144ba](https://github.com/dd/Meringue/commit/c2144ba92f042903c824633712ecc22bb0a655cb),[bce9865](https://github.com/dd/Meringue/commit/bce98659cb7fdaeecc55cd836f06993912bf9399)]
+- 🔧 (project): Build update [[1e0a9c4](https://github.com/dd/Meringue/commit/1e0a9c4cadd997c120a48e5b6160bb2a279587a2)]
 
 ### Miscellaneous
 
-- 🔧 (github): Updated github workflows configurations [[16e2272](https://github.com/dd/Meringue/commit/16e2272d1cf5e50fbb05e6d3b3fbe109056128ff),[f48c999](https://github.com/dd/Meringue/commit/f48c9999a0b6ea88e2f817c7e87303897d8a7b4e)]
-- 📝 (docs): Documentation update [[59bd450](https://github.com/dd/Meringue/commit/59bd45066ef82e8f79e4da200768e548343e0c0b),[f483929](https://github.com/dd/Meringue/commit/f483929d295685b9867f6bbb8bd5b216afd48e4f),[6ba2fd7](https://github.com/dd/Meringue/commit/6ba2fd772f443a410736ae84c01236441690f16f),[c28409c](https://github.com/dd/Meringue/commit/c28409cd81b6e3f5f5867fd8ffaa7b88f50c0a3d)]
+- 📝 (docs): Documentation update [[5873881](https://github.com/dd/Meringue/commit/5873881f94f0f476b5db653a2682877d70a04f28),[3803f69](https://github.com/dd/Meringue/commit/3803f696e9b45fc27862d770a64efb975bf63690),[8cbec19](https://github.com/dd/Meringue/commit/8cbec193da198c75690d438a479ed4687159c2de),[0a86a5a](https://github.com/dd/Meringue/commit/0a86a5af3f2d69d2b214614a100d04fcbdd86fd0),[59bd450](https://github.com/dd/Meringue/commit/59bd45066ef82e8f79e4da200768e548343e0c0b),[f483929](https://github.com/dd/Meringue/commit/f483929d295685b9867f6bbb8bd5b216afd48e4f),[6ba2fd7](https://github.com/dd/Meringue/commit/6ba2fd772f443a410736ae84c01236441690f16f),[c28409c](https://github.com/dd/Meringue/commit/c28409cd81b6e3f5f5867fd8ffaa7b88f50c0a3d),[d76721f](https://github.com/dd/Meringue/commit/d76721fdf3d8b355e93b2346aa19a6e542316ea2)]
+- 📝 (docs): Updated changelog [[1964919](https://github.com/dd/Meringue/commit/19649197195929d44fbb77d6521e027062a94dc5)]
 
 
 <a name="1.0.0"></a>
