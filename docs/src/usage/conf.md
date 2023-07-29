@@ -13,7 +13,7 @@ Library settings can be accessed as follows:
 ```pycon
 >>> from meringue.conf import m_settings
 >>> print(m_settings.UPLOAD_RENAME_HANDLER)
-my_project.upload_handlers.rename_handler
+<function rename_handler at 0x7f5772d5ec00>
 ```
 
 A complete and up-to-date list of parameters can be found [here][meringue.conf.default_settings].
