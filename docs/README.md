@@ -23,51 +23,51 @@ There are several options for documentation configuration:
 
 `default: true`
 
-Enabling / disabling the output of sources in the documentation "on-the-fly" (organized based on the example from the [mkdocstrings](https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages) documentation).
+:	Enabling / disabling the output of sources in the documentation "on-the-fly" (organized based on the example from the [mkdocstrings](https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages) documentation).
 
 
 ### `MERINGUE_MKDOCS_CODE_PARCE_SOURCE_PATH`
 
 `default: "meringue"`
 
-A directory with sources for "on-the-fly" generation.
+:	A directory with sources for "on-the-fly" generation.
 
 
 ### `MERINGUE_MKDOCS_CODE_PARCE_DOCS_PATH`
 
 `default: "reference"`
 
-Documentation directory for displaying "on-the-fly" generated source documentation.
+:	Documentation directory for displaying "on-the-fly" generated source documentation.
 
 
 ### `MERINGUE_MKDOCS_CODE_PARCE_SHOW_NAV`
 
 `default: false`
 
-Parameter for debugging generated "on-the-fly" navigation.
+:	Parameter for debugging generated "on-the-fly" navigation.
 
 
 ### `MERINGUE_MKDOCS_ENABLED_GIT_REVISION_DATE`
 
 `default: true`
 
-Option to enable/disable modification dates for documentation files. It will be useful to disable it when developing locally so that the console is not clogged with errors.
+:	Option to enable/disable modification dates for documentation files. It will be useful to disable it when developing locally so that the console is not clogged with errors.
 
 
 ### `MERINGUE_MKDOCS_OFFLINE`
 
 `default: false`
 
-Parameter for building documentation into a build working from a folder, without the need to start the server. read more about the mechanism [here](https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/).
+:	Parameter for building documentation into a build working from a folder, without the need to start the server. read more about the mechanism [here](https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/).
 
 
 ### `MERINGUE_MKDOCS_ENABLE_MINIFY`
 
 `default: true`
 
-Parameter to enable plugin [minify](https://github.com/byrnereese/mkdocs-minify-plugin) minifying html, js and css when generating documentation.
+:	Parameter to enable plugin [minify](https://github.com/byrnereese/mkdocs-minify-plugin) minifying html, js and css when generating documentation.
 
-When working with [local server][local-development] documentation, this option is disabled.
+	When working with [local server][local-development] documentation, this option is disabled.
 
 
 ## Building and publishing

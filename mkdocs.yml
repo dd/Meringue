@@ -96,6 +96,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.snippets:
       check_paths: true
+  - def_list
   # - pymdownx.magiclink:
   #     hide_protocol: true
   # - pymdownx.escapeall:

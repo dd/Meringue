@@ -2,7 +2,7 @@
 
 Please don't be shy - comment, discuss and suggest whatever you think is important in the [discussions](https://github.com/dd/Meringue/discussions) on github, if you notice a bug please describe it in [issues](https://github.com/dd/Meringue/issues), and if you decide to contribute to the development of the project, feel free to send [pull request](https://github.com/dd/Meringue/pulls), and if possible, read further during development this section.
 
-When developing, modifying and fixing a feature, please fill in and correct all annotations and docstrings in the code, and also try, if possible, to fill in / supplement the description of the functionality and its use in the [section](../../usage) of the documentation, also add tests for new or fixed functionality, read more below:
+When developing, modifying and fixing a feature, please fill in and correct all annotations and docstrings in the code, and also try, if possible, to fill in / supplement the description of the functionality and its use in the [section](../usage/index.md) of the documentation, also add tests for new or fixed functionality, read more below:
 
 
 ## Environment
@@ -38,30 +38,30 @@ To add translations there are two useful commands:
 
 ### `makemessages`
 
-```console
-$ hatch run makemessages
-```
+:	This is a wrapper around the [makemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#makemessages) django command and creates/updates localization files in each _meringue_ application.
 
-This is a wrapper around the [makemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#makemessages) django command and creates/updates localization files in each _meringue_ application.
+	```console
+	$ hatch run makemessages
+	```
 
 
 ### `compilemessages`
 
-```console
-$ hatch run compilemessages
-```
+:	This is a wrapper around the [compilemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#compilemessages) django command and compiles all translations.
 
-This is a wrapper around the [compilemessages](https://docs.djangoproject.com/en/4.2/ref/django-admin/#compilemessages) django command and compiles all translations.
+	```console
+	$ hatch run compilemessages
+	```
 
 
 ## Tests
 
-When working on a project, it is extremely important to cover everything with tests in order to avoid problems and errors in the code. See working on tests in the appropriate [section](/dev/tests).
+When working on a project, it is extremely important to cover everything with tests in order to avoid problems and errors in the code. See working on tests in the appropriate [section](tests.md).
 
 
 ## Documentation
 
-The documentation is implemented using the [mkdocs](https://www.mkdocs.org/) generator and the [mkdocs material](https://squidfunk.github.io/mkdocs-material/) theme. When working on library functionality, two main sections [usage](../../usage) and [reference](../../reference/meringue/conf/__init__/) are important. For more information about developing documentation, see the corresponding [section](/dev/docs).
+The documentation is implemented using the [mkdocs](https://www.mkdocs.org/) generator and the [mkdocs material](https://squidfunk.github.io/mkdocs-material/) theme. When working on library functionality, two main sections [usage](../usage/index.md) and [reference](../reference/meringue/conf/__init__.md) are important. For more information about developing documentation, see the corresponding [section](docs/index.md).
 
 
 ## Versioning
