@@ -39,7 +39,7 @@ class BaseImageField(ImageField):
         super().__init__(**kwargs)
 
 
-class ImageOptimizedField(BaseImageField):
+class MImageField(BaseImageField):
     """
     Optimize image to represent them
     """
@@ -65,7 +65,7 @@ class ImageOptimizedField(BaseImageField):
         return result
 
 
-class ImageSetDimensionsField(ImageField):
+class MImageSetField(ImageField):
     """
     Image field - make multiple files in different formats.
 

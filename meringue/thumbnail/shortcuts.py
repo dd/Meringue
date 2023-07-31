@@ -65,10 +65,10 @@ def get_thumbnail(
         Thumbnail url.
     """
 
-    # if not file_path.exists():
-    #     msg = f"File `{file_path}` not found."
-    #     logger.error(msg)
-    #     return _dummyimage(job_chain)
+    if not file_path.exists():
+        msg = f"File `{file_path}` not found."
+        logger.error(msg)
+        return _dummyimage(job_chain)
 
     thumbnailer = DefaultThumbnailer(file_path, job_chain=job_chain)
     thumbnail_image = thumbnailer.get_thumbnail(out_format, **kwargs)
