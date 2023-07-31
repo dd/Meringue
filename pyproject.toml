@@ -87,10 +87,17 @@ python = "3.11"
 dependencies = [
 	"pre-commit==3.3.3",
 	"ipython==8.14.0",
+	"django==4.2",
+	"pytz==2023.3",
+	"django-modeltranslation==0.18.11",
 	"pycryptodome==3.18.0",
 	"djangorestframework==3.14.0",
 	"drf-spectacular==0.26.4",
+	"Pillow==10.0.0",
 ]
+[tool.hatch.envs.default.env-vars]
+DJANGO_SETTINGS_MODULE = 'test_project.settings'
+PYTHONPATH  = '.'
 [tool.hatch.envs.default.scripts]
 precommit_install = "pre-commit install {args}"
 precommit_uninstall = "pre-commit uninstall {args}"

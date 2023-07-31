@@ -38,6 +38,11 @@ Examples:
 
 PARAMS_TO_IMPORT: Final[list[str]] = [
     "UPLOAD_RENAME_HANDLER",
+    "THUMBNAIL_GENERATOR_CLASS",
+    "THUMBNAIL_STORAGE_GETTER",
+    "THUMBNAIL_IMAGE_CLASS",
+    "THUMBNAIL_PROPERTIES",
+    "THUMBNAIL_ACTIONS",
 ]
 """
 List of options that contain the path to the module and must be imported.

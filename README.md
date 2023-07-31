@@ -70,8 +70,11 @@ Adding new functionality. Can change.
 * [ ] [drf](https://www.django-rest-framework.org/) serializer serializer for automatic form generation on the front when working through rest api. (An npm package on [vuejs](https://vuejs.org/) will also be developed generating form based on response from api).
 * [ ] Authorization backend for authorization by a pair of email and password.
 * [ ] Functionality for working with images.
-	* [ ] Image editor like easy_thumbnails.
-	* [ ] A field for the drf serializer that returns a set of images (for example, a standard image and a double-sized image for a retina screen), as well as in different formats (for example, in the original format and in webp).
+	* [x] Image editor like easy_thumbnails.
+	* [x] A field for the drf serializer that returns a set of images (for example, a standard image and a double-sized image for a retina screen), as well as in different formats (for example, in the original format and in webp).
+	* [ ] Job chain presets
+	* [ ] Tests
+	* [ ] Docs
 * [ ] Functionality similar to that described in the previous paragraph only for video.
 * [ ] Functionality for loading private files available through [nginx internal](http://nginx.org/en/docs/http/ngx_http_core_module.html#internal).
 

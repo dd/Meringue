@@ -83,7 +83,7 @@ def test_import_properties_wrong_type():
     )
     msg = "The `1` value of the `IMPORTABLE_PROP` parameter is not available for import."
     with pytest.raises(TypeError, match=msg):
-        print(foo_settings.IMPORTABLE_PROP)
+        print(foo_settings.IMPORTABLE_PROP)  # noqa: T201
 
 
 def test_import_properties_non_existent():
@@ -100,7 +100,7 @@ def test_import_properties_non_existent():
         "Error importing `meringue.conf.Settings1` attribute/class in `IMPORTABLE_PROP` parameter."
     )
     with pytest.raises(ImportError, match=msg):
-        print(foo_settings.IMPORTABLE_PROP)
+        print(foo_settings.IMPORTABLE_PROP)  # noqa: T201
 
 
 @patch(
