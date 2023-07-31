@@ -5,7 +5,7 @@ from pathlib import PurePath
 from rest_framework.fields import ImageField
 
 from meringue.thumbnail.constants import FORMATS_BY_EXTENSIONS
-from meringue.thumbnail.generator import DefaultThumbnailer
+from meringue.thumbnail.generators import DefaultThumbnailer
 from meringue.thumbnail.shortcuts import _dummyimage
 
 

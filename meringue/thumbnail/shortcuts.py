@@ -5,7 +5,7 @@ from pathlib import Path
 from django.conf import settings
 
 from meringue.conf import m_settings
-from meringue.thumbnail.generator import DefaultThumbnailer
+from meringue.thumbnail.generators import DefaultThumbnailer
 from meringue.thumbnail.types import JobChainType
 
 
