@@ -34,7 +34,7 @@ def test_405():
     client = APIClient()
     resp = client.get(reverse("registration"), format="json")
     assert resp.status_code == 405
-    assert resp.json() == {"detail": 'Method "GET" not allowed.'}
+    assert resp.json() == {"message": 'Method "GET" not allowed.', "code": "method_not_allowed"}
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})
@@ -46,7 +46,7 @@ def test_404(mocked_post):
     client = APIClient()
     resp = client.post(reverse("registration"), format="json")
     assert resp.status_code == 404
-    assert resp.json() == {"detail": "Not found."}
+    assert resp.json() == {"message": "Not found.", "code": "not_found"}
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})
@@ -58,7 +58,11 @@ def test_403(mocked_post):
     client = APIClient()
     resp = client.post(reverse("registration"), format="json")
     assert resp.status_code == 403
-    assert resp.json() == {"detail": "You do not have permission to perform this action."}
+    error = {
+        "message": "You do not have permission to perform this action.",
+        "code": "permission_denied",
+    }
+    assert resp.json() == error
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})

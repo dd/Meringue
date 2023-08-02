@@ -14,6 +14,7 @@ def render_error_details(error_detail: list | dict | ErrorDetail) -> list | dict
     Returns:
         Rendered errors.
     """
+
     if isinstance(error_detail, list):
         error_list = [render_error_details(e) for e in error_detail]
         return error_list
