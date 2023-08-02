@@ -52,8 +52,6 @@
 	</a>
 </p>
 
-Full documentation for the project is available at [dd.github.io/Meringue](https://dd.github.io/Meringue/).
-
 Package with various functional (such as mixins, form utils, upload handlers and other) for Django Framework.
 
 This library is a set of various functionality that I use from project to project.
@@ -61,6 +59,8 @@ This library is a set of various functionality that I use from project to projec
 The main task of this package is to clean up this functionality, test it, and also organize the documentation so that colleagues can understand how and what works.
 
 However, if someone decides to use this functionality in their project, and even more so to add functionality or change the implementation to a more correct, beautiful or understandable one, I will only be happy, do not worry and feel free to write to me by [mail](mailto:dd@manin.space), create an [issue](https://github.com/dd/Meringue/issues) or [pull request](https://github.com/dd/Meringue/pulls) on [github](https://github.com/dd/Meringue).
+
+Read more in the [documentation](https://dd.github.io/Meringue/).
 
 
 ## Roadmap
