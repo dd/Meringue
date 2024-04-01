@@ -31,6 +31,10 @@ class ProtectedFieldFile(ProtectedFileMixin, FieldFile):
 
 
 class ProtectedFileField(FileField):
+    """
+    A field that adds the mechanism of a protected file.
+    """
+
     attr_class = ProtectedFieldFile
 
     def __init__(self, verbose_name=None, name=None, upload_to="protected", storage=None, **kwargs):
@@ -42,6 +46,10 @@ class ProtectedImageFieldFile(ProtectedFileMixin, ImageFieldFile):
 
 
 class ProtectedImageField(ImageField):
+    """
+    A field that adds the mechanism of a protected image.
+    """
+
     attr_class = ProtectedImageFieldFile
 
     def __init__(self, verbose_name=None, name=None, width_field=None, height_field=None, **kwargs):
