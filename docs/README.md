@@ -79,4 +79,5 @@ But before pushing the updated documentation, please run the `hatch run docs:bui
 Documentation is collected in [GitHub Actions](https://docs.github.com/en/actions) and uploaded to the [gh-pages](https://github.com/dd/Meringue/tree/gh-pages) branch and published using [GitHub Pages](https://pages.github.com/).
 
 The documentation is automatically collected and rolled out when pushing the release tag (`v*`), and when pushing to the `dev` branch, the dev version of the documentation is updated.
+
 You can learn more about these processes in the [releasel](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-release.yml) and [dev](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-dev.yml) workflow configs.

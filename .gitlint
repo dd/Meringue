@@ -4,3 +4,6 @@ contrib = CC2
 
 [title-match-regex]
 regex=^([^(]+?)(\([^)]+?\))?!?: .+
+
+[title-max-length]
+line-length=90
