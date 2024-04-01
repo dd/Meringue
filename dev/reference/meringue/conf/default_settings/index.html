@@ -617,6 +617,49 @@
         
   
   
+    <a href="../../protected/__init__/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    protected
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
     
   
   
@@ -663,10 +706,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -677,8 +720,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             conf
           </label>
@@ -880,6 +923,15 @@
   <a href="#meringue.conf.default_settings.THUMBNAIL_DEFAULT_FORMAT" class="md-nav__link">
     <span class="md-ellipsis">
       THUMBNAIL_DEFAULT_FORMAT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX" class="md-nav__link">
+    <span class="md-ellipsis">
+      PROTECTED_SERVE_WITH_NGINX
     </span>
   </a>
   
@@ -1146,6 +1198,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX" class="md-nav__link">
+    <span class="md-ellipsis">
+      PROTECTED_SERVE_WITH_NGINX
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1384,7 +1445,7 @@
   </span>
 
 <a href="#meringue.conf.default_settings.API_ENABLE_ROOT_VIEW" class="headerlink" title="Permanent link">¤</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">API_ENABLE_ROOT_VIEW</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Final" href="https://docs.python.org/3/library/typing.html#typing.Final">Final</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="django.conf.settings.DEBUG">DEBUG</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">API_ENABLE_ROOT_VIEW</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Final" href="https://docs.python.org/3/library/typing.html#typing.Final">Final</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="django.conf.settings.DEBUG">DEBUG</span></span>
 </code></pre></div>
 
   <div class="doc doc-contents ">
@@ -1602,6 +1663,36 @@
   <div class="doc doc-contents ">
   
       <p>Default thumbnail image format.</p>
+  </div>
+
+</div>
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX" class="doc doc-heading">
+          <span class="doc doc-object-name doc-attribute-name">PROTECTED_SERVE_WITH_NGINX</span>
+
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX" class="headerlink" title="Permanent link">¤</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">PROTECTED_SERVE_WITH_NGINX</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Final" href="https://docs.python.org/3/library/typing.html#typing.Final">Final</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span><span class="p">]</span> <span class="o">=</span> <span class="ow">not</span> <span class="n"><span title="django.conf.settings.DEBUG">DEBUG</span></span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>The option implies the distribution of protected files by nginx. Instead of serving the file in
+response.</p>
+<p>The view <a class="autorefs autorefs-internal" href="../../protected/views/#meringue.protected.views.protected_file_view">protected_file_view</a> adds the X-Accel-Redirect header with a link to the file.</p>
   </div>
 
 </div>

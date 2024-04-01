@@ -166,6 +166,26 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/__init__/</loc>
+         <lastmod>2024-04-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/apps/</loc>
+         <lastmod>2024-04-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/fields/</loc>
+         <lastmod>2024-04-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/views/</loc>
+         <lastmod>2024-04-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/__init__/</loc>
          <lastmod>2024-04-01</lastmod>
          <changefreq>daily</changefreq>
@@ -252,6 +272,11 @@
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/usage/core/</loc>
+         <lastmod>2024-04-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://dd.github.io/Meringue/dev/usage/protected/</loc>
          <lastmod>2024-04-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
