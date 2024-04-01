@@ -4,11 +4,14 @@ from io import BytesIO
 from unittest.mock import patch
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.files.storage.filesystem import FileSystemStorage
 from django.core.files.uploadedfile import UploadedFile
 from django.test import Client
 from django.test import override_settings
 from django.urls import reverse
+try:
+    from django.core.files.storage.filesystem import FileSystemStorage
+except ImportError:
+    from django.core.files.storage import FileSystemStorage
 
 from test_project.models import ProtectedModel
 
