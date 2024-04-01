@@ -175,13 +175,13 @@ dependencies = [
 	"pytz==2023.3.post1",
 	"pycryptodome==3.20.0",
 	"drf-spectacular==0.26.4",
-	"djangorestframework-simplejwt==5.3.1",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
 	{ value = "django~={matrix:django}" },
 	{ value = "django-modeltranslation=={matrix:modeltranslation}" },
 	{ value = "djangorestframework=={matrix:djangorestframework}" },
+	{ value = "djangorestframework-simplejwt=={matrix:simplejwt}" },
 ]
 [tool.hatch.envs.mtest.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
@@ -191,13 +191,21 @@ check = "pytest {args:-q}"
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
 django = ["2.0"]
-modeltranslation = ["0.17.7"]
-djangorestframework = ["3.13.1"]
+modeltranslation = ["0.17.0"]
+djangorestframework = ["3.13.0"]
+simplejwt = ["5.2.0"]
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
-django = ["3.0", "4.0"]
-modeltranslation = ["0.18.11"]
-djangorestframework = ["3.14.0"]
+django = ["3.0"]
+modeltranslation = ["0.17.0"]
+djangorestframework = ["3.13.0", "3.14.0", "3.15.0"]
+simplejwt = ["5.2.0", "5.3.0"]
+[[tool.hatch.envs.mtest.matrix]]
+python = ["3.10", "3.11"]
+django = ["4.0"]
+modeltranslation = ["0.17.0", "0.18.0"]
+djangorestframework = ["3.13.0", "3.14.0", "3.15.0"]
+simplejwt = ["5.2.0", "5.3.0"]
 
 [tool.hatch.envs.docs]
 description = "Docs environment"
