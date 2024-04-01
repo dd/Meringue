@@ -44,7 +44,11 @@ jobs:
     - name: Commit documentation
       run: |
         MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
-        hatch run docs:ci-build $MERINGUE_DOCS_VERSION latest
+        if [[ $MERINGUE_DOCS_VERSION =~ '^(\.dev|\.b|\.a|rc)*' ]]; then
+          hatch run docs:ci-build $MERINGUE_DOCS_VERSION dev
+        else
+          hatch run docs:ci-build $MERINGUE_DOCS_VERSION latest
+        fi
 
     - name: Create archive
       run: git archive -o site.zip gh-pages
