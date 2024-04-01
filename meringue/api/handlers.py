@@ -29,7 +29,7 @@ def exception_handler(exc, context):
         # in `rest_framework.views.exception_handler` method.
         response.data = render_error_details(response.data["detail"])
 
-    elif isinstance(exc, DetailDictMixin):
+    elif DetailDictMixin and isinstance(exc, DetailDictMixin):
         response.data = render_error_details(exc)
 
     elif isinstance(exc, exceptions.APIException):
