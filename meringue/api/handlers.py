@@ -11,7 +11,7 @@ def exception_handler(exc, context):
     """
     Error handler returning message and error code pairs.
 
-    The handler is a wrapper over the standard handler [rest_framework.views.exception_handler][].
+    The handler is a wrapper over the standard handler `rest_framework.views.exception_handler`.
     """
 
     response = views.exception_handler(exc, context)
@@ -21,7 +21,7 @@ def exception_handler(exc, context):
 
     if isinstance(exc, (Http404, PermissionDenied)):
         # django Http404 and PermissionDenied errors are substituted for drf errors,
-        # in [rest_framework.views.exception_handler][] method.
+        # in `rest_framework.views.exception_handler` method.
         response.data = render_error_details(response.data["detail"])
 
     elif isinstance(exc, exceptions.APIException):
