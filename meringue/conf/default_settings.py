@@ -42,7 +42,7 @@ Domain for generating absolute links
 
 # API ##############################################################################################
 
-API_ENABLE_ROOT_VIEW: Final[str] = settings.DEBUG
+API_ENABLE_ROOT_VIEW: Final[bool] = settings.DEBUG
 """
 Option to enable or disable the root view of the [Router][meringue.api.routers.MeringueRouter]
 """
@@ -113,4 +113,15 @@ THUMBNAIL_DUMMYIMAGE_TEMPLATE: Final[str] = "//dummyimage.com/{width}x{height}/9
 THUMBNAIL_DEFAULT_FORMAT: Final[str] = "PNG"
 """
 Default thumbnail image format.
+"""
+
+
+# PROTECTED ########################################################################################
+
+PROTECTED_SERVE_WITH_NGINX: Final[bool] = not settings.DEBUG
+"""
+The option implies the distribution of protected files by nginx. Instead of serving the file in
+response.
+
+The view [protected_file_view][meringue.protected.views.protected_file_view] adds the X-Accel-Redirect header with a link to the file.
 """

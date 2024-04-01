@@ -76,7 +76,7 @@ Adding new functionality. Can change.
 	* [ ] Tests
 	* [ ] Docs
 * [ ] Functionality similar to that described in the previous paragraph only for video.
-* [ ] Functionality for loading private files available through [nginx internal](http://nginx.org/en/docs/http/ngx_http_core_module.html#internal).
+* [x] Functionality for loading private files available through [nginx internal](http://nginx.org/en/docs/http/ngx_http_core_module.html#internal).
 
 
 ## Contributing

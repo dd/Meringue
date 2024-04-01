@@ -4,6 +4,8 @@ from meringue.core.models import CMTimeMixin
 from meringue.core.models import PublicationDatesMixin
 from meringue.core.models import PublicationMixin
 from meringue.core.models import SortingMixin
+from meringue.protected.fields import ProtectedFileField
+from meringue.protected.fields import ProtectedImageField
 
 
 class CMTimeModel(CMTimeMixin):
@@ -29,3 +31,10 @@ class TranslatedModel(models.Model):
         m_translate_fields = [
             "name",
         ]
+
+
+class ProtectedModel(models.Model):
+    file = ProtectedFileField()
+    image = ProtectedImageField()
+    file_orig = models.FileField()
+    image_orig = models.ImageField()

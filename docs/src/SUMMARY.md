@@ -3,6 +3,7 @@
 	* [Configurations](usage/conf.md)
 	* [Core](usage/core.md)
 	* [API](usage/api.md)
+	* [Protected](usage/protected.md)
 * [Code Reference](reference/)
 * Contributing
 	* [Introduction](dev/contributing.md)
