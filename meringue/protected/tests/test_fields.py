@@ -3,17 +3,21 @@ from faker import Faker
 from io import BytesIO
 from unittest.mock import patch
 
+import django
 from django.contrib.contenttypes.models import ContentType
 from django.core.files.uploadedfile import UploadedFile
 from django.test import Client
 from django.test import override_settings
 from django.urls import reverse
-try:
-    from django.core.files.storage.filesystem import FileSystemStorage
-except ImportError:
-    from django.core.files.storage import FileSystemStorage
 
 from test_project.models import ProtectedModel
+
+IS_DJANGO_2 = django.VERSION < (3,)
+IS_DJANGO_3 = django.VERSION < (4,)
+if IS_DJANGO_2 or IS_DJANGO_3:
+    from django.core.files.storage import FileSystemStorage
+else:
+    from django.core.files.storage.filesystem import FileSystemStorage
 
 
 faker = Faker()
@@ -78,8 +82,9 @@ def test_protected_file_view_file_response(mocked_has_perm):
     response = Client().get(instance.file.url)
 
     assert response.status_code == 200
-    assert response.headers['Content-Length'] == str(instance.file.size)
-    assert response.headers['Content-Disposition'] == f'inline; filename="test.bin"'
+    assert response.get('Content-Length') == str(instance.file.size)
+    if not IS_DJANGO_2:
+        assert response.get('Content-Disposition') == f'inline; filename="test.bin"'
 
 
 @patch(
@@ -97,10 +102,12 @@ def test_protected_file_view_nginx(mocked_has_perm):
     response = Client().get(instance.image.url)
 
     assert response.status_code == 200
-    headers = response.headers
-    assert headers["Content-Type"] == "image/png"
-    assert headers["Content-Disposition"] == "inline; filename=%D1%82%D0%B5%D1%81%D1%82.png"
-    assert headers["X-Accel-Redirect"] == "/media/protected/%D1%82%D0%B5%D1%81%D1%82.png"
+    assert response.get("Content-Type") == "image/png"
+    assert response.get("Content-Disposition") == "inline; filename=%D1%82%D0%B5%D1%81%D1%82.png"
+    if IS_DJANGO_2:
+        assert response.get("X-Accel-Redirect") == "media/protected/%D1%82%D0%B5%D1%81%D1%82.png"
+    else:
+        assert response.get("X-Accel-Redirect") == "/media/protected/%D1%82%D0%B5%D1%81%D1%82.png"
 
 
 @patch(
@@ -126,7 +133,11 @@ def test_protected_file_view_nginx_origfiles(mocked_has_perm):
     response = Client().get(url)
 
     assert response.status_code == 200
-    headers = response.headers
-    assert headers["Content-Type"] == "image/png"
-    assert headers["Content-Disposition"] == "inline; filename=%D1%82%D0%B5%D1%81%D1%82_orig.png"
-    assert headers["X-Accel-Redirect"] == "/media/%D1%82%D0%B5%D1%81%D1%82_orig.png"
+    assert response.get("Content-Type") == "image/png"
+    assert response.get("Content-Disposition") == (
+        "inline; filename=%D1%82%D0%B5%D1%81%D1%82_orig.png"
+    )
+    if IS_DJANGO_2:
+        assert response.get("X-Accel-Redirect") == "media/%D1%82%D0%B5%D1%81%D1%82_orig.png"
+    else:
+        assert response.get("X-Accel-Redirect") == "/media/%D1%82%D0%B5%D1%81%D1%82_orig.png"
