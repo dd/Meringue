@@ -862,6 +862,7 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos="8 "></span></a>    <span class="o">...</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos="9 "></span></a><span class="p">]</span>
 </code></pre></div>
+<p>You can specify any route name, but if you're using the view in conjunction with <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/fields/#meringue.protected.fields.ProtectedFileField">ProtectedFileField</a> or <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/fields/#meringue.protected.fields.ProtectedImageField">ProtectedImageField</a>, you'll need to specify the corresponding name in the fields as well. This can be useful if you have multiple views for retrieving files.</p>
 <h3 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">¤</a></h3>
 <p>Of course, when using nginx, files in the media folder need to be protected from access:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>server {
@@ -885,6 +886,7 @@
 <h3 id="extended">Extended<a class="headerlink" href="#extended" title="Permanent link">¤</a></h3>
 <p>To generate protected files, there are two fields available for the model - <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/fields/#meringue.protected.fields.ProtectedFileField">ProtectedFileField</a> and <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/fields/#meringue.protected.fields.ProtectedImageField">ProtectedImageField</a>.</p>
 <p>In these fields, the url attribute is overridden, and it now returns a link to the aforementioned <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/views/#meringue.protected.views.protected_file_view">protected_file_view</a>.</p>
+<p>The field by default saves the file in the directory protected. Additionally, you can specify the name under which you placed the view in your routes using the protected_view_name attribute.</p>
 
 
 
@@ -907,7 +909,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024-04-01 20:04:20+0000</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024-04-02 09:56:37+0000</span>
   </span>
 
     
