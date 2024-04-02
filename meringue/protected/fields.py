@@ -13,7 +13,7 @@ class ProtectedFileMixin:
         result_url = reverse(
             self.field.m_protected_view_name,
             kwargs={
-                "contenttype_id": ContentType.objects.get_for_model(self.instance.__class__).id,
+                "cid": ContentType.objects.get_for_model(self.instance.__class__).id,
                 "field": self.field.name,
                 "pk": self.instance.pk,
             },

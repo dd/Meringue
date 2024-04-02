@@ -15,7 +15,7 @@ from meringue.protected.fields import ProtectedFieldFile
 from meringue.protected.fields import ProtectedImageFieldFile
 
 
-def protected_file_view(request, contenttype_id, field, pk):
+def protected_file_view(request, cid, field, pk):
     """
     В продакшен моде вьха редиректит на урл файла, где нжинкс отдаёт этот файл
     Защита работает за счёт параметра internal
@@ -29,7 +29,7 @@ def protected_file_view(request, contenttype_id, field, pk):
     ```
     """
 
-    contenttype = ContentType.objects.get(id=contenttype_id)
+    contenttype = ContentType.objects.get(id=cid)
 
     if not request.user.has_perm(f"{contenttype.app_label}.view_{contenttype.model}"):
         raise PermissionDenied()

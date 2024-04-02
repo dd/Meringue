@@ -15,7 +15,7 @@ In the simplest scenario, you just need to enable view, and everything will work
 urlpatterns = [
     ...
     path(
-        "protected/<int:contenttype_id>/<slug:field>/<slug:pk>",
+        "protected/<int:cid>/<slug:field>/<slug:pk>",
         staff_member_required(protected_file_view),
         name="meringue-protected-file",
     ),

@@ -36,7 +36,7 @@ def test_protected_file_view_403():
     url = reverse(
         "meringue-protected-file",
         kwargs={
-            "contenttype_id": ContentType.objects.get_for_model(ProtectedModel).id,
+            "cid": ContentType.objects.get_for_model(ProtectedModel).id,
             "field": "file",
             "pk": 1,
         },
@@ -57,7 +57,7 @@ def test_protected_file_view_404(mocked_has_perm):
     url = reverse(
         "meringue-protected-file",
         kwargs={
-            "contenttype_id": ContentType.objects.get_for_model(ProtectedModel).id,
+            "cid": ContentType.objects.get_for_model(ProtectedModel).id,
             "field": "file",
             "pk": instance.id,
         },
@@ -125,7 +125,7 @@ def test_protected_file_view_nginx_origfiles(mocked_has_perm):
     url = reverse(
         "meringue-protected-file",
         kwargs={
-            "contenttype_id": ContentType.objects.get_for_model(ProtectedModel).id,
+            "cid": ContentType.objects.get_for_model(ProtectedModel).id,
             "field": "image_orig",
             "pk": instance.id,
         },

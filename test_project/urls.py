@@ -14,7 +14,7 @@ urlpatterns = [
     path("registration", RegistrationView.as_view(), name="registration"),
     path("token_obtain", TokenObtainPairView.as_view(), name="token_obtain"),
     path(
-        "protected/<int:contenttype_id>/<slug:field>/<slug:pk>",
+        "protected/<int:cid>/<slug:field>/<slug:pk>",
         protected_file_view,
         name="meringue-protected-file",
     ),
