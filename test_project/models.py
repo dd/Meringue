@@ -35,6 +35,7 @@ class TranslatedModel(models.Model):
 
 class ProtectedModel(models.Model):
     file = ProtectedFileField()
+    file_hosts = ProtectedFileField(protected_host_name="sub")
     image = ProtectedImageField()
     file_orig = models.FileField()
     image_orig = models.ImageField()

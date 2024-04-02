@@ -157,6 +157,7 @@ dependencies = [
 	"djangorestframework-simplejwt==5.3.1",
 	"drf-spectacular==0.26.4",
 	"pillow==10.3.0",
+	"django_hosts==5.2",
 ]
 [tool.hatch.envs.test.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
@@ -177,6 +178,7 @@ dependencies = [
 	"pycryptodome==3.20.0",
 	"drf-spectacular==0.26.4",
 	"pillow==10.3.0",
+	"django_hosts==5.2",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [

@@ -17,16 +17,13 @@ from meringue.protected.fields import ProtectedImageFieldFile
 
 def protected_file_view(request, cid, field, pk):
     """
-    В продакшен моде вьха редиректит на урл файла, где нжинкс отдаёт этот файл
-    Защита работает за счёт параметра internal
-    https://nginx.org/en/docs/http/ngx_http_core_module.html#internal
+    The view checks the user's access to view and serves the file.
 
-    ```conf
-    location /media/protected/ {
-        internal;
-        alias /home/rpl/rpl-2023-back/public/media/protected/;
-    }
-    ```
+    If you enable the parameter
+    [PROTECTED_SERVE_WITH_NGINX][meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX], the
+    file will not be served; instead, the response will contain the X-Accel-Redirect header
+    pointing to the original file. It is expected that nginx will return the file using the
+    [internal](https://nginx.org/en/docs/http/ngx_http_core_module.html#internal) parameter.
     """
 
     contenttype = ContentType.objects.get(id=cid)
