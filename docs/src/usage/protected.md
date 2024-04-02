@@ -23,6 +23,8 @@ urlpatterns = [
 ]
 ```
 
+You can specify any route name, but if you're using the view in conjunction with [ProtectedFileField][meringue.protected.fields.ProtectedFileField] or [ProtectedImageField][meringue.protected.fields.ProtectedImageField], you'll need to specify the corresponding name in the fields as well. This can be useful if you have multiple views for retrieving files.
+
 
 ### Nginx
 
@@ -57,3 +59,5 @@ server {
 To generate protected files, there are two fields available for the model - [ProtectedFileField][meringue.protected.fields.ProtectedFileField] and [ProtectedImageField][meringue.protected.fields.ProtectedImageField].
 
 In these fields, the url attribute is overridden, and it now returns a link to the aforementioned [protected_file_view][meringue.protected.views.protected_file_view].
+
+The field by default saves the file in the directory protected. Additionally, you can specify the name under which you placed the view in your routes using the protected_view_name attribute.
