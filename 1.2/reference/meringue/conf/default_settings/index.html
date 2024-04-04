@@ -937,6 +937,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#meringue.conf.default_settings.PROTECTED_NGINX_LOCATION_GETTER" class="md-nav__link">
+    <span class="md-ellipsis">
+      PROTECTED_NGINX_LOCATION_GETTER
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1202,6 +1211,15 @@
   <a href="#meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX" class="md-nav__link">
     <span class="md-ellipsis">
       PROTECTED_SERVE_WITH_NGINX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meringue.conf.default_settings.PROTECTED_NGINX_LOCATION_GETTER" class="md-nav__link">
+    <span class="md-ellipsis">
+      PROTECTED_NGINX_LOCATION_GETTER
     </span>
   </a>
   
@@ -1692,7 +1710,38 @@
   
       <p>The option implies the distribution of protected files by nginx. Instead of serving the file in
 response.</p>
-<p>The view <a class="autorefs autorefs-internal" href="../../protected/views/#meringue.protected.views.protected_file_view">protected_file_view</a> adds the X-Accel-Redirect header with a link to the file.</p>
+<p>The view <a class="autorefs autorefs-internal" href="../../protected/views/#meringue.protected.views.x_accel_redirect_view">x_accel_redirect_view</a> adds the
+X-Accel-Redirect header with a link to the file.</p>
+  </div>
+
+</div>
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="meringue.conf.default_settings.PROTECTED_NGINX_LOCATION_GETTER" class="doc doc-heading">
+          <span class="doc doc-object-name doc-attribute-name">PROTECTED_NGINX_LOCATION_GETTER</span>
+
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#meringue.conf.default_settings.PROTECTED_NGINX_LOCATION_GETTER" class="headerlink" title="Permanent link">¤</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">PROTECTED_NGINX_LOCATION_GETTER</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Final" href="https://docs.python.org/3/library/typing.html#typing.Final">Final</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s2">&quot;meringue.protected.utils.nginx_location_getter&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">)</span>
+</code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Default getter for the link to the file where nginx should serve it after access verification.</p>
   </div>
 
 </div>
