@@ -18,7 +18,7 @@
         <link rel="prev" href="../api/">
       
       
-        <link rel="next" href="../../reference/meringue/core/utils/__init__/">
+        <link rel="next" href="../../reference/meringue/conf/__init__/">
       
       
       <link rel="icon" href="../../assets/favicon.svg">
@@ -284,23 +284,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../../reference/meringue/core/utils/__init__/" class="md-tabs__link">
+        <a href="../../reference/meringue/conf/__init__/" class="md-tabs__link">
           
   
   Code Reference
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -610,9 +601,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extended" class="md-nav__link">
+  <a href="#protectedfilefield-and-protectedimagefield" class="md-nav__link">
     <span class="md-ellipsis">
-      Extended
+      ProtectedFileField and ProtectedImageField
     </span>
   </a>
   
@@ -665,10 +656,7 @@
     
   
   
-    
-  
-  
-    <a href="../../reference/meringue/core/utils/__init__/" class="md-nav__link">
+    <a href="../../reference/meringue/conf/__init__/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -680,8 +668,6 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
-  
-
   
 
   
@@ -801,9 +787,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extended" class="md-nav__link">
+  <a href="#protectedfilefield-and-protectedimagefield" class="md-nav__link">
     <span class="md-ellipsis">
-      Extended
+      ProtectedFileField and ProtectedImageField
     </span>
   </a>
   
@@ -848,7 +834,7 @@
 
 <h1 id="meringue-protected">Meringue Protected<a class="headerlink" href="#meringue-protected" title="Permanent link">¤</a></h1>
 <p>This package includes functionality for organizing private files.</p>
-<p>The main functionality is encapsulated in <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/views/#meringue.protected.views.protected_file_view">protected_file_view</a>. It checks whether the user has access to view the file and serves it.</p>
+<p>The main functionality is encapsulated in <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/views/#meringue.protected.views.x_accel_redirect_view">x_accel_redirect_view</a>. It checks whether the user has access to view the file and serves it.</p>
 <p>However, when working with nginx, you can enable the <a class="autorefs autorefs-internal" href="../../reference/meringue/conf/default_settings/#meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX">PROTECTED_SERVE_WITH_NGINX</a> option. In this case, nginx itself will serve the file instead of Django, using the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#internal">internal</a> directive.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¤</a></h2>
 <p>In the simplest scenario, you just need to enable view, and everything will work:</p>
@@ -856,13 +842,12 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="o">...</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="n">path</span><span class="p">(</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>        <span class="s2">&quot;protected/&lt;int:cid&gt;/&lt;slug:field&gt;/&lt;slug:pk&gt;&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>        <span class="n">staff_member_required</span><span class="p">(</span><span class="n">protected_file_view</span><span class="p">),</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>        <span class="n">staff_member_required</span><span class="p">(</span><span class="n">x_accel_redirect_view</span><span class="p">),</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;meringue-protected-file&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a>    <span class="p">),</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos="8 "></span></a>    <span class="o">...</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos="9 "></span></a><span class="p">]</span>
 </code></pre></div>
-<p>You can specify any route name, but if you're using the view in conjunction with <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/fields/#meringue.protected.fields.ProtectedFileField">ProtectedFileField</a> or <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/fields/#meringue.protected.fields.ProtectedImageField">ProtectedImageField</a>, you'll need to specify the corresponding name in the fields as well. This can be useful if you have multiple views for retrieving files.</p>
 <h3 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">¤</a></h3>
 <p>Of course, when using nginx, files in the media folder need to be protected from access:</p>
 <div class="language-text highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>server {
@@ -883,10 +868,24 @@
 <a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos="7 "></span></a>    ...
 <a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos="8 "></span></a>}
 </code></pre></div>
-<h3 id="extended">Extended<a class="headerlink" href="#extended" title="Permanent link">¤</a></h3>
+<h3 id="protectedfilefield-and-protectedimagefield">ProtectedFileField and ProtectedImageField<a class="headerlink" href="#protectedfilefield-and-protectedimagefield" title="Permanent link">¤</a></h3>
 <p>To generate protected files, there are two fields available for the model - <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/fields/#meringue.protected.fields.ProtectedFileField">ProtectedFileField</a> and <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/fields/#meringue.protected.fields.ProtectedImageField">ProtectedImageField</a>.</p>
-<p>In these fields, the url attribute is overridden, and it now returns a link to the aforementioned <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/views/#meringue.protected.views.protected_file_view">protected_file_view</a>.</p>
-<p>The field by default saves the file in the directory protected. Additionally, you can specify the name under which you placed the view in your routes using the protected_view_name attribute.</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="n">file</span> <span class="o">=</span> <span class="n">ProtectedFileField</span><span class="p">(</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>        <span class="n">view_name</span><span class="o">=</span><span class="s2">&quot;x_accel_redirect_view&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a>        <span class="n">host_name</span><span class="o">=</span><span class="s2">&quot;sub&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a>        <span class="n">disposition</span><span class="o">=</span><span class="s2">&quot;inline&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a>        <span class="n">nginx_location_getter</span><span class="o">=</span><span class="n">_test_getter</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos="7 "></span></a>    <span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><strong>view_name</strong> - the name of the route handling the file request (mandatory field);</li>
+<li><strong>host_name</strong> - the host name for reversing to the view, when used in combination with <a href="https://django-hosts.readthedocs.io/en/latest/">django-hosts</a>;</li>
+<li><strong>disposition</strong> - disposition for the <code>Content-Disposition</code> header;</li>
+<li><strong>nginx_location_getter</strong> - a method that returns the link through which the file will be served by nginx after redirection from the view. The default method is set in the parameter <a class="autorefs autorefs-internal" href="../../reference/meringue/conf/default_settings/#meringue.conf.default_settings.PROTECTED_NGINX_LOCATION_GETTER">PROTECTED_NGINX_LOCATION_GETTER</a>. The default method <a class="autorefs autorefs-internal" href="../../reference/meringue/protected/utils/#meringue.protected.utils.nginx_location_getter">nginx_location_getter</a> returns the original link to the file.</li>
+</ul>
+<p>The original properties of the <code>url</code> fields have been changed to point to the view specified in the <code>view_name</code> attribute.</p>
+<p>By default, the field saves the file in the <code>protected</code> directory.</p>
 
 
 
@@ -909,7 +908,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024-04-02 10:41:40+0000</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024-04-04 00:33:50+0000</span>
   </span>
 
     
@@ -1007,7 +1006,7 @@
         
         
           
-          <a href="../../reference/meringue/core/utils/__init__/" class="md-footer__link md-footer__link--next" aria-label="Next: __init__.py">
+          <a href="../../reference/meringue/conf/__init__/" class="md-footer__link md-footer__link--next" aria-label="Next: __init__.py">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next

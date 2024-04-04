@@ -12,28 +12,28 @@
         <meta name="author" content="Dmitriy Dobrynin (aka dd) <dd@tovarisch.engineer>">
       
       
-        <link rel="canonical" href="https://dd.github.io/Meringue/dev/dev/contributing/">
+        <link rel="canonical" href="https://dd.github.io/Meringue/dev/reference/meringue/protected/utils/">
       
       
-        <link rel="prev" href="../../reference/meringue/__init__/">
+        <link rel="prev" href="../fields/">
       
       
-        <link rel="next" href="../docs/">
+        <link rel="next" href="../views/">
       
       
-      <link rel="icon" href="../../assets/favicon.svg">
+      <link rel="icon" href="../../../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.16">
     
     
       
-        <title>Introduction - Meringue</title>
+        <title>utils.py - Meringue</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.bcfcd587.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,11 +52,11 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../css/base.b4b472.css">
+      <link rel="stylesheet" href="../../../../css/base.b4b472.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#contributing" class="md-skip">
+        <a href="#meringue.protected.utils" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
 	You're not viewing the latest version.
-	<a href="../../..">
+	<a href="../../../../..">
 		<strong>Click here to go to latest.</strong>
 	</a>
 
@@ -112,9 +112,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Meringue" class="md-header__button md-logo" aria-label="Meringue" data-md-component="logo">
+    <a href="../../../.." title="Meringue" class="md-header__button md-logo" aria-label="Meringue" data-md-component="logo">
       
-  <img src="../../assets/favicon.svg" alt="logo">
+  <img src="../../../../assets/favicon.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              utils.py
             
           </span>
         </div>
@@ -240,7 +240,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
     
@@ -259,7 +259,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../usage/" class="md-tabs__link">
+        <a href="../../../../usage/" class="md-tabs__link">
           
   
   Usage
@@ -273,17 +273,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../reference/meringue/conf/__init__/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../conf/__init__/" class="md-tabs__link">
           
   
   Code Reference
@@ -300,13 +304,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../dev/contributing/" class="md-tabs__link">
           
   
   Contributing
@@ -322,7 +324,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../changelog/" class="md-tabs__link">
+      <a href="../../../../changelog/" class="md-tabs__link">
         
   
     
@@ -356,9 +358,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Meringue" class="md-nav__button md-logo" aria-label="Meringue" data-md-component="logo">
+    <a href="../../../.." title="Meringue" class="md-nav__button md-logo" aria-label="Meringue" data-md-component="logo">
       
-  <img src="../../assets/favicon.svg" alt="logo">
+  <img src="../../../../assets/favicon.svg" alt="logo">
 
     </a>
     Meringue
@@ -385,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -421,7 +423,7 @@
         
   
   
-    <a href="../../usage/" class="md-nav__link">
+    <a href="../../../../usage/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -433,53 +435,6 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    
-  
-  
-    <a href="../../reference/meringue/conf/__init__/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Code Reference
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
   
 
       
@@ -511,26 +466,174 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    Contributing
+    Code Reference
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Contributing
+            Code Reference
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../conf/__init__/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    conf
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    protected
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            protected
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../__init__/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    __init__.py
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apps.py
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fields/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fields.py
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -552,7 +655,7 @@
           
   
   <span class="md-ellipsis">
-    Introduction
+    utils.py
   </span>
   
 
@@ -563,7 +666,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction
+    utils.py
   </span>
   
 
@@ -587,105 +690,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#environment" class="md-nav__link">
+  <a href="#meringue.protected.utils.nginx_location_getter" class="md-nav__link">
     <span class="md-ellipsis">
-      Environment
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#git-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Git flow
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internationalization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internationalization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Internationalization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#makemessages" class="md-nav__link">
-    <span class="md-ellipsis">
-      makemessages
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compilemessages" class="md-nav__link">
-    <span class="md-ellipsis">
-      compilemessages
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tests
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Documentation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#versioning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Versioning
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commit-message-convention" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commit message convention
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#changelog-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changelog generation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-and-publishing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building and publishing
+      nginx_location_getter
     </span>
   </a>
   
@@ -694,6 +701,35 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    views.py
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -723,11 +759,14 @@
         
   
   
-    <a href="../docs/" class="md-nav__link">
+    
+  
+  
+    <a href="../../api/docs/__init__/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Documentations
+    api
   </span>
   
 
@@ -735,6 +774,104 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../core/utils/__init__/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    core
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../thumbnail/templatetags/__init__/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    thumbnail
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
   
 
       
@@ -750,11 +887,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../tests/" class="md-nav__link">
+      <a href="../../__init__/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Tests
+    __init__.py
   </span>
   
 
@@ -777,8 +914,50 @@
   
   
   
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../dev/contributing/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../changelog/" class="md-nav__link">
+      <a href="../../../../changelog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -820,105 +999,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#environment" class="md-nav__link">
+  <a href="#meringue.protected.utils.nginx_location_getter" class="md-nav__link">
     <span class="md-ellipsis">
-      Environment
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#git-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Git flow
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internationalization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internationalization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Internationalization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#makemessages" class="md-nav__link">
-    <span class="md-ellipsis">
-      makemessages
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compilemessages" class="md-nav__link">
-    <span class="md-ellipsis">
-      compilemessages
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tests
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Documentation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#versioning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Versioning
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commit-message-convention" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commit message convention
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#changelog-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changelog generation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-and-publishing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building and publishing
+      nginx_location_getter
     </span>
   </a>
   
@@ -940,7 +1023,7 @@
                   
 
   
-    <a href="https://github.com/dd/Meringue/edit/master/docs/src/dev/contributing.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dd/Meringue/edit/master/docs/meringue/protected" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -949,95 +1032,74 @@
     
       
     
-    <a href="https://github.com/dd/Meringue/raw/master/docs/src/dev/contributing.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/dd/Meringue/raw/master/docs/meringue/protected" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">¤</a></h1>
-<p>Please don't be shy - comment, discuss and suggest whatever you think is important in the <a href="https://github.com/dd/Meringue/discussions">discussions</a> on github, if you notice a bug please describe it in <a href="https://github.com/dd/Meringue/issues">issues</a>, and if you decide to contribute to the development of the project, feel free to send <a href="https://github.com/dd/Meringue/pulls">pull request</a>, and if possible, read further during development this section.</p>
-<p>When developing, modifying and fixing a feature, please fill in and correct all annotations and docstrings in the code, and also try, if possible, to fill in / supplement the description of the functionality and its use in the <a href="../../usage/">section</a> of the documentation, also add tests for new or fixed functionality, read more below:</p>
-<h2 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">¤</a></h2>
-<p>To work, you need a configured environment, for this there is the following script:</p>
-<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">$ </span>hatch<span class="w"> </span>run<span class="w"> </span>init
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All development is done using <a href="https://hatch.pypa.io/">hatch</a>. To work with it, you will need to install it globally, I advise you to do this using <a href="https://github.com/pypa/pipx">pipx</a>.</p>
-</div>
-<p>This script will completely configure the environment - configure gitflow, connect git hooks, and install and configure a virtual environment, to run python in this environment, run the following command:</p>
-<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">$ </span>hatch<span class="w"> </span>run<span class="w"> </span>ipython
-</code></pre></div>
-<h2 id="git-flow">Git flow<a class="headerlink" href="#git-flow" title="Permanent link">¤</a></h2>
-<p>As you develop and refine, please try to keep your repository consistent with <a href="https://github.com/petervanderdoes/gitflow-avh">gitflow</a>.</p>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>Probably this point will change, the library is actively developed, I took this approach as a familiar one, however, I think that it will need to be changed. If you have any suggestions I'll be happy to listen.</p>
-</div>
-<h2 id="internationalization">Internationalization<a class="headerlink" href="#internationalization" title="Permanent link">¤</a></h2>
-<p>To add translations there are two useful commands:</p>
-<h3 id="makemessages"><code>makemessages</code><a class="headerlink" href="#makemessages" title="Permanent link">¤</a></h3>
-<dl>
-<dd>
-<p>This is a wrapper around the <a href="https://docs.djangoproject.com/en/4.2/ref/django-admin/#makemessages">makemessages</a> django command and creates/updates localization files in each <em>meringue</em> application.</p>
-<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">$ </span>hatch<span class="w"> </span>run<span class="w"> </span>makemessages
-</code></pre></div>
-</dd>
-</dl>
-<h3 id="compilemessages"><code>compilemessages</code><a class="headerlink" href="#compilemessages" title="Permanent link">¤</a></h3>
-<dl>
-<dd>
-<p>This is a wrapper around the <a href="https://docs.djangoproject.com/en/4.2/ref/django-admin/#compilemessages">compilemessages</a> django command and compiles all translations.</p>
-<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">$ </span>hatch<span class="w"> </span>run<span class="w"> </span>compilemessages
-</code></pre></div>
-</dd>
-</dl>
-<h2 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">¤</a></h2>
-<p>When working on a project, it is extremely important to cover everything with tests in order to avoid problems and errors in the code. See working on tests in the appropriate <a href="../tests/">section</a>.</p>
-<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">¤</a></h2>
-<p>The documentation is implemented using the <a href="https://www.mkdocs.org/">mkdocs</a> generator and the <a href="https://squidfunk.github.io/mkdocs-material/">mkdocs material</a> theme. When working on library functionality, two main sections <a href="../../usage/">usage</a> and <a href="../../reference/meringue/conf/__init__/">reference</a> are important. For more information about developing documentation, see the corresponding <a href="../docs/">section</a>.</p>
-<h2 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">¤</a></h2>
-
-
-<div class="doc doc-object doc-attribute">
+<div class="doc doc-object doc-module">
 
 
 
+<h1 id="meringue.protected.utils" class="doc doc-heading">
+          <span class="doc doc-object-name doc-module-name">meringue.protected.utils</span>
 
+
+<a href="#meringue.protected.utils" class="headerlink" title="Permanent link">¤</a></h1>
 
   <div class="doc doc-contents first">
+
   
-      <p>To update the version, use <a href="https://hatch.pypa.io/latest/version/#updating">hatch version</a></p>
-<p>show current version:</p>
-<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">$ </span>hatch<span class="w"> </span>version
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="go">1.0.0a0</span>
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="meringue.protected.utils.nginx_location_getter" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">nginx_location_getter</span>
+
+
+<a href="#meringue.protected.utils.nginx_location_getter" class="headerlink" title="Permanent link">¤</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nf">nginx_location_getter</span><span class="p">(</span><span class="n">field_file</span><span class="p">)</span>
 </code></pre></div>
-<p>update patch and beta version from <code>1.0.0a0</code> to <code>1.0.1b0</code></p>
-<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">$ </span>hatch<span class="w"> </span>version<span class="w"> </span>patch,beta
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="go">Old: 1.0.0a0</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="go">New: 1.0.1b0</span>
+
+  <div class="doc doc-contents ">
+  
+      <p>Getter for the link to the file where nginx should serve it after access verification</p>
+
+          <details class="quote">
+            <summary>Source code in <code>meringue/protected/utils.py</code></summary>
+            <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">def</span> <span class="nf">nginx_location_getter</span><span class="p">(</span><span class="n">field_file</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="sd">    Getter for the link to the file where nginx should serve it after access verification</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>    <span class="k">return</span> <span class="n">field_file</span><span class="o">.</span><span class="n">original_url</span>
 </code></pre></div>
+          </details>
   </div>
 
-</div><h2 id="commit-message-convention">Commit message convention<a class="headerlink" href="#commit-message-convention" title="Permanent link">¤</a></h2>
-<p>To write a commit, we adhere to the <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> specification, as well as <a href="https://gitmoji.dev/">gitmoji</a> as a special case of <em>conventional commits</em>. You can use <a href="https://github.com/carloscuesta/gitmoji-cli">gitmoji-cli</a> for this process. This is necessary for the automatic generation of the <a href="#changelog-generation">changelog</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>The list of emoji needs to be improved, now it is bloated and there are controversial points like <img alt="🔥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f525.svg" title=":fire:" /> which means deleting the code...</p>
 </div>
-<h2 id="changelog-generation">Changelog generation<a class="headerlink" href="#changelog-generation" title="Permanent link">¤</a></h2>
-<p>You can generate a Changelog with the following command using <a href="https://github.com/frinyvonnick/gitmoji-changelog">gitmoji-changelog</a>:</p>
-<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="go">gitmoji-changelog update 1.0.0 --preset generic --group-similar-commits</span>
-</code></pre></div>
-<h2 id="building-and-publishing">Building and publishing<a class="headerlink" href="#building-and-publishing" title="Permanent link">¤</a></h2>
-<p>For the build, <a href="https://hatch.pypa.io/">hatch</a> is used and to build the library there is the following command:</p>
-<div class="language-console highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">$ </span>hatch<span class="w"> </span>build
-</code></pre></div>
-<p>This command is provided by hatch and for more details on how it works, it is better to look at the hatch <a href="https://hatch.pypa.io/latest/cli/reference/#hatch-build">documentation</a>.</p>
-<p>The build and upload of releases is implemented in <a href="https://docs.github.com/en/actions">GitHub Actions</a> and occurs automatically when pushing release tags like <code>v*</code>.</p>
-<p>More details on how to set up a build and upload can be found in the workflow <a href="https://github.com/dd/Meringue/blob/master/.github/workflows/release.yml">config</a>.</p>
+
+
+
+
+  </div>
+
+  </div>
+
+</div>
 
 
 
@@ -1045,53 +1107,6 @@
 
 
 
-  
-    
-  
-  
-    
-  
-
-
-  <aside class="md-source-file">
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2023-07-31 03:06:02+0000</span>
-  </span>
-
-    
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Created">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2023-06-07 22:19:32+0000</span>
-  </span>
-
-    
-    
-      
-  
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Contributors">
-      
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
-      
-    </span>
-    <nav>
-      
-        <a href="mailto:dd@tovarisch.engineer">Dmitry Dobrynin</a>
-    </nav>
-  </span>
-
-    
-    
-  </aside>
 
 
 
@@ -1099,10 +1114,6 @@
 
                 
 
-	
-		<div class="md-source-date">
-			<small>Authors: <span class='git-page-authors git-authors'><a href='mailto:dd@tovarisch.engineer'>Dmitry Dobrynin</a></span></small>
-		</div>
 	
 
 	<hr>
@@ -1141,7 +1152,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../reference/meringue/__init__/" class="md-footer__link md-footer__link--prev" aria-label="Previous: __init__.py">
+          <a href="../fields/" class="md-footer__link md-footer__link--prev" aria-label="Previous: fields.py">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1151,20 +1162,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                __init__.py
+                fields.py
               </div>
             </div>
           </a>
         
         
           
-          <a href="../docs/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+          <a href="../views/" class="md-footer__link md-footer__link--next" aria-label="Next: views.py">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Introduction
+                views.py
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1222,10 +1233,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.prune", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "navigation.footer", "content.action.view", "content.action.edit", "content.tabs.link", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.prune", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "navigation.footer", "content.action.view", "content.action.edit", "content.tabs.link", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.bd41221c.min.js"></script>
       
     
   </body>
