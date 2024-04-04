@@ -2,7 +2,7 @@
 
 This package includes functionality for organizing private files.
 
-The main functionality is encapsulated in [protected_file_view][meringue.protected.views.protected_file_view]. It checks whether the user has access to view the file and serves it.
+The main functionality is encapsulated in [x_accel_redirect_views][meringue.protected.views.x_accel_redirect_views]. It checks whether the user has access to view the file and serves it.
 
 However, when working with nginx, you can enable the [PROTECTED_SERVE_WITH_NGINX][meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX] option. In this case, nginx itself will serve the file instead of Django, using the [internal](https://nginx.org/en/docs/http/ngx_http_core_module.html#internal) directive.
 
@@ -16,7 +16,7 @@ urlpatterns = [
     ...
     path(
         "protected/<int:cid>/<slug:field>/<slug:pk>",
-        staff_member_required(protected_file_view),
+        staff_member_required(x_accel_redirect_views),
         name="meringue-protected-file",
     ),
     ...
