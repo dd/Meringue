@@ -9,16 +9,23 @@ try:
 except ImportError:
     hosts_reverse = None
 
+from meringue.conf import m_settings
+
 
 class ProtectedFileMixin:
     @property
     def url(self):
+        """
+        Link to the view with access verification to the file
+        """
+
         self._require_file()
 
         reverse_kwargs = {
             "cid": ContentType.objects.get_for_model(self.instance.__class__).id,
             "field": self.field.name,
             "pk": self.instance.pk,
+            "disp": self.field.m_protected_disposition,
         }
         if self.field.m_protected_host_name:
             result_url = hosts_reverse(
@@ -31,7 +38,19 @@ class ProtectedFileMixin:
         return result_url
 
     @property
+    def redirect_url(self):
+        """
+        Link to the file where nginx should serve it after access verification.
+        """
+
+        return self.field.m_protected_nginx_location_getter(self)
+
+    @property
     def original_url(self):
+        """
+        The original link to the file.
+        """
+
         self._require_file()
         return self.storage.url(self.name)
 
@@ -49,17 +68,26 @@ class ProtectedFileField(FileField):
 
     def __init__(
         self,
+        view_name,
         verbose_name=None,
         name=None,
         upload_to="protected",
         storage=None,
-        protected_view_name="meringue-protected-file",
-        protected_host_name=None,
+        host_name=None,
+        disposition="attachment",
+        nginx_location_getter=m_settings.PROTECTED_NGINX_LOCATION_GETTER,
         **kwargs,
     ):
-        self.m_protected_view_name = protected_view_name
-        self.m_protected_host_name = protected_host_name
+        self.m_protected_view_name = view_name
+        self.m_protected_host_name = host_name
+        self.m_protected_disposition = disposition
+        self.m_protected_nginx_location_getter = nginx_location_getter
         super().__init__(verbose_name, name, upload_to, storage, **kwargs)
+
+    def deconstruct(self):
+        name, path, args, kwargs = super().deconstruct()
+        kwargs['view_name'] = self.m_protected_view_name
+        return name, path, args, kwargs
 
 
 class ProtectedImageFieldFile(ProtectedFileMixin, ImageFieldFile):
@@ -75,15 +103,24 @@ class ProtectedImageField(ImageField):
 
     def __init__(
         self,
+        view_name,
         verbose_name=None,
         name=None,
         width_field=None,
         height_field=None,
-        protected_view_name="meringue-protected-file",
-        protected_host_name=None,
+        host_name=None,
+        disposition="attachment",
+        nginx_location_getter=m_settings.PROTECTED_NGINX_LOCATION_GETTER,
         **kwargs,
     ):
         kwargs.setdefault("upload_to", "protected")
-        self.m_protected_view_name = protected_view_name
-        self.m_protected_host_name = protected_host_name
+        self.m_protected_view_name = view_name
+        self.m_protected_host_name = host_name
+        self.m_protected_disposition = disposition
+        self.m_protected_nginx_location_getter = nginx_location_getter
         super().__init__(verbose_name, name, width_field, height_field, **kwargs)
+
+    def deconstruct(self):
+        name, path, args, kwargs = super().deconstruct()
+        kwargs['view_name'] = self.m_protected_view_name
+        return name, path, args, kwargs

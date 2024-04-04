@@ -23,8 +23,6 @@ urlpatterns = [
 ]
 ```
 
-You can specify any route name, but if you're using the view in conjunction with [ProtectedFileField][meringue.protected.fields.ProtectedFileField] or [ProtectedImageField][meringue.protected.fields.ProtectedImageField], you'll need to specify the corresponding name in the fields as well. This can be useful if you have multiple views for retrieving files.
-
 
 ### Nginx
 
@@ -54,10 +52,25 @@ server {
 ```
 
 
-### Extended
+### ProtectedFileField and ProtectedImageField
 
 To generate protected files, there are two fields available for the model - [ProtectedFileField][meringue.protected.fields.ProtectedFileField] and [ProtectedImageField][meringue.protected.fields.ProtectedImageField].
 
-In these fields, the url attribute is overridden, and it now returns a link to the aforementioned [protected_file_view][meringue.protected.views.protected_file_view].
+```python
+class Foo(models.Model):
+    file = ProtectedFileField(
+        view_name="x_accel_redirect_view",
+        host_name="sub",
+        disposition="inline",
+        nginx_location_getter=_test_getter,
+    )
+```
 
-The field by default saves the file in the directory protected. Additionally, you can specify the name under which you placed the view in your routes using the protected_view_name attribute.
+* **view_name** - the name of the route handling the file request (mandatory field);
+* **host_name** - the host name for reversing to the view, when used in combination with [django-hosts](https://django-hosts.readthedocs.io/en/latest/);
+* **disposition** - disposition for the `Content-Disposition` header;
+* **nginx_location_getter** - a method that returns the link through which the file will be served by nginx after redirection from the view. The default method is set in the parameter [PROTECTED_NGINX_LOCATION_GETTER][meringue.conf.default_settings.PROTECTED_NGINX_LOCATION_GETTER]. The default method [nginx_location_getter][meringue.protected.utils.nginx_location_getter] returns the original link to the file.
+
+The original properties of the `url` fields have been changed to point to the view specified in the `view_name` attribute.
+
+By default, the field saves the file in the `protected` directory.

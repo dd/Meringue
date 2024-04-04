@@ -125,3 +125,8 @@ response.
 
 The view [protected_file_view][meringue.protected.views.protected_file_view] adds the X-Accel-Redirect header with a link to the file.
 """
+
+PROTECTED_NGINX_LOCATION_GETTER: Final[str] = "meringue.protected.utils.nginx_location_getter"
+"""
+Default getter for the link to the file where nginx should serve it after access verification.
+"""

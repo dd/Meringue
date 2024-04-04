@@ -15,7 +15,7 @@ from meringue.protected.fields import ProtectedFieldFile
 from meringue.protected.fields import ProtectedImageFieldFile
 
 
-def protected_file_view(request, cid, field, pk):
+def x_accel_redirect_view(request, cid, field, pk, disp="inline"):
     """
     The view checks the user's access to view and serves the file.
 
@@ -41,7 +41,7 @@ def protected_file_view(request, cid, field, pk):
         file_name = Path(file.name).name
         response = HttpResponse()
         response["Content-Type"] = mimetypes.guess_type(file.path)[0]
-        response["Content-Disposition"] = f"inline; filename={quote(file_name)}"
+        response["Content-Disposition"] = f"{disp}; filename={quote(file_name)}"
 
         if isinstance(file, ProtectedFieldFile | ProtectedImageFieldFile):
             redirect_url = file.original_url
@@ -51,4 +51,7 @@ def protected_file_view(request, cid, field, pk):
         response["X-Accel-Redirect"] = redirect_url
         return response
 
-    return FileResponse(open(file.path, "rb"))
+    return FileResponse(
+        open(file.path, "rb"),
+        as_attachment = disp == "attachment",
+    )

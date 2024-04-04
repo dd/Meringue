@@ -12,8 +12,14 @@ from django.urls import reverse
 
 from test_project.models import ProtectedModel
 
-IS_DJANGO_2 = django.VERSION < (3,)
-IS_DJANGO_3 = django.VERSION < (4,)
+IS_DJANGO_2 = (2,) <= django.VERSION < (3,)
+IS_DJANGO_20 = (2, 0) <= django.VERSION < (2, 1)
+print(django.VERSION)
+print('IS_DJANGO_2', IS_DJANGO_2)
+print('IS_DJANGO_20', IS_DJANGO_20)
+print((2, 0) <= django.VERSION)
+IS_DJANGO_3 = (3,) <= django.VERSION < (4,)
+IS_DJANGO_GTE_3 = django.VERSION >= (3,)
 if IS_DJANGO_2 or IS_DJANGO_3:
     from django.core.files.storage import FileSystemStorage
 else:
@@ -24,13 +30,14 @@ faker = Faker()
 
 
 @pytest.mark.django_db
-def test_protected_file_view_403():
+def test_x_accel_redirect_view_403():
     url = reverse(
-        "meringue-protected-file",
+        "x_accel_redirect_view",
         kwargs={
             "cid": ContentType.objects.get_for_model(ProtectedModel).id,
             "field": "file",
             "pk": 1,
+            "disp": "inline",
         },
     )
     response = Client().get(url)
@@ -43,15 +50,16 @@ def test_protected_file_view_403():
     return_value=lambda *a, **k: True,
 )
 @pytest.mark.django_db
-def test_protected_file_view_404(mocked_has_perm):
+def test_x_accel_redirect_view_404(mocked_has_perm):
     instance = ProtectedModel.objects.create()
 
     url = reverse(
-        "meringue-protected-file",
+        "x_accel_redirect_view",
         kwargs={
             "cid": ContentType.objects.get_for_model(ProtectedModel).id,
             "field": "file",
             "pk": instance.id,
+            "disp": "inline",
         },
     )
     response = Client().get(url)
@@ -65,18 +73,57 @@ def test_protected_file_view_404(mocked_has_perm):
 )
 @override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": False})
 @pytest.mark.django_db
-def test_protected_file_view_file_response(mocked_has_perm):
-    FileSystemStorage().delete("protected/test.bin")
+def test_x_accel_redirect_view_file_response(mocked_has_perm):
+    FileSystemStorage().delete("protected/test_file_response.bin")
+    FileSystemStorage().delete("protected/test_file_response.png")
 
-    file_uploaded = UploadedFile(BytesIO(faker.binary()), name="test.bin")
-    instance = ProtectedModel.objects.create(file=file_uploaded)
+    file_uploaded = UploadedFile(BytesIO(faker.binary()), name="test_file_response.bin")
+    image_uploaded = UploadedFile(BytesIO(faker.binary()), name="test_file_response.png")
+    instance = ProtectedModel.objects.create(file=file_uploaded, image=image_uploaded)
 
-    response = Client().get(instance.file.url)
+    file_response = Client().get(instance.file.url)
+    assert file_response.status_code == 200
+    assert file_response.get("Content-Length") == str(instance.file.size)
 
-    assert response.status_code == 200
-    assert response.get('Content-Length') == str(instance.file.size)
-    if not IS_DJANGO_2:
-        assert response.get('Content-Disposition') == f'inline; filename="test.bin"'
+    image_response = Client().get(instance.image.url)
+    assert image_response.status_code == 200
+    assert image_response.get("Content-Length") == str(instance.image.size)
+
+
+@patch(
+    "django.contrib.auth.models.AnonymousUser.has_perm",
+    return_value=True,
+)
+@override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": False})
+@pytest.mark.django_db
+def test_x_accel_redirect_view_file_response_disposition(mocked_has_perm):
+    FileSystemStorage().delete("protected/test_disposition.bin")
+    FileSystemStorage().delete("protected/test_disposition.png")
+
+    file_uploaded = UploadedFile(BytesIO(faker.binary()), name="test_disposition.bin")
+    image_uploaded = UploadedFile(BytesIO(faker.binary()), name="test_disposition.png")
+    instance = ProtectedModel.objects.create(file=file_uploaded, image=image_uploaded)
+
+    file_response = Client().get(instance.file.url)
+    image_response = Client().get(instance.image.url)
+
+    if IS_DJANGO_20:
+        assert "Content-Disposition" not in file_response
+        assert "Content-Disposition" not in image_response
+
+    elif IS_DJANGO_2:
+        assert file_response.get("Content-Disposition") == (
+            'attachment; filename="test_disposition.bin"'
+        )
+        assert "Content-Disposition" not in image_response
+
+    elif IS_DJANGO_GTE_3:
+        assert file_response.get("Content-Disposition") == (
+            'attachment; filename="test_disposition.bin"'
+        )
+        assert image_response.get("Content-Disposition") == (
+            'inline; filename="test_disposition.png"'
+        )
 
 
 @patch(
@@ -85,21 +132,27 @@ def test_protected_file_view_file_response(mocked_has_perm):
 )
 @override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": True})
 @pytest.mark.django_db
-def test_protected_file_view_nginx(mocked_has_perm):
-    FileSystemStorage().delete("protected/тест.png")
+def test_x_accel_redirect_view_nginx(mocked_has_perm):
+    FileSystemStorage().delete("protected/тест_with_nginx.png")
 
-    image_uploaded = UploadedFile(BytesIO(faker.image(image_format="png")), name="тест.png")
+    image_uploaded = UploadedFile(
+        BytesIO(faker.image(image_format="png")), name="тест_with_nginx.png"
+    )
     instance = ProtectedModel.objects.create(image=image_uploaded)
 
     response = Client().get(instance.image.url)
 
     assert response.status_code == 200
     assert response.get("Content-Type") == "image/png"
-    assert response.get("Content-Disposition") == "inline; filename=%D1%82%D0%B5%D1%81%D1%82.png"
-    if IS_DJANGO_2:
-        assert response.get("X-Accel-Redirect") == "media/protected/%D1%82%D0%B5%D1%81%D1%82.png"
-    else:
-        assert response.get("X-Accel-Redirect") == "/media/protected/%D1%82%D0%B5%D1%81%D1%82.png"
+    assert response.get("Content-Disposition") == (
+        "inline; filename=%D1%82%D0%B5%D1%81%D1%82_with_nginx.png"
+    )
+
+    image_url = "media/protected/%D1%82%D0%B5%D1%81%D1%82_with_nginx.png"
+    if not IS_DJANGO_2:
+        image_url = f"/{image_url}"
+
+    assert response.get("X-Accel-Redirect") == image_url
 
 
 @patch(
@@ -108,18 +161,19 @@ def test_protected_file_view_nginx(mocked_has_perm):
 )
 @override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": True})
 @pytest.mark.django_db
-def test_protected_file_view_nginx_origfiles(mocked_has_perm):
+def test_x_accel_redirect_view_nginx_origfiles(mocked_has_perm):
     FileSystemStorage().delete("тест_orig.png")
 
     image_uploaded = UploadedFile(BytesIO(faker.image(image_format="png")), name="тест_orig.png")
     instance = ProtectedModel.objects.create(image_orig=image_uploaded)
 
     url = reverse(
-        "meringue-protected-file",
+        "x_accel_redirect_view",
         kwargs={
             "cid": ContentType.objects.get_for_model(ProtectedModel).id,
             "field": "image_orig",
             "pk": instance.id,
+            "disp": "inline",
         },
     )
     response = Client().get(url)
@@ -129,7 +183,9 @@ def test_protected_file_view_nginx_origfiles(mocked_has_perm):
     assert response.get("Content-Disposition") == (
         "inline; filename=%D1%82%D0%B5%D1%81%D1%82_orig.png"
     )
-    if IS_DJANGO_2:
-        assert response.get("X-Accel-Redirect") == "media/%D1%82%D0%B5%D1%81%D1%82_orig.png"
-    else:
-        assert response.get("X-Accel-Redirect") == "/media/%D1%82%D0%B5%D1%81%D1%82_orig.png"
+
+    image_url = "media/%D1%82%D0%B5%D1%81%D1%82_orig.png"
+    if not IS_DJANGO_2:
+        image_url = f"/{image_url}"
+
+    assert response.get("X-Accel-Redirect") == image_url

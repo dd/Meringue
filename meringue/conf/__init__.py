@@ -43,6 +43,7 @@ PARAMS_TO_IMPORT: Final[list[str]] = [
     "THUMBNAIL_IMAGE_CLASS",
     "THUMBNAIL_PROPERTIES",
     "THUMBNAIL_ACTIONS",
+    "PROTECTED_NGINX_LOCATION_GETTER",
 ]
 """
 List of options that contain the path to the module and must be imported.

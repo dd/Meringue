@@ -28,14 +28,21 @@ class TranslatedModel(models.Model):
     name = models.CharField(max_length=32)
 
     class Meta:
-        m_translate_fields = [
-            "name",
-        ]
+        m_translate_fields = ["name"]
+
+
+def _test_getter(field_file):
+    return "/test_url"
 
 
 class ProtectedModel(models.Model):
-    file = ProtectedFileField()
-    file_hosts = ProtectedFileField(protected_host_name="sub")
-    image = ProtectedImageField()
+    file = ProtectedFileField(view_name="x_accel_redirect_view")
+    image = ProtectedImageField(view_name="x_accel_redirect_view", disposition="inline")
+    file_hosts = ProtectedFileField(
+        view_name="sub-x_accel_redirect_view", host_name="sub", disposition="inline"
+    )
+    image_hosts = ProtectedImageField(view_name="sub-x_accel_redirect_view", host_name="sub")
+    file_getter = ProtectedFileField(view_name="x_accel_redirect_view", nginx_location_getter=_test_getter)
+    image_getter = ProtectedImageField(view_name="x_accel_redirect_view", nginx_location_getter=_test_getter)
     file_orig = models.FileField()
     image_orig = models.ImageField()
