@@ -123,7 +123,8 @@ PROTECTED_SERVE_WITH_NGINX: Final[bool] = not settings.DEBUG
 The option implies the distribution of protected files by nginx. Instead of serving the file in
 response.
 
-The view [protected_file_view][meringue.protected.views.protected_file_view] adds the X-Accel-Redirect header with a link to the file.
+The view [x_accel_redirect_view][meringue.protected.views.x_accel_redirect_view] adds the
+X-Accel-Redirect header with a link to the file.
 """
 
 PROTECTED_NGINX_LOCATION_GETTER: Final[str] = "meringue.protected.utils.nginx_location_getter"
