@@ -44,7 +44,7 @@ def x_accel_redirect_view(request, cid, field, pk, disp="inline"):
         response["Content-Disposition"] = f"{disp}; filename={quote(file_name)}"
 
         if isinstance(file, ProtectedFieldFile | ProtectedImageFieldFile):
-            redirect_url = file.original_url
+            redirect_url = file.redirect_url
         else:
             redirect_url = file.url
 
