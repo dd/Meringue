@@ -16,6 +16,9 @@
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/pyversions/meringue.svg" alt="PyPI - Python Version" />
 	</a>
+	<a href="https://pypi.org/project/meringue">
+		<img src="https://img.shields.io/pypi/frameworkversions/django/meringue" alt="PyPI - Versions from Framework Classifiers" />
+	</a>
 	<!-- <a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/format/meringue.svg" alt="PyPI - Format" />
 	</a> -->
@@ -36,7 +39,7 @@
 		<img src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" alt="Hatch project" />
 	</a>
 	<a href="https://squidfunk.github.io/mkdocs-material/" target="_blank">
-		<img src="https://img.shields.io/badge/docs-mkdocs_material-blue?logo=mdbook&logoColor=white" alt="Material for MkDocs" />
+		<img src="https://img.shields.io/badge/-Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white&labelColor=gray" alt="Built with Material for MkDocs" />
 	</a>
 	<a href="https://github.com/charliermarsh/ruff" target="_blank">
 		<img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json" alt="linting - Ruff" />
