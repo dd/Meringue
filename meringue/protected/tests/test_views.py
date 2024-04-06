@@ -1,6 +1,7 @@
 import pytest
 from faker import Faker
 from io import BytesIO
+from unittest.mock import PropertyMock
 from unittest.mock import patch
 
 import django
@@ -14,10 +15,6 @@ from test_project.models import ProtectedModel
 
 IS_DJANGO_2 = (2,) <= django.VERSION < (3,)
 IS_DJANGO_20 = (2, 0) <= django.VERSION < (2, 1)
-print(django.VERSION)
-print('IS_DJANGO_2', IS_DJANGO_2)
-print('IS_DJANGO_20', IS_DJANGO_20)
-print((2, 0) <= django.VERSION)
 IS_DJANGO_3 = (3,) <= django.VERSION < (4,)
 IS_DJANGO_GTE_3 = django.VERSION >= (3,)
 if IS_DJANGO_2 or IS_DJANGO_3:
@@ -45,12 +42,8 @@ def test_x_accel_redirect_view_403():
     assert response.status_code == 403
 
 
-@patch(
-    "django.contrib.auth.models.AnonymousUser.has_perm",
-    return_value=lambda *a, **k: True,
-)
 @pytest.mark.django_db
-def test_x_accel_redirect_view_404(mocked_has_perm):
+def test_x_accel_redirect_view_404(mocked_has_perm_true):
     instance = ProtectedModel.objects.create()
 
     url = reverse(
@@ -67,13 +60,9 @@ def test_x_accel_redirect_view_404(mocked_has_perm):
     assert response.status_code == 404
 
 
-@patch(
-    "django.contrib.auth.models.AnonymousUser.has_perm",
-    return_value=True,
-)
 @override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": False})
 @pytest.mark.django_db
-def test_x_accel_redirect_view_file_response(mocked_has_perm):
+def test_x_accel_redirect_view_file_response(mocked_has_perm_true):
     FileSystemStorage().delete("protected/test_file_response.bin")
     FileSystemStorage().delete("protected/test_file_response.png")
 
@@ -90,13 +79,9 @@ def test_x_accel_redirect_view_file_response(mocked_has_perm):
     assert image_response.get("Content-Length") == str(instance.image.size)
 
 
-@patch(
-    "django.contrib.auth.models.AnonymousUser.has_perm",
-    return_value=True,
-)
 @override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": False})
 @pytest.mark.django_db
-def test_x_accel_redirect_view_file_response_disposition(mocked_has_perm):
+def test_x_accel_redirect_view_file_response_disposition(mocked_has_perm_true):
     FileSystemStorage().delete("protected/test_disposition.bin")
     FileSystemStorage().delete("protected/test_disposition.png")
 
@@ -126,13 +111,9 @@ def test_x_accel_redirect_view_file_response_disposition(mocked_has_perm):
         )
 
 
-@patch(
-    "django.contrib.auth.models.AnonymousUser.has_perm",
-    return_value=True,
-)
 @override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": True})
 @pytest.mark.django_db
-def test_x_accel_redirect_view_nginx(mocked_has_perm):
+def test_x_accel_redirect_view_nginx(mocked_has_perm_true):
     FileSystemStorage().delete("protected/тест_with_nginx.png")
 
     image_uploaded = UploadedFile(
@@ -156,12 +137,30 @@ def test_x_accel_redirect_view_nginx(mocked_has_perm):
 
 
 @patch(
-    "django.contrib.auth.models.AnonymousUser.has_perm",
-    return_value=True,
+    "meringue.protected.fields.ProtectedFileMixin.redirect_url",
+    new_callable=PropertyMock,
 )
 @override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": True})
 @pytest.mark.django_db
-def test_x_accel_redirect_view_nginx_origfiles(mocked_has_perm):
+def test_x_accel_redirect_redirect_url_usage(
+    mocked_redirect_url,
+    mocked_has_perm_true,
+    file_uploaded,
+    image_uploaded,
+):
+    instance = ProtectedModel.objects.create(file=file_uploaded, image=image_uploaded)
+
+    response = Client().get(instance.file.url)
+    mocked_redirect_url.assert_called_once_with()
+
+    response = Client().get(instance.image.url)
+    assert mocked_redirect_url.call_count == 2
+    mocked_redirect_url.assert_called()
+
+
+@override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": True})
+@pytest.mark.django_db
+def test_x_accel_redirect_view_nginx_origfiles(mocked_has_perm_true):
     FileSystemStorage().delete("тест_orig.png")
 
     image_uploaded = UploadedFile(BytesIO(faker.image(image_format="png")), name="тест_orig.png")
