@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling>=1.17.1"]
+requires = ["hatchling>=1.22.5"]
 build-backend = "hatchling.build"
 
 [project]
@@ -49,7 +49,7 @@ classifiers = [
 	"Topic :: Software Development :: Libraries",
 ]
 dependencies = [
-	"Django>=2.0.0,<5",
+	"Django>=2.0.0,<6",
 ]
 dynamic = ["version"]
 
@@ -94,8 +94,9 @@ dependencies = [
 	"pycryptodome==3.20.0",
 	"djangorestframework==3.15.1",
 	"djangorestframework-simplejwt==5.3.1",
-	"drf-spectacular==0.27.0",
+	"drf-spectacular==0.27.2",
 	"Pillow==10.3.0",
+	"django_hosts==6.0",
 ]
 [tool.hatch.envs.default.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
@@ -127,9 +128,9 @@ compilemessages = "cd meringue && django-admin compilemessages -l en -l ru {args
 [tool.hatch.envs.lint]
 description = "Lint environment"
 detached = true
-python = "3.11"
+python = "3.12"
 dependencies = [
-	"ruff==0.3.4",
+	"ruff==0.3.5",
 	"black==24.3.0",
 ]
 [tool.hatch.envs.lint.scripts]
@@ -145,21 +146,21 @@ format = [
 [tool.hatch.envs.test]
 description = "Tests environment"
 detached = true
-python = "3.11"
+python = "3.12"
 dependencies = [
 	"pytest==8.1.1",
 	"pytest-django==4.8.0",
-	"pytest-cov==5.0.0",
+	"pytest-cov==5.0.0",  # for ci tests with cover
 	"Faker==24.7.1",
-	"django==4.2",
 	"pytz==2024.1",
-	"django-modeltranslation==0.18.11",
 	"pycryptodome==3.20.0",
+	"drf-spectacular==0.27.2",
+	"pillow==10.3.0",
+	"django==5.0.4",
+	"django-modeltranslation==0.18.11",
 	"djangorestframework==3.15.1",
 	"djangorestframework-simplejwt==5.3.1",
-	"drf-spectacular==0.26.4",
-	"pillow==10.3.0",
-	"django_hosts==5.2",
+	"django_hosts==6.0",
 ]
 [tool.hatch.envs.test.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
@@ -178,9 +179,8 @@ dependencies = [
 	"Faker==24.7.1",
 	"pytz==2024.1",
 	"pycryptodome==3.20.0",
-	"drf-spectacular==0.26.4",
+	"drf-spectacular==0.27.2",
 	"pillow==10.3.0",
-	# "django_hosts==5.2",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
@@ -213,14 +213,14 @@ django_hosts = ["5.2", "6.0"]
 python = ["3.10", "3.11"]
 django = ["4.0"]
 modeltranslation = ["0.17.0", "0.18.2"]
-djangorestframework = ["3.14.0", "3.15.0"]  # "3.13.0",
+djangorestframework = ["3.14.0", "3.15.0"]
 simplejwt = ["5.2.0", "5.3.0"]
 django_hosts = ["5.2", "6.0"]
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.12"]
 django = ["4.0"]
 modeltranslation = ["0.17.0", "0.18.2"]
-djangorestframework = ["3.14.0", "3.15.0"]  # "3.13.0",
+djangorestframework = ["3.14.0", "3.15.0"]
 simplejwt = ["5.3.1"]
 django_hosts = ["6.0"]
 [[tool.hatch.envs.mtest.matrix]]
@@ -246,7 +246,6 @@ dependencies = [
 	"mkdocs-minify-plugin==0.8.0",
 	"mkdocs-gen-files==0.5.0",
 	"Pygments==2.17.2",
-	# "mike==1.1.2",
 	"mike==2.0.0",
 	"linkchecker==10.4.0",
 ]
