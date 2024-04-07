@@ -139,6 +139,7 @@ def test_x_accel_redirect_view_nginx(mocked_has_perm_true):
 @patch(
     "meringue.protected.fields.ProtectedFileMixin.redirect_url",
     new_callable=PropertyMock,
+    return_value="/test_file_url",
 )
 @override_settings(MERINGUE={"PROTECTED_SERVE_WITH_NGINX": True})
 @pytest.mark.django_db
@@ -151,9 +152,11 @@ def test_x_accel_redirect_redirect_url_usage(
     instance = ProtectedModel.objects.create(file=file_uploaded, image=image_uploaded)
 
     response = Client().get(instance.file.url)
+    assert response.headers["X-Accel-Redirect"] == "/test_file_url"
     mocked_redirect_url.assert_called_once_with()
 
     response = Client().get(instance.image.url)
+    assert response.headers["X-Accel-Redirect"] == "/test_file_url"
     assert mocked_redirect_url.call_count == 2
     mocked_redirect_url.assert_called()
 
