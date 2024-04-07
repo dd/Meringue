@@ -124,6 +124,10 @@ remove = [
 ]
 makemessages = "cd meringue/core && django-admin makemessages -l en -l ru --no-obsolete {args}"
 compilemessages = "cd meringue && django-admin compilemessages -l en -l ru {args}"
+changelog-update = [
+	"git fetch origin --tags",
+	"gitmoji-changelog update \"$(hatch version)\" --preset generic --group-similar-commits",
+]
 
 [tool.hatch.envs.lint]
 description = "Lint environment"

@@ -1,4 +1,4 @@
-# Contributing
+aazgbtr32# Contributing
 
 Please don't be shy - comment, discuss and suggest whatever you think is important in the [discussions](https://github.com/dd/Meringue/discussions) on github, if you notice a bug please describe it in [issues](https://github.com/dd/Meringue/issues), and if you decide to contribute to the development of the project, feel free to send [pull request](https://github.com/dd/Meringue/pulls), and if possible, read further during development this section.
 
@@ -82,11 +82,13 @@ To write a commit, we adhere to the [Conventional Commits](https://www.conventio
 
 ## Changelog generation
 
-You can generate a Changelog with the following command using [gitmoji-changelog](https://github.com/frinyvonnick/gitmoji-changelog):
+To generate the changelog, the [gitmoji-changelog](https://github.com/frinyvonnick/gitmoji-changelog) utility is used as part of the command:
 
 ```console
-gitmoji-changelog update 1.0.0 --preset generic --group-similar-commits
+$ hatch run changelog-update
 ```
+
+All tags will be pulled from the repository, and a changelog will be generated based on the commits.
 
 
 ## Building and publishing
