@@ -1,5 +1,3 @@
-import pytest
-from faker import Faker
 from io import BytesIO
 from unittest.mock import PropertyMock
 from unittest.mock import patch
@@ -11,7 +9,11 @@ from django.test import Client
 from django.test import override_settings
 from django.urls import reverse
 
+import pytest
+from faker import Faker
+
 from test_project.models import ProtectedModel
+
 
 IS_DJANGO_2 = (2,) <= django.VERSION < (3,)
 IS_DJANGO_20 = (2, 0) <= django.VERSION < (2, 1)
@@ -152,11 +154,11 @@ def test_x_accel_redirect_redirect_url_usage(
     instance = ProtectedModel.objects.create(file=file_uploaded, image=image_uploaded)
 
     response = Client().get(instance.file.url)
-    assert response.headers["X-Accel-Redirect"] == "/test_file_url"
+    assert response["X-Accel-Redirect"] == "/test_file_url"
     mocked_redirect_url.assert_called_once_with()
 
     response = Client().get(instance.image.url)
-    assert response.headers["X-Accel-Redirect"] == "/test_file_url"
+    assert response["X-Accel-Redirect"] == "/test_file_url"
     assert mocked_redirect_url.call_count == 2
     mocked_redirect_url.assert_called()
 
