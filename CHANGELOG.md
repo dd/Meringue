@@ -1,5 +1,39 @@
 # Changelog
 
+<a name="1.2.0"></a>
+## 1.2.0 (2024-04-07)
+
+### Added
+
+- ✨ (protected): Added functionality for protected files [[7df25a1](https://github.com/dd/Meringue/commit/7df25a1b8797e6b8ab72e010571d9612a5687d5c),[1c2ec33](https://github.com/dd/Meringue/commit/1c2ec3365c1ea86c893530406bd6087770459a4d),[1994662](https://github.com/dd/Meringue/commit/1994662f10e3f8fffcd9e09b2e8fa046454ccab2),[50eaaeb](https://github.com/dd/Meringue/commit/50eaaeb9d147f57f043e7e75683b69cc7b8879d1),[e78f5a9](https://github.com/dd/Meringue/commit/e78f5a9bb05673b5ae4d15f94c61836aeb822fca),[36f1f5b](https://github.com/dd/Meringue/commit/36f1f5b6d19cf7d4e7b0dcc2599db14c89a06ba7),[a3332dc](https://github.com/dd/Meringue/commit/a3332dc8b7fd0578e0e5fad110f76d5454c5018e),[532c147](https://github.com/dd/Meringue/commit/532c14739d52e62cc7c2457857a46ca95ba1005c),[7f15cc2](https://github.com/dd/Meringue/commit/7f15cc2b215ba4f9bfc55f9d473f65dbe6a94b5a)]
+- ✨ (thumbnail): Functionality for creating thumbnails [[76b4002](https://github.com/dd/Meringue/commit/76b400235e330cca4894604682ff8a2316fdc76a),[77e3180](https://github.com/dd/Meringue/commit/77e3180c2a08b2a0ab81cdbe91b5ce34d56f4558),[db3b97f](https://github.com/dd/Meringue/commit/db3b97f5212a25ee9985b876d00cef79feec6bf7),[80056a6](https://github.com/dd/Meringue/commit/80056a6e7ee7692d633eb57d240283634cdbc27d)]
+- ✨ (conf): Now can specify params with lists and dicts for import [[1ac4770](https://github.com/dd/Meringue/commit/1ac47709e84ee1ff69b731360a7ed05ca837ef81),[287c027](https://github.com/dd/Meringue/commit/287c0271cba05477480d6ac822b892d2191ab0db),[46f936c](https://github.com/dd/Meringue/commit/46f936ca4c966e3f5155a196238bc0acae0f2342)]
+- ➕ (project): Added optional dependency for crypt utilities [[9f69d7d](https://github.com/dd/Meringue/commit/9f69d7df0c95c1e9c5341bf601cdea56cd29ebf3)]
+- ✅ (tests): Tests Update [[5b0666c](https://github.com/dd/Meringue/commit/5b0666cd1d5164f41f724b3c51f659439af3928d),[10941a8](https://github.com/dd/Meringue/commit/10941a8979b464a4c11f59cd3d64e1c6065cf7ba),[3b7d2a0](https://github.com/dd/Meringue/commit/3b7d2a0d7987d8a5c1dd2ed3cb2bbd9acf868a59),[eb822e3](https://github.com/dd/Meringue/commit/eb822e3f8ef1c2cd6a742d0536a2dd73770d4c19),[018ed05](https://github.com/dd/Meringue/commit/018ed055c3022c5b0b61c0876fd58a0bc1a5740e),[3f02334](https://github.com/dd/Meringue/commit/3f023340c19fd239e00bbb6399bd68a076ca86c3),[af32278](https://github.com/dd/Meringue/commit/af322783861a2912a96206c51cf1d5ff283e5894)]
+
+### Changed
+
+- 🎨 (docs): Add more badges! [[b47f096](https://github.com/dd/Meringue/commit/b47f09634cdaa70f1945124a4e11c3d42c1b5576)]
+- ♻️ (api): Updated error handler now it covers large variations of errors [[db3c0ef](https://github.com/dd/Meringue/commit/db3c0ef18a0ff2e1724b205ccbab62f3101e7c28)]
+
+### Fixed
+
+- 💚 (docs): We slightly corrected the documentation build [[5fba766](https://github.com/dd/Meringue/commit/5fba7668c7d95d4e3d6dce55f44564e45cf7e9c8)]
+- 🐛 (docs): Correction of the documentation build [[d406900](https://github.com/dd/Meringue/commit/d406900cc99671fdfc80b5568af2feb86f044cd3),[1e0a9c4](https://github.com/dd/Meringue/commit/1e0a9c4cadd997c120a48e5b6160bb2a279587a2)]
+
+### Miscellaneous
+
+-  👷 (project): Script for updating changelog [[6395ad6](https://github.com/dd/Meringue/commit/6395ad63dba7cd1413f736e97e1f30539104f32b)]
+-  👷 (buid): Updating the build system and dependency versions [[5c8af5b](https://github.com/dd/Meringue/commit/5c8af5b8d13ff3ff0c39c24faad123ad83ff6705)]
+- 📝 (docs): Fix docs references [[774330f](https://github.com/dd/Meringue/commit/774330f2450c50bec636022e6b77f425b96cadf5),[6fa656c](https://github.com/dd/Meringue/commit/6fa656c2acb2e7cb03655b731f2c3a35c9da228f),[d2094fe](https://github.com/dd/Meringue/commit/d2094fec841bdcf4d61123111776962641194a2b)]
+- 📝 (docs): Added model fields to the documentation. [[3a35d7e](https://github.com/dd/Meringue/commit/3a35d7edba05e056da7fafaab8cb4d0250db2804)]
+-  👷 (gh actions): Update Action Versions [[0b8b57d](https://github.com/dd/Meringue/commit/0b8b57d74e5e058f6e8d4240be93a1e11b644795),[d76721f](https://github.com/dd/Meringue/commit/d76721fdf3d8b355e93b2346aa19a6e542316ea2)]
+- 📝 (docs): Correcting links in documentation [[c3135f1](https://github.com/dd/Meringue/commit/c3135f1671ebba83882435a0550fd8c662d2a925)]
+- 📝 (docs): Corrected the README text so that the link to the documentation is more visible [[04efe31](https://github.com/dd/Meringue/commit/04efe31bc2189b1092d756ac50b428cd0b910eea)]
+- 📝 (docs): Documentation text update [[8302403](https://github.com/dd/Meringue/commit/830240379955e76efdd2dccac219e7cc7012d001)]
+- 📝 (docs): Changelog update [[1c9a601](https://github.com/dd/Meringue/commit/1c9a601485ef923a85096f86b68a4a6a8113583d)]
+
+
 <a name="1.1.0"></a>
 ## 1.1.0 (2023-07-28)
 

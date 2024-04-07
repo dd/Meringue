@@ -1,8 +1,8 @@
-site_url: https://dd.github.io/Meringue/
+site_url: https://dd.github.io/Meringue
 site_name: Meringue
 site_description: Meringue library python documentation
-site_author: Dmitriy Dobrynin (aka dd) <dd@manin.space>
-copyright: Copyright &copy; 2014 - present <a href="https://manin.space/" target="_blank" rel="noopener" >manin.space</a>
+site_author: Dmitriy Dobrynin (aka dd) <dd@tovarisch.engineer>
+copyright: Copyright &copy; 2014 - present <a href="https://t.me/spiderTongue" target="_blank" rel="noopener" >tovarisch.engineer</a>
 
 repo_name: dd/Meringue
 repo_url: https://github.com/dd/Meringue
@@ -19,22 +19,15 @@ theme:
   logo: assets/favicon.svg
   favicon: assets/favicon.svg
   palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/theme-light-dark
-        name: Switch to light mode
-    # Palette toggle for dark mode
+    # dark mode and switch to automatic
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
+      primary: black
       accent: indigo
       toggle:
         icon: material/weather-night
-        name: Switch to system preference
-    # Palette toggle for light mode
+        name: Switch to light mode
+    # light mode and switch to dark
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: indigo
@@ -81,8 +74,8 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.smartsymbols
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
       linenums: true
@@ -96,6 +89,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.snippets:
       check_paths: true
+  - def_list
   # - pymdownx.magiclink:
   #     hide_protocol: true
   # - pymdownx.escapeall:
@@ -149,9 +143,7 @@ plugins:
             show_source: true
             show_signature_annotations: true
             members_order: source
-            # https://github.com/mkdocstrings/mkdocstrings/issues/579
-            # will need to be returned when the bug is fixed
-            # group_by_category: false
+            group_by_category: false
             docstring_section_style: list
             merge_init_into_class: true
             separate_signature: true

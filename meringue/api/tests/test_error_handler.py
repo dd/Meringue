@@ -9,6 +9,7 @@ import pytest
 from rest_framework.exceptions import ErrorDetail
 from rest_framework.exceptions import ValidationError
 from rest_framework.test import APIClient
+from rest_framework_simplejwt.exceptions import AuthenticationFailed
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})
@@ -34,7 +35,7 @@ def test_405():
     client = APIClient()
     resp = client.get(reverse("registration"), format="json")
     assert resp.status_code == 405
-    assert resp.json() == {"detail": 'Method "GET" not allowed.'}
+    assert resp.json() == {"message": 'Method "GET" not allowed.', "code": "method_not_allowed"}
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})
@@ -46,7 +47,7 @@ def test_404(mocked_post):
     client = APIClient()
     resp = client.post(reverse("registration"), format="json")
     assert resp.status_code == 404
-    assert resp.json() == {"detail": "Not found."}
+    assert resp.json() == {"message": "Not found.", "code": "not_found"}
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})
@@ -58,7 +59,11 @@ def test_403(mocked_post):
     client = APIClient()
     resp = client.post(reverse("registration"), format="json")
     assert resp.status_code == 403
-    assert resp.json() == {"detail": "You do not have permission to perform this action."}
+    error = {
+        "message": "You do not have permission to perform this action.",
+        "code": "permission_denied",
+    }
+    assert resp.json() == error
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})
@@ -106,3 +111,49 @@ def test_validation_dict_error(mocked_is_valid):
     resp = client.post(reverse("registration"), format="json")
     assert resp.status_code == 400
     assert resp.json() == {"username": {"1": {"message": "Error message", "code": "error_code"}}}
+
+
+@pytest.mark.django_db
+@patch(
+    "rest_framework_simplejwt.serializers.TokenObtainSerializer.validate",
+    autospec=True,
+    side_effect=AuthenticationFailed(
+        "Test auth error",
+        code="test_auth_error",
+    ),
+)
+@override_settings(
+    INSTALLED_APPS=[
+        # 'django.contrib.admin',
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        # 'django.contrib.sessions',
+        # 'django.contrib.messages',
+        # 'django.contrib.staticfiles',
+        "modeltranslation",
+        "test_project",
+        "rest_framework",
+        "rest_framework_simplejwt",
+        "drf_spectacular",
+        "meringue.core",
+        "meringue.api",
+    ],
+    REST_FRAMEWORK={
+        "EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler",
+        "DEFAULT_AUTHENTICATION_CLASSES": (
+            "rest_framework_simplejwt.authentication.JWTAuthentication",
+        ),
+    },
+)
+def test_validation__error(mocked_validate):
+    """
+    Checking single error validation handling
+    """
+    client = APIClient()
+    resp = client.post(
+        reverse("token_obtain"),
+        data={"username": "test", "password": "test"},
+        format="json",
+    )
+    assert resp.status_code == 401
+    assert resp.json() == {"code": "test_auth_error", "message": "Test auth error"}

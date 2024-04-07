@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling>=1.17.1"]
+requires = ["hatchling>=1.22.5"]
 build-backend = "hatchling.build"
 
 [project]
@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = "LGPL-3.0"
 authors = [
-	{ name = "Dmitry Dobrynin", email = "dd@manin.space" },
+	{ name = "Dmitry Dobrynin", email = "dd@tovarisch.engineer" },
 ]
 keywords = ["django", "utils"]
 classifiers = [
@@ -17,8 +17,6 @@ classifiers = [
 	"Environment :: Plugins",
 	"Environment :: Web Environment",
 	"Framework :: Django",
-	"Framework :: Django :: 1",
-	"Framework :: Django :: 1.11",
 	"Framework :: Django :: 2",
 	"Framework :: Django :: 2.0",
 	"Framework :: Django :: 2.1",
@@ -31,6 +29,7 @@ classifiers = [
 	"Framework :: Django :: 4.0",
 	"Framework :: Django :: 4.1",
 	"Framework :: Django :: 4.2",
+	"Framework :: Django :: 5.0",
 	"Intended Audience :: Developers",
 	"License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
 	"Natural Language :: English",
@@ -40,6 +39,7 @@ classifiers = [
 	"Programming Language :: Python :: 3",
 	"Programming Language :: Python :: 3.10",
 	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
 	"Programming Language :: Python :: 3 :: Only",
 	"Programming Language :: Python :: Implementation :: CPython",
 	"Programming Language :: Python :: Implementation :: PyPy",
@@ -49,7 +49,7 @@ classifiers = [
 	"Topic :: Software Development :: Libraries",
 ]
 dependencies = [
-	"Django>=1.11.17",
+	"Django>=2.0.0,<6",
 ]
 dynamic = ["version"]
 
@@ -57,10 +57,11 @@ dynamic = ["version"]
 modeltranslation = ["django-modeltranslation>=0.17,<0.19"]
 drf = ["djangorestframework>=3.13,<4"]
 drf-spectacular = ["drf-spectacular>=0.26.3,<1"]
+cryptodome = ["pycryptodome==3.20.0"]
+django_hosts = ["django_hosts>=5.2,<7"]
 
 [project.urls]
-"Homepage" = "https://github.com/dd/Meringue"
-"Documentation" = "https://dd.github.io/Meringue/"
+"Documentation" = "https://dd.github.io/Meringue"
 "Repository" = "https://github.com/dd/Meringue"
 "Changelog" = "https://github.com/dd/Meringue/blob/master/CHANGELOG.md"
 "Bug Tracker" = "https://github.com/dd/Meringue/issues"
@@ -83,14 +84,23 @@ exclude = [
 
 [tool.hatch.envs.default]
 description = "Dev environment"
-python = "3.11"
+python = "3.12"
 dependencies = [
-	"pre-commit==3.3.3",
-	"ipython==8.14.0",
-	"pycryptodome==3.18.0",
-	"djangorestframework==3.14.0",
-	"drf-spectacular==0.26.4",
+	"pre-commit==3.7.0",
+	"ipython==8.23.0",
+	"django==5.0.4",
+	"pytz==2024.1",
+	"django-modeltranslation==0.18.11",
+	"pycryptodome==3.20.0",
+	"djangorestframework==3.15.1",
+	"djangorestframework-simplejwt==5.3.1",
+	"drf-spectacular==0.27.2",
+	"Pillow==10.3.0",
+	"django_hosts==6.0",
 ]
+[tool.hatch.envs.default.env-vars]
+DJANGO_SETTINGS_MODULE = "test_project.settings"
+PYTHONPATH  = "."
 [tool.hatch.envs.default.scripts]
 precommit_install = "pre-commit install {args}"
 precommit_uninstall = "pre-commit uninstall {args}"
@@ -107,20 +117,25 @@ init = [
 	"precommit_install",
 ]
 remove = [
+	"git config --local --remove-section gitflow.branch",
+	"git config --local --remove-section gitflow.prefix",
+	"git config --local --remove-section gitflow.path",
 	"precommit_uninstall",
 ]
-makemessages = [
-	"cd meringue/core && django-admin makemessages -l en -l ru --no-obsolete {args}",
-]
+makemessages = "cd meringue/core && django-admin makemessages -l en -l ru --no-obsolete {args}"
 compilemessages = "cd meringue && django-admin compilemessages -l en -l ru {args}"
+changelog-update = [
+	"git fetch origin --tags",
+	"gitmoji-changelog update \"$(hatch version)\" --preset generic --group-similar-commits",
+]
 
 [tool.hatch.envs.lint]
 description = "Lint environment"
 detached = true
-python = "3.11"
+python = "3.12"
 dependencies = [
-	"ruff==0.0.280",
-	"black==23.7.0",
+	"ruff==0.3.5",
+	"black==24.3.0",
 ]
 [tool.hatch.envs.lint.scripts]
 check = [
@@ -135,22 +150,25 @@ format = [
 [tool.hatch.envs.test]
 description = "Tests environment"
 detached = true
-python = "3.11"
+python = "3.12"
 dependencies = [
-	"pytest==7.4.0",
-	"pytest-django==4.5.2",
-	"pytest-cov==4.1.0",
-	"Faker==19.2.0",
-	"django==4.2",
-	"pytz==2023.3",
+	"pytest==8.1.1",
+	"pytest-django==4.8.0",
+	"pytest-cov==5.0.0",  # for ci tests with cover
+	"Faker==24.7.1",
+	"pytz==2024.1",
+	"pycryptodome==3.20.0",
+	"drf-spectacular==0.27.2",
+	"pillow==10.3.0",
+	"django==5.0.4",
 	"django-modeltranslation==0.18.11",
-	"pycryptodome==3.18.0",
-	"djangorestframework==3.14.0",
-	"drf-spectacular==0.26.4",
+	"djangorestframework==3.15.1",
+	"djangorestframework-simplejwt==5.3.1",
+	"django_hosts==6.0",
 ]
 [tool.hatch.envs.test.env-vars]
-DJANGO_SETTINGS_MODULE = 'test_project.settings'
-PYTHONPATH  = '.'
+DJANGO_SETTINGS_MODULE = "test_project.settings"
+PYTHONPATH  = "."
 [tool.hatch.envs.test.scripts]
 check = "pytest {args:--cov=meringue --cov-report term-missing}"
 makemigrations = "django-admin makemigrations {args}"
@@ -159,56 +177,84 @@ makemigrations = "django-admin makemigrations {args}"
 description = "Test matrix environment"
 detached = true
 dependencies = [
-	"pytest==7.4.0",
-	"pytest-django==4.5.2",
-	"pytest-cov==4.1.0",  # for ci tests with cover
-	"Faker==19.2.0",
-	"pytz==2023.3",
-	"pycryptodome==3.18.0",
-	"drf-spectacular==0.26.4",
+	"pytest==8.1.1",
+	"pytest-django==4.8.0",
+	"pytest-cov==5.0.0",  # for ci tests with cover
+	"Faker==24.7.1",
+	"pytz==2024.1",
+	"pycryptodome==3.20.0",
+	"drf-spectacular==0.27.2",
+	"pillow==10.3.0",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
 	{ value = "django~={matrix:django}" },
 	{ value = "django-modeltranslation=={matrix:modeltranslation}" },
 	{ value = "djangorestframework=={matrix:djangorestframework}" },
+	{ value = "djangorestframework-simplejwt=={matrix:simplejwt}" },
+	{ value = "django_hosts=={matrix:django_hosts}" },
 ]
 [tool.hatch.envs.mtest.env-vars]
-DJANGO_SETTINGS_MODULE = 'test_project.settings'
-PYTHONPATH  = '.'
+DJANGO_SETTINGS_MODULE = "test_project.settings"
+PYTHONPATH  = "."
 [tool.hatch.envs.mtest.scripts]
 check = "pytest {args:-q}"
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
 django = ["2.0"]
-modeltranslation = ["0.17.7"]
-djangorestframework = ["3.13.1"]
+modeltranslation = ["0.17.0", "0.18.2"]
+djangorestframework = ["3.13.0"]
+simplejwt = ["5.2.0"]
+django_hosts = ["5.2", "6.0"]
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
-django = ["3.0", "4.0"]
-modeltranslation = ["0.18.11"]
-djangorestframework = ["3.14.0"]
+django = ["3.0"]
+modeltranslation = ["0.17.0", "0.18.2"]
+djangorestframework = ["3.13.0", "3.14.0", "3.15.0"]
+simplejwt = ["5.2.0", "5.3.0"]
+django_hosts = ["5.2", "6.0"]
+[[tool.hatch.envs.mtest.matrix]]
+python = ["3.10", "3.11"]
+django = ["4.0"]
+modeltranslation = ["0.17.0", "0.18.2"]
+djangorestframework = ["3.14.0", "3.15.0"]
+simplejwt = ["5.2.0", "5.3.0"]
+django_hosts = ["5.2", "6.0"]
+[[tool.hatch.envs.mtest.matrix]]
+python = ["3.12"]
+django = ["4.0"]
+modeltranslation = ["0.17.0", "0.18.2"]
+djangorestframework = ["3.14.0", "3.15.0"]
+simplejwt = ["5.3.1"]
+django_hosts = ["6.0"]
+[[tool.hatch.envs.mtest.matrix]]
+python = ["3.10", "3.11", "3.12"]
+django = ["5.0"]
+modeltranslation = ["0.17.0", "0.18.2"]
+djangorestframework = ["3.15.0"]
+simplejwt = ["5.3.1"]
+django_hosts = ["6.0"]
 
 [tool.hatch.envs.docs]
 description = "Docs environment"
 detached = true
-python = "3.11"
+python = "3.12"
 dependencies = [
-	"mkdocs[i18n]==1.4.3",
-	"mkdocs-literate-nav==0.6.0",
-	"mkdocs-material==9.1.19",
-	"mkdocs-git-revision-date-localized-plugin==1.2.0",
-	"mkdocs-git-authors-plugin==0.7.2",
-	"mkdocstrings[python]==0.22.0",
-	"black==23.7.0",
-	"mkdocs-minify-plugin==0.6.4",
+	"mkdocs[i18n]==1.5.3",
+	"mkdocs-literate-nav==0.6.1",
+	"mkdocs-material==9.5.17",
+	"mkdocs-git-revision-date-localized-plugin==1.2.4",
+	"mkdocs-git-authors-plugin==0.8.0",
+	"mkdocstrings[python]==0.24.3",
+	"black==24.3.0",
+	"mkdocs-minify-plugin==0.8.0",
 	"mkdocs-gen-files==0.5.0",
-	"Pygments==2.15.1",
-	"mike==1.1.2",
-	"linkchecker==10.2.1",
+	"Pygments==2.17.2",
+	"mike==2.0.0",
+	"linkchecker==10.4.0",
 ]
 [tool.hatch.envs.docs.env-vars]
-MERINGUE_MKDOCS_ENABLE_MINIFY = 'false'
+MERINGUE_MKDOCS_ENABLE_MINIFY = "false"
 MKDOCS_CONFIG = "mkdocs.yml"
 [tool.hatch.envs.docs.scripts]
 build = "mkdocs build --config-file {env:MKDOCS_CONFIG} --clean --strict {args}"
@@ -222,10 +268,10 @@ build-check = [
 
 [tool.black]
 line-length = 100
-target-version = ["py311"]
+target-version = ["py310"]
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py310"
 line-length = 100
 show-fixes = true
 # update-check = true

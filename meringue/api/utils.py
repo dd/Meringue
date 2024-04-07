@@ -1,5 +1,10 @@
 from rest_framework.exceptions import ErrorDetail
 
+try:
+    from rest_framework_simplejwt.exceptions import DetailDictMixin
+except ImportError:
+    DetailDictMixin = None
+
 
 def render_error_details(error_detail: list | dict | ErrorDetail) -> list | dict:
     """
@@ -14,7 +19,14 @@ def render_error_details(error_detail: list | dict | ErrorDetail) -> list | dict
     Returns:
         Rendered errors.
     """
-    if isinstance(error_detail, list):
+
+    if DetailDictMixin and isinstance(error_detail, DetailDictMixin):
+        return {
+            "message": error_detail.detail["detail"],
+            "code": error_detail.detail["code"],
+        }
+
+    elif isinstance(error_detail, list):
         error_list = [render_error_details(e) for e in error_detail]
         return error_list
 

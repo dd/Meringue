@@ -38,6 +38,12 @@ Examples:
 
 PARAMS_TO_IMPORT: Final[list[str]] = [
     "UPLOAD_RENAME_HANDLER",
+    "THUMBNAIL_GENERATOR_CLASS",
+    "THUMBNAIL_STORAGE_GETTER",
+    "THUMBNAIL_IMAGE_CLASS",
+    "THUMBNAIL_PROPERTIES",
+    "THUMBNAIL_ACTIONS",
+    "PROTECTED_NGINX_LOCATION_GETTER",
 ]
 """
 List of options that contain the path to the module and must be imported.
@@ -51,26 +57,94 @@ Examples:
 """
 
 
-def import_from_string(val: str, attr: str) -> Any:
+def import_list(path_list: list[str]) -> list[Any]:
     """
-    Imports a dotted module path and returns the attribute/class.
+    Import a list of dotted modules.
 
     Attributes:
-        val: Dotted path to imported module.
-        attr: The name of the parameter in the library settings.
+        path_list: List of dotted paths.
 
     Raises:
-        ImportError: Attribute/class not exists.
+        TypeError: Wrong dotted path data type for import.
+        ImportError: Import error.
 
     Returns:
-        Imported attribute/class.
+        List of imported attributes/classes.
     """
 
-    try:
-        return import_string(val)
-    except ImportError as e:
-        msg = f"Could not import '{val}' for API setting '{attr}'.\n{e.__class__.__name__}: {e}."
-        raise ImportError(msg) from None
+    result = []
+
+    for dotted_path in path_list:
+        if not isinstance(dotted_path, str):
+            msg = f"`{type(dotted_path).__name__}` data type is not supported for import."
+            raise TypeError(msg, dotted_path)
+
+        try:
+            result.append(import_string(dotted_path))
+        except ImportError as err:
+            msg = f"`{dotted_path}` import error."
+            raise ImportError(msg, path=dotted_path) from err
+
+    return result
+
+
+def import_dict(path_dict: dict[str, str]) -> dict[str, Any]:
+    """
+    Import a dictionary with dotted path as key value.
+
+    Attributes:
+        path_dict: Dictionary with dotted path as key value.
+
+    Raises:
+        TypeError: Wrong dotted path data type for import.
+        ImportError: Import error.
+
+    Returns:
+        Dict with imported attributes/classes as key value.
+    """
+
+    result = {}
+
+    for key, dotted_path in path_dict.items():
+        if not isinstance(dotted_path, str):
+            msg = f"`{type(dotted_path).__name__}` data type is not supported for import."
+            raise TypeError(msg, dotted_path)
+
+        try:
+            result[key] = import_string(dotted_path)
+        except ImportError as err:
+            msg = f"`{dotted_path}` import error."
+            raise ImportError(msg, path=dotted_path) from err
+
+    return result
+
+
+def import_parameter(value: str | list[str] | dict[str, str]) -> Any | list[Any] | dict[str, Any]:
+    """
+    Method for importing modules in settings parameter.
+
+    Attributes:
+        value: Settings parameter value to import.
+
+    Returns:
+        Imported parameter.
+    """
+
+    if isinstance(value, str):
+        try:
+            return import_string(value)
+        except ImportError as err:
+            msg = f"`{value}` import error."
+            raise ImportError(msg, path=value) from err
+
+    if isinstance(value, list):
+        return import_list(value)
+
+    if isinstance(value, dict):
+        return import_dict(value)
+
+    msg = f"`{type(value).__name__}` data type is not supported for import."
+    raise TypeError(msg, value)
 
 
 class Settings:
@@ -126,6 +200,7 @@ class Settings:
         Returns:
             Setting value.
         """
+
         if attr not in self.defaults:
             raise AttributeError("Invalid setting key: '%s'" % attr)
 
@@ -135,7 +210,19 @@ class Settings:
         val = self.user_params.get(attr, self.defaults[attr])
 
         if attr in self.params_to_impoprt:
-            val = import_from_string(val, attr)
+            try:
+                val = import_parameter(val)
+
+            except ImportError as err:
+                msg = f"Error importing `{err.path}` attribute/class in `{attr}` parameter."
+                raise ImportError(msg) from err
+
+            except TypeError as err:
+                msg = (
+                    f"The `{err.args[1]}` value of the `{attr}` parameter is not available for "
+                    "import."
+                )
+                raise TypeError(msg) from None
 
         self._cached_attrs.add(attr)
         setattr(self, attr, val)

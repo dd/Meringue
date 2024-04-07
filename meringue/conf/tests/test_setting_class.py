@@ -71,6 +71,38 @@ def test_import_properties():
     assert Settings == foo_settings.IMPORTABLE_PROP
 
 
+def test_import_properties_wrong_type():
+    """
+    Checking for a data type error when importing a property.
+    """
+    foo_settings = Settings(
+        "TEST_MERINGUE",
+        {"IMPORTABLE_PROP": 1},
+        {},
+        ["IMPORTABLE_PROP"],
+    )
+    msg = "The `1` value of the `IMPORTABLE_PROP` parameter is not available for import."
+    with pytest.raises(TypeError, match=msg):
+        print(foo_settings.IMPORTABLE_PROP)  # noqa: T201
+
+
+def test_import_properties_non_existent():
+    """
+    Import error check for a property.
+    """
+    foo_settings = Settings(
+        "TEST_MERINGUE",
+        {"IMPORTABLE_PROP": "meringue.conf.Settings1"},
+        {},
+        ["IMPORTABLE_PROP"],
+    )
+    msg = (
+        "Error importing `meringue.conf.Settings1` attribute/class in `IMPORTABLE_PROP` parameter."
+    )
+    with pytest.raises(ImportError, match=msg):
+        print(foo_settings.IMPORTABLE_PROP)  # noqa: T201
+
+
 @patch(
     "meringue.conf.Settings.__getattr__",
     autospec=True,
