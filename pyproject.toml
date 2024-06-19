@@ -134,16 +134,16 @@ description = "Lint environment"
 detached = true
 python = "3.12"
 dependencies = [
-	"ruff==0.3.5",
-	"black==24.3.0",
+	"ruff==0.4.9",
+	"black==24.4.2",
 ]
 [tool.hatch.envs.lint.scripts]
 check = [
-	"ruff {args:.}",
+	"ruff check {args:.}",
 	"black --check --diff --exclude=\".*migrations\\/.*$\" {args:.}",
 ]
 format = [
-	"ruff --fix {args:.}",
+	"ruff format {args:.}",
 	"black --exclude=\".*migrations\\/.*$\" {args:.}",
 ]
 
@@ -275,6 +275,7 @@ target-version = "py310"
 line-length = 100
 show-fixes = true
 # update-check = true
+[tool.ruff.lint]
 select = [
 	"A",
 	"B",
@@ -316,32 +317,34 @@ ignore = [
 	# "PLC1901", # empty string comparisons
 	# "PLW2901", # `for` loop variable overwritten
 	"SIM114", # Combine `if` branches using logical `or` operator
+	"ISC001", # Disabled as ruff recomendation from warning
 ]
 # unfixable = [
 # 	# Don't touch unused imports
 # 	"F401",
 # ]
-[tool.ruff.extend-per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401", "F403"]
 "test_*.py" = ["S101", "PLR2004", "DTZ001", "RUF012"]
 "*/migrations/*" = ["I", "E", "Q", "RUF"]
 "test_project/*models.py" = ["RUF012"]
 "test_project/*views.py" = ["RUF012"]
-[tool.ruff.flake8-import-conventions]
-[tool.ruff.flake8-import-conventions.extend-aliases]
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
 "datetime" = "dt"
 # [tool.ruff.flake8-quotes]
 # inline-quotes = "single"
-[tool.ruff.flake8-unused-arguments]
+[tool.ruff.lint.flake8-unused-arguments]
 ignore-variadic-names = true
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 force-single-line = true
 known-first-party = ["meringue"]
 lines-after-imports = 2
 no-lines-before = ["local-folder"]
 section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
-[tool.ruff.isort.sections]
+[tool.ruff.lint.isort.sections]
 django = ["django"]
+[tool.ruff.format]
+exclude = ["*/migrations/*"]
 
 [tool.isort]
 known_first_party = ["meringue"]
