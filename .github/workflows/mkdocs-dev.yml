@@ -42,7 +42,9 @@ jobs:
         git config --local user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Commit documentation
-      run: hatch run docs:ci-build dev
+      run: |
+        hatch run docs:ci-build dev
+        hatch run docs:mike set-default --push latest
 
     - name: Create archive
       run: git archive -o site.zip gh-pages

@@ -48,6 +48,7 @@ jobs:
           hatch run docs:ci-build $MERINGUE_DOCS_VERSION dev
         else
           hatch run docs:ci-build $MERINGUE_DOCS_VERSION latest
+          hatch run docs:mike set-default --push latest
         fi
 
     - name: Create archive
