@@ -1360,21 +1360,19 @@
 <h4 id="correction_sorting">correction_sorting<a class="headerlink" href="#correction_sorting" title="Permanent link">¤</a></h4>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>This is a method to update/fix the sorting of the selected list of items.</p>
 <p>The sorting will be done according to the <code>queryset</code> sorting, so sorting can be controlled
 by executing <code>.order_by()</code> before calling the <code>correction_sorting</code> method.</p>
 <p>The selection for updating sorting can be pre-limited by filtering the list.</p>
 
-  </div>
+    </div>
 
 </div><h3 id="publicationmixin">PublicationMixin<a class="headerlink" href="#publicationmixin" title="Permanent link">¤</a></h3>
 
@@ -1384,11 +1382,10 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 
 
 
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
       <p>Mixin with the functionality of manual publishing.</p>
-
 
 
 <p><span class="doc-section-title">Examples:</span></p>
@@ -1397,7 +1394,7 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 </code></pre></div>
 
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1407,40 +1404,35 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 
   </div>
 
-  </div>
-
+    </div>
 
 </div><h4 id="published">published<a class="headerlink" href="#published" title="Permanent link">¤</a></h4>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>Method to getting published items.</p>
 
-  </div>
+    </div>
 
 </div><h4 id="unpublished">unpublished<a class="headerlink" href="#unpublished" title="Permanent link">¤</a></h4>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>Method for getting unpublished items.</p>
 
-  </div>
+    </div>
 
 </div><h3 id="publicationdatesmixin">PublicationDatesMixin<a class="headerlink" href="#publicationdatesmixin" title="Permanent link">¤</a></h3>
 
@@ -1450,11 +1442,10 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 
 
 
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
       <p>Mixin with the functionality of publishing in a certain period.</p>
-
 
 
 <p><span class="doc-section-title">Examples:</span></p>
@@ -1463,7 +1454,7 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 </code></pre></div>
 
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1473,55 +1464,48 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 
   </div>
 
-  </div>
-
+    </div>
 
 </div><h4 id="published_1">published<a class="headerlink" href="#published_1" title="Permanent link">¤</a></h4>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>Method to getting published items.</p>
 
-  </div>
+    </div>
 
 </div><h4 id="unpublished_1">unpublished<a class="headerlink" href="#unpublished_1" title="Permanent link">¤</a></h4>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>Method for getting unpublished items.</p>
 
-  </div>
+    </div>
 
 </div><h2 id="utils">Utils<a class="headerlink" href="#utils" title="Permanent link">¤</a></h2>
 <h3 id="datetime">datetime<a class="headerlink" href="#datetime" title="Permanent link">¤</a></h3>
 <h4 id="format_date_from_to">format_date_from_to<a class="headerlink" href="#format_date_from_to" title="Permanent link">¤</a></h4>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>Method to display date period.</p>
 <p>Possible output formats depending on the input data:</p>
 <ul>
@@ -1532,53 +1516,50 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 </ul>
 
 
-
 <p><span class="doc-section-title">Examples:</span></p>
     <div class="language-pycon highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">format_date_from_to</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="go">01.01 - 01.02.2020</span>
 </code></pre></div>
 
 
-
-  <p><span class="doc-section-title">Attributes:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.utils.datetime.format_date_from_to.date_start">date_start</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Period start date.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.utils.datetime.format_date_from_to.date_end">date_end</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Period end date.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.utils.datetime.format_date_from_to.delimiter">delimiter</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Dates delimiter.</p>
-        </div>
-      </li>
-  </ul>
-
+<p><span class="doc-section-title">Attributes:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.utils.datetime.format_date_from_to.date_start">date_start</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Period start date.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.utils.datetime.format_date_from_to.date_end">date_end</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Period end date.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.utils.datetime.format_date_from_to.delimiter">delimiter</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Dates delimiter.</p>
+          </div>
+        </li>
+    </ul>
 
 
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Date period string.</p>
-      </div>
-      </li>
-  </ul>
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Date period string.</p>
+          </div>
+        </li>
+    </ul>
 
-  </div>
+    </div>
 
 </div><h3 id="crypt">crypt<a class="headerlink" href="#crypt" title="Permanent link">¤</a></h3>
 <p>This module contains two extremely simplified functions for encrypting and decrypting a message using the AES algorithm and the GCM method. The main task that these functions are designed to solve is to encrypt small amounts of data for situations such as password recovery links and the like.</p>
@@ -1589,34 +1570,30 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 <h4 id="encrypt_message">encrypt_message<a class="headerlink" href="#encrypt_message" title="Permanent link">¤</a></h4>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>Method for encrypting a message with AES algorithm and the GCM method.</p>
 
-  </div>
+    </div>
 
 </div><h4 id="decrypt_message">decrypt_message<a class="headerlink" href="#decrypt_message" title="Permanent link">¤</a></h4>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>Method for decrypting a message encrypted with AES algorithm and the GCM method.</p>
 
-  </div>
+    </div>
 
 </div><p>Methods for encryption use a key that can be set in the <a class="autorefs autorefs-internal" href="../../reference/meringue/conf/default_settings/#meringue.conf.default_settings.CRYPTO_KEY">CRYPTO_KEY</a> parameter. By default, the parameter uses the first 32 characters of <a href="https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECRET_KEY">SECRET_KEY</a>.</p>
 <h3 id="frontend">frontend<a class="headerlink" href="#frontend" title="Permanent link">¤</a></h3>
@@ -1644,17 +1621,14 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 <h3 id="cop_year">cop_year<a class="headerlink" href="#cop_year" title="Permanent link">¤</a></h3>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>A tag that displays the year or range of years for the copyright string in <code>YYYY-YYYY</code> format.</p>
-
 
 
 <p><span class="doc-section-title">Examples:</span></p>
@@ -1662,38 +1636,35 @@ by executing <code>.order_by()</code> before calling the <code>correction_sortin
 </code></pre></div>
 
 
-
-  <p><span class="doc-section-title">Raises:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a></code>
-          –
-        <div class="doc-md-description">
-          <p>To use the <code>cop_year</code> tag, you must fill in the <code>COP_YEAR</code> parameter in the
+<p><span class="doc-section-title">Raises:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a></code>
+            –
+          <div class="doc-md-description">
+            <p>To use the <code>cop_year</code> tag, you must fill in the <code>COP_YEAR</code> parameter in the
 meringue settings</p>
-        </div>
-      </li>
-  </ul>
+          </div>
+        </li>
+    </ul>
 
 
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Year for copyrights.</p>
+          </div>
+        </li>
+    </ul>
 
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Year for copyrights.</p>
-      </div>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div><p>For the tag to work, you must fill in the <a class="autorefs autorefs-internal" href="../../reference/meringue/conf/default_settings/#meringue.conf.default_settings.COP_YEAR">COP_YEAR</a> parameter in the settings.</p>
 <p>Also, in the <a class="autorefs autorefs-internal" href="../../reference/meringue/conf/default_settings/#meringue.conf.default_settings.COP_YEARS_DIFF">COP_YEARS_DIFF</a> parameter, you can specify the minimum difference in years when the period in copyrights will be displayed, and not the current year.</p>
 <h3 id="date_range">date_range<a class="headerlink" href="#date_range" title="Permanent link">¤</a></h3>
-
 
 
 <div class="doc doc-object doc-function">
@@ -1701,9 +1672,8 @@ meringue settings</p>
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>Return range of date in one of the following formats:</p>
 <ul>
 <li><code>DD.MM.YYYY - DD.MM.YYYY</code></li>
@@ -1713,25 +1683,23 @@ meringue settings</p>
 </ul>
 
 
-
-  <p><span class="doc-section-title">Attributes:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.templatetags.meringue_base.date_range.date_start">date_start</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Period start date.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.templatetags.meringue_base.date_range.date_end">date_end</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Period end date.</p>
-        </div>
-      </li>
-  </ul>
-
+<p><span class="doc-section-title">Attributes:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.templatetags.meringue_base.date_range.date_start">date_start</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Period start date.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.templatetags.meringue_base.date_range.date_end">date_end</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Period end date.</p>
+          </div>
+        </li>
+    </ul>
 
 
 <p><span class="doc-section-title">Examples:</span></p>
@@ -1739,19 +1707,18 @@ meringue settings</p>
 </code></pre></div>
 
 
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Date period.</p>
+          </div>
+        </li>
+    </ul>
 
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Date period.</p>
-      </div>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div><h2 id="translations">Translations<a class="headerlink" href="#translations" title="Permanent link">¤</a></h2>
 <p>If you use <a href="https://django-modeltranslation.readthedocs.io/en/latest/">djano-modeltranslation</a>, then when connecting <code>meringue.core</code>, you can register fields for translations by setting the list of fields in the <code>m_translate_fields</code> field in the meta of the corresponding model:</p>
@@ -1774,17 +1741,14 @@ meringue settings</p>
 <h3 id="im_a_teapot">im_a_teapot<a class="headerlink" href="#im_a_teapot" title="Permanent link">¤</a></h3>
 
 
-
 <div class="doc doc-object doc-function">
 
 
 
 
+    <div class="doc doc-contents first">
 
-  <div class="doc doc-contents first">
-  
       <p>We all at some point want to brew boiling water.</p>
-
 
 
 <p><span class="doc-section-title">Examples:</span></p>
@@ -1796,7 +1760,7 @@ meringue settings</p>
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a><span class="p">]</span>
 </code></pre></div>
 
-  </div>
+    </div>
 
 </div>
 

@@ -1268,14 +1268,14 @@
 
 
 <h1 id="meringue.core.db" class="doc doc-heading">
-          <span class="doc doc-object-name doc-module-name">meringue.core.db</span>
+            <span class="doc doc-object-name doc-module-name">meringue.core.db</span>
 
 
 <a href="#meringue.core.db" class="headerlink" title="Permanent link">¤</a></h1>
 
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1290,7 +1290,7 @@
 
 
 <h2 id="meringue.core.db.PgAdvisoryLock" class="doc doc-heading">
-          <span class="doc doc-object-name doc-class-name">PgAdvisoryLock</span>
+            <span class="doc doc-object-name doc-class-name">PgAdvisoryLock</span>
 
 
 <a href="#meringue.core.db.PgAdvisoryLock" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1302,53 +1302,52 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a><span class="p">)</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
+    <div class="doc doc-contents ">
 
-  
+
       <p>A context manager and decorator for using PostgreSQL advisory locks in Django.</p>
 <p>This class provides a way to use PostgreSQL advisory locks, ensuring that the lock
 is acquired and released correctly. It supports usage as both a context manager
 and a function decorator. The class also checks if the database is PostgreSQL and
 issues a warning if it is not.</p>
-  
 
 
 
-  <p><span class="doc-section-title">Attributes:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.db.PgAdvisoryLock.table">table</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>The name of the table to query for the lock ID.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.db.PgAdvisoryLock.value">value</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>The value to match in the field to retrieve the lock ID.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.db.PgAdvisoryLock.field">field</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>The name of the field to query for the lock ID.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.core.db.PgAdvisoryLock.using">using</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>The database alias to use.</p>
-        </div>
-      </li>
-  </ul>
+<p><span class="doc-section-title">Attributes:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.db.PgAdvisoryLock.table">table</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>The name of the table to query for the lock ID.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.db.PgAdvisoryLock.value">value</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>The value to match in the field to retrieve the lock ID.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.db.PgAdvisoryLock.field">field</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>The name of the field to query for the lock ID.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.core.db.PgAdvisoryLock.using">using</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>The database alias to use.</p>
+          </div>
+        </li>
+    </ul>
 
-                <details class="quote">
-                  <summary>Source code in <code>meringue/core/db.py</code></summary>
-                  <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">using</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">):</span>
+                  <details class="quote">
+                    <summary>Source code in <code>meringue/core/db.py</code></summary>
+                    <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">using</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">):</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19"></a><a href="#__codelineno-0-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20"></a><a href="#__codelineno-0-20"><span class="linenos" data-linenos="20 "></span></a><span class="sd">    Attributes:</span>
 <a id="__codelineno-0-21" name="__codelineno-0-21"></a><a href="#__codelineno-0-21"><span class="linenos" data-linenos="21 "></span></a><span class="sd">        table: The name of the table to query for the lock ID.</span>
@@ -1363,12 +1362,11 @@ issues a warning if it is not.</p>
 <a id="__codelineno-0-30" name="__codelineno-0-30"></a><a href="#__codelineno-0-30"><span class="linenos" data-linenos="30 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">db_name</span> <span class="o">=</span> <span class="n">using</span>
 <a id="__codelineno-0-31" name="__codelineno-0-31"></a><a href="#__codelineno-0-31"><span class="linenos" data-linenos="31 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">is_postgresql</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_postgresql</span><span class="p">()</span>
 </code></pre></div>
-                </details>
+                  </details>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1381,22 +1379,21 @@ issues a warning if it is not.</p>
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="meringue.core.db.PgAdvisoryLock.lock" class="doc doc-heading">
-          <span class="doc doc-object-name doc-function-name">lock</span>
+            <span class="doc doc-object-name doc-function-name">lock</span>
 
 
 <a href="#meringue.core.db.PgAdvisoryLock.lock" class="headerlink" title="Permanent link">¤</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nf">lock</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Acquires the advisory lock.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>meringue/core/db.py</code></summary>
-            <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-53" name="__codelineno-0-53"></a><a href="#__codelineno-0-53"><span class="linenos" data-linenos="53 "></span></a><span class="k">def</span> <span class="nf">lock</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <details class="quote">
+              <summary>Source code in <code>meringue/core/db.py</code></summary>
+              <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-53" name="__codelineno-0-53"></a><a href="#__codelineno-0-53"><span class="linenos" data-linenos="53 "></span></a><span class="k">def</span> <span class="nf">lock</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <a id="__codelineno-0-54" name="__codelineno-0-54"></a><a href="#__codelineno-0-54"><span class="linenos" data-linenos="54 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-55" name="__codelineno-0-55"></a><a href="#__codelineno-0-55"><span class="linenos" data-linenos="55 "></span></a><span class="sd">    Acquires the advisory lock.</span>
 <a id="__codelineno-0-56" name="__codelineno-0-56"></a><a href="#__codelineno-0-56"><span class="linenos" data-linenos="56 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
@@ -1410,11 +1407,10 @@ issues a warning if it is not.</p>
 <a id="__codelineno-0-64" name="__codelineno-0-64"></a><a href="#__codelineno-0-64"><span class="linenos" data-linenos="64 "></span></a>    <span class="k">with</span> <span class="n">connections</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">db_name</span><span class="p">]</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
 <a id="__codelineno-0-65" name="__codelineno-0-65"></a><a href="#__codelineno-0-65"><span class="linenos" data-linenos="65 "></span></a>        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">])</span>
 </code></pre></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 
 
@@ -1424,22 +1420,21 @@ issues a warning if it is not.</p>
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="meringue.core.db.PgAdvisoryLock.unlock" class="doc doc-heading">
-          <span class="doc doc-object-name doc-function-name">unlock</span>
+            <span class="doc doc-object-name doc-function-name">unlock</span>
 
 
 <a href="#meringue.core.db.PgAdvisoryLock.unlock" class="headerlink" title="Permanent link">¤</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nf">unlock</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Releases the advisory lock.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>meringue/core/db.py</code></summary>
-            <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-67" name="__codelineno-0-67"></a><a href="#__codelineno-0-67"><span class="linenos" data-linenos="67 "></span></a><span class="k">def</span> <span class="nf">unlock</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <details class="quote">
+              <summary>Source code in <code>meringue/core/db.py</code></summary>
+              <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-67" name="__codelineno-0-67"></a><a href="#__codelineno-0-67"><span class="linenos" data-linenos="67 "></span></a><span class="k">def</span> <span class="nf">unlock</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <a id="__codelineno-0-68" name="__codelineno-0-68"></a><a href="#__codelineno-0-68"><span class="linenos" data-linenos="68 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-69" name="__codelineno-0-69"></a><a href="#__codelineno-0-69"><span class="linenos" data-linenos="69 "></span></a><span class="sd">    Releases the advisory lock.</span>
 <a id="__codelineno-0-70" name="__codelineno-0-70"></a><a href="#__codelineno-0-70"><span class="linenos" data-linenos="70 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
@@ -1451,8 +1446,8 @@ issues a warning if it is not.</p>
 <a id="__codelineno-0-76" name="__codelineno-0-76"></a><a href="#__codelineno-0-76"><span class="linenos" data-linenos="76 "></span></a>    <span class="k">with</span> <span class="n">connections</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">db_name</span><span class="p">]</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
 <a id="__codelineno-0-77" name="__codelineno-0-77"></a><a href="#__codelineno-0-77"><span class="linenos" data-linenos="77 "></span></a>        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">])</span>
 </code></pre></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1461,8 +1456,7 @@ issues a warning if it is not.</p>
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1471,7 +1465,7 @@ issues a warning if it is not.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

@@ -1055,17 +1055,16 @@
 
 
 <h1 id="meringue.protected.views" class="doc doc-heading">
-          <span class="doc doc-object-name doc-module-name">meringue.protected.views</span>
+            <span class="doc doc-object-name doc-module-name">meringue.protected.views</span>
 
 
 <a href="#meringue.protected.views" class="headerlink" title="Permanent link">¤</a></h1>
 
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1076,9 +1075,8 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="meringue.protected.views.x_accel_redirect_view" class="doc doc-heading">
-          <span class="doc doc-object-name doc-function-name">x_accel_redirect_view</span>
+            <span class="doc doc-object-name doc-function-name">x_accel_redirect_view</span>
 
 
 <a href="#meringue.protected.views.x_accel_redirect_view" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1087,8 +1085,8 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">)</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>The view checks the user's access to view and serves the file.</p>
 <p>If you enable the parameter
 <a class="autorefs autorefs-internal" href="../../conf/default_settings/#meringue.conf.default_settings.PROTECTED_SERVE_WITH_NGINX">PROTECTED_SERVE_WITH_NGINX</a>, the
@@ -1096,9 +1094,9 @@ file will not be served; instead, the response will contain the X-Accel-Redirect
 pointing to the original file. It is expected that nginx will return the file using the
 <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#internal">internal</a> parameter.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>meringue/protected/views.py</code></summary>
-            <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a><span class="k">def</span> <span class="nf">x_accel_redirect_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">cid</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">pk</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="s2">&quot;inline&quot;</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>meringue/protected/views.py</code></summary>
+              <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a><span class="k">def</span> <span class="nf">x_accel_redirect_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">cid</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">pk</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="s2">&quot;inline&quot;</span><span class="p">):</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a><span class="sd">    The view checks the user&#39;s access to view and serves the file.</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19"></a><a href="#__codelineno-0-19"><span class="linenos" data-linenos="19 "></span></a>
@@ -1142,8 +1140,8 @@ pointing to the original file. It is expected that nginx will return the file us
 <a id="__codelineno-0-57" name="__codelineno-0-57"></a><a href="#__codelineno-0-57"><span class="linenos" data-linenos="57 "></span></a>
 <a id="__codelineno-0-58" name="__codelineno-0-58"></a><a href="#__codelineno-0-58"><span class="linenos" data-linenos="58 "></span></a>    <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1152,7 +1150,7 @@ pointing to the original file. It is expected that nginx will return the file us
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

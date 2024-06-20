@@ -1159,14 +1159,14 @@
 
 
 <h1 id="meringue.api.routers" class="doc doc-heading">
-          <span class="doc doc-object-name doc-module-name">meringue.api.routers</span>
+            <span class="doc doc-object-name doc-module-name">meringue.api.routers</span>
 
 
 <a href="#meringue.api.routers" class="headerlink" title="Permanent link">¤</a></h1>
 
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1181,9 +1181,9 @@
 
 
 <h2 id="meringue.api.routers.ObjectRoute" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">ObjectRoute</span>
+            <span class="doc doc-object-name doc-attribute-name">ObjectRoute</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
   </span>
@@ -1195,10 +1195,10 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="p">)</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Object predefined detail route.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -1212,24 +1212,23 @@
 
 
 <h2 id="meringue.api.routers.MeringueRouter" class="doc doc-heading">
-          <span class="doc doc-object-name doc-class-name">MeringueRouter</span>
+            <span class="doc doc-object-name doc-class-name">MeringueRouter</span>
 
 
 <a href="#meringue.api.routers.MeringueRouter" class="headerlink" title="Permanent link">¤</a></h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="rest_framework.routers.DefaultRouter">DefaultRouter</span></code></p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="rest_framework.routers.DefaultRouter">DefaultRouter</span></code></p>
 
-  
+
       <p>The default router is inherited from the original default router but with some modifications.</p>
 
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1240,22 +1239,21 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="meringue.api.routers.MeringueRouter.get_api_root_view" class="doc doc-heading">
-          <span class="doc doc-object-name doc-function-name">get_api_root_view</span>
+            <span class="doc doc-object-name doc-function-name">get_api_root_view</span>
 
 
 <a href="#meringue.api.routers.MeringueRouter.get_api_root_view" class="headerlink" title="Permanent link">¤</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nf">get_api_root_view</span><span class="p">(</span><span class="n">api_urls</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return a basic root view.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>meringue/api/routers.py</code></summary>
-            <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-42" name="__codelineno-0-42"></a><a href="#__codelineno-0-42"><span class="linenos" data-linenos="42 "></span></a><span class="k">def</span> <span class="nf">get_api_root_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_urls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>meringue/api/routers.py</code></summary>
+              <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-42" name="__codelineno-0-42"></a><a href="#__codelineno-0-42"><span class="linenos" data-linenos="42 "></span></a><span class="k">def</span> <span class="nf">get_api_root_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_urls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <a id="__codelineno-0-43" name="__codelineno-0-43"></a><a href="#__codelineno-0-43"><span class="linenos" data-linenos="43 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-44" name="__codelineno-0-44"></a><a href="#__codelineno-0-44"><span class="linenos" data-linenos="44 "></span></a><span class="sd">    Return a basic root view.</span>
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a><a href="#__codelineno-0-45"><span class="linenos" data-linenos="45 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
@@ -1271,11 +1269,10 @@
 <a id="__codelineno-0-55" name="__codelineno-0-55"></a><a href="#__codelineno-0-55"><span class="linenos" data-linenos="55 "></span></a>
 <a id="__codelineno-0-56" name="__codelineno-0-56"></a><a href="#__codelineno-0-56"><span class="linenos" data-linenos="56 "></span></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">APIRootView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">api_root_dict</span><span class="o">=</span><span class="n">api_root_dict</span><span class="p">)</span>
 </code></pre></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 
 
@@ -1285,22 +1282,21 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="meringue.api.routers.MeringueRouter.get_routes" class="doc doc-heading">
-          <span class="doc doc-object-name doc-function-name">get_routes</span>
+            <span class="doc doc-object-name doc-function-name">get_routes</span>
 
 
 <a href="#meringue.api.routers.MeringueRouter.get_routes" class="headerlink" title="Permanent link">¤</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nf">get_routes</span><span class="p">(</span><span class="n">viewset</span><span class="p">)</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Extra routes are filtered according to the new route type.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>meringue/api/routers.py</code></summary>
-            <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-58" name="__codelineno-0-58"></a><a href="#__codelineno-0-58"><span class="linenos" data-linenos="58 "></span></a><span class="k">def</span> <span class="nf">get_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewset</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>meringue/api/routers.py</code></summary>
+              <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-58" name="__codelineno-0-58"></a><a href="#__codelineno-0-58"><span class="linenos" data-linenos="58 "></span></a><span class="k">def</span> <span class="nf">get_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewset</span><span class="p">):</span>
 <a id="__codelineno-0-59" name="__codelineno-0-59"></a><a href="#__codelineno-0-59"><span class="linenos" data-linenos="59 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-60" name="__codelineno-0-60"></a><a href="#__codelineno-0-60"><span class="linenos" data-linenos="60 "></span></a><span class="sd">    Extra routes are filtered according to the new route type.</span>
 <a id="__codelineno-0-61" name="__codelineno-0-61"></a><a href="#__codelineno-0-61"><span class="linenos" data-linenos="61 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
@@ -1327,8 +1323,8 @@
 <a id="__codelineno-0-82" name="__codelineno-0-82"></a><a href="#__codelineno-0-82"><span class="linenos" data-linenos="82 "></span></a>
 <a id="__codelineno-0-83" name="__codelineno-0-83"></a><a href="#__codelineno-0-83"><span class="linenos" data-linenos="83 "></span></a>    <span class="k">return</span> <span class="n">routes</span>
 </code></pre></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1337,8 +1333,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1347,7 +1342,7 @@
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

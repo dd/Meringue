@@ -1432,14 +1432,14 @@
 
 
 <h1 id="meringue.thumbnail.images" class="doc doc-heading">
-          <span class="doc doc-object-name doc-module-name">meringue.thumbnail.images</span>
+            <span class="doc doc-object-name doc-module-name">meringue.thumbnail.images</span>
 
 
 <a href="#meringue.thumbnail.images" class="headerlink" title="Permanent link">¤</a></h1>
 
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1462,7 +1462,7 @@
 
 
 <h2 id="meringue.thumbnail.images.ThumbnailImage" class="doc doc-heading">
-          <span class="doc doc-object-name doc-class-name">ThumbnailImage</span>
+            <span class="doc doc-object-name doc-class-name">ThumbnailImage</span>
 
 
 <a href="#meringue.thumbnail.images.ThumbnailImage" class="headerlink" title="Permanent link">¤</a></h2>
@@ -1475,58 +1475,57 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a><span class="p">)</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><span title="django.db.models.utils.AltersData">AltersData</span></code></p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="django.db.models.utils.AltersData">AltersData</span></code></p>
 
-  
+
       <p>Thumbnail Image class.</p>
-  
 
 
 
-  <p><span class="doc-section-title">Attributes:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.thumbnail.images.ThumbnailImage.image_path">image_path</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Source image path.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.thumbnail.images.ThumbnailImage.job_chain">job_chain</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Thumbnail job chain.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.thumbnail.images.ThumbnailImage.out_format">out_format</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Output image format.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.thumbnail.images.ThumbnailImage.image">image</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Thumbnail PIL image.</p>
-        </div>
-      </li>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.thumbnail.images.ThumbnailImage.storage">storage</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>File storage.</p>
-        </div>
-      </li>
-  </ul>
+<p><span class="doc-section-title">Attributes:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.thumbnail.images.ThumbnailImage.image_path">image_path</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Source image path.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.thumbnail.images.ThumbnailImage.job_chain">job_chain</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Thumbnail job chain.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.thumbnail.images.ThumbnailImage.out_format">out_format</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Output image format.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.thumbnail.images.ThumbnailImage.image">image</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Thumbnail PIL image.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.thumbnail.images.ThumbnailImage.storage">storage</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>File storage.</p>
+          </div>
+        </li>
+    </ul>
 
-                <details class="quote">
-                  <summary>Source code in <code>meringue/thumbnail/images.py</code></summary>
-                  <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-24" name="__codelineno-0-24"></a><a href="#__codelineno-0-24"><span class="linenos" data-linenos="24 "></span></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+                  <details class="quote">
+                    <summary>Source code in <code>meringue/thumbnail/images.py</code></summary>
+                    <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-24" name="__codelineno-0-24"></a><a href="#__codelineno-0-24"><span class="linenos" data-linenos="24 "></span></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 <a id="__codelineno-0-25" name="__codelineno-0-25"></a><a href="#__codelineno-0-25"><span class="linenos" data-linenos="25 "></span></a>    <span class="bp">self</span><span class="p">,</span>
 <a id="__codelineno-0-26" name="__codelineno-0-26"></a><a href="#__codelineno-0-26"><span class="linenos" data-linenos="26 "></span></a>    <span class="n">image_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 <a id="__codelineno-0-27" name="__codelineno-0-27"></a><a href="#__codelineno-0-27"><span class="linenos" data-linenos="27 "></span></a>    <span class="n">job_chain</span><span class="p">:</span> <span class="n">JobChainType</span><span class="p">,</span>  <span class="c1"># str  = &quot;extra@1&quot;,</span>
@@ -1550,9 +1549,9 @@
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a><a href="#__codelineno-0-45"><span class="linenos" data-linenos="45 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">storage</span> <span class="ow">or</span> <span class="n">default_storage</span>
 <a id="__codelineno-0-46" name="__codelineno-0-46"></a><a href="#__codelineno-0-46"><span class="linenos" data-linenos="46 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
-                </details>
+                  </details>
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1569,9 +1568,9 @@
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.name" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">name</span>
+            <span class="doc doc-object-name doc-attribute-name">name</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1580,25 +1579,24 @@
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="pathlib.Path" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Relative path to thumbnail.</p>
 <p>We split the path into separate directories so as not to dump everything in one directory,
 which can be a problem with a large count of images.</p>
 
 
-
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" title="pathlib.Path" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Thumbnail path.</p>
-      </div>
-      </li>
-  </ul>
-  </div>
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" title="pathlib.Path" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Thumbnail path.</p>
+          </div>
+        </li>
+    </ul>
+    </div>
 
 </div>
 
@@ -1612,9 +1610,9 @@ which can be a problem with a large count of images.</p>
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.thumbnail_hash" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">thumbnail_hash</span>
+            <span class="doc doc-object-name doc-attribute-name">thumbnail_hash</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1623,23 +1621,22 @@ which can be a problem with a large count of images.</p>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">thumbnail_hash</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Calculates the thumbnail hash based on the job chain and source path.</p>
 
 
-
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Thumbnail hash.</p>
-      </div>
-      </li>
-  </ul>
-  </div>
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Thumbnail hash.</p>
+          </div>
+        </li>
+    </ul>
+    </div>
 
 </div>
 
@@ -1653,9 +1650,9 @@ which can be a problem with a large count of images.</p>
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.file_extension" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">file_extension</span>
+            <span class="doc doc-object-name doc-attribute-name">file_extension</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1664,23 +1661,22 @@ which can be a problem with a large count of images.</p>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">file_extension</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Returns the file extension for the thumbnail.</p>
 
 
-
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Thumbnail file extension.</p>
-      </div>
-      </li>
-  </ul>
-  </div>
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Thumbnail file extension.</p>
+          </div>
+        </li>
+    </ul>
+    </div>
 
 </div>
 
@@ -1694,9 +1690,9 @@ which can be a problem with a large count of images.</p>
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.filename" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">filename</span>
+            <span class="doc doc-object-name doc-attribute-name">filename</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1705,23 +1701,22 @@ which can be a problem with a large count of images.</p>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">filename</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Returns the file name for the thumbnail.</p>
 
 
-
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Thumbnail file name.</p>
-      </div>
-      </li>
-  </ul>
-  </div>
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Thumbnail file name.</p>
+          </div>
+        </li>
+    </ul>
+    </div>
 
 </div>
 
@@ -1735,9 +1730,9 @@ which can be a problem with a large count of images.</p>
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.path" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">path</span>
+            <span class="doc doc-object-name doc-attribute-name">path</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1746,10 +1741,10 @@ which can be a problem with a large count of images.</p>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">path</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="pathlib.Path" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Absolute path to thumbnail.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -1763,9 +1758,9 @@ which can be a problem with a large count of images.</p>
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.url" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">url</span>
+            <span class="doc doc-object-name doc-attribute-name">url</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1774,10 +1769,10 @@ which can be a problem with a large count of images.</p>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">url</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Url to thumbnail.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -1791,9 +1786,9 @@ which can be a problem with a large count of images.</p>
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.is_supports_alpha" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">is_supports_alpha</span>
+            <span class="doc doc-object-name doc-attribute-name">is_supports_alpha</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1802,10 +1797,10 @@ which can be a problem with a large count of images.</p>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">is_supports_alpha</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Returns the alpha channel support flag.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -1819,9 +1814,9 @@ which can be a problem with a large count of images.</p>
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.mimetype" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">mimetype</span>
+            <span class="doc doc-object-name doc-attribute-name">mimetype</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1830,24 +1825,23 @@ which can be a problem with a large count of images.</p>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">mimetype</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return thumbnail mimetype.</p>
 <p>Python mimetypes library doesn't know webp =(.</p>
 
 
-
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Thumbnail mimetype.</p>
-      </div>
-      </li>
-  </ul>
-  </div>
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Thumbnail mimetype.</p>
+          </div>
+        </li>
+    </ul>
+    </div>
 
 </div>
 
@@ -1861,9 +1855,9 @@ which can be a problem with a large count of images.</p>
 
 
 <h3 id="meringue.thumbnail.images.ThumbnailImage.saved" class="doc doc-heading">
-          <span class="doc doc-object-name doc-attribute-name">saved</span>
+            <span class="doc doc-object-name doc-attribute-name">saved</span>
 
-  
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1872,26 +1866,24 @@ which can be a problem with a large count of images.</p>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">saved</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Check saved on disk thumbnail or not.</p>
 
 
-
-  <p><span class="doc-section-title">Returns:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-            <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
-        –
-        <div class="doc-md-description">
-          <p>Saved on disk flag.</p>
-      </div>
-      </li>
-  </ul>
-  </div>
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+          –
+          <div class="doc-md-description">
+            <p>Saved on disk flag.</p>
+          </div>
+        </li>
+    </ul>
+    </div>
 
 </div>
-
 
 
 
@@ -1901,35 +1893,33 @@ which can be a problem with a large count of images.</p>
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="meringue.thumbnail.images.ThumbnailImage.save" class="doc doc-heading">
-          <span class="doc doc-object-name doc-function-name">save</span>
+            <span class="doc doc-object-name doc-function-name">save</span>
 
 
 <a href="#meringue.thumbnail.images.ThumbnailImage.save" class="headerlink" title="Permanent link">¤</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nf">save</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Save image to disk.</p>
 
 
+<p><span class="doc-section-title">Attributes:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.thumbnail.images.ThumbnailImage.save.**kwargs">**kwargs</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>Pillow imamge save params.</p>
+          </div>
+        </li>
+    </ul>
 
-  <p><span class="doc-section-title">Attributes:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.thumbnail.images.ThumbnailImage.save.**kwargs">**kwargs</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>Pillow imamge save params.</p>
-        </div>
-      </li>
-  </ul>
-
-          <details class="quote">
-            <summary>Source code in <code>meringue/thumbnail/images.py</code></summary>
-            <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-151" name="__codelineno-0-151"></a><a href="#__codelineno-0-151"><span class="linenos" data-linenos="151 "></span></a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>meringue/thumbnail/images.py</code></summary>
+              <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-151" name="__codelineno-0-151"></a><a href="#__codelineno-0-151"><span class="linenos" data-linenos="151 "></span></a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <a id="__codelineno-0-152" name="__codelineno-0-152"></a><a href="#__codelineno-0-152"><span class="linenos" data-linenos="152 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-153" name="__codelineno-0-153"></a><a href="#__codelineno-0-153"><span class="linenos" data-linenos="153 "></span></a><span class="sd">    Save image to disk.</span>
 <a id="__codelineno-0-154" name="__codelineno-0-154"></a><a href="#__codelineno-0-154"><span class="linenos" data-linenos="154 "></span></a>
@@ -1956,8 +1946,8 @@ which can be a problem with a large count of images.</p>
 <a id="__codelineno-0-175" name="__codelineno-0-175"></a><a href="#__codelineno-0-175"><span class="linenos" data-linenos="175 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">tmp_image</span><span class="p">)</span>
 <a id="__codelineno-0-176" name="__codelineno-0-176"></a><a href="#__codelineno-0-176"><span class="linenos" data-linenos="176 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1966,8 +1956,7 @@ which can be a problem with a large count of images.</p>
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1976,7 +1965,7 @@ which can be a problem with a large count of images.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 

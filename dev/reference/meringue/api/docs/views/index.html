@@ -1193,14 +1193,14 @@
 
 
 <h1 id="meringue.api.docs.views" class="doc doc-heading">
-          <span class="doc doc-object-name doc-module-name">meringue.api.docs.views</span>
+            <span class="doc doc-object-name doc-module-name">meringue.api.docs.views</span>
 
 
 <a href="#meringue.api.docs.views" class="headerlink" title="Permanent link">¤</a></h1>
 
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  
+
 
   <div class="doc doc-children">
 
@@ -1215,24 +1215,23 @@
 
 
 <h2 id="meringue.api.docs.views.MeringueSpectacularAPIView" class="doc doc-heading">
-          <span class="doc doc-object-name doc-class-name">MeringueSpectacularAPIView</span>
+            <span class="doc doc-object-name doc-class-name">MeringueSpectacularAPIView</span>
 
 
 <a href="#meringue.api.docs.views.MeringueSpectacularAPIView" class="headerlink" title="Permanent link">¤</a></h2>
 
 
-  <div class="doc doc-contents ">
-          <p class="doc doc-class-bases">
-            Bases: <code><a class="autorefs autorefs-external" title="drf_spectacular.views.SpectacularAPIView" href="https://drf-spectacular.readthedocs.io/en/latest/drf_spectacular.html#drf_spectacular.views.SpectacularAPIView">SpectacularAPIView</a></code></p>
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-external" title="drf_spectacular.views.SpectacularAPIView" href="https://drf-spectacular.readthedocs.io/en/latest/drf_spectacular.html#drf_spectacular.views.SpectacularAPIView">SpectacularAPIView</a></code></p>
 
-  
+
       <p>Spectacular wrapper that patches the schema.</p>
 
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -1243,35 +1242,33 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h3 id="meringue.api.docs.views.MeringueSpectacularAPIView.patch_schema" class="doc doc-heading">
-          <span class="doc doc-object-name doc-function-name">patch_schema</span>
+            <span class="doc doc-object-name doc-function-name">patch_schema</span>
 
 
 <a href="#meringue.api.docs.views.MeringueSpectacularAPIView.patch_schema" class="headerlink" title="Permanent link">¤</a></h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nf">patch_schema</span><span class="p">(</span><span class="n">openapi_schema</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></span><span class="p">)</span>
 </code></pre></div>
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Method patching OpenAPI3 object.</p>
 
 
+<p><span class="doc-section-title">Attributes:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code><span title="meringue.api.docs.views.MeringueSpectacularAPIView.patch_schema.openapi_schema">openapi_schema</span></code></b>
+          –
+          <div class="doc-md-description">
+            <p>OpenAPI Object.</p>
+          </div>
+        </li>
+    </ul>
 
-  <p><span class="doc-section-title">Attributes:</span></p>
-  <ul>
-      <li class="doc-section-item field-body">
-        <b><code><span title="meringue.api.docs.views.MeringueSpectacularAPIView.patch_schema.openapi_schema">openapi_schema</span></code></b>
-        –
-        <div class="doc-md-description">
-          <p>OpenAPI Object.</p>
-        </div>
-      </li>
-  </ul>
-
-          <details class="quote">
-            <summary>Source code in <code>meringue/api/docs/views.py</code></summary>
-            <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a><span class="k">def</span> <span class="nf">patch_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">openapi_schema</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+            <details class="quote">
+              <summary>Source code in <code>meringue/api/docs/views.py</code></summary>
+              <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a><span class="k">def</span> <span class="nf">patch_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">openapi_schema</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19"></a><a href="#__codelineno-0-19"><span class="linenos" data-linenos="19 "></span></a><span class="sd">    Method patching OpenAPI3 object.</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20"></a><a href="#__codelineno-0-20"><span class="linenos" data-linenos="20 "></span></a>
@@ -1282,8 +1279,8 @@
 <a id="__codelineno-0-25" name="__codelineno-0-25"></a><a href="#__codelineno-0-25"><span class="linenos" data-linenos="25 "></span></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">patcher</span><span class="p">:</span>
 <a id="__codelineno-0-26" name="__codelineno-0-26"></a><a href="#__codelineno-0-26"><span class="linenos" data-linenos="26 "></span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">patcher</span><span class="o">.</span><span class="n">patch_schema</span><span class="p">(</span><span class="n">openapi_schema</span><span class="p">)</span>
 </code></pre></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -1292,8 +1289,7 @@
 
   </div>
 
-  </div>
-
+    </div>
 
 </div>
 
@@ -1302,7 +1298,7 @@
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 
