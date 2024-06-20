@@ -1,5 +1,6 @@
 from rest_framework.exceptions import ErrorDetail
 
+
 try:
     from rest_framework_simplejwt.exceptions import DetailDictMixin
 except ImportError:

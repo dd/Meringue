@@ -1,15 +1,17 @@
 from django.contrib.contenttypes.models import ContentType
-from django.db.models.fields.files import FileField
 from django.db.models.fields.files import FieldFile
+from django.db.models.fields.files import FileField
 from django.db.models.fields.files import ImageField
 from django.db.models.fields.files import ImageFieldFile
 from django.urls import reverse
+
+from meringue.conf import m_settings
+
+
 try:
     from django_hosts.resolvers import reverse as hosts_reverse
 except ImportError:
     hosts_reverse = None
-
-from meringue.conf import m_settings
 
 
 class ProtectedFileMixin:
@@ -86,7 +88,7 @@ class ProtectedFileField(FileField):
 
     def deconstruct(self):
         name, path, args, kwargs = super().deconstruct()
-        kwargs['view_name'] = self.m_protected_view_name
+        kwargs["view_name"] = self.m_protected_view_name
         return name, path, args, kwargs
 
 
@@ -122,5 +124,5 @@ class ProtectedImageField(ImageField):
 
     def deconstruct(self):
         name, path, args, kwargs = super().deconstruct()
-        kwargs['view_name'] = self.m_protected_view_name
+        kwargs["view_name"] = self.m_protected_view_name
         return name, path, args, kwargs

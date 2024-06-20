@@ -6,6 +6,7 @@ from rest_framework import views
 
 from meringue.api.utils import render_error_details
 
+
 try:
     from rest_framework_simplejwt.exceptions import DetailDictMixin
 except ImportError:
@@ -24,7 +25,7 @@ def exception_handler(exc, context):
     if response is None:
         return response
 
-    if isinstance(exc, (Http404, PermissionDenied)):
+    if isinstance(exc, Http404 | PermissionDenied):
         # django Http404 and PermissionDenied errors are substituted for drf errors,
         # in `rest_framework.views.exception_handler` method.
         response.data = render_error_details(response.data["detail"])

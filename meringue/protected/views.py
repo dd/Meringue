@@ -1,9 +1,7 @@
 import mimetypes
 from pathlib import Path
 from urllib.parse import quote
-from urllib.parse import urljoin
 
-from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.http import FileResponse
@@ -51,7 +49,10 @@ def x_accel_redirect_view(request, cid, field, pk, disp="inline"):
         response["X-Accel-Redirect"] = redirect_url
         return response
 
-    return FileResponse(
-        open(file.path, "rb"),
-        as_attachment = disp == "attachment",
-    )
+    with open(file.path, "rb") as tmp_file:
+        response = FileResponse(
+            tmp_file,
+            as_attachment=disp == "attachment",
+        )
+
+    return response
