@@ -37,8 +37,8 @@ jobs:
 
     - name: Build documentation
       run: |
-        MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
-        if [[ ! $MERINGUE_DOCS_VERSION =~ (dev|alpha|beta|rc) ]]; then
+        MERINGUE_VERSION=$(hatch version)
+        if [[ ! "$MERINGUE_VERSION" =~ (dev|alpha|beta) ]]; then
           hatch run docs:build-check
         fi
 
@@ -49,11 +49,11 @@ jobs:
 
     - name: Commit documentation
       run: |
-        if [[ $MERINGUE_DOCS_VERSION =~ (dev|alpha|beta|rc) ]]; then
-          hatch run docs:ci-build dev
+        MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
+        if [[ "$MERINGUE_VERSION" =~ (dev|alpha|beta|rc) ]]; then
+          hatch run docs:ci-build $MERINGUE_DOCS_VERSION --update-aliases dev
         else
-          hatch run docs:ci-build $MERINGUE_DOCS_VERSION latest
-          # hatch run docs:mike set-default --push latest
+          hatch run docs:ci-build $MERINGUE_DOCS_VERSION --update-aliases latest
         fi
 
     - name: Create archive
