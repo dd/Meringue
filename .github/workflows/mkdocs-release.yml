@@ -4,6 +4,8 @@ on:
   push:
     tags:
     - "v*"
+    branches:
+    - dev
 
 concurrency:
   group: docs-deploy
@@ -33,8 +35,8 @@ jobs:
     - name: Install Hatch
       run: pip install --upgrade hatch
 
-    - name: Build documentation
-      run: hatch run docs:build-check
+    # - name: Build documentation
+    #   run: hatch run docs:build-check
 
     - name: Configure Git for GitHub Actions bot
       run: |
@@ -50,12 +52,17 @@ jobs:
           hatch run docs:ci-build $MERINGUE_DOCS_VERSION latest
         fi
         hatch run docs:mike set-default --push latest
+        ls -al
 
     - name: Create archive
-      run: git archive -o site.zip gh-pages
+      run: |
+        echo "Create archive"
+        ls -al
+        git archive -o site.zip gh-pages
+        ls -al
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: documentation
         path: site.zip
@@ -69,7 +76,7 @@ jobs:
 
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: documentation
 
