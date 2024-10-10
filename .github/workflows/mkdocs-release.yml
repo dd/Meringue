@@ -51,15 +51,12 @@ jobs:
         else
           hatch run docs:ci-build $MERINGUE_DOCS_VERSION latest
         fi
-        hatch run docs:mike set-default --push latest
-        ls -al
+        hatch run docs:mike set-default --push latest --allow-empty
 
     - name: Create archive
       run: |
         echo "Create archive"
-        ls -al
         git archive -o site.zip gh-pages
-        ls -al
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
