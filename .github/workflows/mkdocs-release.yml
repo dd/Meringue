@@ -56,44 +56,51 @@ jobs:
           hatch run docs:ci-build $MERINGUE_DOCS_VERSION --update-aliases latest
         fi
 
-    - name: Create archive
+    - name: Test
+      uses: actions/checkout@v4
       run: |
-        echo "Create archive"
         git checkout gh-pages
-        zip -r site.zip . -x '*.git*'
-        # git archive breaks links
-        # git archive -o site.zip gh-pages
+        git --no-pager log -n 5
+        # git push
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: documentation
-        path: site.zip
+  #   - name: Create archive
+  #     run: |
+  #       echo "Create archive"
+  #       git checkout gh-pages
+  #       zip -r site.zip . -x '*.git*'
+  #       # git archive breaks links
+  #       # git archive -o site.zip gh-pages
 
-  gh-publish:
-    name: Publication of documentation on github pages
-    runs-on: ubuntu-latest
+  #   - name: Upload artifact
+  #     uses: actions/upload-artifact@v4
+  #     with:
+  #       name: documentation
+  #       path: site.zip
 
-    needs:
-    - build
+  # gh-publish:
+  #   name: Publication of documentation on github pages
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: documentation
+  #   needs:
+  #   - build
 
-    - name: Unpack archive
-      run: python -m zipfile -e site.zip site
+  #   steps:
+  #   - name: Download artifact
+  #     uses: actions/download-artifact@v4
+  #     with:
+  #       name: documentation
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: site
-        commit_message: ${{ github.event.head_commit.message }}
-        # Write .nojekyll at the root, see:
-        # https://help.github.com/en/github/working-with-github-pages/about-github-pages#static-site-generators
-        enable_jekyll: false
-        # Only deploy if there were changes
-        allow_empty_commit: false
+  #   - name: Unpack archive
+  #     run: python -m zipfile -e site.zip site
+
+  #   - name: Deploy
+  #     uses: peaceiris/actions-gh-pages@v3
+  #     with:
+  #       github_token: ${{ secrets.GITHUB_TOKEN }}
+  #       publish_dir: site
+  #       commit_message: ${{ github.event.head_commit.message }}
+  #       # Write .nojekyll at the root, see:
+  #       # https://help.github.com/en/github/working-with-github-pages/about-github-pages#static-site-generators
+  #       enable_jekyll: false
+  #       # Only deploy if there were changes
+  #       allow_empty_commit: false
