@@ -35,8 +35,12 @@ jobs:
     - name: Install Hatch
       run: pip install --upgrade hatch
 
-    # - name: Build documentation
-    #   run: hatch run docs:build-check
+    - name: Build documentation
+      run: |
+        MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
+        if [[ ! $MERINGUE_DOCS_VERSION =~ (dev|alpha|beta|rc) ]]; then
+          hatch run docs:build-check
+        fi
 
     - name: Configure Git for GitHub Actions bot
       run: |
@@ -45,13 +49,12 @@ jobs:
 
     - name: Commit documentation
       run: |
-        MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
-        if [[ $MERINGUE_DOCS_VERSION =~ '^(\.dev|\.b|\.a|rc)*' ]]; then
-          hatch run docs:ci-build $MERINGUE_DOCS_VERSION dev
+        if [[ $MERINGUE_DOCS_VERSION =~ (dev|alpha|beta|rc) ]]; then
+          hatch run docs:ci-build dev
         else
           hatch run docs:ci-build $MERINGUE_DOCS_VERSION latest
+          # hatch run docs:mike set-default --push latest
         fi
-        hatch run docs:mike set-default --push latest --allow-empty
 
     - name: Create archive
       run: |
