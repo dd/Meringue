@@ -2,292 +2,234 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dd.github.io/Meringue/1.3/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/SUMMARY/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/changelog/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/dev/contributing/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/dev/tests/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/dev/docs/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/dev/docs/examples/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/SUMMARY/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/api/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/api/apps/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/api/handlers/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/api/routers/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/api/utils/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/api/docs/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/api/docs/patchers/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/api/docs/views/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/conf/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/conf/default_settings/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/apps/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/db/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/models/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/options/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/query/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/translation/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/upload_handlers/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/views/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/templatetags/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/templatetags/meringue_base/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/utils/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/utils/crypt/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/utils/datetime/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/core/utils/frontend/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/protected/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/protected/apps/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/protected/fields/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/protected/utils/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/protected/views/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/actions/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/apps/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/constants/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/drf_fields/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/exceptions/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/generators/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/images/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/properties/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/shortcuts/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/storage/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/types/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/templatetags/__init__/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/reference/meringue/thumbnail/templatetags/m_thumbnails/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/usage/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/usage/api/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/usage/conf/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/usage/core/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/1.3/usage/protected/</loc>
-         <lastmod>2024-06-20</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-10</lastmod>
     </url>
 </urlset>
