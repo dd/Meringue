@@ -55,11 +55,9 @@
 	</a>
 </p>
 
-Package with various functional (such as mixins, form utils, upload handlers and other) for Django Framework.
+A package providing various utilities for Django, such as mixins, form tools, upload handlers, and more.
 
-This library is a set of various functionality that I use from project to project.
-
-The main task of this package is to clean up this functionality, test it, and also organize the documentation so that colleagues can understand how and what works.
+This library is a collection of reusable components that I frequently use across different projects. Its primary purpose is to clean up and standardize these tools, ensure they are well-tested, and provide clear documentation to make it easy for colleagues to understand and use.
 
 However, if someone decides to use this functionality in their project, and even more so to add functionality or change the implementation to a more correct, beautiful or understandable one, I will only be happy, do not worry and feel free to write to me by [mail](mailto:dd@tovarisch.engineer), create an [issue](https://github.com/dd/Meringue/issues) or [pull request](https://github.com/dd/Meringue/pulls) on [github](https://github.com/dd/Meringue).
 

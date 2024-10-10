@@ -59,4 +59,4 @@ jobs:
     - name: Deploy
       run: |
         git checkout gh-pages
-        git push
+        git push origin gh-pages
