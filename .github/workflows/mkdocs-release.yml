@@ -38,6 +38,7 @@ jobs:
     - name: Build documentation
       run: |
         MERINGUE_VERSION=$(hatch version)
+        echo $MERINGUE_VERSION
         if [[ ! "$MERINGUE_VERSION" =~ (dev|alpha|beta) ]]; then
           hatch run docs:build-check
         fi
