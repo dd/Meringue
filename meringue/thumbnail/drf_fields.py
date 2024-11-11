@@ -1,6 +1,5 @@
 import logging
-import os
-from pathlib import PurePath
+from pathlib import Path
 
 from rest_framework.fields import ImageField
 
@@ -13,7 +12,7 @@ logger = logging.getLogger("meringue.thumbnail")
 
 
 def get_format_from_path(path):
-    return FORMATS_BY_EXTENSIONS[PurePath(path).suffix.lower()]
+    return FORMATS_BY_EXTENSIONS[path.suffix.lower()]
 
 
 class BaseImageField(ImageField):
@@ -53,13 +52,15 @@ class MImageField(BaseImageField):
         if not value:
             return None
 
-        if os.path.isfile(value.path):
-            thumbnail = DefaultThumbnailer(value.path, job_chain=self.job_chain)
-            optimized_image_url = thumbnail.get_image(get_format_from_path(value.path)).url
+        path = Path(value.path)
+
+        if path.exists():
+            thumbnail = DefaultThumbnailer(path, job_chain=self.job_chain)
+            optimized_image_url = thumbnail.get_image(get_format_from_path(path)).url
             result = optimized_image_url
 
         else:
-            logger.error(f"File `{value.path}` not found")
+            logger.error(f"File `{path}` not found")
             result = _dummyimage([])
 
         return result
@@ -147,8 +148,10 @@ class MImageSetField(ImageField):
         if not value:
             return None
 
-        if not os.path.isfile(value.path):
-            logger.error(f"File `{value.path}` not found")
+        path = Path(value.path)
+
+        if not path.exists():
+            logger.error(f"File `{path}` not found")
             return [
                 {
                     "url": _dummyimage(self.job_chains[1]),
@@ -156,11 +159,11 @@ class MImageSetField(ImageField):
                 },
             ]
 
-        original_format = get_format_from_path(value.path)
+        original_format = get_format_from_path(path)
         result = []
 
         for dimension, job_chain in self.job_chains.items():
-            thumbnail = DefaultThumbnailer(value.path, job_chain=job_chain)
+            thumbnail = DefaultThumbnailer(path, job_chain=job_chain)
             original = thumbnail.get_image(original_format)
             webp_thumbnail = thumbnail.get_image("WEBP")
 
