@@ -46,7 +46,7 @@ class MImageField(BaseImageField):
     def to_representation(self, value):
         """
         TODO:
-            * Add params to get_image for optimize images
+            * Add params to get_thumbnail for optimize images
         """
 
         if not value:
@@ -56,7 +56,7 @@ class MImageField(BaseImageField):
 
         if path.exists():
             thumbnail = DefaultThumbnailer(path, job_chain=self.job_chain)
-            optimized_image_url = thumbnail.get_image(get_format_from_path(path)).url
+            optimized_image_url = thumbnail.get_thumbnail(get_format_from_path(path)).url
             result = optimized_image_url
 
         else:
@@ -147,7 +147,7 @@ class MImageSetField(ImageField):
         Creates multiple images. Image with format as original image and webp.
 
         TODO:
-            * Add params to get_image for optimize images
+            * Add params to get_thumbnail for optimize images
             * In future make av1 image
             * Check enabled webp
         """
@@ -171,8 +171,8 @@ class MImageSetField(ImageField):
 
         for dimension, job_chain in self.job_chains.items():
             thumbnail = DefaultThumbnailer(path, job_chain=job_chain)
-            original = thumbnail.get_image(original_format)
-            webp_thumbnail = thumbnail.get_image("WEBP")
+            original = thumbnail.get_thumbnail(original_format)
+            webp_thumbnail = thumbnail.get_thumbnail("WEBP")
 
             if dimension == 1:
                 result = [
