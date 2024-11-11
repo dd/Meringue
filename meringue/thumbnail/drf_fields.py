@@ -77,16 +77,23 @@ class MImageSetField(ImageField):
     def __init__(
         self,
         size=None,
-        dimensions=None,
+        dimensions=(1, 2),
         base_job_chain=None,
         job_chains=None,
         **kwargs,
     ):
-        if bool(size and dimensions) and bool(job_chains):
-            msg = "Need to set `size` and `dimensions` or `job_chains` attribute (not both)."
+        if size and job_chains:
+            msg = "Need to set 'size' or 'job_chains' attribute (not both)."
             raise Exception(msg)
 
         elif size:
+            if not dimensions:
+                msg = (
+                    "If you specify the 'sizes' attribute, "
+                    "then the 'dimensions' attribute cannot be empty."
+                )
+                raise Exception(msg)
+
             self.job_chains = {}
 
             if 1 not in dimensions:
