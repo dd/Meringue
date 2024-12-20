@@ -49,10 +49,7 @@ def x_accel_redirect_view(request, cid, field, pk, disp="inline"):
         response["X-Accel-Redirect"] = redirect_url
         return response
 
-    with open(file.path, "rb") as tmp_file:
-        response = FileResponse(
-            tmp_file,
-            as_attachment=disp == "attachment",
-        )
-
-    return response
+    return FileResponse(
+        open(file.path, "rb"),  # noqa: SIM115
+        as_attachment=disp == "attachment",
+    )
