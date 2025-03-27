@@ -223,3 +223,15 @@ FILE_UPLOAD_HANDLERS = [
 		show_root_heading: false
 		show_root_toc_entry: false
 		show_source: false
+
+
+## DB
+
+### PgAdvisoryLock
+
+::: meringue.core.db.PgAdvisoryLock
+	options:
+		show_root_heading: false
+		show_root_toc_entry: false
+		show_source: false
+		members: false

@@ -14,26 +14,36 @@ class PgAdvisoryLock:
     This utility provides a context manager and decorator for safely acquiring PostgreSQL advisory
     locks based on either a single integer key or a (namespace, key) pair.
 
-    Supports both:
-      - `pg_advisory_lock(key)`            — if only `lock_id` is provided
-      - `pg_advisory_lock(namespace, key)` — if `namespace_id` is also provided
+    !!! info "supports both signatures"
+        - `pg_advisory_lock(key)`            — if only `lock_id` is provided
+        - `pg_advisory_lock(namespace, key)` — if `namespace_id` is also provided
 
-    Example usage:
-
-        with PgAdvisoryLock("user_42", namespace_id="payment"):
-            # Critical section here...
-            ...
-
-        @PgAdvisoryLock(12345)
-        def process_transfer():
-
-    !!! note warn
+    !!! warning
         If the database is not PostgreSQL, the lock will **not** be applied.
         A warning will be issued, but the function or block will still execute normally.
 
-    !!! note warn
+    !!! warning
         If you pass strings for lock_id or namespace_id, they will be hashed to 32-bit signed ints
         using CRC32. Locks persist until manually released or until the DB session ends.
+
+    Examples:
+        ```py title="As context manager"
+        with PgAdvisoryLock(12345, namespace_id="transaction"):
+            ...
+        ```
+
+        ```py title="As decorator"
+        @PgAdvisoryLock(12345)
+        def process_transfer():
+            ...
+        ```
+
+        ```py title="Classic"
+        adv_lock = PgAdvisoryLock(12345)
+        adv_lock.lock()
+        ...
+        adv_lock.unlock()
+        ```
     """
 
     def __init__(
