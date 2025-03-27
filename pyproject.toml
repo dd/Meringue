@@ -7,7 +7,7 @@ name = "meringue"
 description = "A set of various functionality for a Django based web application."
 readme = "README.md"
 requires-python = ">=3.10"
-license = "LGPL-3.0"
+license = "MPL-2.0"
 authors = [
 	{ name = "Dmitry Dobrynin", email = "dd@tovarisch.engineer" },
 ]
@@ -31,7 +31,7 @@ classifiers = [
 	"Framework :: Django :: 4.2",
 	"Framework :: Django :: 5.0",
 	"Intended Audience :: Developers",
-	"License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+	"License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
 	"Natural Language :: English",
 	# "Natural Language :: Russian",
 	"Operating System :: OS Independent",
@@ -277,32 +277,7 @@ line-length = 100
 show-fixes = true
 # update-check = true
 [tool.ruff.lint]
-select = [
-	"A",
-	"B",
-	"C",
-	"DTZ",
-	"E",
-	"EM",
-	"F",
-	"I",
-	"ICN",
-	"ISC",
-	"N",
-	"PLC",
-	"PLE",
-	"PLR",
-	"PLW",
-	"Q",
-	"RUF",
-	"S",
-	"SIM",
-	"T",
-	"TID",
-	"UP",
-	"W",
-	"YTT",
-]
+select = ["A", "B", "C", "DTZ", "E", "EM", "F", "I", "ICN", "ISC", "N", "PLC", "PLE", "PLR", "PLW", "Q", "RUF", "S", "SIM", "T", "TID", "UP", "W", "YTT"]
 ignore = [
 	"RUF001",  # Allow similar characters like latin `c` and cyrillic `с`
 	"RUF002",  # Allow russian at docstrings
