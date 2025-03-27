@@ -285,7 +285,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../reference/meringue/conf/__init__/" class="md-tabs__link">
+        <a href="../../reference/meringue/protected/__init__/" class="md-tabs__link">
           
   
   Code Reference
@@ -806,7 +806,7 @@
     
   
   
-    <a href="../../reference/meringue/conf/__init__/" class="md-nav__link">
+    <a href="../../reference/meringue/protected/__init__/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1176,6 +1176,7 @@
 <h3 id="exception_handler">exception_handler<a class="headerlink" href="#exception_handler" title="Permanent link">¤</a></h3>
 <p>Error handler for <em>django rest framework</em>.</p>
 <p>The API error handler returns errors in the format of "code-message" pairs. This format is particularly useful for multilingual websites, as it allows the frontend to handle specific errors more effectively. By utilizing the error code, you can adjust the user interface behavior accordingly—for example, displaying a pop-up window with detailed information about the cause of the error in certain situations.</p>
+<p>Обработчик ошибок API возвращает ошибки в формате пар «код-сообщение». Этот формат особенно полезен для многоязычных сайтов, так как позволяет фронтенду более эффективно обрабатывать конкретные ошибки. Используя код ошибки, вы можете соответственно изменять поведение пользовательского интерфейса — например, в определённых случаях отображать всплывающее окно с подробной информацией о причине ошибки.</p>
 <div class="language-py highlight"><span class="filename">settings.py</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s2">&quot;EXCEPTION_HANDLER&quot;</span><span class="p">:</span> <span class="s2">&quot;meringue.api.handlers.exception_handler&quot;</span><span class="p">,</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">}</span>
@@ -1200,7 +1201,7 @@
 <li>Secondly, it is difficult to do some manipulations "on the fly" (for example, depending on the environment, you may have a different set of authorization methods, or something else);</li>
 <li>Thirdly, if you have several apexes and, accordingly, documentation, you will not be able to do, for example, a different description for different apexes / documentation.</li>
 </ul>
-<p>To solve all these problems, we implemented a <a class="autorefs autorefs-internal" href="#openapischemapatcher">patcher</a> and a <a class="autorefs autorefs-internal" href="#meringuespectacularapiview">view</a> to load it.</p>
+<p>To solve all these problems, we implemented a <a class="autorefs autorefs-internal" title="OpenAPISchemaPatcher" href="#openapischemapatcher">patcher</a> and a <a class="autorefs autorefs-internal" title="MeringueSpectacularAPIView" href="#meringuespectacularapiview">view</a> to load it.</p>
 <h3 id="openapischemapatcher">OpenAPISchemaPatcher<a class="headerlink" href="#openapischemapatcher" title="Permanent link">¤</a></h3>
 <p>This is an OpenAPI3 schema patcher that makes it relatively easy to add data to the schema. Everything is quite simple and without much logic, just additional data is first registered, then the scheme is supplemented with them.</p>
 <p>To register additional objects, there is the following set of methods:</p>
@@ -1584,7 +1585,7 @@ schema.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024-11-11 22:59:15+0000</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025-03-27 21:40:40+0000</span>
   </span>
 
     
