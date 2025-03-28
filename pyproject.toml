@@ -73,6 +73,7 @@ path = "meringue/__init__.py"
 include = [
 	"meringue",
 	"AUTHORS",
+	"pyproject.toml",
 ]
 exclude = [
 	"/docs",
