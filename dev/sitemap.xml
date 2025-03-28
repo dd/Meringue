@@ -2,234 +2,234 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dd.github.io/Meringue/dev/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/SUMMARY/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/changelog/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/dev/contributing/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/dev/tests/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/dev/docs/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/dev/docs/examples/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/SUMMARY/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/api/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/api/apps/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/api/handlers/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/api/routers/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/api/utils/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/api/docs/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/api/docs/patchers/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/api/docs/views/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/conf/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/conf/default_settings/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/apps/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/db/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/models/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/options/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/query/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/translation/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/upload_handlers/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/views/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/templatetags/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/templatetags/meringue_base/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/utils/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/utils/crypt/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/utils/datetime/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/core/utils/frontend/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/apps/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/fields/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/utils/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/protected/views/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/actions/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/apps/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/constants/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/drf_fields/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/exceptions/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/generators/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/images/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/properties/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/shortcuts/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/storage/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/types/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/templatetags/__init__/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/reference/meringue/thumbnail/templatetags/m_thumbnails/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/usage/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/usage/api/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/usage/conf/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/usage/core/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
     <url>
          <loc>https://dd.github.io/Meringue/dev/usage/protected/</loc>
-         <lastmod>2025-03-27</lastmod>
+         <lastmod>2025-03-28</lastmod>
     </url>
 </urlset>
