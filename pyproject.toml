@@ -128,7 +128,7 @@ changelog-update = [
 	"git fetch origin --tags",
 	"gitmoji-changelog update \"$(hatch version)\" --preset generic --group-similar-commits",
 ]
-release-tag = "git tag -a \"v$(hatch version)\" -m \"v$(hatch version)\""
+release-tag = "git tag -a \"$(hatch version)\" -m \"$(hatch version)\""
 
 [tool.hatch.envs.lint]
 description = "Lint environment"

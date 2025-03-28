@@ -3,7 +3,7 @@ name: Release documentation deployment
 on:
   push:
     tags:
-    - "v*"
+    - "*"
     branches:
     - dev
 
