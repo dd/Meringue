@@ -1,5 +1,7 @@
 # Changelog
 
+<!-- version list -->
+
 <a name="1.2.0"></a>
 ## 1.2.0 (2024-04-07)
 
@@ -23,11 +25,11 @@
 
 ### Miscellaneous
 
--  👷 (project): Script for updating changelog [[6395ad6](https://github.com/dd/Meringue/commit/6395ad63dba7cd1413f736e97e1f30539104f32b)]
--  👷 (buid): Updating the build system and dependency versions [[5c8af5b](https://github.com/dd/Meringue/commit/5c8af5b8d13ff3ff0c39c24faad123ad83ff6705)]
+- 👷 (project): Script for updating changelog [[6395ad6](https://github.com/dd/Meringue/commit/6395ad63dba7cd1413f736e97e1f30539104f32b)]
+- 👷 (buid): Updating the build system and dependency versions [[5c8af5b](https://github.com/dd/Meringue/commit/5c8af5b8d13ff3ff0c39c24faad123ad83ff6705)]
 - 📝 (docs): Fix docs references [[774330f](https://github.com/dd/Meringue/commit/774330f2450c50bec636022e6b77f425b96cadf5),[6fa656c](https://github.com/dd/Meringue/commit/6fa656c2acb2e7cb03655b731f2c3a35c9da228f),[d2094fe](https://github.com/dd/Meringue/commit/d2094fec841bdcf4d61123111776962641194a2b)]
 - 📝 (docs): Added model fields to the documentation. [[3a35d7e](https://github.com/dd/Meringue/commit/3a35d7edba05e056da7fafaab8cb4d0250db2804)]
--  👷 (gh actions): Update Action Versions [[0b8b57d](https://github.com/dd/Meringue/commit/0b8b57d74e5e058f6e8d4240be93a1e11b644795),[d76721f](https://github.com/dd/Meringue/commit/d76721fdf3d8b355e93b2346aa19a6e542316ea2)]
+- 👷 (gh actions): Update Action Versions [[0b8b57d](https://github.com/dd/Meringue/commit/0b8b57d74e5e058f6e8d4240be93a1e11b644795),[d76721f](https://github.com/dd/Meringue/commit/d76721fdf3d8b355e93b2346aa19a6e542316ea2)]
 - 📝 (docs): Correcting links in documentation [[c3135f1](https://github.com/dd/Meringue/commit/c3135f1671ebba83882435a0550fd8c662d2a925)]
 - 📝 (docs): Corrected the README text so that the link to the documentation is more visible [[04efe31](https://github.com/dd/Meringue/commit/04efe31bc2189b1092d756ac50b428cd0b910eea)]
 - 📝 (docs): Documentation text update [[8302403](https://github.com/dd/Meringue/commit/830240379955e76efdd2dccac219e7cc7012d001)]

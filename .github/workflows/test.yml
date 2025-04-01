@@ -2,13 +2,10 @@ name: Tests
 
 on:
   push:
-    branches:
-    - master
-    - dev
-    - "release/*"
+    branches: [next]
   pull_request:
-    branches:
-    - "*"
+    branches: [master]
+  workflow_dispatch:
 
 jobs:
   testdj2:

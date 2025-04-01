@@ -1,69 +1,86 @@
-name: Project Release Deployment
+name: Release Python Package
 
 on:
   push:
-    tags:
-    - "*"
+    branches: [master]
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Tests"]
+    types: [completed]
 
 concurrency:
-  group: release-deploy
-
-permissions:
-  contents: write
+  group: release-package-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
-    name: Build wheel and source distribution
+    name: Build & Version Package
     runs-on: ubuntu-latest
-    steps:
-
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-
-    - name: Set up Python runtime
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.12
-
-    - name: Ensure latest pip
-      run: python -m pip install --upgrade pip
-
-    - name: Install Hatch
-      run: pip install --upgrade hatch
-
-    - name: Build documentation
-      run: hatch build
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: python-artifacts
-        path: dist/*
-        if-no-files-found: error
-
-  pypi-publish:
-    name: Upload release to PyPI
-    runs-on: ubuntu-latest
-
-    needs:
-    - build
-
-    environment:
-      name: pypi
-      url: https://pypi.org/p/meringue
+    if: |
+      !contains(github.event.head_commit.message, 'skip ci')
+      && !contains(github.event.head_commit.message, 'ci skip')
+      && (
+        (
+          github.event.workflow_run.head_branch == 'next'
+          && github.event.workflow_run.conclusion == 'success'
+        )
+        || github.event_name != 'workflow_run'
+      )
 
     permissions:
-      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+      contents: write
+
+    outputs:
+      released: ${{ steps.semantic.outputs.released }}
+      tag: ${{ steps.semantic.outputs.tag }}
 
     steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: python-artifacts
-        path: dist
+      - name: Setup | Checkout Repository on Release Branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@v1.12.4
+      - name: Setup | Force release branch to be at workflow sha
+        run: git reset --hard ${{ github.sha }}
+
+      - name: Setup | Install Hatch
+        uses: pypa/hatch@install
+
+      - name: Action | Semantic Version Release
+        id: release
+        uses: python-semantic-release/python-semantic-release@v9.21.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Action | Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-artifacts
+          path: dist/*
+          if-no-files-found: error
+
+  publish:
+    name: Publish to PyPI & GitHub Release
+    runs-on: ubuntu-latest
+    needs: build
+
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Action | Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-artifacts
+          path: dist
+
+      - name: Publish | Upload package to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.12.4
+        if: steps.release.outputs.released == 'true'
+
+      - name: Publish | Upload to GitHub Release Assets
+        uses: python-semantic-release/publish-action@v9.21.0
+        if: steps.release.outputs.released == 'true'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.release.outputs.tag }}
