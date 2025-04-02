@@ -83,7 +83,7 @@ jobs:
             hatch run docs:ci-build $MERINGUE_DOCS_VERSION --update-aliases latest
           elif [[ "$REF_NAME" == "next" ]]; then
             echo "🧪 Detected branch 'next'. Deploying preview docs for 'next'..."
-            hatch run docs:ci-build next --update-aliases next
+            hatch run docs:ci-build next
           else
             echo "⚙️ Branch is not 'master' or 'next'. Using fallback: dev docs."
             hatch run docs:ci-build dev
