@@ -112,9 +112,9 @@ jobs:
       matrix:
           python-version: ["3.10", "3.11"]
           django-version: ["4.0"]
-          modeltranslation-version: ["0.17.0", "0.18.2"]
+          modeltranslation-version: ["0.17.0", "0.18.2", "0.19.0"]
           drf-version: ["3.14.0", "3.15.0"]
-          drf-simplejwt-version: ["5.2.0", "5.3.0"]
+          drf-simplejwt-version: ["5.2.0", "5.3.0", "5.4.0", "5.5.0"]
           django_hosts-version: ["5.2", "6.0"]
 
     steps:
@@ -150,9 +150,9 @@ jobs:
       matrix:
           python-version: ["3.12"]
           django-version: ["4.0"]
-          modeltranslation-version: ["0.17.0", "0.18.2"]
-          drf-version: ["3.14.0", "3.15.0"]
-          drf-simplejwt-version: ["5.3.1"]
+          modeltranslation-version: ["0.17.0", "0.18.2", "0.19.0"]
+          drf-version: ["3.14.0", "3.15.0", "3.16.0"]
+          drf-simplejwt-version: ["5.3.1", "5.4.0", "5.5.0"]
           django_hosts-version: ["6.0"]
 
     steps:
@@ -180,17 +180,55 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   testdj5:
-    name: Testing | Django 5
+    name: Testing | Django 5 on Python 3.10-3.11
     needs: check
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
-          python-version: ["3.10", "3.11", "3.12"]
+          python-version: ["3.10", "3.11"]
           django-version: ["5.0"]
-          modeltranslation-version: ["0.17.0", "0.18.2"]
-          drf-version: ["3.15.0"]
-          drf-simplejwt-version: ["5.3.1"]
+          modeltranslation-version: ["0.17.0", "0.18.2", "0.19.0"]
+          drf-version: ["3.15.0", "3.16.0"]
+          drf-simplejwt-version: ["5.3.0", "5.4.0", "5.5.0"]
+          django_hosts-version: ["6.0"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Hatch
+        run: pip install --upgrade hatch
+
+      - name: Run Tests
+        run: |
+          hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
+
+      - name: Disambiguate coverage filename
+        run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  testdj5:
+    name: Testing | Django 5 on Python 3.12
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+          python-version: ["3.12"]
+          django-version: ["5.0"]
+          modeltranslation-version: ["0.17.0", "0.18.2", "0.19.0"]
+          drf-version: ["3.15.0", "3.16.0"]
+          drf-simplejwt-version: ["5.3.1", "5.4.0", "5.5.0"]
           django_hosts-version: ["6.0"]
 
     steps:
