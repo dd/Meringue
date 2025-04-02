@@ -25,7 +25,7 @@ jobs:
       )
     steps:
       - name: Setup | CI Enabled
-      - run: echo "Test check passed — proceeding."
+        run: echo "Test check passed — proceeding."
 
   testdj2:
     name: Testing | Django 2
