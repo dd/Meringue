@@ -7,9 +7,26 @@ on:
     branches: [master]
   workflow_dispatch:
 
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  check:
+    name: Skip test check
+    runs-on: ubuntu-latest
+    # manual
+    # without 'skip ci'
+    if: |
+      github.event_name == 'workflow_dispatch'
+      || (
+        !contains(github.event.head_commit.message, 'skip ci')
+        && !contains(github.event.head_commit.message, 'ci skip')
+      )
+
   testdj2:
-    name: Testing Django 2
+    name: Testing | Django 2
+    needs: check
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -22,31 +39,32 @@ jobs:
           django_hosts-version: ["5.2", "6.0"]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install Hatch
-      run: pip install --upgrade hatch
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
-    - name: Run Tests
-      run: |
-        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
+      - name: Run Tests
+        run: |
+          hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
 
-    - name: Disambiguate coverage filename
-      run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
+      - name: Disambiguate coverage filename
+        run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   testdj3:
-    name: Testing Django 3
+    name: Testing | Django 3
+    needs: check
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -59,31 +77,32 @@ jobs:
           django_hosts-version: ["5.2", "6.0"]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install Hatch
-      run: pip install --upgrade hatch
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
-    - name: Run Tests
-      run: |
-        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
+      - name: Run Tests
+        run: |
+          hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
 
-    - name: Disambiguate coverage filename
-      run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
+      - name: Disambiguate coverage filename
+        run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   testdj4py310-311:
-    name: Testing Django 4 on Python 3.10-3.11
+    name: Testing | Django 4 on Python 3.10-3.11
+    needs: check
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -96,31 +115,32 @@ jobs:
           django_hosts-version: ["5.2", "6.0"]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install Hatch
-      run: pip install --upgrade hatch
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
-    - name: Run Tests
-      run: |
-        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
+      - name: Run Tests
+        run: |
+          hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
 
-    - name: Disambiguate coverage filename
-      run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
+      - name: Disambiguate coverage filename
+        run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   testdj4py312:
-    name: Testing Django 4 on Python 3.12
+    name: Testing | Django 4 on Python 3.12
+    needs: check
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -133,31 +153,32 @@ jobs:
           django_hosts-version: ["6.0"]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install Hatch
-      run: pip install --upgrade hatch
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
-    - name: Run Tests
-      run: |
-        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
+      - name: Run Tests
+        run: |
+          hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
 
-    - name: Disambiguate coverage filename
-      run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
+      - name: Disambiguate coverage filename
+        run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   testdj5:
-    name: Testing Django 5
+    name: Testing | Django 5
+    needs: check
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -170,25 +191,25 @@ jobs:
           django_hosts-version: ["6.0"]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install Hatch
-      run: pip install --upgrade hatch
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
-    - name: Run Tests
-      run: |
-        hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
+      - name: Run Tests
+        run: |
+          hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
 
-    - name: Disambiguate coverage filename
-      run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
+      - name: Disambiguate coverage filename
+        run: mv coverage.json "coverage.py${{ matrix.python-version }}.${{ matrix.django-version }}.${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}.json"
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

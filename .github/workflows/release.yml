@@ -16,15 +16,22 @@ jobs:
   build:
     name: Build & Version Package
     runs-on: ubuntu-latest
+    # manual
+    # without 'skip ci' and push (master)
+    # without 'skip ci' and after push and 'Tests' workflow success
     if: |
-      !contains(github.event.head_commit.message, 'skip ci')
-      && !contains(github.event.head_commit.message, 'ci skip')
-      && (
-        (
-          github.event.workflow_run.head_branch == 'next'
-          && github.event.workflow_run.conclusion == 'success'
+      github.event_name == 'workflow_dispatch'
+      || (
+        !contains(github.event.head_commit.message, 'skip ci')
+        && !contains(github.event.head_commit.message, 'ci skip')
+        && (
+          github.event_name == 'push'
+          || (
+            github.event_name == 'workflow_run'
+            && github.event.workflow_run.event == 'push'
+            && github.event.workflow_run.conclusion == 'success'
+          )
         )
-        || github.event_name != 'workflow_run'
       )
 
     permissions:
@@ -46,11 +53,27 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
-      - name: Action | Semantic Version Release
-        id: release
+      - name: Action | Semantic Release [master]
+        if: github.ref == 'refs/heads/master' || github.event.workflow_run.head_branch == 'master'
+        id: release_master
         uses: python-semantic-release/python-semantic-release@v9.21.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit: true
+
+      - name: Action | Semantic Release [dev]
+        if: github.ref != 'refs/heads/master' && github.event.workflow_run.head_branch != 'master'
+        id: release_dev
+        uses: python-semantic-release/python-semantic-release@v9.21.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit: false
+
+      - name: Post-Release | Merge release outputs
+        id: release
+        run: |
+          echo "released=${{ steps.release_master.outputs.released || steps.release_dev.outputs.released }}" >> $GITHUB_OUTPUT
+          echo "tag=${{ steps.release_master.outputs.tag || steps.release_dev.outputs.tag }}" >> $GITHUB_OUTPUT
 
       - name: Action | Upload artifacts
         uses: actions/upload-artifact@v4

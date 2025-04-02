@@ -1,64 +1,86 @@
-name: Release documentation deployment
+name: Release Documentation
 
 on:
   push:
-    tags:
-    - "*"
-    branches:
-    - dev
+    branches: [next]
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Release Python Package"]
+    types: [completed]
 
 concurrency:
-  group: docs-deploy
+  group: release-docs-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
 
 jobs:
   build:
-    name: Building and Deploying Documentation
+    name: Building & Deploying Documentation
     runs-on: ubuntu-latest
+    # manual
+    # without 'skip ci' and push next
+    # without 'skip ci' and after success 'Release Python Package' on branch master
+    if: |
+      github.event_name == 'workflow_dispatch'
+      || (
+        !contains(github.event.head_commit.message, 'skip ci')
+        && !contains(github.event.head_commit.message, 'ci skip')
+        && (
+          github.event_name == 'push'
+          || (
+            github.event_name == 'workflow_run'
+            && github.event.workflow_run.head_branch == 'master'
+            && github.event.workflow_run.conclusion == 'success'
+          )
+        )
+      )
+
+    permissions:
+      contents: write
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      - name: Setup | Set up Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
 
-    - name: Set up Python runtime
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.12
+      - name: Setup | Install Hatch
+        uses: pypa/hatch@install
 
-    - name: Ensure latest pip
-      run: python -m pip install --upgrade pip
+      - name: Action | Build & Check documentation
+        if: |
+          github.ref == 'refs/heads/master'
+          || (
+            github.event_name == 'workflow_run'
+            && github.event.workflow_run.head_branch == 'master'
+          )
+        run: hatch run docs:build-check
 
-    - name: Install Hatch
-      run: pip install --upgrade hatch
+      - name: Setup | Configure Git for GitHub Actions bot
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Build documentation
-      run: |
-        MERINGUE_VERSION=$(hatch version)
-        if [[ ! "$MERINGUE_VERSION" =~ (dev|alpha|beta) ]]; then
-          hatch run docs:build-check
-        fi
+      - name: Action | Build & Commit documentation
+        run: |
+          REF_NAME="${GITHUB_REF#refs/heads/}"
+          if [[ "$REF_NAME" == "master" ]]; then
+            MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
+            hatch run docs:ci-build $MERINGUE_DOCS_VERSION --update-aliases latest
+          elif [[ "$REF_NAME" == "next" ]]; then
+            hatch run docs:ci-build next --update-aliases next
+          else
+            hatch run docs:ci-build dev
+          fi
 
-    - name: Configure Git for GitHub Actions bot
-      run: |
-        git config --local user.name 'github-actions[bot]'
-        git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-
-    - name: Commit documentation
-      run: |
-        MERINGUE_VERSION=$(hatch version)
-        MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
-        if [[ "$MERINGUE_VERSION" =~ (dev|alpha|beta|rc) ]]; then
-          hatch run docs:ci-build dev
-        else
-          hatch run docs:ci-build $MERINGUE_DOCS_VERSION --update-aliases latest
-        fi
-
-    - name: Deploy
-      run: |
-        git checkout gh-pages
-        git push origin gh-pages
+      - name: Action | Deploy
+        run: |
+          git checkout gh-pages
+          git push origin gh-pages
