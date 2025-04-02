@@ -179,7 +179,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-  testdj5:
+  testdj5py310-311:
     name: Testing | Django 5 on Python 3.10-3.11
     needs: check
     runs-on: ubuntu-latest
@@ -217,7 +217,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-  testdj5:
+  testdj5py312:
     name: Testing | Django 5 on Python 3.12
     needs: check
     runs-on: ubuntu-latest
