@@ -23,6 +23,9 @@ jobs:
         !contains(github.event.head_commit.message, 'skip ci')
         && !contains(github.event.head_commit.message, 'ci skip')
       )
+    steps:
+      - name: Setup | CI Enabled
+      - run: echo "Test check passed — proceeding."
 
   testdj2:
     name: Testing | Django 2

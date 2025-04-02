@@ -42,7 +42,7 @@ jobs:
       tag: ${{ steps.semantic.outputs.tag }}
 
     steps:
-      - name: Setup | Checkout Repository on Release Branch
+      - name: Setup | Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
