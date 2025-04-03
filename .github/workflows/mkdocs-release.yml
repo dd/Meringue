@@ -5,9 +5,9 @@ on:
     branches: [next]
   workflow_dispatch:
   workflow_run:
-    branches: [master]
     workflows: ["Release Python Package"]
     types: [completed]
+    branches: [master]
 
 concurrency:
   group: release-docs-${{ github.ref }}
@@ -46,6 +46,39 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup | Determine branch name
+        id: determine_branch
+        run: |
+          set -e
+
+          echo "🧠 Event name: ${GITHUB_EVENT_NAME}"
+          echo "🔧 GITHUB_REF: ${GITHUB_REF}"
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_run" ]]; then
+            BRANCH="${{ github.event.workflow_run.head_branch }}"
+            echo "📡 Detected branch from workflow_run: $BRANCH"
+
+          elif [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            BRANCH="${{ github.event.pull_request.head.ref }}"
+            echo "📡 Detected branch from pull_request: $BRANCH"
+
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" || "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            BRANCH="${GITHUB_REF#refs/heads/}"
+            echo "📡 Detected branch from ref: $BRANCH"
+
+          else
+            echo "❌ Unsupported or unknown event: ${GITHUB_EVENT_NAME}"
+            exit 1
+          fi
+
+          if [[ -z "$BRANCH" ]]; then
+            echo "❌ Could not determine branch name. Exiting."
+            exit 1
+          fi
+
+          echo "✅ Using branch: $BRANCH"
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
       - name: Setup | Set up Python runtime
         uses: actions/setup-python@v5
         with:
@@ -55,13 +88,9 @@ jobs:
         uses: pypa/hatch@install
 
       - name: Action | Build & Check documentation
-        if: |
-          github.ref == 'refs/heads/master'
-          || (
-            github.event_name == 'workflow_run'
-            && github.event.workflow_run.head_branch == 'master'
-          )
+        if: ${{ steps.determine_branch.outputs.branch == 'master' }}
         run: hatch run docs:build-check
+        continue-on-error: false
 
       - name: Setup | Configure Git for GitHub Actions bot
         run: |
@@ -70,22 +99,17 @@ jobs:
 
       - name: Action | Build & Commit documentation
         run: |
-          echo "🔧 Extracting ref name from GITHUB_REF: $GITHUB_REF"
-          REF_NAME="${GITHUB_REF#refs/heads/}"
-          echo "📌 Current branch name: $REF_NAME"
-
-          echo "📋 Existing documentation versions"
-          hatch run docs:mike list
-
-          if [[ "$REF_NAME" == "master" ]]; then
+          if [[ "${{ steps.determine_branch.outputs.branch }}" == "master" ]]; then
             MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
-            echo "📦 Extracted docs version: $MERINGUE_DOCS_VERSION"
+            echo "🚀 Deploying docs for stable release $MERINGUE_DOCS_VERSION..."
             hatch run docs:ci-build $MERINGUE_DOCS_VERSION --update-aliases latest
-          elif [[ "$REF_NAME" == "next" ]]; then
-            echo "🧪 Detected branch 'next'. Deploying preview docs for 'next'..."
+
+          elif [[ "${{ steps.determine_branch.outputs.branch }}" == "next" ]]; then
+            echo "🧪 Deploying docs for next release..."
             hatch run docs:ci-build next
+
           else
-            echo "⚙️ Branch is not 'master' or 'next'. Using fallback: dev docs."
+            echo "⚙️ Deploying dev docs..."
             hatch run docs:ci-build dev
           fi
 

@@ -5,9 +5,9 @@ on:
     branches: [master]
   workflow_dispatch:
   workflow_run:
-    branches: [next]
     workflows: ["Tests"]
     types: [completed]
+    branches: [next]
 
 concurrency:
   group: release-package-${{ github.ref }}
@@ -48,37 +48,62 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup | Force release branch to be at workflow sha
-        run: git reset --hard ${{ github.sha }}
+      - name: Setup | Determine branch name
+        id: determine_branch
+        run: |
+          set -e
+
+          echo "🧠 Event name: ${GITHUB_EVENT_NAME}"
+          echo "🔧 GITHUB_REF: ${GITHUB_REF}"
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_run" ]]; then
+            BRANCH="${{ github.event.workflow_run.head_branch }}"
+            echo "📡 Detected branch from workflow_run: $BRANCH"
+
+          elif [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            BRANCH="${{ github.event.pull_request.head.ref }}"
+            echo "📡 Detected branch from pull_request: $BRANCH"
+
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" || "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            BRANCH="${GITHUB_REF#refs/heads/}"
+            echo "📡 Detected branch from ref: $BRANCH"
+
+          else
+            echo "❌ Unsupported or unknown event: ${GITHUB_EVENT_NAME}"
+            exit 1
+          fi
+
+          if [[ -z "$BRANCH" ]]; then
+            echo "❌ Could not determine branch name. Exiting."
+            exit 1
+          fi
+
+          echo "✅ Using branch: $BRANCH"
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
 
       - name: Setup | Install Hatch
-        run: |
-          pip install hatch
-          git branch
-          echo "github.ref = ${{ github.ref }}"
-          echo "github.event.workflow_run.head_branch = ${{ github.event.workflow_run.head_branch }}"
+        uses: pypa/hatch@install
 
-      - name: Action | Semantic Release [master]
-        if: github.ref == 'refs/heads/master' || github.event.workflow_run.head_branch == 'master'
-        id: release_master
-        uses: python-semantic-release/python-semantic-release@v9.21.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit: true
-
-      - name: Action | Semantic Release [dev]
-        if: github.ref != 'refs/heads/master' && github.event.workflow_run.head_branch != 'master'
-        id: release_dev
-        uses: python-semantic-release/python-semantic-release@v9.21.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit: false
-
-      - name: Post-Release | Merge release outputs
+      - name: Action | Build Release and Commit (for stable release)
         id: release
         run: |
-          echo "released=${{ steps.release_master.outputs.released || steps.release_dev.outputs.released }}" >> $GITHUB_OUTPUT
-          echo "tag=${{ steps.release_master.outputs.tag || steps.release_dev.outputs.tag }}" >> $GITHUB_OUTPUT
+          if [[ "${{ steps.determine_branch.outputs.branch }}" == "master" ]]; then
+            echo "🚀 Deploying stable release..."
+            hatch run semantic-release version --no-vcs-release --no-tag
+          else
+            echo "🧪 Deploying dev release..."
+            hatch run semantic-release version --no-commit --no-vcs-release --no-tag
+          fi
+
+          VERSION=$(hatch version)
+          echo "🏷️ Version extracted: v$VERSION"
+          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
 
       - name: Action | Upload artifacts
         uses: actions/upload-artifact@v4
@@ -95,6 +120,10 @@ jobs:
     permissions:
       id-token: write
 
+    environment:
+      name: pypi
+      url: https://pypi.org/p/meringue
+
     steps:
       - name: Action | Download artifacts
         uses: actions/download-artifact@v4
@@ -104,11 +133,9 @@ jobs:
 
       - name: Publish | Upload package to PyPI
         uses: pypa/gh-action-pypi-publish@v1.12.4
-        if: steps.release.outputs.released == 'true'
 
       - name: Publish | Upload to GitHub Release Assets
         uses: python-semantic-release/publish-action@v9.21.0
-        if: steps.release.outputs.released == 'true'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.release.outputs.tag }}
