@@ -328,7 +328,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Merge Artifacts
+      - name: Setup | Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Action | Merge Artifacts
         uses: actions/upload-artifact/merge@v4
         with:
           name: coverage-all
