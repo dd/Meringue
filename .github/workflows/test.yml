@@ -66,18 +66,15 @@ jobs:
         uses: pypa/hatch@install
 
       - name: Action | Run Tests
-        run: hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue --cov-report term-missing --cov-report json
-
-      - name: Setup | Disambiguate coverage filename
         run: |
-          mkdir -p coverage/${{ env.TEST_NAME }}
-          mv coverage.json "coverage/${{ env.TEST_NAME }}/coverage.json"
+          COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: coverage
+          path: .coverage.${{ env.TEST_NAME }}
 
   testdj3:
     name: Testing | Django 3
@@ -115,18 +112,15 @@ jobs:
         uses: pypa/hatch@install
 
       - name: Action | Run Tests
-        run: hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue --cov-report term-missing --cov-report json
-
-      - name: Setup | Disambiguate coverage filename
         run: |
-          mkdir -p coverage/${{ env.TEST_NAME }}
-          mv coverage.json "coverage/${{ env.TEST_NAME }}/coverage.json"
+          COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: coverage
+          path: .coverage.${{ env.TEST_NAME }}
 
   # testdj4py310-311:
   #   name: Testing | Django 4 on Python 3.10-3.11
@@ -164,18 +158,15 @@ jobs:
   #       uses: pypa/hatch@install
 
   #     - name: Action | Run Tests
-  #       run: hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue --cov-report term-missing --cov-report json
-
-  #     - name: Setup | Disambiguate coverage filename
   #       run: |
-  #         mkdir -p coverage/${{ env.TEST_NAME }}
-  #         mv coverage.json "coverage/${{ env.TEST_NAME }}/coverage.json"
+  #         COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+  #         hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
   #     - name: Action | Upload coverage artifact
   #       uses: actions/upload-artifact@v4
   #       with:
   #         name: coverage-${{ env.TEST_NAME }}
-  #         path: coverage
+  #         path: .coverage.${{ env.TEST_NAME }}
 
   testdj4py312:
     name: Testing | Django 4 on Python 3.12
@@ -213,18 +204,15 @@ jobs:
         uses: pypa/hatch@install
 
       - name: Action | Run Tests
-        run: hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue --cov-report term-missing --cov-report json
-
-      - name: Setup | Disambiguate coverage filename
         run: |
-          mkdir -p coverage/${{ env.TEST_NAME }}
-          mv coverage.json "coverage/${{ env.TEST_NAME }}/coverage.json"
+          COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: coverage
+          path: .coverage.${{ env.TEST_NAME }}
 
   testdj5py310-311:
     name: Testing | Django 5 on Python 3.10-3.11
@@ -262,18 +250,15 @@ jobs:
         uses: pypa/hatch@install
 
       - name: Action | Run Tests
-        run: hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue --cov-report term-missing --cov-report json
-
-      - name: Setup | Disambiguate coverage filename
         run: |
-          mkdir -p coverage/${{ env.TEST_NAME }}
-          mv coverage.json "coverage/${{ env.TEST_NAME }}/coverage.json"
+          COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: coverage
+          path: .coverage.${{ env.TEST_NAME }}
 
   testdj5py312:
     name: Testing | Django 5 on Python 3.12
@@ -310,20 +295,16 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
-      - name: Run Tests
+      - name: Action | Run Tests
         run: |
-          hatch run mtest.py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}:check --cov=meringue --cov-report term-missing --cov-report json
-
-      - name: Setup | Disambiguate coverage filename
-        run: |
-          mkdir -p coverage/${{ env.TEST_NAME }}
-          mv coverage.json "coverage/${{ env.TEST_NAME }}/coverage.json"
+          COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: coverage
+          path: .coverage.${{ env.TEST_NAME }}
 
   result:
     name: Upload results to Codecov
@@ -342,7 +323,7 @@ jobs:
         with:
           name: coverage-all
           pattern: "coverage-*"
-          # delete-merged: true
+          delete-merged: true
 
       - name: Action | Download artifacts
         uses: actions/download-artifact@v4
@@ -353,13 +334,10 @@ jobs:
       - name: Setup | Combine coverage
         run: |
           pip install coverage
-          ls -al
-          ls -al coverage-all/
-          coverage combine coverage-all/*/coverage.json
+          coverage combine coverage-all/*
           coverage report
-          ls -al
 
-      - name: Upload coverage reports to Codecov
+      - name: Publish | Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
