@@ -67,16 +67,16 @@ jobs:
 
       - name: Action | Run Tests
         run: |
-          COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+          COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
           ls -al
-          echo .coverage.${{ env.TEST_NAME }}
+          echo coverage.${{ env.TEST_NAME }}
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: .coverage.${{ env.TEST_NAME }}
+          path: coverage.${{ env.TEST_NAME }}
 
   # testdj3:
   #   name: Testing | Django 3
@@ -115,16 +115,16 @@ jobs:
 
   #     - name: Action | Run Tests
   #       run: |
-  #         COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+  #         COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
   #         hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
   #         ls -al
-  #         echo .coverage.${{ env.TEST_NAME }}
+  #         echo coverage.${{ env.TEST_NAME }}
 
   #     - name: Action | Upload coverage artifact
   #       uses: actions/upload-artifact@v4
   #       with:
   #         name: coverage-${{ env.TEST_NAME }}
-  #         path: .coverage.${{ env.TEST_NAME }}
+  #         path: coverage.${{ env.TEST_NAME }}
 
   # testdj4py310-311:
   #   name: Testing | Django 4 on Python 3.10-3.11
@@ -163,14 +163,14 @@ jobs:
 
   #     - name: Action | Run Tests
   #       run: |
-  #         COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+  #         COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
   #         hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
   #     - name: Action | Upload coverage artifact
   #       uses: actions/upload-artifact@v4
   #       with:
   #         name: coverage-${{ env.TEST_NAME }}
-  #         path: .coverage.${{ env.TEST_NAME }}
+  #         path: coverage.${{ env.TEST_NAME }}
 
   testdj4py312:
     name: Testing | Django 4 on Python 3.12
@@ -209,16 +209,16 @@ jobs:
 
       - name: Action | Run Tests
         run: |
-          COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+          COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
           ls -al
-          echo .coverage.${{ env.TEST_NAME }}
+          echo coverage.${{ env.TEST_NAME }}
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: .coverage.${{ env.TEST_NAME }}
+          path: coverage.${{ env.TEST_NAME }}
 
   # testdj5py310-311:
   #   name: Testing | Django 5 on Python 3.10-3.11
@@ -257,16 +257,16 @@ jobs:
 
   #     - name: Action | Run Tests
   #       run: |
-  #         COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+  #         COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
   #         hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
   #         ls -al
-  #         echo .coverage.${{ env.TEST_NAME }}
+  #         echo coverage.${{ env.TEST_NAME }}
 
   #     - name: Action | Upload coverage artifact
   #       uses: actions/upload-artifact@v4
   #       with:
   #         name: coverage-${{ env.TEST_NAME }}
-  #         path: .coverage.${{ env.TEST_NAME }}
+  #         path: coverage.${{ env.TEST_NAME }}
 
   testdj5py312:
     name: Testing | Django 5 on Python 3.12
@@ -305,16 +305,16 @@ jobs:
 
       - name: Action | Run Tests
         run: |
-          COVERAGE_FILE=.coverage.${{ env.TEST_NAME }} \
+          COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
           ls -al
-          echo .coverage.${{ env.TEST_NAME }}
+          echo coverage.${{ env.TEST_NAME }}
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: .coverage.${{ env.TEST_NAME }}
+          path: coverage.${{ env.TEST_NAME }}
 
   result:
     name: Upload results to Codecov
