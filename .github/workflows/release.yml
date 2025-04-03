@@ -52,7 +52,11 @@ jobs:
         run: git reset --hard ${{ github.sha }}
 
       - name: Setup | Install Hatch
-        run: pip install hatch
+        run: |
+          pip install hatch
+          git branch
+          echo "github.ref = ${{ github.ref }}"
+          echo "github.event.workflow_run.head_branch = ${{ github.event.workflow_run.head_branch }}"
 
       - name: Action | Semantic Release [master]
         if: github.ref == 'refs/heads/master' || github.event.workflow_run.head_branch == 'master'
