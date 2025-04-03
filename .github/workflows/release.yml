@@ -58,7 +58,11 @@ jobs:
           key: pip-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
 
       - name: Setup | Install Hatch
-        uses: pypa/hatch@install
+        run: |
+          pip install hatch
+          git branch
+          echo "github.ref = ${{ github.ref }}"
+          echo "github.event.workflow_run.head_branch = ${{ github.event.workflow_run.head_branch }}"
 
       - name: Action | Build release
         id: release
