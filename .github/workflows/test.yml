@@ -67,110 +67,106 @@ jobs:
 
       - name: Action | Run Tests
         run: |
-          COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
+          COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
-          ls -al
-          echo coverage.${{ env.TEST_NAME }}
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: coverage.${{ env.TEST_NAME }}
+          path: coverage-${{ env.TEST_NAME }}
 
-  # testdj3:
-  #   name: Testing | Django 3
-  #   needs: check
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     max-parallel: 4
-  #     matrix:
-  #         python-version: ["3.10", "3.11"]
-  #         django-version: ["3.0"]
-  #         modeltranslation-version: ["0.17.0", "0.18.2"]
-  #         drf-version: ["3.13.0", "3.14.0", "3.15.0"]
-  #         drf-simplejwt-version: ["5.2.0", "5.3.0"]
-  #         django_hosts-version: ["5.2", "6.0"]
+  testdj3:
+    name: Testing | Django 3
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+          python-version: ["3.10", "3.11"]
+          django-version: ["3.0"]
+          modeltranslation-version: ["0.17.0", "0.18.2"]
+          drf-version: ["3.13.0", "3.14.0", "3.15.0"]
+          drf-simplejwt-version: ["5.2.0", "5.3.0"]
+          django_hosts-version: ["5.2", "6.0"]
 
-  #   env:
-  #     TEST_NAME: py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}
+    env:
+      TEST_NAME: py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}
 
-  #   steps:
-  #     - name: Setup | Checkout Repository
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Setup | Checkout Repository
+        uses: actions/checkout@v4
 
-  #     - name: Set up Python ${{ matrix.python-version }}
-  #       uses: actions/setup-python@v5
-  #       with:
-  #         python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-  #     - name: Cache pip
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ~/.cache/pip
-  #         key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ env.TEST_NAME }}-${{ hashFiles('pyproject.toml') }}
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ env.TEST_NAME }}-${{ hashFiles('pyproject.toml') }}
 
-  #     - name: Setup | Install Hatch
-  #       uses: pypa/hatch@install
+      - name: Setup | Install Hatch
+        uses: pypa/hatch@install
 
-  #     - name: Action | Run Tests
-  #       run: |
-  #         COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
-  #         hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
-  #         ls -al
-  #         echo coverage.${{ env.TEST_NAME }}
+      - name: Action | Run Tests
+        run: |
+          COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
-  #     - name: Action | Upload coverage artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: coverage-${{ env.TEST_NAME }}
-  #         path: coverage.${{ env.TEST_NAME }}
+      - name: Action | Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ env.TEST_NAME }}
+          path: coverage-${{ env.TEST_NAME }}
 
-  # testdj4py310-311:
-  #   name: Testing | Django 4 on Python 3.10-3.11
-  #   needs: check
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     max-parallel: 4
-  #     matrix:
-  #         python-version: ["3.10", "3.11"]
-  #         django-version: ["4.0"]
-  #         modeltranslation-version: ["0.17.0", "0.18.2", "0.19.0"]
-  #         drf-version: ["3.14.0", "3.15.0"]
-  #         drf-simplejwt-version: ["5.2.0", "5.3.0", "5.4.0", "5.5.0"]
-  #         django_hosts-version: ["5.2", "6.0"]
+  testdj4py310-311:
+    name: Testing | Django 4 on Python 3.10-3.11
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+          python-version: ["3.10", "3.11"]
+          django-version: ["4.0"]
+          modeltranslation-version: ["0.17.0", "0.18.2", "0.19.0"]
+          drf-version: ["3.14.0", "3.15.0"]
+          drf-simplejwt-version: ["5.2.0", "5.3.0", "5.4.0", "5.5.0"]
+          django_hosts-version: ["5.2", "6.0"]
 
-  #   env:
-  #     TEST_NAME: py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}
+    env:
+      TEST_NAME: py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}
 
-  #   steps:
-  #     - name: Setup | Checkout Repository
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Setup | Checkout Repository
+        uses: actions/checkout@v4
 
-  #     - name: Setup | Set up Python ${{ matrix.python-version }}
-  #       uses: actions/setup-python@v5
-  #       with:
-  #         python-version: ${{ matrix.python-version }}
+      - name: Setup | Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-  #     - name: Cache pip
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ~/.cache/pip
-  #         key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ env.TEST_NAME }}-${{ hashFiles('pyproject.toml') }}
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ env.TEST_NAME }}-${{ hashFiles('pyproject.toml') }}
 
-  #     - name: Setup | Install Hatch
-  #       uses: pypa/hatch@install
+      - name: Setup | Install Hatch
+        uses: pypa/hatch@install
 
-  #     - name: Action | Run Tests
-  #       run: |
-  #         COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
-  #         hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
+      - name: Action | Run Tests
+        run: |
+          COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
-  #     - name: Action | Upload coverage artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: coverage-${{ env.TEST_NAME }}
-  #         path: coverage.${{ env.TEST_NAME }}
+      - name: Action | Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ env.TEST_NAME }}
+          path: coverage-${{ env.TEST_NAME }}
 
   testdj4py312:
     name: Testing | Django 4 on Python 3.12
@@ -209,64 +205,60 @@ jobs:
 
       - name: Action | Run Tests
         run: |
-          COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
+          COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
-          ls -al
-          echo coverage.${{ env.TEST_NAME }}
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: coverage.${{ env.TEST_NAME }}
+          path: coverage-${{ env.TEST_NAME }}
 
-  # testdj5py310-311:
-  #   name: Testing | Django 5 on Python 3.10-3.11
-  #   needs: check
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     max-parallel: 4
-  #     matrix:
-  #         python-version: ["3.10", "3.11"]
-  #         django-version: ["5.0"]
-  #         modeltranslation-version: ["0.17.0", "0.18.2", "0.19.0"]
-  #         drf-version: ["3.15.0", "3.16.0"]
-  #         drf-simplejwt-version: ["5.3.0", "5.4.0", "5.5.0"]
-  #         django_hosts-version: ["6.0"]
+  testdj5py310-311:
+    name: Testing | Django 5 on Python 3.10-3.11
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+          python-version: ["3.10", "3.11"]
+          django-version: ["5.0"]
+          modeltranslation-version: ["0.17.0", "0.18.2", "0.19.0"]
+          drf-version: ["3.15.0", "3.16.0"]
+          drf-simplejwt-version: ["5.3.0", "5.4.0", "5.5.0"]
+          django_hosts-version: ["6.0"]
 
-  #   env:
-  #     TEST_NAME: py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}
+    env:
+      TEST_NAME: py${{ matrix.python-version }}-${{ matrix.django-version }}-${{ matrix.modeltranslation-version }}-${{ matrix.drf-version}}-${{ matrix.drf-simplejwt-version }}-${{ matrix.django_hosts-version }}
 
-  #   steps:
-  #     - name: Setup | Checkout Repository
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Setup | Checkout Repository
+        uses: actions/checkout@v4
 
-  #     - name: Setup | Set up Python ${{ matrix.python-version }}
-  #       uses: actions/setup-python@v5
-  #       with:
-  #         python-version: ${{ matrix.python-version }}
+      - name: Setup | Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-  #     - name: Cache pip
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ~/.cache/pip
-  #         key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ env.TEST_NAME }}-${{ hashFiles('pyproject.toml') }}
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ env.TEST_NAME }}-${{ hashFiles('pyproject.toml') }}
 
-  #     - name: Setup | Install Hatch
-  #       uses: pypa/hatch@install
+      - name: Setup | Install Hatch
+        uses: pypa/hatch@install
 
-  #     - name: Action | Run Tests
-  #       run: |
-  #         COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
-  #         hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
-  #         ls -al
-  #         echo coverage.${{ env.TEST_NAME }}
+      - name: Action | Run Tests
+        run: |
+          COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
-  #     - name: Action | Upload coverage artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: coverage-${{ env.TEST_NAME }}
-  #         path: coverage.${{ env.TEST_NAME }}
+      - name: Action | Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ env.TEST_NAME }}
+          path: coverage-${{ env.TEST_NAME }}
 
   testdj5py312:
     name: Testing | Django 5 on Python 3.12
@@ -305,32 +297,27 @@ jobs:
 
       - name: Action | Run Tests
         run: |
-          COVERAGE_FILE=coverage.${{ env.TEST_NAME }} \
+          COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
-          ls -al
-          echo coverage.${{ env.TEST_NAME }}
 
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ env.TEST_NAME }}
-          path: coverage.${{ env.TEST_NAME }}
+          path: coverage-${{ env.TEST_NAME }}
 
   result:
     name: Upload results to Codecov
     needs:
       - testdj2
-      # - testdj3
-      # - testdj4py310-311
+      - testdj3
+      - testdj4py310-311
       - testdj4py312
-      # - testdj5py310-311
+      - testdj5py310-311
       - testdj5py312
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup | Checkout Repository
-        uses: actions/checkout@v4
-
       - name: Action | Merge Artifacts
         uses: actions/upload-artifact/merge@v4
         with:
@@ -348,7 +335,6 @@ jobs:
         run: |
           pip install coverage
           coverage combine coverage-all/*
-          coverage report
 
       - name: Publish | Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
