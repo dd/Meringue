@@ -307,7 +307,7 @@ jobs:
           path: coverage-${{ env.TEST_NAME }}
 
   result:
-    name: Upload results to Codecov
+    name: Tests Result & Upload to Codecov
     needs:
       - testdj2
       - testdj3
@@ -316,6 +316,7 @@ jobs:
       - testdj5py310-311
       - testdj5py312
     runs-on: ubuntu-latest
+    if: always()
 
     steps:
       - name: Action | Merge Artifacts
@@ -340,3 +341,13 @@ jobs:
         uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Result | All tests passed
+        if: ${{ !contains(needs.*.result, 'failure') }}
+        run: echo "✅ All tests passed."
+
+      - name: Result | Some tests failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: |
+          echo "❌ Some tests failed."
+          exit 1
