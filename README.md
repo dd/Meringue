@@ -38,6 +38,9 @@
 	<a href="https://github.com/pypa/hatch" target="_blank">
 		<img src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" alt="Hatch project" />
 	</a>
+	<a href="https://gitmoji.dev" target="_blank">
+		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg" alt="Gitmoji" />
+	</a>
 	<a href="https://squidfunk.github.io/mkdocs-material/" target="_blank">
 		<img src="https://img.shields.io/badge/-Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white&labelColor=gray" alt="Built with Material for MkDocs" />
 	</a>

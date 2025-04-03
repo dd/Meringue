@@ -5,6 +5,7 @@ on:
     branches: [master]
   workflow_dispatch:
   workflow_run:
+    branches: [next]
     workflows: ["Tests"]
     types: [completed]
 
@@ -18,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     # manual
     # without 'skip ci' and push (master)
-    # without 'skip ci' and after push and 'Tests' workflow success
+    # without 'skip ci' and after push (on branch next) and 'Tests' workflow success
     if: |
       github.event_name == 'workflow_dispatch'
       || (

@@ -5,6 +5,7 @@ on:
     branches: [next]
   workflow_dispatch:
   workflow_run:
+    branches: [master]
     workflows: ["Release Python Package"]
     types: [completed]
 
@@ -21,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     # manual
     # without 'skip ci' and push next
-    # without 'skip ci' and after success 'Release Python Package' on branch master
+    # without 'skip ci' and after success 'Release Python Package' on branch (master)
     if: |
       github.event_name == 'workflow_dispatch'
       || (
@@ -31,7 +32,6 @@ jobs:
           github.event_name == 'push'
           || (
             github.event_name == 'workflow_run'
-            && github.event.workflow_run.head_branch == 'master'
             && github.event.workflow_run.conclusion == 'success'
           )
         )
