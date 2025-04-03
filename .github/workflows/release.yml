@@ -5,9 +5,9 @@ on:
     branches: [master]
   workflow_dispatch:
   workflow_run:
-    branches: [next]
     workflows: ["Tests"]
     types: [completed]
+    branches: [next]
 
 concurrency:
   group: release-package-${{ github.ref }}
@@ -48,8 +48,38 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup | Force release branch to be at workflow sha
-        run: git reset --hard ${{ github.sha }}
+      - name: Setup | Determine branch name
+        id: determine_branch
+        run: |
+          set -e
+
+          echo "🧠 Event name: ${GITHUB_EVENT_NAME}"
+          echo "🔧 GITHUB_REF: ${GITHUB_REF}"
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_run" ]]; then
+            BRANCH="${{ github.event.workflow_run.head_branch }}"
+            echo "📡 Detected branch from workflow_run: $BRANCH"
+
+          elif [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            BRANCH="${{ github.event.pull_request.head.ref }}"
+            echo "📡 Detected branch from pull_request: $BRANCH"
+
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" || "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            BRANCH="${GITHUB_REF#refs/heads/}"
+            echo "📡 Detected branch from ref: $BRANCH"
+
+          else
+            echo "❌ Unsupported or unknown event: ${GITHUB_EVENT_NAME}"
+            exit 1
+          fi
+
+          if [[ -z "$BRANCH" ]]; then
+            echo "❌ Could not determine branch name. Exiting."
+            exit 1
+          fi
+
+          echo "✅ Using branch: $BRANCH"
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
 
       - name: Cache pip
         uses: actions/cache@v4
@@ -60,17 +90,20 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
-      - name: Action | Build release
+      - name: Action | Build Release and Commit (for stable release)
         id: release
         run: |
-          REF_NAME="${GITHUB_REF#refs/heads/}"
-          if [[ "$REF_NAME" == "master" ]]; then
+          if [[ "${{ steps.determine_branch.outputs.branch }}" == "master" ]]; then
+            echo "🚀 Deploying stable release..."
             hatch run semantic-release version --no-vcs-release --no-tag
           else
+            echo "🧪 Deploying dev release..."
             hatch run semantic-release version --no-commit --no-vcs-release --no-tag
           fi
+
           VERSION=$(hatch version)
-          echo "tag=v$VERSION"
+          echo "🏷️ Version extracted: v$VERSION"
+          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
 
       - name: Action | Upload artifacts
         uses: actions/upload-artifact@v4
