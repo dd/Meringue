@@ -320,10 +320,10 @@ jobs:
     name: Upload results to Codecov
     needs:
       - testdj2
-      - testdj3
+      # - testdj3
       # - testdj4py310-311
       - testdj4py312
-      - testdj5py310-311
+      # - testdj5py310-311
       - testdj5py312
     runs-on: ubuntu-latest
 
