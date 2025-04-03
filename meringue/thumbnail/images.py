@@ -131,7 +131,7 @@ class ThumbnailImage(AltersData):
         if self.out_format == constants.FORMAT_WEBP:
             return "image/webp"
 
-        guess_type = mimetypes.guess_type(str(self.absolute_path))[0]
+        guess_type = mimetypes.guess_type(self.filename)
         return guess_type[0]
 
     @property

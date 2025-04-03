@@ -202,7 +202,8 @@ class Settings:
         """
 
         if attr not in self.defaults:
-            raise AttributeError("Invalid setting key: '%s'" % attr)
+            msg = f"Invalid setting key: '{attr}'"
+            raise AttributeError(msg)
 
         if attr in self.deprecated_params:
             warnings.warn(self.deprecated_params[attr], DeprecationWarning, stacklevel=2)

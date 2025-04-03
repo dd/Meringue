@@ -42,8 +42,8 @@ def _dummyimage(job_chain: str) -> str:
             height=size[1],
         )
 
-    return "%simages/noise.png" % settings.STATIC_URL
-    # return "%simages/none.gif" % settings.STATIC_URL
+    return f"{settings.STATIC_URL}images/noise.png"
+    # return f"{settings.STATIC_URL}images/none.gif"
 
 
 def get_thumbnail(

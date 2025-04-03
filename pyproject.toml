@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling>=1.22.5"]
+requires = ["hatchling==1.27.0"]
 build-backend = "hatchling.build"
 
 [project]
@@ -7,7 +7,7 @@ name = "meringue"
 description = "A set of various functionality for a Django based web application."
 readme = "README.md"
 requires-python = ">=3.10"
-license = "LGPL-3.0"
+license = "MPL-2.0"
 authors = [
 	{ name = "Dmitry Dobrynin", email = "dd@tovarisch.engineer" },
 ]
@@ -31,7 +31,7 @@ classifiers = [
 	"Framework :: Django :: 4.2",
 	"Framework :: Django :: 5.0",
 	"Intended Audience :: Developers",
-	"License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+	"License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
 	"Natural Language :: English",
 	# "Natural Language :: Russian",
 	"Operating System :: OS Independent",
@@ -54,7 +54,7 @@ dependencies = [
 dynamic = ["version"]
 
 [project.optional-dependencies]
-modeltranslation = ["django-modeltranslation>=0.17,<0.19"]
+modeltranslation = ["django-modeltranslation>=0.17,<0.20"]
 drf = ["djangorestframework>=3.13,<4"]
 drf-spectacular = ["drf-spectacular>=0.26.3,<1"]
 cryptodome = ["pycryptodome==3.20.0"]
@@ -86,17 +86,18 @@ exclude = [
 description = "Dev environment"
 python = "3.12"
 dependencies = [
-	"pre-commit==3.7.0",
-	"ipython==8.23.0",
-	"django==5.0.4",
-	"pytz==2024.1",
-	"django-modeltranslation==0.18.11",
-	"pycryptodome==3.20.0",
-	"djangorestframework==3.15.1",
-	"djangorestframework-simplejwt==5.3.1",
-	"drf-spectacular==0.27.2",
-	"Pillow==10.3.0",
+	"pre-commit==4.2.0",
+	"ipython==9.0.2",
+	"django==5.1.7",
+	"pytz==2025.2",
+	"django-modeltranslation==0.19.13",
+	"pycryptodome==3.22.0",
+	"djangorestframework==3.16.0",
+	"djangorestframework-simplejwt==5.5.0",
+	"drf-spectacular==0.28.0",
+	"Pillow==11.1.0",
 	"django_hosts==6.0",
+	"python-semantic-release==9.21.0",
 ]
 [tool.hatch.envs.default.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
@@ -128,22 +129,23 @@ changelog-update = [
 	"git fetch origin --tags",
 	"gitmoji-changelog update \"$(hatch version)\" --preset generic --group-similar-commits",
 ]
+release-tag = "git tag -a \"$(hatch version)\" -m \"$(hatch version)\""
 
 [tool.hatch.envs.lint]
 description = "Lint environment"
 detached = true
 python = "3.12"
 dependencies = [
-	"ruff==0.3.5",
-	"black==24.3.0",
+	"ruff==0.11.2",
+	"black==25.1.0",
 ]
 [tool.hatch.envs.lint.scripts]
 check = [
-	"ruff {args:.}",
+	"ruff check {args:.}",
 	"black --check --diff --exclude=\".*migrations\\/.*$\" {args:.}",
 ]
 format = [
-	"ruff --fix {args:.}",
+	"ruff format {args:.}",
 	"black --exclude=\".*migrations\\/.*$\" {args:.}",
 ]
 
@@ -152,18 +154,18 @@ description = "Tests environment"
 detached = true
 python = "3.12"
 dependencies = [
-	"pytest==8.1.1",
-	"pytest-django==4.8.0",
-	"pytest-cov==5.0.0",  # for ci tests with cover
-	"Faker==24.7.1",
-	"pytz==2024.1",
-	"pycryptodome==3.20.0",
-	"drf-spectacular==0.27.2",
-	"pillow==10.3.0",
-	"django==5.0.4",
-	"django-modeltranslation==0.18.11",
-	"djangorestframework==3.15.1",
-	"djangorestframework-simplejwt==5.3.1",
+	"pytest==8.3.5",
+	"pytest-django==4.10.0",
+	"pytest-cov==6.0.0",  # for ci tests with cover
+	"Faker==37.1.0",
+	"pytz==2025.2",
+	"pycryptodome==3.22.0",
+	"drf-spectacular==0.28.0",
+	"Pillow==11.1.0",
+	"django==5.1.7",
+	"django-modeltranslation==0.19.13",
+	"djangorestframework==3.16.0",
+	"djangorestframework-simplejwt==5.5.0",
 	"django_hosts==6.0",
 ]
 [tool.hatch.envs.test.env-vars]
@@ -177,14 +179,14 @@ makemigrations = "django-admin makemigrations {args}"
 description = "Test matrix environment"
 detached = true
 dependencies = [
-	"pytest==8.1.1",
-	"pytest-django==4.8.0",
-	"pytest-cov==5.0.0",  # for ci tests with cover
-	"Faker==24.7.1",
-	"pytz==2024.1",
-	"pycryptodome==3.20.0",
-	"drf-spectacular==0.27.2",
-	"pillow==10.3.0",
+	"pytest==8.3.5",
+	"pytest-django==4.10.0",
+	"pytest-cov==6.0.0",  # for ci tests with cover
+	"Faker==37.1.0",
+	"pytz==2025.2",
+	"pycryptodome==3.22.0",
+	"drf-spectacular==0.28.0",
+	"Pillow==11.1.0",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
@@ -216,23 +218,30 @@ django_hosts = ["5.2", "6.0"]
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
 django = ["4.0"]
-modeltranslation = ["0.17.0", "0.18.2"]
+modeltranslation = ["0.17.0", "0.18.2", "0.19.0"]
 djangorestframework = ["3.14.0", "3.15.0"]
-simplejwt = ["5.2.0", "5.3.0"]
+simplejwt = ["5.2.0", "5.3.0", "5.4.0", "5.5.0"]
 django_hosts = ["5.2", "6.0"]
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.12"]
 django = ["4.0"]
-modeltranslation = ["0.17.0", "0.18.2"]
-djangorestframework = ["3.14.0", "3.15.0"]
-simplejwt = ["5.3.1"]
+modeltranslation = ["0.17.0", "0.18.2", "0.19.0"]
+djangorestframework = ["3.14.0", "3.15.0", "3.16.0"]
+simplejwt = ["5.3.1", "5.4.0", "5.5.0"]
 django_hosts = ["6.0"]
 [[tool.hatch.envs.mtest.matrix]]
-python = ["3.10", "3.11", "3.12"]
+python = ["3.10", "3.11"]
 django = ["5.0"]
-modeltranslation = ["0.17.0", "0.18.2"]
-djangorestframework = ["3.15.0"]
-simplejwt = ["5.3.1"]
+modeltranslation = ["0.17.0", "0.18.2", "0.19.0"]
+djangorestframework = ["3.15.0", "3.16.0"]
+simplejwt = ["5.3.0", "5.4.0", "5.5.0"]
+django_hosts = ["6.0"]
+[[tool.hatch.envs.mtest.matrix]]
+python = ["3.12"]
+django = ["5.0"]
+modeltranslation = ["0.17.0", "0.18.2", "0.19.0"]
+djangorestframework = ["3.15.0", "3.16.0"]
+simplejwt = ["5.3.1", "5.4.0", "5.5.0"]
 django_hosts = ["6.0"]
 
 [tool.hatch.envs.docs]
@@ -240,18 +249,18 @@ description = "Docs environment"
 detached = true
 python = "3.12"
 dependencies = [
-	"mkdocs[i18n]==1.5.3",
-	"mkdocs-literate-nav==0.6.1",
-	"mkdocs-material==9.5.17",
-	"mkdocs-git-revision-date-localized-plugin==1.2.4",
-	"mkdocs-git-authors-plugin==0.8.0",
-	"mkdocstrings[python]==0.24.3",
-	"black==24.3.0",
+	"mkdocs[i18n]==1.6.1",
+	"mkdocs-literate-nav==0.6.2",
+	"mkdocs-material==9.6.9",
+	"mkdocs-git-revision-date-localized-plugin==1.4.5",
+	"mkdocs-git-authors-plugin==0.9.4",
+	"mkdocstrings[python]==0.29.0",
+	"black==25.1.0",
 	"mkdocs-minify-plugin==0.8.0",
 	"mkdocs-gen-files==0.5.0",
-	"Pygments==2.17.2",
-	"mike==2.0.0",
-	"linkchecker==10.4.0",
+	"Pygments==2.19.1",
+	"mike==2.1.3",
+	"linkchecker==10.5.0",
 ]
 [tool.hatch.envs.docs.env-vars]
 MERINGUE_MKDOCS_ENABLE_MINIFY = "false"
@@ -259,7 +268,7 @@ MKDOCS_CONFIG = "mkdocs.yml"
 [tool.hatch.envs.docs.scripts]
 build = "mkdocs build --config-file {env:MKDOCS_CONFIG} --clean --strict {args}"
 serve = "mkdocs serve --config-file {env:MKDOCS_CONFIG} --dev-addr localhost:8000 {args}"
-ci-build = "mike deploy --config-file {env:MKDOCS_CONFIG} --update-aliases {args}"
+ci-build = "mike deploy --config-file {env:MKDOCS_CONFIG} {args}"
 validate = "linkchecker --config .linkcheckerrc docs/dist"
 build-check = [
 	"build --no-directory-urls",
@@ -275,32 +284,8 @@ target-version = "py310"
 line-length = 100
 show-fixes = true
 # update-check = true
-select = [
-	"A",
-	"B",
-	"C",
-	"DTZ",
-	"E",
-	"EM",
-	"F",
-	"I",
-	"ICN",
-	"ISC",
-	"N",
-	"PLC",
-	"PLE",
-	"PLR",
-	"PLW",
-	"Q",
-	"RUF",
-	"S",
-	"SIM",
-	"T",
-	"TID",
-	"UP",
-	"W",
-	"YTT",
-]
+[tool.ruff.lint]
+select = ["A", "B", "C", "DTZ", "E", "EM", "F", "I", "ICN", "ISC", "N", "PLC", "PLE", "PLR", "PLW", "Q", "RUF", "S", "SIM", "T", "TID", "UP", "W", "YTT"]
 ignore = [
 	"RUF001",  # Allow similar characters like latin `c` and cyrillic `с`
 	"RUF002",  # Allow russian at docstrings
@@ -316,32 +301,34 @@ ignore = [
 	# "PLC1901", # empty string comparisons
 	# "PLW2901", # `for` loop variable overwritten
 	"SIM114", # Combine `if` branches using logical `or` operator
+	"ISC001", # Disabled as ruff recomendation from warning
 ]
 # unfixable = [
 # 	# Don't touch unused imports
 # 	"F401",
 # ]
-[tool.ruff.extend-per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401", "F403"]
 "test_*.py" = ["S101", "PLR2004", "DTZ001", "RUF012"]
 "*/migrations/*" = ["I", "E", "Q", "RUF"]
 "test_project/*models.py" = ["RUF012"]
 "test_project/*views.py" = ["RUF012"]
-[tool.ruff.flake8-import-conventions]
-[tool.ruff.flake8-import-conventions.extend-aliases]
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
 "datetime" = "dt"
 # [tool.ruff.flake8-quotes]
 # inline-quotes = "single"
-[tool.ruff.flake8-unused-arguments]
+[tool.ruff.lint.flake8-unused-arguments]
 ignore-variadic-names = true
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 force-single-line = true
 known-first-party = ["meringue"]
 lines-after-imports = 2
 no-lines-before = ["local-folder"]
 section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
-[tool.ruff.isort.sections]
+[tool.ruff.lint.isort.sections]
 django = ["django"]
+[tool.ruff.format]
+exclude = ["*/migrations/*"]
 
 [tool.isort]
 known_first_party = ["meringue"]
@@ -354,3 +341,193 @@ force_single_line  = true
 [tool.coverage.run]
 omit = ["*/tests/*"]
 source = ["meringue"]
+
+[tool.semantic_release]
+build_command = "hatch build"
+commit_message = "🔖 (release): Release {version} [skip ci]"
+commit_parser = "emoji"
+version_variables = [
+	"meringue/__init__.py:__version__"
+]
+
+[tool.semantic_release.branches.main]
+match = "master"
+prerelease_token = "rc"
+prerelease = false
+
+[tool.semantic_release.branches.next]
+match = "next"
+prerelease = true
+prerelease_token = "beta"
+
+[tool.semantic_release.branches.dev]
+match = "dev"
+prerelease = true
+prerelease_token = "dev"
+commit = false
+tag = false
+
+[tool.semantic_release.changelog]
+mode = "update"
+
+[tool.semantic_release.commit_parser_options]
+# https://python-semantic-release.readthedocs.io/en/latest/api/semantic_release.commit_parser.emoji.html#semantic_release.commit_parser.emoji.EmojiParserOptions
+ignore_merge_commits = true
+allowed_tags = [
+	"💥", ":boom:", # Introduce breaking changes.
+	"✨", ":sparkles:", # Introduce new features.
+	"⚡️", ":zap:", # Improve performance.
+	"🐛", ":bug:", # Fix a bug.
+	"🚑️", ":ambulance:", # Critical hotfix.
+	"💄", ":lipstick:", # Add or update the UI and style files.
+	"🔒️", ":lock:", # Fix security or privacy issues.
+	"⬇️", ":arrow_down:", # Downgrade dependencies.
+	"⬆️", ":arrow_up:", # Upgrade dependencies.
+	"📌", ":pushpin:", # Pin dependencies to specific versions.
+	"📈", ":chart_with_upwards_trend:", # Add or update analytics or track code.
+	"➕", ":heavy_plus_sign:", # Add a dependency.
+	"➖", ":heavy_minus_sign:", # Remove a dependency.
+	"🔧", ":wrench:", # Add or update configuration files.
+	"🌐", ":globe_with_meridians:", # Internationalization and localization.
+	"✏️", ":pencil2:", # Fix typos.
+	"⏪️", ":rewind:", # Revert changes.
+	"📦️", ":package:", # Add or update compiled files or packages.
+	"👽️", ":alien:", # Update code due to external API changes.
+	"🍱", ":bento:", # Add or update assets.
+	"♿️", ":wheelchair:", # Improve accessibility.
+	"💬", ":speech_balloon:", # Add or update text and literals.
+	"🗃️", ":card_file_box:", # Perform database related changes.
+	"🚸", ":children_crossing:", # Improve user experience / usability.
+	"📱", ":iphone:", # Work on responsive design.
+	"🥚", ":egg:", # Add or update an easter egg.
+	"⚗️", ":alembic:", # Perform experiments.
+	"🔍️", ":mag:", # Improve SEO.
+	"🏷️", ":label:", # Add or update types.
+	"🚩", ":triangular_flag_on_post:", # Add, update, or remove feature flags.
+	"🥅", ":goal_net:", # Catch errors.
+	"💫", ":dizzy:", # Add or update animations and transitions.
+	"🗑️", ":wastebasket:", # Deprecate code that needs to be cleaned up.
+	"🛂", ":passport_control:", # Work on code related to authorization, roles and permissions.
+	"🩹", ":adhesive_bandage:", # Simple fix for a non-critical issue.
+	"👔", ":necktie:", # Add or update business logic.
+	"🎨", ":art:", # Improve structure / format of the code.
+	"🔥", ":fire:", # Remove code or files.
+	"📝", ":memo:", # Add or update documentation.
+	"🚀", ":rocket:", # Deploy stuff.
+	"🎉", ":tada:", # Begin a project.
+	"✅", ":white_check_mark:", # Add, update, or pass tests.
+	"🔐", ":closed_lock_with_key:", # Add or update secrets.
+	"🔖", ":bookmark:", # Release / Version tags.
+	"🚨", ":rotating_light:", # Fix compiler / linter warnings.
+	"🚧", ":construction:", # Work in progress.
+	"💚", ":green_heart:", # Fix CI Build.
+	"👷", ":construction_worker:", # Add or update CI build system.
+	"♻️", ":recycle:", # Refactor code.
+	"🔨", ":hammer:", # Add or update development scripts.
+	"💩", ":poop:", # Write bad code that needs to be improved.
+	"🔀", ":twisted_rightwards_arrows:", # Merge branches.
+	"🚚", ":truck:", # Move or rename resources (e.g.: files, paths, routes).
+	"📄", ":page_facing_up:", # Add or update license.
+	"💡", ":bulb:", # Add or update comments in source code.
+	"🍻", ":beers:", # Write code drunkenly.
+	"🔊", ":loud_sound:", # Add or update logs.
+	"🔇", ":mute:", # Remove logs.
+	"👥", ":busts_in_silhouette:", # Add or update contributor(s).
+	"🏗️", ":building_construction:", # Make architectural changes.
+	"🤡", ":clown_face:", # Mock things.
+	"🙈", ":see_no_evil:", # Add or update a .gitignore file.
+	"📸", ":camera_flash:", # Add or update snapshots.
+	"🌱", ":seedling:", # Add or update seed files.
+	"🧐", ":monocle_face:", # Data exploration/inspection.
+	"⚰️", ":coffin:", # Remove dead code.
+	"🧪", ":test_tube:", # Add a failing test.
+	"🩺", ":stethoscope:", # Add or update healthcheck.
+	"🧱", ":bricks:", # Infrastructure related changes.
+	"🧑‍💻", ":technologist:", # Improve developer experience.
+	"💸", ":money_with_wings:", # Add sponsorships or money related infrastructure.
+	"🧵", ":thread:", # Add or update code related to multithreading or concurrency.
+	"🦺", ":safety_vest:", # Add or update code related to validation.
+	"✈️", ":airplane:", # Improve offline support.
+]
+major_tags = [
+	"💥", ":boom:", # Introduce breaking changes.
+]
+minor_tags = [
+	"✨", ":sparkles:", # Introduce new features.
+]
+patch_tags = [
+	"⚡️", ":zap:", # Improve performance.
+	"🐛", ":bug:", # Fix a bug.
+	"🚑️", ":ambulance:", # Critical hotfix.
+	"💄", ":lipstick:", # Add or update the UI and style files.
+	"🔒️", ":lock:", # Fix security or privacy issues.
+	"⬇️", ":arrow_down:", # Downgrade dependencies.
+	"⬆️", ":arrow_up:", # Upgrade dependencies.
+	"📌", ":pushpin:", # Pin dependencies to specific versions.
+	"📈", ":chart_with_upwards_trend:", # Add or update analytics or track code.
+	"➕", ":heavy_plus_sign:", # Add a dependency.
+	"➖", ":heavy_minus_sign:", # Remove a dependency.
+	"🔧", ":wrench:", # Add or update configuration files.
+	"🌐", ":globe_with_meridians:", # Internationalization and localization.
+	"✏️", ":pencil2:", # Fix typos.
+	"⏪️", ":rewind:", # Revert changes.
+	"📦️", ":package:", # Add or update compiled files or packages.
+	"👽️", ":alien:", # Update code due to external API changes.
+	"🍱", ":bento:", # Add or update assets.
+	"♿️", ":wheelchair:", # Improve accessibility.
+	"💬", ":speech_balloon:", # Add or update text and literals.
+	"🗃️", ":card_file_box:", # Perform database related changes.
+	"🚸", ":children_crossing:", # Improve user experience / usability.
+	"📱", ":iphone:", # Work on responsive design.
+	"🥚", ":egg:", # Add or update an easter egg.
+	"⚗️", ":alembic:", # Perform experiments.
+	"🔍️", ":mag:", # Improve SEO.
+	"🏷️", ":label:", # Add or update types.
+	"🚩", ":triangular_flag_on_post:", # Add, update, or remove feature flags.
+	"🥅", ":goal_net:", # Catch errors.
+	"💫", ":dizzy:", # Add or update animations and transitions.
+	"🗑️", ":wastebasket:", # Deprecate code that needs to be cleaned up.
+	"🛂", ":passport_control:", # Work on code related to authorization, roles and permissions.
+	"🩹", ":adhesive_bandage:", # Simple fix for a non-critical issue.
+	"👔", ":necktie:", # Add or update business logic.
+]
+other_allowed_tags = [
+	"🎨", ":art:", # Improve structure / format of the code.
+	"🔥", ":fire:", # Remove code or files.
+	"📝", ":memo:", # Add or update documentation.
+	"🚀", ":rocket:", # Deploy stuff.
+	"🎉", ":tada:", # Begin a project.
+	"✅", ":white_check_mark:", # Add, update, or pass tests.
+	"🔐", ":closed_lock_with_key:", # Add or update secrets.
+	"🔖", ":bookmark:", # Release / Version tags.
+	"🚨", ":rotating_light:", # Fix compiler / linter warnings.
+	"🚧", ":construction:", # Work in progress.
+	"💚", ":green_heart:", # Fix CI Build.
+	"👷", ":construction_worker:", # Add or update CI build system.
+	"♻️", ":recycle:", # Refactor code.
+	"🔨", ":hammer:", # Add or update development scripts.
+	"💩", ":poop:", # Write bad code that needs to be improved.
+	"🔀", ":twisted_rightwards_arrows:", # Merge branches.
+	"🚚", ":truck:", # Move or rename resources (e.g.: files, paths, routes).
+	"📄", ":page_facing_up:", # Add or update license.
+	"💡", ":bulb:", # Add or update comments in source code.
+	"🍻", ":beers:", # Write code drunkenly.
+	"🔊", ":loud_sound:", # Add or update logs.
+	"🔇", ":mute:", # Remove logs.
+	"👥", ":busts_in_silhouette:", # Add or update contributor(s).
+	"🏗️", ":building_construction:", # Make architectural changes.
+	"🤡", ":clown_face:", # Mock things.
+	"🙈", ":see_no_evil:", # Add or update a .gitignore file.
+	"📸", ":camera_flash:", # Add or update snapshots.
+	"🌱", ":seedling:", # Add or update seed files.
+	"🧐", ":monocle_face:", # Data exploration/inspection.
+	"⚰️", ":coffin:", # Remove dead code.
+	"🧪", ":test_tube:", # Add a failing test.
+	"🩺", ":stethoscope:", # Add or update healthcheck.
+	"🧱", ":bricks:", # Infrastructure related changes.
+	"🧑‍💻", ":technologist:", # Improve developer experience.
+	"💸", ":money_with_wings:", # Add sponsorships or money related infrastructure.
+	"🧵", ":thread:", # Add or update code related to multithreading or concurrency.
+	"🦺", ":safety_vest:", # Add or update code related to validation.
+	"✈️", ":airplane:", # Improve offline support.
+]

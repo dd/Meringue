@@ -18,12 +18,10 @@ class SortingQuerySet(QuerySet):
         The selection for updating sorting can be pre-limited by filtering the list.
         """
         items = []
-        sorting = 0
-        for item in self:
+        for sorting, item in enumerate(self):
             if item.sorting != sorting:
                 item.sorting = sorting
                 items.append(item)
-            sorting += 1
 
         return self.bulk_update(items, ["sorting"])
 

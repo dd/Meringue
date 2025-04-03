@@ -80,4 +80,4 @@ Documentation is collected in [GitHub Actions](https://docs.github.com/en/action
 
 The documentation is automatically collected and rolled out when pushing the release tag (`v*`), and when pushing to the `dev` branch, the dev version of the documentation is updated.
 
-You can learn more about these processes in the [releasel](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-release.yml) and [dev](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-dev.yml) workflow configs.
+You can learn more about these processes in the workflow [config](https://github.com/dd/Meringue/blob/master/.github/workflows/mkdocs-release.yml).

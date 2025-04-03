@@ -62,7 +62,9 @@ urlpatterns = [
 
 Error handler for _django rest framework_.
 
-This handler returns errors in the format of code and error message pairs, this can be useful when it is necessary to implement different behavior on the front depending on the type of error (for example, in a certain case, show a popup with extended information about the cause of the error).
+The API error handler returns errors in the format of "code-message" pairs. This format is particularly useful for multilingual websites, as it allows the frontend to handle specific errors more effectively. By utilizing the error code, you can adjust the user interface behavior accordingly—for example, displaying a pop-up window with detailed information about the cause of the error in certain situations.
+
+Обработчик ошибок API возвращает ошибки в формате пар «код-сообщение». Этот формат особенно полезен для многоязычных сайтов, так как позволяет фронтенду более эффективно обрабатывать конкретные ошибки. Используя код ошибки, вы можете соответственно изменять поведение пользовательского интерфейса — например, в определённых случаях отображать всплывающее окно с подробной информацией о причине ошибки.
 
 ```py title="settings.py"
 REST_FRAMEWORK = {

@@ -42,7 +42,11 @@ class ProtectedModel(models.Model):
         view_name="sub-x_accel_redirect_view", host_name="sub", disposition="inline"
     )
     image_hosts = ProtectedImageField(view_name="sub-x_accel_redirect_view", host_name="sub")
-    file_getter = ProtectedFileField(view_name="x_accel_redirect_view", nginx_location_getter=_test_getter)
-    image_getter = ProtectedImageField(view_name="x_accel_redirect_view", nginx_location_getter=_test_getter)
+    file_getter = ProtectedFileField(
+        view_name="x_accel_redirect_view", nginx_location_getter=_test_getter
+    )
+    image_getter = ProtectedImageField(
+        view_name="x_accel_redirect_view", nginx_location_getter=_test_getter
+    )
     file_orig = models.FileField()
     image_orig = models.ImageField()

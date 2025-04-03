@@ -1,6 +1,5 @@
 import logging
-import os
-from pathlib import PurePath
+from pathlib import Path
 
 from rest_framework.fields import ImageField
 
@@ -13,7 +12,7 @@ logger = logging.getLogger("meringue.thumbnail")
 
 
 def get_format_from_path(path):
-    return FORMATS_BY_EXTENSIONS[PurePath(path).suffix.lower()]
+    return FORMATS_BY_EXTENSIONS[path.suffix.lower()]
 
 
 class BaseImageField(ImageField):
@@ -47,19 +46,21 @@ class MImageField(BaseImageField):
     def to_representation(self, value):
         """
         TODO:
-            * Add params to get_image for optimize images
+            * Add params to get_thumbnail for optimize images
         """
 
         if not value:
             return None
 
-        if os.path.isfile(value.path):
-            thumbnail = DefaultThumbnailer(value.path, job_chain=self.job_chain)
-            optimized_image_url = thumbnail.get_image(get_format_from_path(value.path)).url
+        path = Path(value.path)
+
+        if path.exists():
+            thumbnail = DefaultThumbnailer(path, job_chain=self.job_chain)
+            optimized_image_url = thumbnail.get_thumbnail(get_format_from_path(path)).url
             result = optimized_image_url
 
         else:
-            logger.error(f"File `{value.path}` not found")
+            logger.error(f"File `{path}` not found")
             result = _dummyimage([])
 
         return result
@@ -76,16 +77,23 @@ class MImageSetField(ImageField):
     def __init__(
         self,
         size=None,
-        dimensions=None,
+        dimensions=(1, 2),
         base_job_chain=None,
         job_chains=None,
         **kwargs,
     ):
-        if bool(size and dimensions) and bool(job_chains):
-            msg = "Need to set `size` and `dimensions` or `job_chains` attribute (not both)."
+        if size and job_chains:
+            msg = "Need to set 'size' or 'job_chains' attribute (not both)."
             raise Exception(msg)
 
         elif size:
+            if not dimensions:
+                msg = (
+                    "If you specify the 'sizes' attribute, "
+                    "then the 'dimensions' attribute cannot be empty."
+                )
+                raise Exception(msg)
+
             self.job_chains = {}
 
             if 1 not in dimensions:
@@ -139,7 +147,7 @@ class MImageSetField(ImageField):
         Creates multiple images. Image with format as original image and webp.
 
         TODO:
-            * Add params to get_image for optimize images
+            * Add params to get_thumbnail for optimize images
             * In future make av1 image
             * Check enabled webp
         """
@@ -147,8 +155,10 @@ class MImageSetField(ImageField):
         if not value:
             return None
 
-        if not os.path.isfile(value.path):
-            logger.error(f"File `{value.path}` not found")
+        path = Path(value.path)
+
+        if not path.exists():
+            logger.error(f"File `{path}` not found")
             return [
                 {
                     "url": _dummyimage(self.job_chains[1]),
@@ -156,13 +166,13 @@ class MImageSetField(ImageField):
                 },
             ]
 
-        original_format = get_format_from_path(value.path)
+        original_format = get_format_from_path(path)
         result = []
 
         for dimension, job_chain in self.job_chains.items():
-            thumbnail = DefaultThumbnailer(value.path, job_chain=job_chain)
-            original = thumbnail.get_image(original_format)
-            webp_thumbnail = thumbnail.get_image("WEBP")
+            thumbnail = DefaultThumbnailer(path, job_chain=job_chain)
+            original = thumbnail.get_thumbnail(original_format)
+            webp_thumbnail = thumbnail.get_thumbnail("WEBP")
 
             if dimension == 1:
                 result = [

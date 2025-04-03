@@ -1,4 +1,3 @@
-import pytest
 from io import BytesIO
 
 import django
@@ -6,6 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.files.uploadedfile import UploadedFile
 from django.test import override_settings
 
+import pytest
 from faker import Faker
 
 from test_project.models import ProtectedModel
