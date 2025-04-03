@@ -76,7 +76,7 @@ jobs:
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-all
+          name: coverage-${{ env.TEST_NAME }}
           path: coverage
 
   testdj3:
@@ -125,7 +125,7 @@ jobs:
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-all
+          name: coverage-${{ env.TEST_NAME }}
           path: coverage
 
   # testdj4py310-311:
@@ -174,7 +174,7 @@ jobs:
   #     - name: Action | Upload coverage artifact
   #       uses: actions/upload-artifact@v4
   #       with:
-  #         name: coverage-all
+  #         name: coverage-${{ env.TEST_NAME }}
   #         path: coverage
 
   testdj4py312:
@@ -223,7 +223,7 @@ jobs:
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-all
+          name: coverage-${{ env.TEST_NAME }}
           path: coverage
 
   testdj5py310-311:
@@ -272,7 +272,7 @@ jobs:
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-all
+          name: coverage-${{ env.TEST_NAME }}
           path: coverage
 
   testdj5py312:
@@ -322,7 +322,7 @@ jobs:
       - name: Action | Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-all
+          name: coverage-${{ env.TEST_NAME }}
           path: coverage
 
   result:
@@ -337,6 +337,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Merge Artifacts
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: coverage-all
+          pattern: "coverage-*"
+          # delete-merged: true
+
       - name: Action | Download artifacts
         uses: actions/download-artifact@v4
         with:
@@ -347,6 +354,7 @@ jobs:
         run: |
           pip install coverage
           ls -al
+          ls -al coverage-all/
           coverage combine coverage-all/*/coverage.json
           coverage report
           ls -al
