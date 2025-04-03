@@ -2,6 +2,244 @@
 
 <!-- version list -->
 
+## v1.3.0 (2025-04-03)
+
+### ♻️
+
+- ♻️ (CI/CD): Clear release workflow
+  ([`d752a54`](https://github.com/dd/Meringue/commit/d752a54e16c647312ad0cc9083f37394baac6d6e))
+
+- ♻️ (CI/CD): Fix detect branches and some another refactors
+  ([`eb0a98c`](https://github.com/dd/Meringue/commit/eb0a98cab112116725e430fa7a22b7a0c4e41ce9))
+
+- ♻️ (core): Fix and refactor PgAdvisoryLock + tests
+  ([`aa50861`](https://github.com/dd/Meringue/commit/aa50861643833b3ef26edb049b0f7169099ae27e))
+
+### ✨
+
+- ✨ (core): Added PgAdvisoryLock context manager
+  ([`f041076`](https://github.com/dd/Meringue/commit/f0410764014e648e011af39d8147d46ce4b1b410))
+
+### ⬆️
+
+- ⬆️ (reqs): Update dependencies
+  ([`5b0b88e`](https://github.com/dd/Meringue/commit/5b0b88e234a92630569d2588ef84ecdbdff6166f))
+
+- ⬆️ (reqs): Updated reqs
+  ([`18d59ba`](https://github.com/dd/Meringue/commit/18d59bae9b129935613a84f2f067a3a3a119bc5e))
+
+### 🐛
+
+- 🐛 (CI/CD): Fix deploy documentation on next brunch
+  ([`8e6bbf8`](https://github.com/dd/Meringue/commit/8e6bbf891e04a0c83fd61db615039074ee9e3790))
+
+- 🐛 (gh actions): Change pypa/gh-action-pypi-publish version
+  ([`ab51337`](https://github.com/dd/Meringue/commit/ab51337614f4b7f8cab3daa678c11f9c63de4b45))
+
+- 🐛 (protected): Fixed serve protected files using django
+  ([`91e3e5a`](https://github.com/dd/Meringue/commit/91e3e5a70639e53bc4930848a8603cef858850ea))
+
+- 🐛 (tests): Fixing tests
+  ([`ab2166f`](https://github.com/dd/Meringue/commit/ab2166f47d956e762a8e21e2a73501b3becfa623))
+
+- 🐛 (thumbnail): Fix drf fields more
+  ([`48c4b7e`](https://github.com/dd/Meringue/commit/48c4b7ee07b7d87294aaa788925613d37192266b))
+
+- 🐛 (thumbnail): Fixed bugs when creating previews in MImageField and MImageSetField
+  ([`016f553`](https://github.com/dd/Meringue/commit/016f55348fdd70f42a1b4d02f7499ae0c8958a40))
+
+### 👷
+
+- 👷 (CI/CD): Change release config
+  ([`4117cac`](https://github.com/dd/Meringue/commit/4117caced083c6cb97a0591a98e1ab1588bf5a61))
+
+- 👷 (CI/CD): Fix test.yml
+  ([`e3e147f`](https://github.com/dd/Meringue/commit/e3e147fbca6527068eeae523982c1e7304667dca))
+
+- 👷 (CI/CD): Fix tupo
+  ([`b9998e7`](https://github.com/dd/Meringue/commit/b9998e7a09735a6189405a904edaa635e36401ef))
+
+- 👷 (CI/CD): Update all workflows
+  ([`5fc3361`](https://github.com/dd/Meringue/commit/5fc3361b7ad6c2f440ed4c5b9d2db7ef8a88881a))
+
+- 👷 (docs): +
+  ([`214794c`](https://github.com/dd/Meringue/commit/214794c172bd9c62014a1fa8f2bdae9a2b638895))
+
+- 👷 (docs): Changes to documentation deployment scripts
+  ([`9e4fa9d`](https://github.com/dd/Meringue/commit/9e4fa9d8c6591716b4ceb6eb82aaef408fd306cc))
+
+- 👷 (docs): Fix breaks link at deployment script
+  ([`e646f2b`](https://github.com/dd/Meringue/commit/e646f2b1d63019393aeef7def5c150c115932d16))
+
+- 👷 (docs): Fix docs building
+  ([`4884318`](https://github.com/dd/Meringue/commit/4884318e9177ed2346f47b7a690f1553fba23b03))
+
+- 👷 (docs): Fix docs deploy
+  ([`a6b8c16`](https://github.com/dd/Meringue/commit/a6b8c160dde1d9e31f290999d41cd1432e91435b))
+
+- 👷 (docs): Fixed docs deploy
+  ([`9ae8900`](https://github.com/dd/Meringue/commit/9ae8900c9aa43de5f52b3bedfd5a8bc657f9fe0a))
+
+- 👷 (docs): I think it end
+  ([`ad4d38f`](https://github.com/dd/Meringue/commit/ad4d38f4dd0f970b35083de1fc4d91ccd78fa8b6))
+
+- 👷 (docs): Logs docs build
+  ([`e662efc`](https://github.com/dd/Meringue/commit/e662efc86c1fdb99b38eabc519b11b571ab8e1e0))
+
+- 👷 (docs): Simplify docs deploy
+  ([`fb2390a`](https://github.com/dd/Meringue/commit/fb2390a666a03830800670cdb2e6a8e4b3a16b4b))
+
+- 👷 (docs): Test simple deploy docs
+  ([`4bbac1d`](https://github.com/dd/Meringue/commit/4bbac1d0e3703aad3da5b810cebf3bbec1bea664))
+
+- 👷 (docs): Try to fix #2
+  ([`df7bada`](https://github.com/dd/Meringue/commit/df7bada1c8aa53fd35e293d67f2b07ae8e066715))
+
+- 👷 (gh actions): Allow run manualy
+  ([`5b1aebc`](https://github.com/dd/Meringue/commit/5b1aebc969c3df9f9ea29a51744e71ccd6fde198))
+
+- 👷 (gh actions): Change release tag semantic
+  ([`f693097`](https://github.com/dd/Meringue/commit/f6930975e8deef235a479894b6513d1438acb5f9))
+
+- 👷 (github): More update actions configs
+  ([`6f2c64a`](https://github.com/dd/Meringue/commit/6f2c64ab925d21cd11f18c1d03a7b17452df563f))
+
+- 👷 (github): Updated documentation build configs -m
+  ([`52b86bf`](https://github.com/dd/Meringue/commit/52b86bf907c9e8e5d716a4993d0df4dba0289deb))
+
+### 📄
+
+- 📄 (license): LGPLv3 -> MPL-2
+  ([`48b82d6`](https://github.com/dd/Meringue/commit/48b82d6c7752df254f8a1420237f8378166cf456))
+
+### 📝
+
+- 📝 (docs): A small update of the documentation
+  ([`d5e1988`](https://github.com/dd/Meringue/commit/d5e1988fcb5e9dde890cb55ad7cd66a138a3303d))
+
+- 📝 (docs): Add PgAdvisoryLock to docs
+  ([`73fd738`](https://github.com/dd/Meringue/commit/73fd7388261d95467653e0150bda7909292408dc))
+
+- 📝 (docs): Update links to docs deploy configs
+  ([`90e7342`](https://github.com/dd/Meringue/commit/90e7342602bada0d5d5fb950d538b15b57a79ea1))
+
+### 🔊
+
+- 🔊 (CI/CD): Add more loggers
+  ([`54006c9`](https://github.com/dd/Meringue/commit/54006c9b08ca7b3ffa4ce640cf4efe9cb1474cc6))
+
+- 🔊 (CI/CD): Add more logs
+  ([`c70b125`](https://github.com/dd/Meringue/commit/c70b125910b9c72238a4871fa381c06c2d30c671))
+
+- 🔊 (CI/CD): More log for fix workflow
+  ([`4c7eafa`](https://github.com/dd/Meringue/commit/4c7eafa225f5e20be2bdd631b78e20b151ef8bb2))
+
+### 🔖
+
+- 🔖 (project): Bump version
+  ([`4c14429`](https://github.com/dd/Meringue/commit/4c14429bbcb2bab9f2361e3248231820cbcce13b))
+
+- 🔖 (project): Bump version to 1.3.0.dev1
+  ([`e9c652c`](https://github.com/dd/Meringue/commit/e9c652c7b88c5ae9a3ba450cd294817774b4203c))
+
+- 🔖 (project): Bump version to 1.3.0.dev2
+  ([`f169164`](https://github.com/dd/Meringue/commit/f169164ce5d0f6807892e57196c47f76d0e14114))
+
+- 🔖 (project): Bump version to 1.3.0.dev3
+  ([`d9c2056`](https://github.com/dd/Meringue/commit/d9c2056eda40ac4acdd683da89f80d1c2dc2d74c))
+
+- 🔖 (project): Bump version to 1.3.0.dev4
+  ([`da6dad3`](https://github.com/dd/Meringue/commit/da6dad35e24a0b48868ce203c4b1d40d538e3d52))
+
+### 🔧
+
+- 🔧 (CI/CD): Final config of tests with upload files to codecov
+  ([`ee0768c`](https://github.com/dd/Meringue/commit/ee0768ccba1fef1a2b930d8223977b7ee3f6a0af))
+
+- 🔧 (CI/CD): Fix artifacts in tests workflow
+  ([`311a61d`](https://github.com/dd/Meringue/commit/311a61d07a511b5ae14e66a2f4cf723a29d28877))
+
+- 🔧 (CI/CD): Fix config tests
+  ([`77a8687`](https://github.com/dd/Meringue/commit/77a86870742b82924319c1fd881f58a104003f9b))
+
+- 🔧 (CI/CD): Fix congfigure tests with upload result on covecod
+  ([`ed0d6a0`](https://github.com/dd/Meringue/commit/ed0d6a0c15db540c8cbba19e18196b02936c4d6c))
+
+- 🔧 (CI/CD): Reconfigure tests
+  ([`8770815`](https://github.com/dd/Meringue/commit/87708157992721899df3d287f569f01532ddc723))
+
+- 🔧 (CI/CD): Reconfigure tests workflow
+  ([`bd39b4d`](https://github.com/dd/Meringue/commit/bd39b4db3d5e2c18366f5d0dd1d8e44b569ed874))
+
+- 🔧 (CI/CD): Reconfigure workflows workflow_run
+  ([`cc14d87`](https://github.com/dd/Meringue/commit/cc14d87fabe8d7a793a23f39c1bb20398fb0246e))
+
+- 🔧 (docs): Reqs versions updating
+  ([`1d292de`](https://github.com/dd/Meringue/commit/1d292de62779dda251a5cbf64c8e4f417083e179))
+
+- 🔧 (lint): Updated linter config
+  ([`cf8ffa3`](https://github.com/dd/Meringue/commit/cf8ffa3a1553e388c2a7b75fae41c3d17dd9e7c0))
+
+### 🚧
+
+- 🚧 (CI/CD): Check Hatch more
+  ([`0ddc193`](https://github.com/dd/Meringue/commit/0ddc193746a29f171ca1665daca4f3ddc8910346))
+
+- 🚧 (CI/CD): Try to fix release workflow
+  ([`1c6f35e`](https://github.com/dd/Meringue/commit/1c6f35e7c3e2bcec41979416f649213a9e0fea30))
+
+- 🚧 (github): Check build docs
+  ([`b2bff7b`](https://github.com/dd/Meringue/commit/b2bff7b9b9e7fef0626d50101f5e5823edfd626a))
+
+### 🚨
+
+- 🚨 (lint): Code linting
+  ([`4a625bd`](https://github.com/dd/Meringue/commit/4a625bde337d369f83e6aa9b64b2becff808808e))
+
+### 🧑‍💻
+
+- 🧑‍💻 (project): Added release-tag command
+  ([`a23767a`](https://github.com/dd/Meringue/commit/a23767a93379c0a3e7ca65de6cc32c0bcfb0cbd9))
+
+- 🧑‍💻 (thumbnail): Initialized default values for 'dimensions' attribute in 'MImageSetField'
+  ([`fdce90d`](https://github.com/dd/Meringue/commit/fdce90d6d0adb18f43d6a6b77ad0237ec543b068))
+
+### 🩹
+
+- 🩹 (CI/CD): Check where hatch
+  ([`4bc84fb`](https://github.com/dd/Meringue/commit/4bc84fb9b6c65ac72330d43130593e2f775f744d))
+
+- 🩹 (CI/CD): Fix after fix
+  ([`d29e175`](https://github.com/dd/Meringue/commit/d29e175ae91b6d5ace9d9924976aa3ccfd0472d0))
+
+- 🩹 (CI/CD): Fix coverage report
+  ([`19f1ded`](https://github.com/dd/Meringue/commit/19f1deda5f4903a0a9776c09a4d4b7596c19ba92))
+
+- 🩹 (CI/CD): Fix release workflow
+  ([`0043256`](https://github.com/dd/Meringue/commit/0043256a0e977a2e1209f95f5e0e7c10bfd21561))
+
+- 🩹 (CI/CD): Fix skip tests
+  ([`cd328fe`](https://github.com/dd/Meringue/commit/cd328fefb3c1f9e7bc26f1e3fd51fb659e86c35d))
+
+- 🩹 (CI/CD): Fix tests workflow
+  ([`f83354c`](https://github.com/dd/Meringue/commit/f83354cebdcb607c521037e9421a4301709dc35e))
+
+- 🩹 (CI/CD): Fix upload package to PYPI
+  ([`7ba6115`](https://github.com/dd/Meringue/commit/7ba6115d71174873d8550270b99110d8cd1fb45a))
+
+- 🩹 (CI/CD): Fix upload results
+  ([`ca37e7a`](https://github.com/dd/Meringue/commit/ca37e7a8b7847264b3d4aa8befd0a623d3dee74e))
+
+- 🩹 (CI/CD): Test for release
+  ([`3f48a75`](https://github.com/dd/Meringue/commit/3f48a7562fb403be104392b8d79b10329e89bd95))
+
+- 🩹 (CI/CD): Try to change for use tests in branch rules
+  ([`677b8e7`](https://github.com/dd/Meringue/commit/677b8e7369701967073e83915a1731bf5d6504a8))
+
+- 🩹 (gh actions): Try to fix release action
+  ([`0ea8ff2`](https://github.com/dd/Meringue/commit/0ea8ff2ec97404e92b8f7c61871bf61775484a43))
+
+
 <a name="1.2.0"></a>
 ## 1.2.0 (2024-04-07)
 
