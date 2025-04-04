@@ -3,7 +3,6 @@ name: Release Python Package
 on:
   push:
     branches: [master]
-  workflow_dispatch:
   workflow_run:
     workflows: ["Tests"]
     types: [completed]
@@ -21,21 +20,17 @@ jobs:
   build:
     name: Build, Version & Publish
     runs-on: ubuntu-latest
-    # manual
     # without 'skip ci' and push (master)
     # without 'skip ci' and after push (on branch next) and 'Tests' workflow success
     if: |
-      github.event_name == 'workflow_dispatch'
-      || (
-        !contains(github.event.head_commit.message, 'skip ci')
-        && !contains(github.event.head_commit.message, 'ci skip')
-        && (
-          github.event_name == 'push'
-          || (
-            github.event_name == 'workflow_run'
-            && github.event.workflow_run.event == 'push'
-            && github.event.workflow_run.conclusion == 'success'
-          )
+      !contains(github.event.head_commit.message, 'skip ci')
+      && !contains(github.event.head_commit.message, 'ci skip')
+      && (
+        github.event_name == 'push'
+        || (
+          github.event_name == 'workflow_run'
+          && github.event.workflow_run.event == 'push'
+          && github.event.workflow_run.conclusion == 'success'
         )
       )
 
@@ -61,11 +56,7 @@ jobs:
             BRANCH="${{ github.event.workflow_run.head_branch }}"
             echo "📡 Detected branch from workflow_run: $BRANCH"
 
-          elif [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
-            BRANCH="${{ github.event.pull_request.head.ref }}"
-            echo "📡 Detected branch from pull_request: $BRANCH"
-
-          elif [[ "${GITHUB_EVENT_NAME}" == "push" || "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
             BRANCH="${GITHUB_REF#refs/heads/}"
             echo "📡 Detected branch from ref: $BRANCH"
 
@@ -78,6 +69,8 @@ jobs:
             echo "❌ Could not determine branch name. Exiting."
             exit 1
           fi
+
+          git checkout $BRANCH
 
           echo "✅ Using branch: $BRANCH"
           echo "branch=$BRANCH" >> $GITHUB_OUTPUT
