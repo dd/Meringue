@@ -106,6 +106,14 @@ jobs:
           echo "🏷️ Version extracted: v$VERSION"
           echo "tag=v$VERSION" >> $GITHUB_OUTPUT
 
+      - name: Action | Check release already exist
+        run: |
+          if gh release view "${{ steps.release.outputs.tag }}" >/dev/null 2>&1; then
+            echo "⚠️ Release ${{ steps.release.outputs.tag }} already exists. Exiting."
+            exit 0
+          fi
+          echo "✅ Release ${{ steps.release.outputs.tag }} not found. Continuing."
+
       - name: Action | Upload artifacts
         uses: actions/upload-artifact@v4
         with:
