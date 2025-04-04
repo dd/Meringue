@@ -75,14 +75,14 @@ jobs:
           echo "✅ Using branch: $BRANCH"
           echo "branch=$BRANCH" >> $GITHUB_OUTPUT
 
-      # - name: Setup | Cache pip
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ~/.cache/pip
-      #     key: pip-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+      - name: Setup | Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
 
-      # - name: Setup | Install Hatch
-      #   uses: pypa/hatch@install
+      - name: Setup | Install Hatch
+        uses: pypa/hatch@install
 
       - name: Setup | Prepeare Semantic Version Release Options
         id: release_options
@@ -101,7 +101,10 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit: ${{ steps.release_options.outputs.commit }}
-          build: pip install hatch && hatch build
+          build: false
+
+      - name: Action | Build Release
+        run: hatch build
 
       # - name: Action | Build Release and Commit (for stable release)
       #   id: release
