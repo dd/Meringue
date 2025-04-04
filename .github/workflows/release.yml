@@ -84,11 +84,23 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
+      - name: Setup | Prepeare Semantic Version Release Options
+        id: release_options
+        run: |
+          if [[ "${{ steps.determine_branch.outputs.branch }}" == "master" ]]; then
+            echo "🚀 Deploying stable release..."
+            echo "commit=true" >> $GITHUB_OUTPUT
+          else
+            echo "🧪 Deploying dev release..."
+            echo "commit=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Action | Semantic Version Release
         id: release
         uses: python-semantic-release/python-semantic-release@v9.21.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit: ${{ steps.release_options.outputs.commit }}
 
       # - name: Action | Build Release and Commit (for stable release)
       #   id: release
@@ -115,6 +127,7 @@ jobs:
 
       - name: Action | Upload artifacts
         uses: actions/upload-artifact@v4
+        if: steps.release.outputs.released == 'true'
         with:
           name: python-artifacts
           path: dist/*
