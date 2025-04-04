@@ -13,9 +13,13 @@ concurrency:
   group: release-package-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
   build:
-    name: Build & Version Package
+    name: Build, Version & Publish
     runs-on: ubuntu-latest
     # manual
     # without 'skip ci' and push (master)
@@ -35,12 +39,9 @@ jobs:
         )
       )
 
-    permissions:
-      contents: write
-
-    outputs:
-      released: ${{ steps.semantic.outputs.released }}
-      tag: ${{ steps.semantic.outputs.tag }}
+    environment:
+      name: pypi
+      url: https://pypi.org/p/meringue
 
     steps:
       - name: Setup | Checkout Repository
@@ -81,7 +82,7 @@ jobs:
           echo "✅ Using branch: $BRANCH"
           echo "branch=$BRANCH" >> $GITHUB_OUTPUT
 
-      - name: Cache pip
+      - name: Setup | Cache pip
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
@@ -105,6 +106,14 @@ jobs:
           echo "🏷️ Version extracted: v$VERSION"
           echo "tag=v$VERSION" >> $GITHUB_OUTPUT
 
+      - name: Action | Check release already exist
+        run: |
+          if gh release view "${{ steps.release.outputs.tag }}" >/dev/null 2>&1; then
+            echo "⚠️ Release ${{ steps.release.outputs.tag }} already exists. Exiting."
+            exit 0
+          fi
+          echo "✅ Release ${{ steps.release.outputs.tag }} not found. Continuing."
+
       - name: Action | Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -112,26 +121,7 @@ jobs:
           path: dist/*
           if-no-files-found: error
 
-  publish:
-    name: Publish to PyPI & GitHub Release
-    runs-on: ubuntu-latest
-    needs: build
-
-    permissions:
-      id-token: write
-
-    environment:
-      name: pypi
-      url: https://pypi.org/p/meringue
-
-    steps:
-      - name: Action | Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: python-artifacts
-          path: dist
-
-      - name: Publish | Upload package to PyPI
+      - name: Publish | Upload to PyPI
         uses: pypa/gh-action-pypi-publish@v1.12.4
 
       - name: Publish | Upload to GitHub Release Assets

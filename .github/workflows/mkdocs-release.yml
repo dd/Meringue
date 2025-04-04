@@ -1,13 +1,11 @@
 name: Release Documentation
 
 on:
-  push:
-    branches: [next]
   workflow_dispatch:
   workflow_run:
     workflows: ["Release Python Package"]
     types: [completed]
-    branches: [master]
+    branches: [master, next]
 
 concurrency:
   group: release-docs-${{ github.ref }}
@@ -21,8 +19,8 @@ jobs:
     name: Building & Deploying Documentation
     runs-on: ubuntu-latest
     # manual
-    # without 'skip ci' and push next
-    # without 'skip ci' and after success 'Release Python Package' on branch (master)
+    # without 'skip ci' and push
+    # without 'skip ci' and after success 'Release Python Package' on branch (master or next)
     if: |
       github.event_name == 'workflow_dispatch'
       || (
