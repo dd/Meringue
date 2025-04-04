@@ -4,40 +4,29 @@
 
 ## v1.3.2 (2025-04-04)
 
-### 👽️
+### Changed
 
 - 👽️ (CI/CD): Try to fix release workflow
   ([`40e31ee`](https://github.com/dd/Meringue/commit/40e31eefd367c479225985ff5050e5c07d89ad83))
 
-### 🚧
-
 - 🚧 (CI/CD): Try to fix auto build
-  ([`bcf5688`](https://github.com/dd/Meringue/commit/bcf568800bb2f65133b8d6b90986a9510b11f854))
-
-- 🚧 (CI/CD): Try to fix auto build
-  ([`a9fc1d5`](https://github.com/dd/Meringue/commit/a9fc1d5f8b27fe2cd4b74d8810808f1266fab6ea))
+  ([`a9fc1d5`](https://github.com/dd/Meringue/commit/a9fc1d5f8b27fe2cd4b74d8810808f1266fab6ea), [`bcf5688`](https://github.com/dd/Meringue/commit/bcf568800bb2f65133b8d6b90986a9510b11f854))
 
 
 ## v1.3.1 (2025-04-04)
 
-### 🔧
-
-- 🔧 (CI/CD): Check release alredy exist
-  ([`3401dfe`](https://github.com/dd/Meringue/commit/3401dfec5ca81964ef3d8240ff4cfd02c79ec44f))
-
-- 🔧 (CI/CD): Reconfigure docs workflow - deploy after release
-  ([`fc5bbe1`](https://github.com/dd/Meringue/commit/fc5bbe1549d41e48cc7f3581a5f419c9b55f7376))
-
-### 🩹
-
-- 🩹 (CI/CD): Fix release workflow upload package to release
-  ([`4580057`](https://github.com/dd/Meringue/commit/458005795c0b637ab5dae93ca4c71a63e5623e2f))
-
-- 🩹 (CI/CD): Update release not at master branch
-  ([`debbc19`](https://github.com/dd/Meringue/commit/debbc19ed34abd3ffacaf89115824a248cc51b71))
+### Fixed
 
 - 🩹 (docs): Hack to change license badge
   ([`32ff579`](https://github.com/dd/Meringue/commit/32ff579903de1f55aad99eae060fd0a3537751cc))
+
+### Changed
+
+- 🔧 (CI/CD): Check release alredy exist
+  ([`3401dfe`](https://github.com/dd/Meringue/commit/3401dfec5ca81964ef3d8240ff4cfd02c79ec44f), [`4580057`](https://github.com/dd/Meringue/commit/458005795c0b637ab5dae93ca4c71a63e5623e2f), [`debbc19`](https://github.com/dd/Meringue/commit/debbc19ed34abd3ffacaf89115824a248cc51b71))
+
+- 🔧 (CI/CD): Reconfigure docs workflow - deploy after release
+  ([`fc5bbe1`](https://github.com/dd/Meringue/commit/fc5bbe1549d41e48cc7f3581a5f419c9b55f7376))
 
 
 ## v1.3.0 (2025-04-03)

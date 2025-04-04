@@ -102,32 +102,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit: ${{ steps.release_options.outputs.commit }}
           build: false
+          git_committer_name: "github-actions[bot]"
+          git_committer_email: "github-actions[bot]@users.noreply.github.com"
 
       - name: Action | Build Release
         run: hatch build
-
-      # - name: Action | Build Release and Commit (for stable release)
-      #   id: release
-      #   run: |
-      #     if [[ "${{ steps.determine_branch.outputs.branch }}" == "master" ]]; then
-      #       echo "🚀 Deploying stable release..."
-      #       hatch run semantic-release version --no-vcs-release --no-tag
-      #     else
-      #       echo "🧪 Deploying dev release..."
-      #       hatch run semantic-release version --no-commit --no-vcs-release --no-tag
-      #     fi
-
-      #     VERSION=$(hatch version)
-      #     echo "🏷️ Version extracted: v$VERSION"
-      #     echo "tag=v$VERSION" >> $GITHUB_OUTPUT
-
-      # - name: Action | Check release already exist
-      #   run: |
-      #     if gh release view "${{ steps.release.outputs.tag }}" >/dev/null 2>&1; then
-      #       echo "⚠️ Release ${{ steps.release.outputs.tag }} already exists. Exiting."
-      #       exit 0
-      #     fi
-      #     echo "✅ Release ${{ steps.release.outputs.tag }} not found. Continuing."
 
       - name: Action | Upload artifacts
         uses: actions/upload-artifact@v4
