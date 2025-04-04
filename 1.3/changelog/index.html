@@ -1,0 +1,2529 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Meringue library python documentation">
+      
+      
+        <meta name="author" content="Dmitriy Dobrynin (aka dd) <dd@tovarisch.engineer>">
+      
+      
+        <link rel="canonical" href="https://dd.github.io/Meringue/1.3/changelog/">
+      
+      
+        <link rel="prev" href="../dev/tests/">
+      
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Changelog - Meringue</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../css/base.b4b472.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+	You're not viewing the latest version.
+	<a href="../..">
+		<strong>Click here to go to latest.</strong>
+	</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL(".."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Meringue" class="md-header__button md-logo" aria-label="Meringue" data-md-component="logo">
+      
+  <img src="../assets/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Meringue
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dd/Meringue" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dd/Meringue
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../usage/" class="md-tabs__link">
+          
+  
+  Usage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/meringue/protected/__init__/" class="md-tabs__link">
+          
+  
+  Code Reference
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../dev/contributing/" class="md-tabs__link">
+          
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Meringue" class="md-nav__button md-logo" aria-label="Meringue" data-md-component="logo">
+      
+  <img src="../assets/favicon.svg" alt="logo">
+
+    </a>
+    Meringue
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dd/Meringue" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dd/Meringue
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../usage/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../reference/meringue/protected/__init__/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Code Reference
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../dev/contributing/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v131-2025-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      v1.3.1 (2025-04-04)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.3.1 (2025-04-04)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🩹
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v130-2025-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      v1.3.0 (2025-04-03)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.3.0 (2025-04-03)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ♻️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⬆️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐛
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      👷
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔊
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔖
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧑‍💻
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      🩹
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120-2024-04-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.0 (2024-04-07)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2.0 (2024-04-07)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110-2023-07-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1.0 (2023-07-28)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1.0 (2023-07-28)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-2023-07-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.0 (2023-07-03)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.0.0 (2023-07-03)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040-2023-04-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.4.0 (2023-04-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.4.0 (2023-04-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#035-2015-08-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.5 (2015-08-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.5 (2015-08-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#034-2015-08-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.4 (2015-08-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.4 (2015-08-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#033-2015-05-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.3 (2015-05-09)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.3 (2015-05-09)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#032-2015-05-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.2 (2015-05-09)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.2 (2015-05-09)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#031-2015-05-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.1 (2015-05-07)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.1 (2015-05-07)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#030-2014-07-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.0 (2014-07-13)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.0 (2014-07-13)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v131-2025-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      v1.3.1 (2025-04-04)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.3.1 (2025-04-04)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🩹
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v130-2025-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      v1.3.0 (2025-04-03)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.3.0 (2025-04-03)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ♻️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⬆️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐛
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      👷
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔊
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔖
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧑‍💻
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      🩹
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120-2024-04-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.0 (2024-04-07)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2.0 (2024-04-07)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110-2023-07-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1.0 (2023-07-28)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1.0 (2023-07-28)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-2023-07-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.0 (2023-07-03)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.0.0 (2023-07-03)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040-2023-04-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.4.0 (2023-04-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.4.0 (2023-04-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#035-2015-08-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.5 (2015-08-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.5 (2015-08-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#034-2015-08-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.4 (2015-08-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.4 (2015-08-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#033-2015-05-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.3 (2015-05-09)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.3 (2015-05-09)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#032-2015-05-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.2 (2015-05-09)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.2 (2015-05-09)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#031-2015-05-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.1 (2015-05-07)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.1 (2015-05-07)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#030-2014-07-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.0 (2014-07-13)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.0 (2014-07-13)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+	
+                  
+
+
+  
+    <a href="https://github.com/dd/Meringue/edit/master/docs/src/changelog.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/dd/Meringue/raw/master/docs/src/changelog.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">¤</a></h1>
+<!-- version list -->
+
+<h2 id="v131-2025-04-04">v1.3.1 (2025-04-04)<a class="headerlink" href="#v131-2025-04-04" title="Permanent link">¤</a></h2>
+<h3 id="_1">🔧<a class="headerlink" href="#_1" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🔧 (CI/CD): Check release alredy exist
+  (<a href="https://github.com/dd/Meringue/commit/3401dfec5ca81964ef3d8240ff4cfd02c79ec44f"><code>3401dfe</code></a>)</p>
+</li>
+<li>
+<p>🔧 (CI/CD): Reconfigure docs workflow - deploy after release
+  (<a href="https://github.com/dd/Meringue/commit/fc5bbe1549d41e48cc7f3581a5f419c9b55f7376"><code>fc5bbe1</code></a>)</p>
+</li>
+</ul>
+<h3 id="_2">🩹<a class="headerlink" href="#_2" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🩹 (CI/CD): Fix release workflow upload package to release
+  (<a href="https://github.com/dd/Meringue/commit/458005795c0b637ab5dae93ca4c71a63e5623e2f"><code>4580057</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Update release not at master branch
+  (<a href="https://github.com/dd/Meringue/commit/debbc19ed34abd3ffacaf89115824a248cc51b71"><code>debbc19</code></a>)</p>
+</li>
+<li>
+<p>🩹 (docs): Hack to change license badge
+  (<a href="https://github.com/dd/Meringue/commit/32ff579903de1f55aad99eae060fd0a3537751cc"><code>32ff579</code></a>)</p>
+</li>
+</ul>
+<h2 id="v130-2025-04-03">v1.3.0 (2025-04-03)<a class="headerlink" href="#v130-2025-04-03" title="Permanent link">¤</a></h2>
+<h3 id="_3">♻️<a class="headerlink" href="#_3" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>♻️ (CI/CD): Clear release workflow
+  (<a href="https://github.com/dd/Meringue/commit/d752a54e16c647312ad0cc9083f37394baac6d6e"><code>d752a54</code></a>)</p>
+</li>
+<li>
+<p>♻️ (CI/CD): Fix detect branches and some another refactors
+  (<a href="https://github.com/dd/Meringue/commit/eb0a98cab112116725e430fa7a22b7a0c4e41ce9"><code>eb0a98c</code></a>)</p>
+</li>
+<li>
+<p>♻️ (core): Fix and refactor PgAdvisoryLock + tests
+  (<a href="https://github.com/dd/Meringue/commit/aa50861643833b3ef26edb049b0f7169099ae27e"><code>aa50861</code></a>)</p>
+</li>
+</ul>
+<h3 id="_4">✨<a class="headerlink" href="#_4" title="Permanent link">¤</a></h3>
+<ul>
+<li>✨ (core): Added PgAdvisoryLock context manager
+  (<a href="https://github.com/dd/Meringue/commit/f0410764014e648e011af39d8147d46ce4b1b410"><code>f041076</code></a>)</li>
+</ul>
+<h3 id="_5">⬆️<a class="headerlink" href="#_5" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>⬆️ (reqs): Update dependencies
+  (<a href="https://github.com/dd/Meringue/commit/5b0b88e234a92630569d2588ef84ecdbdff6166f"><code>5b0b88e</code></a>)</p>
+</li>
+<li>
+<p>⬆️ (reqs): Updated reqs
+  (<a href="https://github.com/dd/Meringue/commit/18d59bae9b129935613a84f2f067a3a3a119bc5e"><code>18d59ba</code></a>)</p>
+</li>
+</ul>
+<h3 id="_6">🐛<a class="headerlink" href="#_6" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🐛 (CI/CD): Fix deploy documentation on next brunch
+  (<a href="https://github.com/dd/Meringue/commit/8e6bbf891e04a0c83fd61db615039074ee9e3790"><code>8e6bbf8</code></a>)</p>
+</li>
+<li>
+<p>🐛 (gh actions): Change pypa/gh-action-pypi-publish version
+  (<a href="https://github.com/dd/Meringue/commit/ab51337614f4b7f8cab3daa678c11f9c63de4b45"><code>ab51337</code></a>)</p>
+</li>
+<li>
+<p>🐛 (protected): Fixed serve protected files using django
+  (<a href="https://github.com/dd/Meringue/commit/91e3e5a70639e53bc4930848a8603cef858850ea"><code>91e3e5a</code></a>)</p>
+</li>
+<li>
+<p>🐛 (tests): Fixing tests
+  (<a href="https://github.com/dd/Meringue/commit/ab2166f47d956e762a8e21e2a73501b3becfa623"><code>ab2166f</code></a>)</p>
+</li>
+<li>
+<p>🐛 (thumbnail): Fix drf fields more
+  (<a href="https://github.com/dd/Meringue/commit/48c4b7ee07b7d87294aaa788925613d37192266b"><code>48c4b7e</code></a>)</p>
+</li>
+<li>
+<p>🐛 (thumbnail): Fixed bugs when creating previews in MImageField and MImageSetField
+  (<a href="https://github.com/dd/Meringue/commit/016f55348fdd70f42a1b4d02f7499ae0c8958a40"><code>016f553</code></a>)</p>
+</li>
+</ul>
+<h3 id="_7">👷<a class="headerlink" href="#_7" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>👷 (CI/CD): Change release config
+  (<a href="https://github.com/dd/Meringue/commit/4117caced083c6cb97a0591a98e1ab1588bf5a61"><code>4117cac</code></a>)</p>
+</li>
+<li>
+<p>👷 (CI/CD): Fix test.yml
+  (<a href="https://github.com/dd/Meringue/commit/e3e147fbca6527068eeae523982c1e7304667dca"><code>e3e147f</code></a>)</p>
+</li>
+<li>
+<p>👷 (CI/CD): Fix tupo
+  (<a href="https://github.com/dd/Meringue/commit/b9998e7a09735a6189405a904edaa635e36401ef"><code>b9998e7</code></a>)</p>
+</li>
+<li>
+<p>👷 (CI/CD): Update all workflows
+  (<a href="https://github.com/dd/Meringue/commit/5fc3361b7ad6c2f440ed4c5b9d2db7ef8a88881a"><code>5fc3361</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): +
+  (<a href="https://github.com/dd/Meringue/commit/214794c172bd9c62014a1fa8f2bdae9a2b638895"><code>214794c</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Changes to documentation deployment scripts
+  (<a href="https://github.com/dd/Meringue/commit/9e4fa9d8c6591716b4ceb6eb82aaef408fd306cc"><code>9e4fa9d</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Fix breaks link at deployment script
+  (<a href="https://github.com/dd/Meringue/commit/e646f2b1d63019393aeef7def5c150c115932d16"><code>e646f2b</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Fix docs building
+  (<a href="https://github.com/dd/Meringue/commit/4884318e9177ed2346f47b7a690f1553fba23b03"><code>4884318</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Fix docs deploy
+  (<a href="https://github.com/dd/Meringue/commit/a6b8c160dde1d9e31f290999d41cd1432e91435b"><code>a6b8c16</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Fixed docs deploy
+  (<a href="https://github.com/dd/Meringue/commit/9ae8900c9aa43de5f52b3bedfd5a8bc657f9fe0a"><code>9ae8900</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): I think it end
+  (<a href="https://github.com/dd/Meringue/commit/ad4d38f4dd0f970b35083de1fc4d91ccd78fa8b6"><code>ad4d38f</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Logs docs build
+  (<a href="https://github.com/dd/Meringue/commit/e662efc86c1fdb99b38eabc519b11b571ab8e1e0"><code>e662efc</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Simplify docs deploy
+  (<a href="https://github.com/dd/Meringue/commit/fb2390a666a03830800670cdb2e6a8e4b3a16b4b"><code>fb2390a</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Test simple deploy docs
+  (<a href="https://github.com/dd/Meringue/commit/4bbac1d0e3703aad3da5b810cebf3bbec1bea664"><code>4bbac1d</code></a>)</p>
+</li>
+<li>
+<p>👷 (docs): Try to fix #2
+  (<a href="https://github.com/dd/Meringue/commit/df7bada1c8aa53fd35e293d67f2b07ae8e066715"><code>df7bada</code></a>)</p>
+</li>
+<li>
+<p>👷 (gh actions): Allow run manualy
+  (<a href="https://github.com/dd/Meringue/commit/5b1aebc969c3df9f9ea29a51744e71ccd6fde198"><code>5b1aebc</code></a>)</p>
+</li>
+<li>
+<p>👷 (gh actions): Change release tag semantic
+  (<a href="https://github.com/dd/Meringue/commit/f6930975e8deef235a479894b6513d1438acb5f9"><code>f693097</code></a>)</p>
+</li>
+<li>
+<p>👷 (github): More update actions configs
+  (<a href="https://github.com/dd/Meringue/commit/6f2c64ab925d21cd11f18c1d03a7b17452df563f"><code>6f2c64a</code></a>)</p>
+</li>
+<li>
+<p>👷 (github): Updated documentation build configs -m
+  (<a href="https://github.com/dd/Meringue/commit/52b86bf907c9e8e5d716a4993d0df4dba0289deb"><code>52b86bf</code></a>)</p>
+</li>
+</ul>
+<h3 id="_8">📄<a class="headerlink" href="#_8" title="Permanent link">¤</a></h3>
+<ul>
+<li>📄 (license): LGPLv3 -&gt; MPL-2
+  (<a href="https://github.com/dd/Meringue/commit/48b82d6c7752df254f8a1420237f8378166cf456"><code>48b82d6</code></a>)</li>
+</ul>
+<h3 id="_9">📝<a class="headerlink" href="#_9" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>📝 (docs): A small update of the documentation
+  (<a href="https://github.com/dd/Meringue/commit/d5e1988fcb5e9dde890cb55ad7cd66a138a3303d"><code>d5e1988</code></a>)</p>
+</li>
+<li>
+<p>📝 (docs): Add PgAdvisoryLock to docs
+  (<a href="https://github.com/dd/Meringue/commit/73fd7388261d95467653e0150bda7909292408dc"><code>73fd738</code></a>)</p>
+</li>
+<li>
+<p>📝 (docs): Update links to docs deploy configs
+  (<a href="https://github.com/dd/Meringue/commit/90e7342602bada0d5d5fb950d538b15b57a79ea1"><code>90e7342</code></a>)</p>
+</li>
+</ul>
+<h3 id="_10">🔊<a class="headerlink" href="#_10" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🔊 (CI/CD): Add more loggers
+  (<a href="https://github.com/dd/Meringue/commit/54006c9b08ca7b3ffa4ce640cf4efe9cb1474cc6"><code>54006c9</code></a>)</p>
+</li>
+<li>
+<p>🔊 (CI/CD): Add more logs
+  (<a href="https://github.com/dd/Meringue/commit/c70b125910b9c72238a4871fa381c06c2d30c671"><code>c70b125</code></a>)</p>
+</li>
+<li>
+<p>🔊 (CI/CD): More log for fix workflow
+  (<a href="https://github.com/dd/Meringue/commit/4c7eafa225f5e20be2bdd631b78e20b151ef8bb2"><code>4c7eafa</code></a>)</p>
+</li>
+</ul>
+<h3 id="_11">🔖<a class="headerlink" href="#_11" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🔖 (project): Bump version
+  (<a href="https://github.com/dd/Meringue/commit/4c14429bbcb2bab9f2361e3248231820cbcce13b"><code>4c14429</code></a>)</p>
+</li>
+<li>
+<p>🔖 (project): Bump version to 1.3.0.dev1
+  (<a href="https://github.com/dd/Meringue/commit/e9c652c7b88c5ae9a3ba450cd294817774b4203c"><code>e9c652c</code></a>)</p>
+</li>
+<li>
+<p>🔖 (project): Bump version to 1.3.0.dev2
+  (<a href="https://github.com/dd/Meringue/commit/f169164ce5d0f6807892e57196c47f76d0e14114"><code>f169164</code></a>)</p>
+</li>
+<li>
+<p>🔖 (project): Bump version to 1.3.0.dev3
+  (<a href="https://github.com/dd/Meringue/commit/d9c2056eda40ac4acdd683da89f80d1c2dc2d74c"><code>d9c2056</code></a>)</p>
+</li>
+<li>
+<p>🔖 (project): Bump version to 1.3.0.dev4
+  (<a href="https://github.com/dd/Meringue/commit/da6dad35e24a0b48868ce203c4b1d40d538e3d52"><code>da6dad3</code></a>)</p>
+</li>
+</ul>
+<h3 id="_12">🔧<a class="headerlink" href="#_12" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🔧 (CI/CD): Final config of tests with upload files to codecov
+  (<a href="https://github.com/dd/Meringue/commit/ee0768ccba1fef1a2b930d8223977b7ee3f6a0af"><code>ee0768c</code></a>)</p>
+</li>
+<li>
+<p>🔧 (CI/CD): Fix artifacts in tests workflow
+  (<a href="https://github.com/dd/Meringue/commit/311a61d07a511b5ae14e66a2f4cf723a29d28877"><code>311a61d</code></a>)</p>
+</li>
+<li>
+<p>🔧 (CI/CD): Fix config tests
+  (<a href="https://github.com/dd/Meringue/commit/77a86870742b82924319c1fd881f58a104003f9b"><code>77a8687</code></a>)</p>
+</li>
+<li>
+<p>🔧 (CI/CD): Fix congfigure tests with upload result on covecod
+  (<a href="https://github.com/dd/Meringue/commit/ed0d6a0c15db540c8cbba19e18196b02936c4d6c"><code>ed0d6a0</code></a>)</p>
+</li>
+<li>
+<p>🔧 (CI/CD): Reconfigure tests
+  (<a href="https://github.com/dd/Meringue/commit/87708157992721899df3d287f569f01532ddc723"><code>8770815</code></a>)</p>
+</li>
+<li>
+<p>🔧 (CI/CD): Reconfigure tests workflow
+  (<a href="https://github.com/dd/Meringue/commit/bd39b4db3d5e2c18366f5d0dd1d8e44b569ed874"><code>bd39b4d</code></a>)</p>
+</li>
+<li>
+<p>🔧 (CI/CD): Reconfigure workflows workflow_run
+  (<a href="https://github.com/dd/Meringue/commit/cc14d87fabe8d7a793a23f39c1bb20398fb0246e"><code>cc14d87</code></a>)</p>
+</li>
+<li>
+<p>🔧 (docs): Reqs versions updating
+  (<a href="https://github.com/dd/Meringue/commit/1d292de62779dda251a5cbf64c8e4f417083e179"><code>1d292de</code></a>)</p>
+</li>
+<li>
+<p>🔧 (lint): Updated linter config
+  (<a href="https://github.com/dd/Meringue/commit/cf8ffa3a1553e388c2a7b75fae41c3d17dd9e7c0"><code>cf8ffa3</code></a>)</p>
+</li>
+</ul>
+<h3 id="_13">🚧<a class="headerlink" href="#_13" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🚧 (CI/CD): Check Hatch more
+  (<a href="https://github.com/dd/Meringue/commit/0ddc193746a29f171ca1665daca4f3ddc8910346"><code>0ddc193</code></a>)</p>
+</li>
+<li>
+<p>🚧 (CI/CD): Try to fix release workflow
+  (<a href="https://github.com/dd/Meringue/commit/1c6f35e7c3e2bcec41979416f649213a9e0fea30"><code>1c6f35e</code></a>)</p>
+</li>
+<li>
+<p>🚧 (github): Check build docs
+  (<a href="https://github.com/dd/Meringue/commit/b2bff7b9b9e7fef0626d50101f5e5823edfd626a"><code>b2bff7b</code></a>)</p>
+</li>
+</ul>
+<h3 id="_14">🚨<a class="headerlink" href="#_14" title="Permanent link">¤</a></h3>
+<ul>
+<li>🚨 (lint): Code linting
+  (<a href="https://github.com/dd/Meringue/commit/4a625bde337d369f83e6aa9b64b2becff808808e"><code>4a625bd</code></a>)</li>
+</ul>
+<h3 id="_15">🧑‍💻<a class="headerlink" href="#_15" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🧑‍💻 (project): Added release-tag command
+  (<a href="https://github.com/dd/Meringue/commit/a23767a93379c0a3e7ca65de6cc32c0bcfb0cbd9"><code>a23767a</code></a>)</p>
+</li>
+<li>
+<p>🧑‍💻 (thumbnail): Initialized default values for 'dimensions' attribute in 'MImageSetField'
+  (<a href="https://github.com/dd/Meringue/commit/fdce90d6d0adb18f43d6a6b77ad0237ec543b068"><code>fdce90d</code></a>)</p>
+</li>
+</ul>
+<h3 id="_16">🩹<a class="headerlink" href="#_16" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>🩹 (CI/CD): Check where hatch
+  (<a href="https://github.com/dd/Meringue/commit/4bc84fb9b6c65ac72330d43130593e2f775f744d"><code>4bc84fb</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Fix after fix
+  (<a href="https://github.com/dd/Meringue/commit/d29e175ae91b6d5ace9d9924976aa3ccfd0472d0"><code>d29e175</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Fix coverage report
+  (<a href="https://github.com/dd/Meringue/commit/19f1deda5f4903a0a9776c09a4d4b7596c19ba92"><code>19f1ded</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Fix release workflow
+  (<a href="https://github.com/dd/Meringue/commit/0043256a0e977a2e1209f95f5e0e7c10bfd21561"><code>0043256</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Fix skip tests
+  (<a href="https://github.com/dd/Meringue/commit/cd328fefb3c1f9e7bc26f1e3fd51fb659e86c35d"><code>cd328fe</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Fix tests workflow
+  (<a href="https://github.com/dd/Meringue/commit/f83354cebdcb607c521037e9421a4301709dc35e"><code>f83354c</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Fix upload package to PYPI
+  (<a href="https://github.com/dd/Meringue/commit/7ba6115d71174873d8550270b99110d8cd1fb45a"><code>7ba6115</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Fix upload results
+  (<a href="https://github.com/dd/Meringue/commit/ca37e7a8b7847264b3d4aa8befd0a623d3dee74e"><code>ca37e7a</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Test for release
+  (<a href="https://github.com/dd/Meringue/commit/3f48a7562fb403be104392b8d79b10329e89bd95"><code>3f48a75</code></a>)</p>
+</li>
+<li>
+<p>🩹 (CI/CD): Try to change for use tests in branch rules
+  (<a href="https://github.com/dd/Meringue/commit/677b8e7369701967073e83915a1731bf5d6504a8"><code>677b8e7</code></a>)</p>
+</li>
+<li>
+<p>🩹 (gh actions): Try to fix release action
+  (<a href="https://github.com/dd/Meringue/commit/0ea8ff2ec97404e92b8f7c61871bf61775484a43"><code>0ea8ff2</code></a>)</p>
+</li>
+</ul>
+<p><a name="1.2.0"></a></p>
+<h2 id="120-2024-04-07">1.2.0 (2024-04-07)<a class="headerlink" href="#120-2024-04-07" title="Permanent link">¤</a></h2>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">¤</a></h3>
+<ul>
+<li>✨ (protected): Added functionality for protected files [<a href="https://github.com/dd/Meringue/commit/7df25a1b8797e6b8ab72e010571d9612a5687d5c">7df25a1</a>,<a href="https://github.com/dd/Meringue/commit/1c2ec3365c1ea86c893530406bd6087770459a4d">1c2ec33</a>,<a href="https://github.com/dd/Meringue/commit/1994662f10e3f8fffcd9e09b2e8fa046454ccab2">1994662</a>,<a href="https://github.com/dd/Meringue/commit/50eaaeb9d147f57f043e7e75683b69cc7b8879d1">50eaaeb</a>,<a href="https://github.com/dd/Meringue/commit/e78f5a9bb05673b5ae4d15f94c61836aeb822fca">e78f5a9</a>,<a href="https://github.com/dd/Meringue/commit/36f1f5b6d19cf7d4e7b0dcc2599db14c89a06ba7">36f1f5b</a>,<a href="https://github.com/dd/Meringue/commit/a3332dc8b7fd0578e0e5fad110f76d5454c5018e">a3332dc</a>,<a href="https://github.com/dd/Meringue/commit/532c14739d52e62cc7c2457857a46ca95ba1005c">532c147</a>,<a href="https://github.com/dd/Meringue/commit/7f15cc2b215ba4f9bfc55f9d473f65dbe6a94b5a">7f15cc2</a>]</li>
+<li>✨ (thumbnail): Functionality for creating thumbnails [<a href="https://github.com/dd/Meringue/commit/76b400235e330cca4894604682ff8a2316fdc76a">76b4002</a>,<a href="https://github.com/dd/Meringue/commit/77e3180c2a08b2a0ab81cdbe91b5ce34d56f4558">77e3180</a>,<a href="https://github.com/dd/Meringue/commit/db3b97f5212a25ee9985b876d00cef79feec6bf7">db3b97f</a>,<a href="https://github.com/dd/Meringue/commit/80056a6e7ee7692d633eb57d240283634cdbc27d">80056a6</a>]</li>
+<li>✨ (conf): Now can specify params with lists and dicts for import [<a href="https://github.com/dd/Meringue/commit/1ac47709e84ee1ff69b731360a7ed05ca837ef81">1ac4770</a>,<a href="https://github.com/dd/Meringue/commit/287c0271cba05477480d6ac822b892d2191ab0db">287c027</a>,<a href="https://github.com/dd/Meringue/commit/46f936ca4c966e3f5155a196238bc0acae0f2342">46f936c</a>]</li>
+<li>➕ (project): Added optional dependency for crypt utilities [<a href="https://github.com/dd/Meringue/commit/9f69d7df0c95c1e9c5341bf601cdea56cd29ebf3">9f69d7d</a>]</li>
+<li>✅ (tests): Tests Update [<a href="https://github.com/dd/Meringue/commit/5b0666cd1d5164f41f724b3c51f659439af3928d">5b0666c</a>,<a href="https://github.com/dd/Meringue/commit/10941a8979b464a4c11f59cd3d64e1c6065cf7ba">10941a8</a>,<a href="https://github.com/dd/Meringue/commit/3b7d2a0d7987d8a5c1dd2ed3cb2bbd9acf868a59">3b7d2a0</a>,<a href="https://github.com/dd/Meringue/commit/eb822e3f8ef1c2cd6a742d0536a2dd73770d4c19">eb822e3</a>,<a href="https://github.com/dd/Meringue/commit/018ed055c3022c5b0b61c0876fd58a0bc1a5740e">018ed05</a>,<a href="https://github.com/dd/Meringue/commit/3f023340c19fd239e00bbb6399bd68a076ca86c3">3f02334</a>,<a href="https://github.com/dd/Meringue/commit/af322783861a2912a96206c51cf1d5ff283e5894">af32278</a>]</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">¤</a></h3>
+<ul>
+<li>🎨 (docs): Add more badges! [<a href="https://github.com/dd/Meringue/commit/b47f09634cdaa70f1945124a4e11c3d42c1b5576">b47f096</a>]</li>
+<li>♻️ (api): Updated error handler now it covers large variations of errors [<a href="https://github.com/dd/Meringue/commit/db3c0ef18a0ff2e1724b205ccbab62f3101e7c28">db3c0ef</a>]</li>
+</ul>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">¤</a></h3>
+<ul>
+<li>💚 (docs): We slightly corrected the documentation build [<a href="https://github.com/dd/Meringue/commit/5fba7668c7d95d4e3d6dce55f44564e45cf7e9c8">5fba766</a>]</li>
+<li>🐛 (docs): Correction of the documentation build [<a href="https://github.com/dd/Meringue/commit/d406900cc99671fdfc80b5568af2feb86f044cd3">d406900</a>,<a href="https://github.com/dd/Meringue/commit/1e0a9c4cadd997c120a48e5b6160bb2a279587a2">1e0a9c4</a>]</li>
+</ul>
+<h3 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">¤</a></h3>
+<ul>
+<li>👷 (project): Script for updating changelog [<a href="https://github.com/dd/Meringue/commit/6395ad63dba7cd1413f736e97e1f30539104f32b">6395ad6</a>]</li>
+<li>👷 (buid): Updating the build system and dependency versions [<a href="https://github.com/dd/Meringue/commit/5c8af5b8d13ff3ff0c39c24faad123ad83ff6705">5c8af5b</a>]</li>
+<li>📝 (docs): Fix docs references [<a href="https://github.com/dd/Meringue/commit/774330f2450c50bec636022e6b77f425b96cadf5">774330f</a>,<a href="https://github.com/dd/Meringue/commit/6fa656c2acb2e7cb03655b731f2c3a35c9da228f">6fa656c</a>,<a href="https://github.com/dd/Meringue/commit/d2094fec841bdcf4d61123111776962641194a2b">d2094fe</a>]</li>
+<li>📝 (docs): Added model fields to the documentation. [<a href="https://github.com/dd/Meringue/commit/3a35d7edba05e056da7fafaab8cb4d0250db2804">3a35d7e</a>]</li>
+<li>👷 (gh actions): Update Action Versions [<a href="https://github.com/dd/Meringue/commit/0b8b57d74e5e058f6e8d4240be93a1e11b644795">0b8b57d</a>,<a href="https://github.com/dd/Meringue/commit/d76721fdf3d8b355e93b2346aa19a6e542316ea2">d76721f</a>]</li>
+<li>📝 (docs): Correcting links in documentation [<a href="https://github.com/dd/Meringue/commit/c3135f1671ebba83882435a0550fd8c662d2a925">c3135f1</a>]</li>
+<li>📝 (docs): Corrected the README text so that the link to the documentation is more visible [<a href="https://github.com/dd/Meringue/commit/04efe31bc2189b1092d756ac50b428cd0b910eea">04efe31</a>]</li>
+<li>📝 (docs): Documentation text update [<a href="https://github.com/dd/Meringue/commit/830240379955e76efdd2dccac219e7cc7012d001">8302403</a>]</li>
+<li>📝 (docs): Changelog update [<a href="https://github.com/dd/Meringue/commit/1c9a601485ef923a85096f86b68a4a6a8113583d">1c9a601</a>]</li>
+</ul>
+<p><a name="1.1.0"></a></p>
+<h2 id="110-2023-07-28">1.1.0 (2023-07-28)<a class="headerlink" href="#110-2023-07-28" title="Permanent link">¤</a></h2>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">¤</a></h3>
+<ul>
+<li>✨ (api): Added a view that applies OpenAPISchemaPatcher [<a href="https://github.com/dd/Meringue/commit/f214caff4ab4ac21bba54a2e5ff6711edcaff66f">f214caf</a>]</li>
+<li>✨ (api): Added OpenAPI3 object patcher [<a href="https://github.com/dd/Meringue/commit/45e40a597839ba0b7beb5a2bb852482330b5f134">45e40a5</a>]</li>
+<li>✨ (api): Advanced Router [<a href="https://github.com/dd/Meringue/commit/74318b3e4e34f246b432867237ef0b0d53ef9732">74318b3</a>]</li>
+<li>✨ (api): DRF error handler [<a href="https://github.com/dd/Meringue/commit/c5546bac0f5469e7588910f5f110dec52bbfa0d8">c5546ba</a>]</li>
+<li>✨ (core): Added a method to get links to the front [<a href="https://github.com/dd/Meringue/commit/3b3171f87914b2eece54b15c646c9f467ff9118e">3b3171f</a>]</li>
+<li>✨ (core): Functions for encryption and decryption [<a href="https://github.com/dd/Meringue/commit/011f875c7327005e32a343eff46c0f6724a2c794">011f875</a>]</li>
+<li>✨ (core): Universal manager for all meringue models [<a href="https://github.com/dd/Meringue/commit/59d88fdda6b7cb41a518a1cf01ddbdf423a010ce">59d88fd</a>,<a href="https://github.com/dd/Meringue/commit/57f1af6391c43c2d0bbceeabffea4f8f4fee0fb0">57f1af6</a>]</li>
+</ul>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">¤</a></h3>
+<ul>
+<li>🔧 (tests): Update dependency versions for tests [<a href="https://github.com/dd/Meringue/commit/81c1ee32bfe50d6020d7da0e54e7ffa850fa5f3e">81c1ee3</a>]</li>
+<li>🔧 (tests): Updated dependency matrix for testing [<a href="https://github.com/dd/Meringue/commit/a61e889d0beb444887cd970fb7eab090879e3d40">a61e889</a>,<a href="https://github.com/dd/Meringue/commit/de9f4350b1d703ecb48cd9446844f8513d8f4765">de9f435</a>]</li>
+<li>🔧 (package): Upgrading dependency versions [<a href="https://github.com/dd/Meringue/commit/3a0d74525ada9d8d9192bfb8f99dfa2dee7e9ab2">3a0d745</a>]</li>
+<li>🔧 (github): Updated github workflows configurations [<a href="https://github.com/dd/Meringue/commit/16e2272d1cf5e50fbb05e6d3b3fbe109056128ff">16e2272</a>,<a href="https://github.com/dd/Meringue/commit/f48c9999a0b6ea88e2f817c7e87303897d8a7b4e">f48c999</a>,<a href="https://github.com/dd/Meringue/commit/0e58a1501c9ba89109a3f46987b69fc40a91bbd7">0e58a15</a>,<a href="https://github.com/dd/Meringue/commit/c2144ba92f042903c824633712ecc22bb0a655cb">c2144ba</a>,<a href="https://github.com/dd/Meringue/commit/bce98659cb7fdaeecc55cd836f06993912bf9399">bce9865</a>]</li>
+<li>🔧 (project): Build update [<a href="https://github.com/dd/Meringue/commit/1e0a9c4cadd997c120a48e5b6160bb2a279587a2">1e0a9c4</a>]</li>
+</ul>
+<h3 id="miscellaneous_1">Miscellaneous<a class="headerlink" href="#miscellaneous_1" title="Permanent link">¤</a></h3>
+<ul>
+<li>📝 (docs): Documentation update [<a href="https://github.com/dd/Meringue/commit/5873881f94f0f476b5db653a2682877d70a04f28">5873881</a>,<a href="https://github.com/dd/Meringue/commit/3803f696e9b45fc27862d770a64efb975bf63690">3803f69</a>,<a href="https://github.com/dd/Meringue/commit/8cbec193da198c75690d438a479ed4687159c2de">8cbec19</a>,<a href="https://github.com/dd/Meringue/commit/0a86a5af3f2d69d2b214614a100d04fcbdd86fd0">0a86a5a</a>,<a href="https://github.com/dd/Meringue/commit/59bd45066ef82e8f79e4da200768e548343e0c0b">59bd450</a>,<a href="https://github.com/dd/Meringue/commit/f483929d295685b9867f6bbb8bd5b216afd48e4f">f483929</a>,<a href="https://github.com/dd/Meringue/commit/6ba2fd772f443a410736ae84c01236441690f16f">6ba2fd7</a>,<a href="https://github.com/dd/Meringue/commit/c28409cd81b6e3f5f5867fd8ffaa7b88f50c0a3d">c28409c</a>,<a href="https://github.com/dd/Meringue/commit/d76721fdf3d8b355e93b2346aa19a6e542316ea2">d76721f</a>]</li>
+<li>📝 (docs): Updated changelog [<a href="https://github.com/dd/Meringue/commit/19649197195929d44fbb77d6521e027062a94dc5">1964919</a>]</li>
+</ul>
+<p><a name="1.0.0"></a></p>
+<h2 id="100-2023-07-03">1.0.0 (2023-07-03)<a class="headerlink" href="#100-2023-07-03" title="Permanent link">¤</a></h2>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">¤</a></h3>
+<ul>
+<li>✨ (core): Added translations [<a href="https://github.com/dd/Meringue/commit/ce3072e9cece70b6833ec4dc5b89720672530d0d">ce3072e</a>]</li>
+<li>✨ (core): Method for sorting elements [<a href="https://github.com/dd/Meringue/commit/6700b69bf62a1271099e0c53230f5d1a8cd05ffa">6700b69</a>]</li>
+</ul>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">¤</a></h3>
+<ul>
+<li>♻️ (core): Refactoring simply register of fields for translation [<a href="https://github.com/dd/Meringue/commit/195bd0267e24efa318ddf66f07748f9e81c4fd50">195bd02</a>]</li>
+<li>♻️ (core): Tag refactoring and date period display utilities [<a href="https://github.com/dd/Meringue/commit/0f65c2151394dd521cf312e8f66c9f68cf89e1b3">0f65c21</a>]</li>
+<li>♻️ (core): Refactoring the copyright date tag [<a href="https://github.com/dd/Meringue/commit/29aa1f3fd4f9652f9da6996762fb599c3c11dded">29aa1f3</a>]</li>
+<li>♻️ (core): Refactor Mixin publications by dates [<a href="https://github.com/dd/Meringue/commit/60921ced5b4844d9210c0983a209041813174836">60921ce</a>]</li>
+<li>♻️ (core): Refactor Publication Mixins [<a href="https://github.com/dd/Meringue/commit/2deac170cfbd8af8669d47a4903fe9f5905b66ec">2deac17</a>]</li>
+<li>💬 (repo): Consolidated emails for the git log [<a href="https://github.com/dd/Meringue/commit/c40d0aceeb946302e5a355cc69ac3b174c66b6f5">c40d0ac</a>]</li>
+<li>🔧 (git): Added code style check when committing changes [<a href="https://github.com/dd/Meringue/commit/0715020cb8bda07e53b129a9c45ba8bf161ad5b7">0715020</a>]</li>
+<li>🔧 (git): Now we use gitmoji for commits [<a href="https://github.com/dd/Meringue/commit/20b5439364cf8e7936c94d1ccbbdf45334e18b72">20b5439</a>]</li>
+<li>♻️ (core): Refactor Upload Handlers [<a href="https://github.com/dd/Meringue/commit/be985dc64527bba24566a1e61edbbe69b8528eca">be985dc</a>,<a href="https://github.com/dd/Meringue/commit/a3798afc3c048efd1ba838acb3f447cb6bd474ba">a3798af</a>]</li>
+<li>♻️ (conf): Updated package settings [<a href="https://github.com/dd/Meringue/commit/4f50bbf003b44bf8e28a1c86da430f466214cfff">4f50bbf</a>,<a href="https://github.com/dd/Meringue/commit/7b0dc9309dbdf47fe8fd6e28f8ffc01cb4cabcca">7b0dc93</a>,<a href="https://github.com/dd/Meringue/commit/b169cbeb46e4de3c038f20bdfb74782923013cc8">b169cbe</a>,<a href="https://github.com/dd/Meringue/commit/0e47630c3da98e86ba14953b89ed4650e6127d9d">0e47630</a>]</li>
+<li>🔧 (lint): Codestyle and linter setup [<a href="https://github.com/dd/Meringue/commit/42b10d3c81f37b555b6c8a90c3d79a78bd6e55f5">42b10d3</a>]</li>
+<li>♻️ (refactor): Codestyle and linter [<a href="https://github.com/dd/Meringue/commit/96fb5dccc6bb8bfa42e58e196f27a737e11cd995">96fb5dc</a>,<a href="https://github.com/dd/Meringue/commit/e3e5d2cda8df57d250bf56e26fc9ae178fe00ec7">e3e5d2c</a>,<a href="https://github.com/dd/Meringue/commit/6889005b399f9d05d3466b05593c509be543b711">6889005</a>,<a href="https://github.com/dd/Meringue/commit/c9461656b14307d41658655f73332df9ccecfa49">c946165</a>,<a href="https://github.com/dd/Meringue/commit/b4aad26d586eba49d40ee93666325a2bc9f0034b">b4aad26</a>]</li>
+<li>🔧 (tests): Added and configured tests [<a href="https://github.com/dd/Meringue/commit/197f44d43fd2bb15cc4dc59ec2cc43efacd865f5">197f44d</a>,<a href="https://github.com/dd/Meringue/commit/a4a222f19d7a76242d8096bfb7a529b127576ec0">a4a222f</a>,<a href="https://github.com/dd/Meringue/commit/64dc6d271ed55c22fa22c44f87e3a510885bb8ed">64dc6d2</a>,<a href="https://github.com/dd/Meringue/commit/ff2e0631fc09bb66b4ceb0387358b63c900a8637">ff2e063</a>,<a href="https://github.com/dd/Meringue/commit/ec8cab68743d4c6b4cba5fb9d1429566fac4f52b">ec8cab6</a>,<a href="https://github.com/dd/Meringue/commit/2688f5e4e007d6b6e1b981d7e7618681f5d180c5">2688f5e</a>,<a href="https://github.com/dd/Meringue/commit/ae7a17cd9b30c46a21774501bc026270ed3d0195">ae7a17c</a>]</li>
+<li>🔧 (tests): Tests on push hook to github [<a href="https://github.com/dd/Meringue/commit/414093f7820b330c6eaade8620e2feeca5bf2525">414093f</a>,<a href="https://github.com/dd/Meringue/commit/f5e5ac3401e717a3092e49f7f51d87df15c0a0c4">f5e5ac3</a>,<a href="https://github.com/dd/Meringue/commit/fad22df0ede75508ca3d663cfb68de581d5c6fa0">fad22df</a>,<a href="https://github.com/dd/Meringue/commit/8b2d6e7f581d2b67ca340dcbca2fd5ecf3ce9c3d">8b2d6e7</a>,<a href="https://github.com/dd/Meringue/commit/05213cd9fbce6f7467e0eab9832ae63bb223c17e">05213cd</a>,<a href="https://github.com/dd/Meringue/commit/6fbe7ad182a89e262842beae38c6923197df79e6">6fbe7ad</a>,<a href="https://github.com/dd/Meringue/commit/a34e34fde4eed7ce6fe7193d994d8bcdfc531435">a34e34f</a>,<a href="https://github.com/dd/Meringue/commit/17a41f85a5b0a22f3dde4c4458d4852f3ad52d3e">17a41f8</a>,<a href="https://github.com/dd/Meringue/commit/855a7a489a06aa6704ed94a7d9370b29f07a3e03">855a7a4</a>,<a href="https://github.com/dd/Meringue/commit/4f03343b0092cfa912683013154a293b8921a716">4f03343</a>,<a href="https://github.com/dd/Meringue/commit/bab6bad3e2cdde9795ea146eb1f09bbef29cf14a">bab6bad</a>,<a href="https://github.com/dd/Meringue/commit/2395a7d652749cf1aa84856283ee061e80102ccf">2395a7d</a>]</li>
+<li>🔧 (docs): Added and initially configured mkdocs [<a href="https://github.com/dd/Meringue/commit/fa99cd431d7cf1267cf0cb4a15416d42d0eccf53">fa99cd4</a>,<a href="https://github.com/dd/Meringue/commit/b7cec986a81dee94af659f4585154cb7d253a6cd">b7cec98</a>,<a href="https://github.com/dd/Meringue/commit/53d65f0eb6b9cedac10dcb43b72f44f8851071a5">53d65f0</a>,<a href="https://github.com/dd/Meringue/commit/5b50423af97d9a88ce4d4a99d06b0e25abac3a39">5b50423</a>,<a href="https://github.com/dd/Meringue/commit/7203552963beea54d5b2910543fc71efe7588d8f">7203552</a>,<a href="https://github.com/dd/Meringue/commit/eaaeafa4b95a7c42dbede49c11998b45d732e108">eaaeafa</a>,<a href="https://github.com/dd/Meringue/commit/241f5dd29d0febc6a5988185d25ae45879033bcc">241f5dd</a>,<a href="https://github.com/dd/Meringue/commit/bafc88f31c262d0cb6fe836f6e9ffb3d36e46634">bafc88f</a>,<a href="https://github.com/dd/Meringue/commit/360c58e066e3ba640fef5263553e976da6da955e">360c58e</a>,<a href="https://github.com/dd/Meringue/commit/70c5a2102dc46ce3fd6d3ee01fe2ff57b2f61b7d">70c5a21</a>,<a href="https://github.com/dd/Meringue/commit/725df13c125d5583d8a72b4f6adc83252eefb4ab">725df13</a>,<a href="https://github.com/dd/Meringue/commit/4a9f1d6310241e7a2965d5ea68c388f79c4e3ae1">4a9f1d6</a>,<a href="https://github.com/dd/Meringue/commit/941914f12fe4409baf3cd05b34d60cf294c7cdd8">941914f</a>,<a href="https://github.com/dd/Meringue/commit/7eb5689a24192e83869af6168c6f65ef83844c41">7eb5689</a>,<a href="https://github.com/dd/Meringue/commit/9186657a39b999e1540665f0de6b14c239eb358a">9186657</a>]</li>
+<li>🔧 (docs): Publishing documentation in github pages [<a href="https://github.com/dd/Meringue/commit/c5a1b0364756dda9d22095ef116605ecbb59f9c7">c5a1b03</a>,<a href="https://github.com/dd/Meringue/commit/ac3eb6203c5cc730cf7437fa8e1feea08a820616">ac3eb62</a>,<a href="https://github.com/dd/Meringue/commit/1aa4afea0083248a7282ed9005d289e0da6882bf">1aa4afe</a>,<a href="https://github.com/dd/Meringue/commit/ac2bc72d7dd33ab7b02f5a809f46d390476bf264">ac2bc72</a>,<a href="https://github.com/dd/Meringue/commit/85562dcca067f66e03e59d53031df8ad94eb0570">85562dc</a>,<a href="https://github.com/dd/Meringue/commit/f892e781c2689f49192738adffb21454b743efac">f892e78</a>]</li>
+<li>🔧 (docs): Build and publication of documentation ready [<a href="https://github.com/dd/Meringue/commit/e63c17082271792a01462cd413ba60691c835eb3">e63c170</a>,<a href="https://github.com/dd/Meringue/commit/1f91c9c5c798725c8518fe6ee9abd826c6a18b04">1f91c9c</a>,<a href="https://github.com/dd/Meringue/commit/c00fa81807359510f7db890d1bde1272b682f469">c00fa81</a>]</li>
+</ul>
+<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">¤</a></h3>
+<ul>
+<li>➖ (build): Removed unnecessary dependencies [<a href="https://github.com/dd/Meringue/commit/26cfe6e80389b1b190c15a02af3ed2de4f0689d4">26cfe6e</a>]</li>
+<li>➖ (refactor): Removed old functionality and unnecessary code [<a href="https://github.com/dd/Meringue/commit/aeb164d9ce2f062660182bc7a4a0da0650604bb5">aeb164d</a>,<a href="https://github.com/dd/Meringue/commit/e486871921ccebba0e882bf23bafce0f90fb552e">e486871</a>,<a href="https://github.com/dd/Meringue/commit/886046a56fcfe5e6d5b28a4d7e0973cb01334a6c">886046a</a>]</li>
+</ul>
+<h3 id="miscellaneous_2">Miscellaneous<a class="headerlink" href="#miscellaneous_2" title="Permanent link">¤</a></h3>
+<ul>
+<li>🥚 (core): Im a teapot [<a href="https://github.com/dd/Meringue/commit/3e464608e4643ce980b60cb92f46c77c6ea3a58a">3e46460</a>]</li>
+<li>🧪 (conf): Tests for the Settings class [<a href="https://github.com/dd/Meringue/commit/20741e179d08d6d1a0cb4e6cbd59bb78cf5387fa">20741e1</a>,<a href="https://github.com/dd/Meringue/commit/11352b65974f42b475d0dfd430495fc49846f100">11352b6</a>]</li>
+<li>🌐 (docs): Translation of documentation into English [<a href="https://github.com/dd/Meringue/commit/5b00c3ab289df68ce4e3ebccf0fd75186c58fb9a">5b00c3a</a>,<a href="https://github.com/dd/Meringue/commit/a4b5e8ed2355f576e013e7ca2d43884318badfa9">a4b5e8e</a>]</li>
+<li>📝 (docs): Documentation text update [<a href="https://github.com/dd/Meringue/commit/5fd1a8c95b3ba716cb95d80e8a245351739fbd1a">5fd1a8c</a>,<a href="https://github.com/dd/Meringue/commit/e59522f4261015f1b72dc46de77a733e2e2197db">e59522f</a>,<a href="https://github.com/dd/Meringue/commit/32dae9992d27fa15e60126f32117664a596b1717">32dae99</a>,<a href="https://github.com/dd/Meringue/commit/ececaf9bf4e516af048037f3f2fcf97ed31f32a3">ececaf9</a>,<a href="https://github.com/dd/Meringue/commit/bd4ec8d36a5752e866ff0b8dd395e6e092e5058b">bd4ec8d</a>,<a href="https://github.com/dd/Meringue/commit/1f1fb0b6e56d7bf9033cd7e8677c330d07e9f8a8">1f1fb0b</a>]</li>
+</ul>
+<p><a name="0.4.0"></a></p>
+<h2 id="040-2023-04-27">0.4.0 (2023-04-27)<a class="headerlink" href="#040-2023-04-27" title="Permanent link">¤</a></h2>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">¤</a></h3>
+<ul>
+<li>Added PublishManager.unpublished method [<a href="https://github.com/dd/Meringue/commit/c64c3bf9b86be0f698db4bc4ab4f3c181f4cc376">c64c3bf</a>]</li>
+<li>Added PublishQuerySet [<a href="https://github.com/dd/Meringue/commit/474d2327de37050449041527f8dd76503c8cacae">474d232</a>]</li>
+<li>Added SortingMixin [<a href="https://github.com/dd/Meringue/commit/79cea391cbe680904b84b5a73b84e017dcd8180b">79cea39</a>]</li>
+<li>Added unify_email and unify_phone utilities [<a href="https://github.com/dd/Meringue/commit/52fca413464d8d4b14c789a53d08e8eed8cff0b0">52fca41</a>]</li>
+<li>Added template redefining drf base template to remove drf title [<a href="https://github.com/dd/Meringue/commit/b5bab761a90416fa41127aedbe54af2b34edb866">b5bab76</a>]</li>
+</ul>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">¤</a></h3>
+<ul>
+<li>update settings [<a href="https://github.com/dd/Meringue/commit/5c0fb4d2348b418aa17af78af7aad14986a80a1c">5c0fb4d</a>]</li>
+<li>update version print function [<a href="https://github.com/dd/Meringue/commit/a8f6fa5903f826d1ce595a1615587fcdd454859c">a8f6fa5</a>]</li>
+</ul>
+<h3 id="miscellaneous_3">Miscellaneous<a class="headerlink" href="#miscellaneous_3" title="Permanent link">¤</a></h3>
+<ul>
+<li>License type changed [<a href="https://github.com/dd/Meringue/commit/c48791f3c4a21e8c25c20f24ec54812ac671ea6c">c48791f</a>]</li>
+<li>refact: Updated package build system [<a href="https://github.com/dd/Meringue/commit/304daffd13b2da736a93ae567d001a3b30b6441b">304daff</a>]</li>
+<li>update setup script [<a href="https://github.com/dd/Meringue/commit/ea5188871a6057c3de798dcaae6aba72bee1210a">ea51888</a>]</li>
+<li>update files permissions [<a href="https://github.com/dd/Meringue/commit/06026499c71976b103f5e15326228e1e44eb0dd6">0602649</a>]</li>
+<li>clear code [<a href="https://github.com/dd/Meringue/commit/fc56a8b5cca317ccc4f900daa2b845ec66b23683">fc56a8b</a>]</li>
+<li>update settings [<a href="https://github.com/dd/Meringue/commit/5c0fb4d2348b418aa17af78af7aad14986a80a1c">5c0fb4d</a>]</li>
+<li>more structure updates [<a href="https://github.com/dd/Meringue/commit/91f4de8e25a9f6f4cebf9e29e0f83bfae2a42fe9">91f4de8</a>]</li>
+<li>some fixes thumbnails [<a href="https://github.com/dd/Meringue/commit/72f69e0b0c2e49cde94f68b28810dc3023df1b55">72f69e0</a>]</li>
+<li>add labels for apps [<a href="https://github.com/dd/Meringue/commit/2657aeb57f2cd48142ae08de841a0a1bac5e5c27">2657aeb</a>]</li>
+<li>rename PublishModel -&gt; PublishedBase [<a href="https://github.com/dd/Meringue/commit/5d1bcceae94ef64aa8a973313c17880a26c953d4">5d1bcce</a>]</li>
+</ul>
+<p><a name="0.3.5"></a></p>
+<h2 id="035-2015-08-25">0.3.5 (2015-08-25)<a class="headerlink" href="#035-2015-08-25" title="Permanent link">¤</a></h2>
+<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">¤</a></h3>
+<ul>
+<li>Added tag get_with_args_and_kwargs [<a href="https://github.com/dd/Meringue/commit/4ba35a339efe49f77f3cffc2f1ac6c438259236e">4ba35a3</a>]</li>
+<li>Added CMTimeMixin [<a href="https://github.com/dd/Meringue/commit/718149753e3d62613413ba5405717eede676986d">7181497</a>]</li>
+</ul>
+<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">¤</a></h3>
+<ul>
+<li>Method for renaming files moved to config [<a href="https://github.com/dd/Meringue/commit/690daaef16750f1ab98ff383e11ab56463985c30">690daae</a>]</li>
+</ul>
+<h3 id="miscellaneous_4">Miscellaneous<a class="headerlink" href="#miscellaneous_4" title="Permanent link">¤</a></h3>
+<ul>
+<li>verlib added to required dependencies</li>
+<li>Various fixes [<a href="https://github.com/dd/Meringue/commit/b149eefee6716ff75446f602d02cd31721b2d415">b149eef</a>,<a href="https://github.com/dd/Meringue/commit/27f6fddf7d42d2ad585aa0ee4cc5b4daefa6d99b">27f6fdd</a>,<a href="https://github.com/dd/Meringue/commit/4efb75c793f5a4d7b1c12cb3248cc9604a67207c">4efb75c</a>,<a href="https://github.com/dd/Meringue/commit/1501eb081c39ab05737041f60b00fcc43080a13f">1501eb0</a>,<a href="https://github.com/dd/Meringue/commit/528812dd4cfd34d939869f0bad6ef8d8ae52be0d">528812d</a>,<a href="https://github.com/dd/Meringue/commit/cbd8d2b5a254a08e9807de6b243c65babf6ce4b6">cbd8d2b</a>,<a href="https://github.com/dd/Meringue/commit/492ec5598ee70fd657e01cc5316502037f4b143f">492ec55</a>,<a href="https://github.com/dd/Meringue/commit/94d2c6c44c0e844ed8c87e1c8f4a794bf2c04018">94d2c6c</a>,<a href="https://github.com/dd/Meringue/commit/ead91c3db8ebe6800a1ba81bf225377ea9866f8f">ead91c3</a>]</li>
+<li>upload_handlers fix hash [<a href="https://github.com/dd/Meringue/commit/833a0337a0dd497eceaa82178ee58998368482f4">833a033</a>]</li>
+<li>Deprecate get_version [<a href="https://github.com/dd/Meringue/commit/153432904a654e75f14eb0aadadba2831317919e">1534329</a>]</li>
+<li>Setup reconfigure [<a href="https://github.com/dd/Meringue/commit/fe928fa972ba6dda341aaa0ad1cbdcf9b2836c46">fe928fa</a>]</li>
+</ul>
+<p><a name="0.3.4"></a></p>
+<h2 id="034-2015-08-22">0.3.4 (2015-08-22)<a class="headerlink" href="#034-2015-08-22" title="Permanent link">¤</a></h2>
+<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">¤</a></h3>
+<ul>
+<li>Added documentation with sphinx [<a href="https://github.com/dd/Meringue/commit/dd0ff736f5641a7a80956f8fa94971941583e0c6">dd0ff73</a>]</li>
+<li>Added add_placeholder tag to set placeholder field [<a href="https://github.com/dd/Meringue/commit/9a1847b8f95ffa67d3ae1e80dcfd9f9b4a3a7ac9">9a1847b</a>]</li>
+</ul>
+<h3 id="miscellaneous_5">Miscellaneous<a class="headerlink" href="#miscellaneous_5" title="Permanent link">¤</a></h3>
+<ul>
+<li>Updated dependencies</li>
+<li>upload_handlers fixed to work with django 1.8 [<a href="https://github.com/dd/Meringue/commit/0d85888e3f15c9b76f3595b5946fd8b1fd8c7801">0d85888</a>]</li>
+</ul>
+<p><a name="0.3.3"></a></p>
+<h2 id="033-2015-05-09">0.3.3 (2015-05-09)<a class="headerlink" href="#033-2015-05-09" title="Permanent link">¤</a></h2>
+<h3 id="miscellaneous_6">Miscellaneous<a class="headerlink" href="#miscellaneous_6" title="Permanent link">¤</a></h3>
+<ul>
+<li>
+<p>put_css/put_js:</p>
+</li>
+<li>
+<p>поправлена ссылка на .map</p>
+</li>
+<li>добавлен параметр MERINGUE_LOAD_MINI в settings указывающий загружать минифицированный файл или нет (default = DEBUG)</li>
+</ul>
+<p><a name="0.3.2"></a></p>
+<h2 id="032-2015-05-09">0.3.2 (2015-05-09)<a class="headerlink" href="#032-2015-05-09" title="Permanent link">¤</a></h2>
+<h3 id="miscellaneous_7">Miscellaneous<a class="headerlink" href="#miscellaneous_7" title="Permanent link">¤</a></h3>
+<ul>
+<li>fix PutStatic._fix_map_link [<a href="https://github.com/dd/Meringue/commit/a69232e8efc33983bef9ec729051b4f93bb721d3">a69232e</a>]</li>
+</ul>
+<p><a name="0.3.1"></a></p>
+<h2 id="031-2015-05-07">0.3.1 (2015-05-07)<a class="headerlink" href="#031-2015-05-07" title="Permanent link">¤</a></h2>
+<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">¤</a></h3>
+<ul>
+<li>Added get_version method [<a href="https://github.com/dd/Meringue/commit/a63fc4780e5f4fbbf395da5b24b3826da269af0f">a63fc47</a>]</li>
+<li>Added unify_email to unify emails</li>
+<li>Added put_js</li>
+<li>Added put_css</li>
+<li>Added put_reset</li>
+</ul>
+<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">¤</a></h3>
+<ul>
+<li>Updated build in egg [<a href="https://github.com/dd/Meringue/commit/4828fa241a61ebb58c3de1aa45f2b9400bccf771">4828fa2</a>]</li>
+<li>Text printing, replaced by logging [<a href="https://github.com/dd/Meringue/commit/e1ccffdb8a2dcff88f3c1d6b51928dee9e8740bd">e1ccffd</a>]</li>
+<li>upload_handlers now uses sha256 instead of md5</li>
+<li>Updated dependencies</li>
+</ul>
+<h3 id="miscellaneous_8">Miscellaneous<a class="headerlink" href="#miscellaneous_8" title="Permanent link">¤</a></h3>
+<ul>
+<li>Изменена стандартная formset_factory для того что бы выставляла префикс на все формы набора включая управляющие</li>
+<li>form_fieldsets - при необходимости разбивает форму по группам (fieldset)</li>
+<li>Шаблонный тег field_render выводит поля форм в заранее заданном виде</li>
+<li>Шаблонный тег field_render_classes возвращающий список классов для поля</li>
+<li>Декоратор anonymous_required пропускающий только неавторизованных пользователей</li>
+</ul>
+<p><a name="0.3.0"></a></p>
+<h2 id="030-2014-07-13">0.3.0 (2014-07-13)<a class="headerlink" href="#030-2014-07-13" title="Permanent link">¤</a></h2>
+<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">¤</a></h3>
+<ul>
+<li>Added GetAbsoluteUrlMixin</li>
+<li>Added PreviewImageFileInput</li>
+</ul>
+<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">¤</a></h3>
+<ul>
+<li>Renaming files in upload_handlers using file hash sum</li>
+</ul>
+<h3 id="miscellaneous_9">Miscellaneous<a class="headerlink" href="#miscellaneous_9" title="Permanent link">¤</a></h3>
+<ul>
+<li>Library build in egg</li>
+<li>Refinement of existing opportunities</li>
+<li>Documentation + tasklist [<a href="https://github.com/dd/Meringue/commit/fa248d13945b81a2e1ddab20d2883d41654c423d">fa248d1</a>,<a href="https://github.com/dd/Meringue/commit/541ee26bdc0ca32c848eeb86dec49b38f646c438">541ee26</a>,<a href="https://github.com/dd/Meringue/commit/19bf3e92c5fb0428ae9afd3a9ce67c793ddc756a">19bf3e9</a>]</li>
+<li>LICENSE GNU GPL v3 [<a href="https://github.com/dd/Meringue/commit/239df42e61c74fae42d412be17adf973370edec0">239df42</a>]</li>
+<li>Lint [<a href="https://github.com/dd/Meringue/commit/6b3337f96bde71ce38df8ef8d57ffd0391279db6">6b3337f</a>]</li>
+<li>Fixed bug with UrlPatterns if name is not urls.py</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom" title="April 4, 2025 01:22:51">2025-04-04 01:22:51+0000</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom" title="June 10, 2014 16:15:04">2014-06-10 16:15:04+0000</span>
+  </span>
+
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Contributors">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:dd@tovarisch.engineer">Dmitry Dobrynin</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+	
+		<div class="md-source-date">
+			<small>Authors: <span class='git-page-authors git-authors'><a href='mailto:dd@tovarisch.engineer'>Dmitry Dobrynin</a></span></small>
+		</div>
+	
+
+	<hr>
+	<footer class="sponsorship">
+		<hr>
+		<a href="https://t.me/spiderTongue" target="_blank" rel="noopener" >
+			<span class="twemoji heart-throb-hover">
+				
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6H5V4h2zm10 0h2V4h-2zm6 6v6h-2v-4h-2v4h-2v-2H7v2H5v-4H3v4H1v-6h2v-2h2V8h2V6h2v2h6V6h2v2h2v2h2v2zm-8-2v2h2v-2zm-8 2h2v-2H7zm4 6H7v2h4zm6 0h-4v2h4z"/></svg>
+			</span>
+		</a>
+		<hr>
+	</footer>
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../dev/tests/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tests">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Tests
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2014 - present <a href="https://t.me/spiderTongue" target="_blank" rel="noopener" >tovarisch.engineer</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/dd/Meringue" target="_blank" rel="noopener" title="github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://pypi.org/project/meringue/" target="_blank" rel="noopener" title="pypi" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.path", "navigation.prune", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "navigation.footer", "content.action.view", "content.action.edit", "content.tabs.link", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
