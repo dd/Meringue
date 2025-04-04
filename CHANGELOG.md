@@ -2,6 +2,28 @@
 
 <!-- version list -->
 
+## v1.3.1 (2025-04-04)
+
+### 🔧
+
+- 🔧 (CI/CD): Check release alredy exist
+  ([`3401dfe`](https://github.com/dd/Meringue/commit/3401dfec5ca81964ef3d8240ff4cfd02c79ec44f))
+
+- 🔧 (CI/CD): Reconfigure docs workflow - deploy after release
+  ([`fc5bbe1`](https://github.com/dd/Meringue/commit/fc5bbe1549d41e48cc7f3581a5f419c9b55f7376))
+
+### 🩹
+
+- 🩹 (CI/CD): Fix release workflow upload package to release
+  ([`4580057`](https://github.com/dd/Meringue/commit/458005795c0b637ab5dae93ca4c71a63e5623e2f))
+
+- 🩹 (CI/CD): Update release not at master branch
+  ([`debbc19`](https://github.com/dd/Meringue/commit/debbc19ed34abd3ffacaf89115824a248cc51b71))
+
+- 🩹 (docs): Hack to change license badge
+  ([`32ff579`](https://github.com/dd/Meringue/commit/32ff579903de1f55aad99eae060fd0a3537751cc))
+
+
 ## v1.3.0 (2025-04-03)
 
 ### ♻️
