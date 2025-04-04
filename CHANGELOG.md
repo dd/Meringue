@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v1.3.2 (2025-04-04)
+
+### 👽️
+
+- 👽️ (CI/CD): Try to fix release workflow
+  ([`40e31ee`](https://github.com/dd/Meringue/commit/40e31eefd367c479225985ff5050e5c07d89ad83))
+
+### 🚧
+
+- 🚧 (CI/CD): Try to fix auto build
+  ([`bcf5688`](https://github.com/dd/Meringue/commit/bcf568800bb2f65133b8d6b90986a9510b11f854))
+
+- 🚧 (CI/CD): Try to fix auto build
+  ([`a9fc1d5`](https://github.com/dd/Meringue/commit/a9fc1d5f8b27fe2cd4b74d8810808f1266fab6ea))
+
+
 ## v1.3.1 (2025-04-04)
 
 ### 🔧
