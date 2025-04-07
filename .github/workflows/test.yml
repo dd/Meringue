@@ -2,7 +2,9 @@ name: Tests
 
 on:
   push:
-    branches: [next]
+    branches: [next,master]
+    # We run tests on push to the master branch so that Codecov
+    # registers the coverage as test results for the master branch.
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -12,29 +14,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
-    name: Skip test check
-    runs-on: ubuntu-latest
-    # manual
-    # without 'skip ci'
-    if: |
-      github.event_name == 'workflow_dispatch'
-      || (
-        !contains(github.event.head_commit.message, 'skip ci')
-        && !contains(github.event.head_commit.message, 'ci skip')
-      )
-    steps:
-      - name: Setup | Checkout Repository
-        uses: actions/checkout@v4
+  # check:
+  #   name: Skip test check
+  #   runs-on: ubuntu-latest
+  #   # manual
+  #   # without 'skip ci'
+  #   if: |
+  #     github.event_name == 'workflow_dispatch'
+  #     || (
+  #       !contains(github.event.head_commit.message, 'skip ci')
+  #       && !contains(github.event.head_commit.message, 'ci skip')
+  #     )
+  #   steps:
+  #     - name: Setup | Checkout Repository
+  #       uses: actions/checkout@v4
 
-      - name: Setup | Skip duplicate workflow
-        id: skip
-        uses: fkirc/skip-duplicate-actions@v5
+  #     - name: Setup | Skip duplicate workflow
+  #       id: skip
+  #       uses: fkirc/skip-duplicate-actions@v5
 
   testdj2:
     name: Testing | Django 2
     needs: check
-    if: needs.check.outputs.should_skip != 'true'
+    # if: needs.check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -81,7 +83,7 @@ jobs:
   # testdj3:
   #   name: Testing | Django 3
   #   needs: check
-  #   if: needs.check.outputs.should_skip != 'true'
+  #   # if: needs.check.outputs.should_skip != 'true'
   #   runs-on: ubuntu-latest
   #   strategy:
   #     max-parallel: 4
@@ -128,7 +130,7 @@ jobs:
   # testdj4py310-311:
   #   name: Testing | Django 4 on Python 3.10-3.11
   #   needs: check
-  #   if: needs.check.outputs.should_skip != 'true'
+  #   # if: needs.check.outputs.should_skip != 'true'
   #   runs-on: ubuntu-latest
   #   strategy:
   #     max-parallel: 4
@@ -175,7 +177,7 @@ jobs:
   testdj4py312:
     name: Testing | Django 4 on Python 3.12
     needs: check
-    if: needs.check.outputs.should_skip != 'true'
+    # if: needs.check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -222,7 +224,7 @@ jobs:
   # testdj5py310-311:
   #   name: Testing | Django 5 on Python 3.10-3.11
   #   needs: check
-  #   if: needs.check.outputs.should_skip != 'true'
+  #   # if: needs.check.outputs.should_skip != 'true'
   #   runs-on: ubuntu-latest
   #   strategy:
   #     max-parallel: 4
@@ -269,7 +271,7 @@ jobs:
   testdj5py312:
     name: Testing | Django 5 on Python 3.12
     needs: check
-    if: needs.check.outputs.should_skip != 'true'
+    # if: needs.check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4

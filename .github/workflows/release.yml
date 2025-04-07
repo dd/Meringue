@@ -81,7 +81,7 @@ jobs:
 
       - name: Cleanup | Remove local prerelease tags
         if: github.event_name == 'push'
-        # For a stable release, we remove all local prerelease tags
+        # For a stable release, we remove all *local* prerelease tags
         # so that all commits are grouped under a single stable version
         # in the changelog.
         # Hoping that my proposal to add a feature for skipping dev
@@ -125,8 +125,7 @@ jobs:
           fi
 
           git commit -m "🔖 (release): Release v${{ steps.version.outputs.new_version }} [skip ci]"
-
-          git push origin "$BRANCH"
+          git push
 
       - name: Action | Build Release
         if: steps.version.outputs.new_release == 'true'
