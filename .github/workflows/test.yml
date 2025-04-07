@@ -35,7 +35,7 @@ jobs:
 
   testdj2:
     name: Testing | Django 2
-    needs: check
+    # needs: check
     # if: needs.check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     strategy:
@@ -82,7 +82,7 @@ jobs:
 
   # testdj3:
   #   name: Testing | Django 3
-  #   needs: check
+  #   # needs: check
   #   # if: needs.check.outputs.should_skip != 'true'
   #   runs-on: ubuntu-latest
   #   strategy:
@@ -129,7 +129,7 @@ jobs:
 
   # testdj4py310-311:
   #   name: Testing | Django 4 on Python 3.10-3.11
-  #   needs: check
+  #   # needs: check
   #   # if: needs.check.outputs.should_skip != 'true'
   #   runs-on: ubuntu-latest
   #   strategy:
@@ -176,7 +176,7 @@ jobs:
 
   testdj4py312:
     name: Testing | Django 4 on Python 3.12
-    needs: check
+    # needs: check
     # if: needs.check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     strategy:
@@ -223,7 +223,7 @@ jobs:
 
   # testdj5py310-311:
   #   name: Testing | Django 5 on Python 3.10-3.11
-  #   needs: check
+  #   # needs: check
   #   # if: needs.check.outputs.should_skip != 'true'
   #   runs-on: ubuntu-latest
   #   strategy:
@@ -270,7 +270,7 @@ jobs:
 
   testdj5py312:
     name: Testing | Django 5 on Python 3.12
-    needs: check
+    # needs: check
     # if: needs.check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     strategy:
