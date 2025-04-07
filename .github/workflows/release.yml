@@ -20,60 +20,28 @@ jobs:
   build:
     name: Build, Version & Publish
     runs-on: ubuntu-latest
-    # without 'skip ci' and push (master)
-    # without 'skip ci' and after push (on branch next) and 'Tests' workflow success
     if: |
       !contains(github.event.head_commit.message, 'skip ci')
       && !contains(github.event.head_commit.message, 'ci skip')
-      && (
-        github.event_name == 'push'
-        || (
-          github.event_name == 'workflow_run'
-          && github.event.workflow_run.event == 'push'
-          && github.event.workflow_run.conclusion == 'success'
-        )
-      )
 
     environment:
       name: pypi
       url: https://pypi.org/p/meringue
 
     steps:
-      - name: Setup | Checkout Repository
+      - name: Setup | Checkout Repository (master)
+        if: github.event_name == 'push'
         uses: actions/checkout@v4
         with:
+          ref: master
           fetch-depth: 0
 
-      - name: Setup | Determine branch name
-        id: determine_branch
-        run: |
-          set -e
-
-          echo "🧠 Event name: ${GITHUB_EVENT_NAME}"
-          echo "🔧 GITHUB_REF: ${GITHUB_REF}"
-
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_run" ]]; then
-            BRANCH="${{ github.event.workflow_run.head_branch }}"
-            echo "📡 Detected branch from workflow_run: $BRANCH"
-
-          elif [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
-            BRANCH="${GITHUB_REF#refs/heads/}"
-            echo "📡 Detected branch from ref: $BRANCH"
-
-          else
-            echo "❌ Unsupported or unknown event: ${GITHUB_EVENT_NAME}"
-            exit 1
-          fi
-
-          if [[ -z "$BRANCH" ]]; then
-            echo "❌ Could not determine branch name. Exiting."
-            exit 1
-          fi
-
-          git checkout $BRANCH
-
-          echo "✅ Using branch: $BRANCH"
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+      - name: Setup | Checkout Repository (next)
+        if: github.event_name != 'push'
+        uses: actions/checkout@v4
+        with:
+          ref: next
+          fetch-depth: 0
 
       - name: Setup | Cache pip
         uses: actions/cache@v4
@@ -84,66 +52,98 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
-      - name: Setup | Prepeare Semantic Version Release Options
-        id: release_options
+      - name: Action | Update version
+        id: version
         run: |
-          if [[ "${{ steps.determine_branch.outputs.branch }}" == "master" ]]; then
-            echo "🚀 Deploying stable release..."
-            echo "commit=true" >> $GITHUB_OUTPUT
+          OLD_VERSION=$(hatch version)
+          echo "old_version=$OLD_VERSION" >> $GITHUB_OUTPUT
+
+          hatch run version-update
+
+          NEW_VERSION=$(hatch version)
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+          if [[ "${OLD_VERSION}" == "${NEW_VERSION}" ]]; then
+            echo "new_release=false" >> $GITHUB_OUTPUT
           else
-            echo "🧪 Deploying dev release..."
-            echo "commit=false" >> $GITHUB_OUTPUT
+            echo "new_release=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Action | Semantic Version Release
-        id: release
-        uses: python-semantic-release/python-semantic-release@v9.21.0
+      - name: Setup | Install Node.js
+        if: steps.version.outputs.new_release == 'true'
+        uses: actions/setup-node@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit: ${{ steps.release_options.outputs.commit }}
-          build: false
+          node-version: 20
+
+      - name: Setup | Install gitmoji-changelog
+        if: steps.version.outputs.new_release == 'true'
+        run: npm install -g gitmoji-changelog
+
+      - name: Cleanup | Remove local prerelease tags
+        if: github.event_name == 'push'
+        # For a stable release, we remove all local prerelease tags
+        # so that all commits are grouped under a single stable version
+        # in the changelog.
+        # Hoping that my proposal to add a feature for skipping dev
+        # releases will be accepted and merged into gitmoji-changelog
+        # https://github.com/frinyvonnick/gitmoji-changelog/pull/279
+        run: git tag | grep -E '\-(dev|alpha|beta|rc)' | xargs -r git tag -d
+
+      - name: Action | Update changelog
+        if: steps.version.outputs.new_release == 'true'
+        run: |
+          hatch run changelog-update
+
+          START="## ${{ steps.version.outputs.new_version }}"
+          END="<a name=\""
+          CHANGELOG=$(awk "/$START/{flag=1; next} /^$END/{flag=0} flag" CHANGELOG.md)
+
+          echo "📝 Changelog for ${{ steps.version.outputs.new_version }}:"
+          echo "$CHANGELOG"
+
+          echo "log<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$CHANGELOG" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Setup | Configure Git for GitHub Actions bot
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Action | Commit version and changelog
+        if: steps.version.outputs.new_release == 'true'
+        run: |
+          git add meringue/__init__.py
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            # master branch (aka stable release) - commit changelog
+            # `hatch run changelog-update` runs in append mode, which
+            # means that if you save changes for a dev release,
+            # they will remain in the changelog and won't be carried
+            # over as part of the stable release when it comes out.
+            # That's why we commit he changelog only for stable releases.
+            git add CHANGELOG.md
+          fi
+
+          git commit -m "🔖 (release): Release v${{ steps.version.outputs.new_version }} [skip ci]"
+
+          git push origin "$BRANCH"
 
       - name: Action | Build Release
+        if: steps.version.outputs.new_release == 'true'
         run: hatch build
-
-      # - name: Action | Build Release and Commit (for stable release)
-      #   id: release
-      #   run: |
-      #     if [[ "${{ steps.determine_branch.outputs.branch }}" == "master" ]]; then
-      #       echo "🚀 Deploying stable release..."
-      #       hatch run semantic-release version --no-vcs-release --no-tag
-      #     else
-      #       echo "🧪 Deploying dev release..."
-      #       hatch run semantic-release version --no-commit --no-vcs-release --no-tag
-      #     fi
-
-      #     VERSION=$(hatch version)
-      #     echo "🏷️ Version extracted: v$VERSION"
-      #     echo "tag=v$VERSION" >> $GITHUB_OUTPUT
-
-      # - name: Action | Check release already exist
-      #   run: |
-      #     if gh release view "${{ steps.release.outputs.tag }}" >/dev/null 2>&1; then
-      #       echo "⚠️ Release ${{ steps.release.outputs.tag }} already exists. Exiting."
-      #       exit 0
-      #     fi
-      #     echo "✅ Release ${{ steps.release.outputs.tag }} not found. Continuing."
 
       - name: Action | Upload artifacts
         uses: actions/upload-artifact@v4
-        if: steps.release.outputs.released == 'true'
+        if: steps.version.outputs.new_release == 'true'
         with:
           name: python-artifacts
           path: dist/*
           if-no-files-found: error
 
       - name: Publish | Upload to PyPI
-        if: steps.release.outputs.released == 'true'
+        if: steps.version.outputs.new_release == 'true'
         uses: pypa/gh-action-pypi-publish@v1.12.4
 
       - name: Publish | Upload to GitHub Release Assets
-        uses: python-semantic-release/publish-action@v9.21.0
-        if: steps.release.outputs.released == 'true'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.release.outputs.tag }}
+        if: steps.version.outputs.new_release == 'true'
+        run: gh release create "v${{ steps.version.outputs.new_version }}" --notes "${{ steps.changelog.outputs.log }}" dist/*

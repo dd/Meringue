@@ -1,7 +1,6 @@
 name: Release Documentation
 
 on:
-  workflow_dispatch:
   workflow_run:
     workflows: ["Release Python Package"]
     types: [completed]
@@ -18,21 +17,13 @@ jobs:
   build:
     name: Building & Deploying Documentation
     runs-on: ubuntu-latest
-    # manual
-    # without 'skip ci' and push
-    # without 'skip ci' and after success 'Release Python Package' on branch (master or next)
+    # without 'skip ci' and after success 'Release Python Package'
     if: |
-      github.event_name == 'workflow_dispatch'
-      || (
-        !contains(github.event.head_commit.message, 'skip ci')
-        && !contains(github.event.head_commit.message, 'ci skip')
-        && (
-          github.event_name == 'push'
-          || (
-            github.event_name == 'workflow_run'
-            && github.event.workflow_run.conclusion == 'success'
-          )
-        )
+      !contains(github.event.head_commit.message, 'skip ci')
+      && !contains(github.event.head_commit.message, 'ci skip')
+      && (
+        github.event_name == 'workflow_run'
+        && github.event.workflow_run.conclusion == 'success'
       )
 
     permissions:
@@ -44,39 +35,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup | Determine branch name
-        id: determine_branch
-        run: |
-          set -e
-
-          echo "🧠 Event name: ${GITHUB_EVENT_NAME}"
-          echo "🔧 GITHUB_REF: ${GITHUB_REF}"
-
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_run" ]]; then
-            BRANCH="${{ github.event.workflow_run.head_branch }}"
-            echo "📡 Detected branch from workflow_run: $BRANCH"
-
-          elif [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
-            BRANCH="${{ github.event.pull_request.head.ref }}"
-            echo "📡 Detected branch from pull_request: $BRANCH"
-
-          elif [[ "${GITHUB_EVENT_NAME}" == "push" || "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
-            BRANCH="${GITHUB_REF#refs/heads/}"
-            echo "📡 Detected branch from ref: $BRANCH"
-
-          else
-            echo "❌ Unsupported or unknown event: ${GITHUB_EVENT_NAME}"
-            exit 1
-          fi
-
-          if [[ -z "$BRANCH" ]]; then
-            echo "❌ Could not determine branch name. Exiting."
-            exit 1
-          fi
-
-          echo "✅ Using branch: $BRANCH"
-          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
-
       - name: Setup | Set up Python runtime
         uses: actions/setup-python@v5
         with:
@@ -85,8 +43,38 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
+      - name: Setup | Determine release type
+        id: release
+        run: |
+          MERINGUE_VERSION=$(hatch version)
+          if [[ "$MERINGUE_VERSION" =~ (rc) ]]; then
+            TYPE=release-candidate
+          elif [[ "$MERINGUE_VERSION" =~ (dev|alpha|beta) ]]; then
+            TYPE=dev
+          else
+            TYPE=stable
+          fi
+
+          echo "ℹ️ Release: $TYPE"
+          echo "ℹ️ Version: $MERINGUE_VERSION"
+          echo "type=$TYPE" >> $GITHUB_OUTPUT
+
+      - name: Setup | Install Node.js
+        if: steps.release.outputs.type != 'stable'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup | Install gitmoji-changelog
+        if: steps.release.outputs.type != 'stable'
+        run: npm install -g gitmoji-changelog
+
+      - name: Action | Update changelog
+        if: steps.release.outputs.type != 'stable'
+        run: hatch run changelog-update
+
       - name: Action | Build & Check documentation
-        if: ${{ steps.determine_branch.outputs.branch == 'master' }}
+        if: ${{ steps.release.outputs.type == 'stable' }}
         run: hatch run docs:build-check
         continue-on-error: false
 
@@ -97,12 +85,12 @@ jobs:
 
       - name: Action | Build & Commit documentation
         run: |
-          if [[ "${{ steps.determine_branch.outputs.branch }}" == "master" ]]; then
+          if [[ "${{ steps.release.outputs.type }}" == "stable" ]]; then
             MERINGUE_DOCS_VERSION=$(hatch version | grep -Eo '[0-9]\.[0-9]+' | head -1)
             echo "🚀 Deploying docs for stable release $MERINGUE_DOCS_VERSION..."
             hatch run docs:ci-build $MERINGUE_DOCS_VERSION --update-aliases latest
 
-          elif [[ "${{ steps.determine_branch.outputs.branch }}" == "next" ]]; then
+          elif [[ "${{ steps.release.outputs.type }}" == "release-candidate" ]]; then
             echo "🧪 Deploying docs for next release..."
             hatch run docs:ci-build next
 

@@ -127,9 +127,9 @@ makemessages = "cd meringue/core && django-admin makemessages -l en -l ru --no-o
 compilemessages = "cd meringue && django-admin compilemessages -l en -l ru {args}"
 changelog-update = [
 	"git fetch origin --tags",
-	"gitmoji-changelog update \"$(hatch version)\" --preset generic --group-similar-commits",
+	"gitmoji-changelog update \"$(hatch version)\" --preset generic",
 ]
-release-tag = "git tag -a \"$(hatch version)\" -m \"$(hatch version)\""
+version-update = "semantic-release version --no-commit --no-tag --no-changelog --no-push --no-vcs-release --skip-build"
 
 [tool.hatch.envs.lint]
 description = "Lint environment"
@@ -344,7 +344,7 @@ source = ["meringue"]
 
 [tool.semantic_release]
 build_command = "hatch build"
-commit_message = "🔖 (release): Release {version} [skip ci]"
+commit_message = "🔖 (release): Release v{version} [skip ci]"
 commit_parser = "emoji"
 version_variables = [
 	"meringue/__init__.py:__version__"
@@ -352,13 +352,12 @@ version_variables = [
 
 [tool.semantic_release.branches.main]
 match = "master"
-prerelease_token = "rc"
 prerelease = false
 
 [tool.semantic_release.branches.next]
 match = "next"
 prerelease = true
-prerelease_token = "beta"
+prerelease_token = "rc"
 
 [tool.semantic_release.branches.dev]
 match = "dev"
@@ -410,44 +409,44 @@ allowed_tags = [
 	"🛂", ":passport_control:", # Work on code related to authorization, roles and permissions.
 	"🩹", ":adhesive_bandage:", # Simple fix for a non-critical issue.
 	"👔", ":necktie:", # Add or update business logic.
-	"🎨", ":art:", # Improve structure / format of the code.
-	"🔥", ":fire:", # Remove code or files.
-	"📝", ":memo:", # Add or update documentation.
-	"🚀", ":rocket:", # Deploy stuff.
-	"🎉", ":tada:", # Begin a project.
-	"✅", ":white_check_mark:", # Add, update, or pass tests.
-	"🔐", ":closed_lock_with_key:", # Add or update secrets.
-	"🔖", ":bookmark:", # Release / Version tags.
-	"🚨", ":rotating_light:", # Fix compiler / linter warnings.
-	"🚧", ":construction:", # Work in progress.
-	"💚", ":green_heart:", # Fix CI Build.
-	"👷", ":construction_worker:", # Add or update CI build system.
-	"♻️", ":recycle:", # Refactor code.
-	"🔨", ":hammer:", # Add or update development scripts.
-	"💩", ":poop:", # Write bad code that needs to be improved.
-	"🔀", ":twisted_rightwards_arrows:", # Merge branches.
-	"🚚", ":truck:", # Move or rename resources (e.g.: files, paths, routes).
-	"📄", ":page_facing_up:", # Add or update license.
-	"💡", ":bulb:", # Add or update comments in source code.
-	"🍻", ":beers:", # Write code drunkenly.
-	"🔊", ":loud_sound:", # Add or update logs.
-	"🔇", ":mute:", # Remove logs.
-	"👥", ":busts_in_silhouette:", # Add or update contributor(s).
-	"🏗️", ":building_construction:", # Make architectural changes.
-	"🤡", ":clown_face:", # Mock things.
-	"🙈", ":see_no_evil:", # Add or update a .gitignore file.
-	"📸", ":camera_flash:", # Add or update snapshots.
-	"🌱", ":seedling:", # Add or update seed files.
-	"🧐", ":monocle_face:", # Data exploration/inspection.
-	"⚰️", ":coffin:", # Remove dead code.
-	"🧪", ":test_tube:", # Add a failing test.
-	"🩺", ":stethoscope:", # Add or update healthcheck.
-	"🧱", ":bricks:", # Infrastructure related changes.
-	"🧑‍💻", ":technologist:", # Improve developer experience.
-	"💸", ":money_with_wings:", # Add sponsorships or money related infrastructure.
-	"🧵", ":thread:", # Add or update code related to multithreading or concurrency.
-	"🦺", ":safety_vest:", # Add or update code related to validation.
-	"✈️", ":airplane:", # Improve offline support.
+	# "🎨", ":art:", # Improve structure / format of the code.
+	# "🔥", ":fire:", # Remove code or files.
+	# "📝", ":memo:", # Add or update documentation.
+	# "🚀", ":rocket:", # Deploy stuff.
+	# "🎉", ":tada:", # Begin a project.
+	# "✅", ":white_check_mark:", # Add, update, or pass tests.
+	# "🔐", ":closed_lock_with_key:", # Add or update secrets.
+	# "🔖", ":bookmark:", # Release / Version tags.
+	# "🚨", ":rotating_light:", # Fix compiler / linter warnings.
+	# "🚧", ":construction:", # Work in progress.
+	# "💚", ":green_heart:", # Fix CI Build.
+	# "👷", ":construction_worker:", # Add or update CI build system.
+	# "♻️", ":recycle:", # Refactor code.
+	# "🔨", ":hammer:", # Add or update development scripts.
+	# "💩", ":poop:", # Write bad code that needs to be improved.
+	# "🔀", ":twisted_rightwards_arrows:", # Merge branches.
+	# "🚚", ":truck:", # Move or rename resources (e.g.: files, paths, routes).
+	# "📄", ":page_facing_up:", # Add or update license.
+	# "💡", ":bulb:", # Add or update comments in source code.
+	# "🍻", ":beers:", # Write code drunkenly.
+	# "🔊", ":loud_sound:", # Add or update logs.
+	# "🔇", ":mute:", # Remove logs.
+	# "👥", ":busts_in_silhouette:", # Add or update contributor(s).
+	# "🏗️", ":building_construction:", # Make architectural changes.
+	# "🤡", ":clown_face:", # Mock things.
+	# "🙈", ":see_no_evil:", # Add or update a .gitignore file.
+	# "📸", ":camera_flash:", # Add or update snapshots.
+	# "🌱", ":seedling:", # Add or update seed files.
+	# "🧐", ":monocle_face:", # Data exploration/inspection.
+	# "⚰️", ":coffin:", # Remove dead code.
+	# "🧪", ":test_tube:", # Add a failing test.
+	# "🩺", ":stethoscope:", # Add or update healthcheck.
+	# "🧱", ":bricks:", # Infrastructure related changes.
+	# "🧑‍💻", ":technologist:", # Improve developer experience.
+	# "💸", ":money_with_wings:", # Add sponsorships or money related infrastructure.
+	# "🧵", ":thread:", # Add or update code related to multithreading or concurrency.
+	# "🦺", ":safety_vest:", # Add or update code related to validation.
+	# "✈️", ":airplane:", # Improve offline support.
 ]
 major_tags = [
 	"💥", ":boom:", # Introduce breaking changes.
@@ -491,43 +490,43 @@ patch_tags = [
 	"🩹", ":adhesive_bandage:", # Simple fix for a non-critical issue.
 	"👔", ":necktie:", # Add or update business logic.
 ]
-other_allowed_tags = [
-	"🎨", ":art:", # Improve structure / format of the code.
-	"🔥", ":fire:", # Remove code or files.
-	"📝", ":memo:", # Add or update documentation.
-	"🚀", ":rocket:", # Deploy stuff.
-	"🎉", ":tada:", # Begin a project.
-	"✅", ":white_check_mark:", # Add, update, or pass tests.
-	"🔐", ":closed_lock_with_key:", # Add or update secrets.
-	"🔖", ":bookmark:", # Release / Version tags.
-	"🚨", ":rotating_light:", # Fix compiler / linter warnings.
-	"🚧", ":construction:", # Work in progress.
-	"💚", ":green_heart:", # Fix CI Build.
-	"👷", ":construction_worker:", # Add or update CI build system.
-	"♻️", ":recycle:", # Refactor code.
-	"🔨", ":hammer:", # Add or update development scripts.
-	"💩", ":poop:", # Write bad code that needs to be improved.
-	"🔀", ":twisted_rightwards_arrows:", # Merge branches.
-	"🚚", ":truck:", # Move or rename resources (e.g.: files, paths, routes).
-	"📄", ":page_facing_up:", # Add or update license.
-	"💡", ":bulb:", # Add or update comments in source code.
-	"🍻", ":beers:", # Write code drunkenly.
-	"🔊", ":loud_sound:", # Add or update logs.
-	"🔇", ":mute:", # Remove logs.
-	"👥", ":busts_in_silhouette:", # Add or update contributor(s).
-	"🏗️", ":building_construction:", # Make architectural changes.
-	"🤡", ":clown_face:", # Mock things.
-	"🙈", ":see_no_evil:", # Add or update a .gitignore file.
-	"📸", ":camera_flash:", # Add or update snapshots.
-	"🌱", ":seedling:", # Add or update seed files.
-	"🧐", ":monocle_face:", # Data exploration/inspection.
-	"⚰️", ":coffin:", # Remove dead code.
-	"🧪", ":test_tube:", # Add a failing test.
-	"🩺", ":stethoscope:", # Add or update healthcheck.
-	"🧱", ":bricks:", # Infrastructure related changes.
-	"🧑‍💻", ":technologist:", # Improve developer experience.
-	"💸", ":money_with_wings:", # Add sponsorships or money related infrastructure.
-	"🧵", ":thread:", # Add or update code related to multithreading or concurrency.
-	"🦺", ":safety_vest:", # Add or update code related to validation.
-	"✈️", ":airplane:", # Improve offline support.
-]
+# other_allowed_tags = [
+# 	"🎨", ":art:", # Improve structure / format of the code.
+# 	"🔥", ":fire:", # Remove code or files.
+# 	"📝", ":memo:", # Add or update documentation.
+# 	"🚀", ":rocket:", # Deploy stuff.
+# 	"🎉", ":tada:", # Begin a project.
+# 	"✅", ":white_check_mark:", # Add, update, or pass tests.
+# 	"🔐", ":closed_lock_with_key:", # Add or update secrets.
+# 	"🔖", ":bookmark:", # Release / Version tags.
+# 	"🚨", ":rotating_light:", # Fix compiler / linter warnings.
+# 	"🚧", ":construction:", # Work in progress.
+# 	"💚", ":green_heart:", # Fix CI Build.
+# 	"👷", ":construction_worker:", # Add or update CI build system.
+# 	"♻️", ":recycle:", # Refactor code.
+# 	"🔨", ":hammer:", # Add or update development scripts.
+# 	"💩", ":poop:", # Write bad code that needs to be improved.
+# 	"🔀", ":twisted_rightwards_arrows:", # Merge branches.
+# 	"🚚", ":truck:", # Move or rename resources (e.g.: files, paths, routes).
+# 	"📄", ":page_facing_up:", # Add or update license.
+# 	"💡", ":bulb:", # Add or update comments in source code.
+# 	"🍻", ":beers:", # Write code drunkenly.
+# 	"🔊", ":loud_sound:", # Add or update logs.
+# 	"🔇", ":mute:", # Remove logs.
+# 	"👥", ":busts_in_silhouette:", # Add or update contributor(s).
+# 	"🏗️", ":building_construction:", # Make architectural changes.
+# 	"🤡", ":clown_face:", # Mock things.
+# 	"🙈", ":see_no_evil:", # Add or update a .gitignore file.
+# 	"📸", ":camera_flash:", # Add or update snapshots.
+# 	"🌱", ":seedling:", # Add or update seed files.
+# 	"🧐", ":monocle_face:", # Data exploration/inspection.
+# 	"⚰️", ":coffin:", # Remove dead code.
+# 	"🧪", ":test_tube:", # Add a failing test.
+# 	"🩺", ":stethoscope:", # Add or update healthcheck.
+# 	"🧱", ":bricks:", # Infrastructure related changes.
+# 	"🧑‍💻", ":technologist:", # Improve developer experience.
+# 	"💸", ":money_with_wings:", # Add sponsorships or money related infrastructure.
+# 	"🧵", ":thread:", # Add or update code related to multithreading or concurrency.
+# 	"🦺", ":safety_vest:", # Add or update code related to validation.
+# 	"✈️", ":airplane:", # Improve offline support.
+# ]
