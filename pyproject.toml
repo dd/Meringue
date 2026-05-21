@@ -196,6 +196,9 @@ matrix.django.dependencies = [
 	{ value = "djangorestframework-simplejwt=={matrix:simplejwt}" },
 	{ value = "django_hosts=={matrix:django_hosts}" },
 ]
+matrix.simplejwt.dependencies = [
+	{ value = "setuptools", if = ["5.2.0"] },  # simplejwt <5.3 uses pkg_resources
+]
 [tool.hatch.envs.mtest.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
 PYTHONPATH  = "."
