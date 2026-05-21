@@ -65,6 +65,12 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
+      - name: Setup | Install setuptools for simplejwt <5.3
+        if: matrix.drf-simplejwt-version == '5.2.0'
+        run: |
+          hatch env create mtest.${{ env.TEST_NAME }}
+          hatch run mtest.${{ env.TEST_NAME }}:pip install setuptools
+
       - name: Action | Run Tests
         run: |
           COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
