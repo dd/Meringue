@@ -2,11 +2,7 @@ name: Release Python Package
 
 on:
   push:
-    branches: [master]
-  workflow_run:
-    workflows: ["Tests"]
-    types: [completed]
-    branches: [next]
+    branches: [master, next]
 
 concurrency:
   group: release-package-${{ github.ref }}
