@@ -26,18 +26,20 @@ jobs:
 
     steps:
       - name: Setup | Checkout Repository (master)
-        if: github.event_name == 'push'
+        if: github.ref == 'refs/heads/master'
         uses: actions/checkout@v4
         with:
           ref: master
           fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup | Checkout Repository (next)
-        if: github.event_name != 'push'
+        if: github.ref == 'refs/heads/next'
         uses: actions/checkout@v4
         with:
           ref: next
           fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup | Cache pip
         uses: actions/cache@v4
