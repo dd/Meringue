@@ -69,12 +69,17 @@ jobs:
         if: matrix.drf-simplejwt-version == '5.2.0'
         run: |
           hatch env create mtest.${{ env.TEST_NAME }}
-          hatch run mtest.${{ env.TEST_NAME }}:pip install setuptools
+          hatch run mtest.${{ env.TEST_NAME }}:pip install --force-reinstall "setuptools<75"
 
       - name: Action | Run Tests
         run: |
-          hatch run mtest.${{ env.TEST_NAME }}:pip freeze | grep setuptools || true
-          hatch run mtest.${{ env.TEST_NAME }}:pip install setuptools
+          echo "test 1"
+          hatch run mtest.${{ env.TEST_NAME }}:pip freeze | grep setuptools
+          echo "test 2"
+          hatch run mtest.${{ env.TEST_NAME }}:pip freeze | grep setuptools
+          echo "test 3"
+          hatch run mtest.${{ env.TEST_NAME }}:pip install "setuptools<75"
+          echo "test 4"
           COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
