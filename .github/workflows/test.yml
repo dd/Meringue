@@ -65,9 +65,6 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
-      - name: Action | Install setuptools for simplejwt <5.3
-        run: hatch run mtest.${{ env.TEST_NAME }}:python -m pip install setuptools
-
       - name: Action | Run Tests
         run: |
           COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
@@ -209,9 +206,6 @@ jobs:
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
 
-      - name: Action | Install setuptools for simplejwt <5.3
-        run: hatch run mtest.${{ env.TEST_NAME }}:python -m pip install setuptools
-
       - name: Action | Run Tests
         run: |
           COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
@@ -305,9 +299,6 @@ jobs:
 
       - name: Setup | Install Hatch
         uses: pypa/hatch@install
-
-      - name: Action | Install setuptools for simplejwt <5.3
-        run: hatch run mtest.${{ env.TEST_NAME }}:python -m pip install setuptools
 
       - name: Action | Run Tests
         run: |
