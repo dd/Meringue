@@ -187,6 +187,7 @@ dependencies = [
 	"pycryptodome==3.22.0",
 	"drf-spectacular==0.28.0",
 	"Pillow==11.1.0",
+	"setuptools",  # required by simplejwt <5.3 (uses pkg_resources)
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
@@ -195,9 +196,6 @@ matrix.django.dependencies = [
 	{ value = "djangorestframework=={matrix:djangorestframework}" },
 	{ value = "djangorestframework-simplejwt=={matrix:simplejwt}" },
 	{ value = "django_hosts=={matrix:django_hosts}" },
-]
-matrix.simplejwt.dependencies = [
-	{ value = "setuptools", if = ["5.2.0"] },  # simplejwt <5.3 uses pkg_resources
 ]
 [tool.hatch.envs.mtest.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
