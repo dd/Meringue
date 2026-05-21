@@ -74,6 +74,8 @@ jobs:
       - name: Action | Run Tests
         run: |
           COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
+          hatch run mtest.${{ env.TEST_NAME }}:pip freeze | grep setuptools \
+          hatch run mtest.${{ env.TEST_NAME }}:pip install setuptools \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
       - name: Action | Upload coverage artifact
