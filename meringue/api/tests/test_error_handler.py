@@ -9,10 +9,7 @@ import pytest
 from rest_framework.exceptions import ErrorDetail
 from rest_framework.exceptions import ValidationError
 from rest_framework.test import APIClient
-try:
-    from rest_framework_simplejwt.exceptions import AuthenticationFailed
-except ImportError:
-    AuthenticationFailed = None
+from rest_framework_simplejwt.exceptions import AuthenticationFailed
 
 
 @override_settings(REST_FRAMEWORK={"EXCEPTION_HANDLER": "meringue.api.handlers.exception_handler"})
@@ -116,10 +113,12 @@ def test_validation_dict_error(mocked_is_valid):
     assert resp.json() == {"username": {"1": {"message": "Error message", "code": "error_code"}}}
 
 
-@pytest.mark.skipif(
-    AuthenticationFailed is None, reason="simplejwt not importable (missing pkg_resources)"
-)
 @pytest.mark.django_db
+@patch(
+    "rest_framework_simplejwt.serializers.TokenObtainSerializer.validate",
+    autospec=True,
+    side_effect=AuthenticationFailed("Test auth error", code="test_auth_error"),
+)
 @override_settings(
     INSTALLED_APPS=[
         # 'django.contrib.admin',
@@ -143,21 +142,16 @@ def test_validation_dict_error(mocked_is_valid):
         ),
     },
 )
-def test_validation__error():
+def test_validation__error(mocked_validate):
     """
     Checking single error validation handling
     """
 
-    with patch(
-        "rest_framework_simplejwt.serializers.TokenObtainSerializer.validate",
-        autospec=True,
-        side_effect=AuthenticationFailed("Test auth error", code="test_auth_error"),
-    ):
-        client = APIClient()
-        resp = client.post(
-            reverse("token_obtain"),
-            data={"username": "test", "password": "test"},
-            format="json",
-        )
-        assert resp.status_code == 401
-        assert resp.json() == {"code": "test_auth_error", "message": "Test auth error"}
+    client = APIClient()
+    resp = client.post(
+        reverse("token_obtain"),
+        data={"username": "test", "password": "test"},
+        format="json",
+    )
+    assert resp.status_code == 401
+    assert resp.json() == {"code": "test_auth_error", "message": "Test auth error"}
