@@ -117,10 +117,7 @@ def test_validation_dict_error(mocked_is_valid):
 @patch(
     "rest_framework_simplejwt.serializers.TokenObtainSerializer.validate",
     autospec=True,
-    side_effect=AuthenticationFailed(
-        "Test auth error",
-        code="test_auth_error",
-    ),
+    side_effect=AuthenticationFailed("Test auth error", code="test_auth_error"),
 )
 @override_settings(
     INSTALLED_APPS=[
@@ -149,6 +146,7 @@ def test_validation__error(mocked_validate):
     """
     Checking single error validation handling
     """
+
     client = APIClient()
     resp = client.post(
         reverse("token_obtain"),

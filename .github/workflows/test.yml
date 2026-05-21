@@ -1,10 +1,6 @@
 name: Tests
 
 on:
-  push:
-    branches: [next,master]
-    # We run tests on push to the master branch so that Codecov
-    # registers the coverage as test results for the master branch.
   pull_request:
     branches: [master]
   workflow_dispatch:
