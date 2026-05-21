@@ -53,15 +53,19 @@ jobs:
         run: |
           OLD_VERSION=$(hatch version)
           echo "old_version=$OLD_VERSION" >> $GITHUB_OUTPUT
+          echo "📌 Old version: $OLD_VERSION"
 
           hatch run version-update
 
           NEW_VERSION=$(hatch version)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "📌 New version: $NEW_VERSION"
 
           if [[ "${OLD_VERSION}" == "${NEW_VERSION}" ]]; then
+            echo "⏭️ No new release (version unchanged)"
             echo "new_release=false" >> $GITHUB_OUTPUT
           else
+            echo "🚀 New release: $OLD_VERSION → $NEW_VERSION"
             echo "new_release=true" >> $GITHUB_OUTPUT
           fi
 
