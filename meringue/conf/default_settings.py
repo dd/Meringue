@@ -91,7 +91,7 @@ THUMBNAIL_ACTIONS: Final[dict[str, str]] = {
 
 THUMBNAIL_DEFAULT_CROP_METHOD: Final[list[str]] = ["center", "center"]
 THUMBNAIL_DEFAULT_RESIZE_METHOD: Final[str] = "contain"
-THUMBNAIL_DEFAULT_RESIZE_STRATEGY: Final[str] = "standart"
+THUMBNAIL_DEFAULT_RESIZE_STRATEGY: Final[str] = "standard"
 THUMBNAIL_DEFAULT_BG_COLOR: Final[tuple[int]] = (200, 200, 200, 0)
 
 

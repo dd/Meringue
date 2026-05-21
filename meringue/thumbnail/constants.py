@@ -15,13 +15,13 @@ PROP_RESIZE_STRATEGY: Final[str] = "resize_strategy"
 # Crop methods
 CROP_METHOD_CENTER: Final[str] = "center"
 CROP_METHOD_TOP: Final[str] = "top"
-CROP_METHOD_RIGTH: Final[str] = "rigth"
+CROP_METHOD_RIGHT: Final[str] = "right"
 CROP_METHOD_BOTTOM: Final[str] = "bottom"
 CROP_METHOD_LEFT: Final[str] = "left"
 CROP_METHOD_LIST: Final[list[str]] = [
     CROP_METHOD_CENTER,
     CROP_METHOD_TOP,
-    CROP_METHOD_RIGTH,
+    CROP_METHOD_RIGHT,
     CROP_METHOD_BOTTOM,
     CROP_METHOD_LEFT,
 ]
@@ -38,11 +38,11 @@ RESIZE_METHOD_LIST: Final[list[str]] = [
 
 # Resize strategy
 RESIZE_STRATEGY_DO_NOT_INCREASE_SIZE: Final[str] = "no_increase"
-RESIZE_STRATEGY_STANDART: Final[str] = "standart"
+RESIZE_STRATEGY_STANDARD: Final[str] = "standard"
 RESIZE_STRATEGY_DO_NOT_REDUCE_SIZE: Final[str] = "no_reduce"
 RESIZE_STRATEGY_LIST: Final[list[str]] = [
     RESIZE_STRATEGY_DO_NOT_INCREASE_SIZE,
-    RESIZE_STRATEGY_STANDART,
+    RESIZE_STRATEGY_STANDARD,
     RESIZE_STRATEGY_DO_NOT_REDUCE_SIZE,
 ]
 

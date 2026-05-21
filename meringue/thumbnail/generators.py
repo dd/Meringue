@@ -72,7 +72,7 @@ class Thumbnailer:
             Pillow image.
         """
 
-        logger.debug(f"Thumbnail is made using job chain: {', '.join(self.job_chain)}")
+        logger.debug("Thumbnail is made using job chain: %s", ", ".join(self.job_chain))
 
         # openingn and prepearing file
         image = Image.open(self.source_image_path)

@@ -36,7 +36,7 @@ def crop(image, options):
     # позиционируем новое изображение по X
     if options[constants.PROP_CROP_METHOD][0] == constants.CROP_METHOD_LEFT:
         x = 0
-    elif options[constants.PROP_CROP_METHOD][0] == constants.CROP_METHOD_RIGTH:
+    elif options[constants.PROP_CROP_METHOD][0] == constants.CROP_METHOD_RIGHT:
         x = new_size[0] - current_size[0]
     else:
         # CROP_METHOD_CENTER
@@ -98,7 +98,7 @@ def resize(image, options):
         # RESIZE_METHOD_STRETCH
         # при сжатии никак не меняем конечный размер
 
-        if strategy != constants.RESIZE_STRATEGY_STANDART:
+        if strategy != constants.RESIZE_STRATEGY_STANDARD:
             msg = (
                 f"The `{constants.RESIZE_METHOD_STRETCH}` method is not compatible "
                 f"with the `{strategy}` strategy."

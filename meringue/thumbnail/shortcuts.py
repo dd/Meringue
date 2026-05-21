@@ -28,9 +28,8 @@ def _dummyimage(job_chain: str) -> str:
 
     if settings.DEBUG:
         size = (42, 42)
-        job_chain.reverse()
         final_size = re.compile(r"s:(\d+)x(\d+)")
-        for task in job_chain:
+        for task in reversed(job_chain):
             try:
                 size = final_size.search(task).groups()
                 break

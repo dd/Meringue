@@ -77,11 +77,11 @@ class WrongActionOrPropertyError(ThumbnailerError):
 
 class WrongFormatError(ThumbnailerError):
     """
-    Wrong action or property exception
+    Wrong format exception
     """
 
     default_message = "`{out_format}` format is not supported."
-    default_code = "wrong_action_or_property"
+    default_code = "wrong_format"
 
     def __init__(self, out_format: str, message: str | None = None, code: str | None = None):
         """

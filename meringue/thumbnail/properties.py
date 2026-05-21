@@ -3,7 +3,7 @@ import re
 from meringue.thumbnail.constants import CROP_METHOD_BOTTOM
 from meringue.thumbnail.constants import CROP_METHOD_CENTER
 from meringue.thumbnail.constants import CROP_METHOD_LEFT
-from meringue.thumbnail.constants import CROP_METHOD_RIGTH
+from meringue.thumbnail.constants import CROP_METHOD_RIGHT
 from meringue.thumbnail.constants import CROP_METHOD_TOP
 from meringue.thumbnail.constants import PROP_BG_COLOR
 from meringue.thumbnail.constants import PROP_CROP_METHOD
@@ -30,7 +30,7 @@ def set_crop_method(value, opt):
         methods = [CROP_METHOD_CENTER, CROP_METHOD_CENTER]
 
     elif len(methods) == 2:  # noqa: PLR2004
-        if methods[0] not in [CROP_METHOD_RIGTH, CROP_METHOD_LEFT, CROP_METHOD_CENTER]:
+        if methods[0] not in [CROP_METHOD_RIGHT, CROP_METHOD_LEFT, CROP_METHOD_CENTER]:
             msg = "Value `{option}` is invalid for property `{property}` at the first position."
             raise WrongPropertyOptionError(PROP_CROP_METHOD, methods[0], msg)
 

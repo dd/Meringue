@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from django.template import Library
 
 from meringue.thumbnail.shortcuts import get_thumbnail
@@ -30,12 +32,12 @@ def thumbnail(filename, args=""):
         resize - изменение размера изображения до последнего установленного
         c:<color> - цвет заливки для кропа в формате rgba
             (c:255 255 255 255)
-        cm:left|center|rigth top|bottom - точка отсчёта для кропа
+        cm:left|center|right top|bottom - точка отсчёта для кропа
         rm:cover|contain|stretch - метод ресайза вписать в размер или
             растянуть
-        rs:no_increase|standart|no_reduce - стратегия ресайза - не давать увеличивать исходное
+        rs:no_increase|standard|no_reduce - стратегия ресайза - не давать увеличивать исходное
             изображение или уменьшать
     """
 
-    task_list = args.split(",")
-    return get_thumbnail(filename=filename, task_list=task_list)
+    job_chain = args.split(",")
+    return get_thumbnail(file_path=Path(filename), job_chain=job_chain)

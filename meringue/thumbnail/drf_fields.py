@@ -19,7 +19,7 @@ class BaseImageField(ImageField):
     def __init__(self, size=None, job_chain=None, **kwargs):
         if bool(size) and bool(job_chain):
             msg = "Need to set `size` or `job_chain` attribute (not both)."
-            raise Exception(msg)
+            raise ValueError(msg)
 
         elif size:
             self.job_chain = [
@@ -84,7 +84,7 @@ class MImageSetField(ImageField):
     ):
         if size and job_chains:
             msg = "Need to set 'size' or 'job_chains' attribute (not both)."
-            raise Exception(msg)
+            raise ValueError(msg)
 
         elif size:
             if not dimensions:
@@ -92,7 +92,7 @@ class MImageSetField(ImageField):
                     "If you specify the 'sizes' attribute, "
                     "then the 'dimensions' attribute cannot be empty."
                 )
-                raise Exception(msg)
+                raise ValueError(msg)
 
             self.job_chains = {}
 
@@ -111,10 +111,10 @@ class MImageSetField(ImageField):
         else:
             self.job_chains = {}
 
-        self.spactacular_annotate()
+        self.spectacular_annotate()
         super().__init__(**kwargs)
 
-    def spactacular_annotate(self):
+    def spectacular_annotate(self):
         items = {
             "type": "object",
             "properties": {
