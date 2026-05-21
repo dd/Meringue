@@ -1,4 +1,4 @@
-aazgbtr32# Contributing
+# Contributing
 
 Please don't be shy - comment, discuss and suggest whatever you think is important in the [discussions](https://github.com/dd/Meringue/discussions) on github, if you notice a bug please describe it in [issues](https://github.com/dd/Meringue/issues), and if you decide to contribute to the development of the project, feel free to send [pull request](https://github.com/dd/Meringue/pulls), and if possible, read further during development this section.
 

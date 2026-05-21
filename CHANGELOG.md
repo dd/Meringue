@@ -7,9 +7,7 @@
 
 ### Changed
 
-- 🔧 (CI/CD): Fix test workflow [[6d9bae4](https://github.com/dd/Meringue/commit/6d9bae45766413633503e2ae78f50a9280c74b91)]
-- 🔧 (CI/CD): Fixed the release workflow and updated tests [[678b7d4](https://github.com/dd/Meringue/commit/678b7d450c407f3d0f5fc652e07520ac91e01894)]
-- 🔧 (CI/CD): Reconfigure releases workflows [[f97c684](https://github.com/dd/Meringue/commit/f97c68456a7c9e7527d224a5dc23ee3941180fc2)]
+- 🔧 (CI/CD): Reconfigure releases and tests workflows [[f97c684](https://github.com/dd/Meringue/commit/f97c68456a7c9e7527d224a5dc23ee3941180fc2), [678b7d4](https://github.com/dd/Meringue/commit/678b7d450c407f3d0f5fc652e07520ac91e01894), [6d9bae4](https://github.com/dd/Meringue/commit/6d9bae45766413633503e2ae78f50a9280c74b91), [af0601b](https://github.com/dd/Meringue/commit/af0601bb95caac19d2769545c52ffd4291a8e7aa)]
 
 
 <a name="1.3.2"></a>
