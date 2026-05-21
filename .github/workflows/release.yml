@@ -148,6 +148,7 @@ jobs:
     if: needs.build.outputs.new_release == 'true'
 
     permissions:
+      contents: write
       id-token: write
 
     environment:
@@ -155,6 +156,9 @@ jobs:
       url: https://pypi.org/p/meringue
 
     steps:
+      - name: Setup | Checkout Repository
+        uses: actions/checkout@v4
+
       - name: Action | Download artifacts
         uses: actions/download-artifact@v4
         with:
@@ -167,6 +171,6 @@ jobs:
       - name: Publish | Upload to GitHub Release Assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_VERSION: ${{ needs.version.outputs.new_version }}
-          RELEASE_NOTES: ${{ needs.version.outputs.log }}
+          RELEASE_VERSION: ${{ needs.build.outputs.new_version }}
+          RELEASE_NOTES: ${{ needs.build.outputs.log }}
         run: gh release create "v${RELEASE_VERSION}" --notes "${RELEASE_NOTES}" dist/*

@@ -73,13 +73,6 @@ jobs:
 
       - name: Action | Run Tests
         run: |
-          echo "test 1"
-          hatch run mtest.${{ env.TEST_NAME }}:pip freeze | grep setuptools
-          echo "test 2"
-          hatch run mtest.${{ env.TEST_NAME }}:pip freeze | grep setuptools
-          echo "test 3"
-          hatch run mtest.${{ env.TEST_NAME }}:pip install "setuptools<75"
-          echo "test 4"
           COVERAGE_FILE=coverage-${{ env.TEST_NAME }} \
           hatch run mtest.${{ env.TEST_NAME }}:check --cov=meringue
 
@@ -325,7 +318,7 @@ jobs:
           path: coverage-${{ env.TEST_NAME }}
 
   result:
-    name: Tests Result & Upload to Codecov
+    name: "Result | All tests passed"
     needs:
       - testdj2
       # - testdj3
@@ -335,6 +328,29 @@ jobs:
       - testdj5py312
     runs-on: ubuntu-latest
     if: always()
+
+    steps:
+      - name: All tests passed
+        if: ${{ !contains(needs.*.result, 'failure') }}
+        run: echo "✅ All tests passed."
+
+      - name: Some tests failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: |
+          echo "❌ Some tests failed."
+          exit 1
+
+  codecov:
+    name: Upload coverage to Codecov
+    needs:
+      - testdj2
+      # - testdj3
+      # - testdj4py310-311
+      - testdj4py312
+      # - testdj5py310-311
+      - testdj5py312
+    runs-on: ubuntu-latest
+    if: always() && !contains(needs.*.result, 'failure')
 
     steps:
       - name: Action | Merge Artifacts
@@ -359,13 +375,3 @@ jobs:
         uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Result | All tests passed
-        if: ${{ !contains(needs.*.result, 'failure') }}
-        run: echo "✅ All tests passed."
-
-      - name: Result | Some tests failed
-        if: ${{ contains(needs.*.result, 'failure') }}
-        run: |
-          echo "❌ Some tests failed."
-          exit 1
