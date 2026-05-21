@@ -2,6 +2,52 @@
 
 
 
+<a name="1.3.4"></a>
+## 1.3.4 (2026-05-21)
+
+### Added
+
+- ✅ (CI/CD): Still try fix [[c943a5d](https://github.com/dd/Meringue/commit/c943a5de77e9ae5f2c4ad0bbc7c645afa904e255)]
+- ✅ (CI/CD): May be fix workflows [[76e8595](https://github.com/dd/Meringue/commit/76e859593e3cb564a37c902f5022452215a0ff8d)]
+- ✅ (CI/CD): Install setuptools for old django [[2840655](https://github.com/dd/Meringue/commit/2840655987433624ba2f3962bab1e9b641035cf6)]
+- ✅ (CI/CD): Skip test to fix tests workflow [[33cce91](https://github.com/dd/Meringue/commit/33cce91a374ad7b229e6d9e3761cee6e904ebaa0)]
+- ✅ (tests): Fix tests requirements [[21a583d](https://github.com/dd/Meringue/commit/21a583d87c3fe789b63f5556c902765369816a8a)]
+
+### Changed
+
+- 🔧 (CI/CD): Add PAT token [[1a389ca](https://github.com/dd/Meringue/commit/1a389ca1848d74535f422b4ecded682b2cbf80db)]
+- 🔧 (CI/CD): Update workflow [[2c165e6](https://github.com/dd/Meringue/commit/2c165e67f9919b5dd78ca1618be60b9cab8629e9)]
+- 🔧 (CI/CD): Update change version [[d4f904f](https://github.com/dd/Meringue/commit/d4f904f4ae37b14980241d60ddb1963af0121345)]
+- ⬆️ (CI/CD): Update Node versions [[9508714](https://github.com/dd/Meringue/commit/9508714e7de59b3a288dc05bfd758d4e8bcbbf72)]
+- ♻️ (thumbnail): Little refactor thumbnail package [[ac5cc37](https://github.com/dd/Meringue/commit/ac5cc3784d7151d46475e26e87e08f2050deb709)]
+- ♻️ (CI/CD): Clear workflow and CHANGELOG [[6316a51](https://github.com/dd/Meringue/commit/6316a51426ab4f611d5456f972ce88a99f4e6d01)]
+
+### Fixed
+
+- 🐛 (CI/CD): Fix tests [[674c668](https://github.com/dd/Meringue/commit/674c6687e3317e383bd887aeef50a2a2b3818fae)]
+- 🐛 (CI/CD): Fix install setuptools [[3eb7695](https://github.com/dd/Meringue/commit/3eb7695dd79c0a73e1034ae9d77fc091a0b07a60)]
+- 🐛 (CI/CD): Fix workflow reqs [[596dbf4](https://github.com/dd/Meringue/commit/596dbf42bf6ba4b7e761e95f8bda71c277511754)]
+- 🐛 (CI/CD): Update workflow action version [[2cced3e](https://github.com/dd/Meringue/commit/2cced3efa6dc06d189922c933cddc05cdf36e74f)]
+- 🐛 (thumbnail): Fixes and typos [[02fa706](https://github.com/dd/Meringue/commit/02fa70632fa724743cdd5a0a11e65e0c1582d8e6)]
+
+### Miscellaneous
+
+-  Merge pull request [#13](https://github.com/dd/Meringue/issues/13) from dd/dev [[71bac2a](https://github.com/dd/Meringue/commit/71bac2a0cfbeabf3b2f54c1a0562d588981225b5)]
+- 🧪 (CI/CD ): Test to fix tests [[e3d82ee](https://github.com/dd/Meringue/commit/e3d82ee6fa594afab69be76484bba5efd00e837e)]
+-  Merge pull request [#12](https://github.com/dd/Meringue/issues/12) from dd/dev [[e65f1b8](https://github.com/dd/Meringue/commit/e65f1b8a643ae94869c4cd6ec8ca8188f6647bde)]
+-  Merge pull request [#11](https://github.com/dd/Meringue/issues/11) from dd/dev [[593decc](https://github.com/dd/Meringue/commit/593decc902c5efa10711cb6da469be9bb7848f7e)]
+-  Merge pull request [#10](https://github.com/dd/Meringue/issues/10) from dd/dev [[a81e684](https://github.com/dd/Meringue/commit/a81e6849b1f2ac8776d999a3003cb14470a24608)]
+-  Merge branch &#x27;master&#x27; into dev [[093da8b](https://github.com/dd/Meringue/commit/093da8b86ec7b25bde0fe9444b84859391df2f29)]
+- 📝 (CI/CD): Check tests [[33dc6b1](https://github.com/dd/Meringue/commit/33dc6b1891392f42bb072e6b2e14db6753cac302)]
+-  Merge pull request [#9](https://github.com/dd/Meringue/issues/9) from dd/dev [[2d32025](https://github.com/dd/Meringue/commit/2d320255be7c14ee04d74098eccb7c9613cd8f33)]
+-  Merge branch &#x27;master&#x27; into dev [[510d8eb](https://github.com/dd/Meringue/commit/510d8eb69bbfc3a46e1ebc433f2d1bc0fec602a4)]
+-  Merge pull request [#8](https://github.com/dd/Meringue/issues/8) from dd/dev [[3a4e30d](https://github.com/dd/Meringue/commit/3a4e30d5a33f43d820842190b0d78fe789ba2aca)]
+-  Merge branch &#x27;next&#x27; into dev [[3e43d4a](https://github.com/dd/Meringue/commit/3e43d4a0c035b6f46020801c630c4c69c0490eae)]
+- 🩹 (CI/CD): Update workflows [[77c9235](https://github.com/dd/Meringue/commit/77c9235c1713921a2783ab36621b27cfe54b185f)]
+- 🩹 (CI/CD): Fix buil workflow [[d948d29](https://github.com/dd/Meringue/commit/d948d295a614620bc287d18f67b1c017d8d4ebda)]
+- 📝 (docs): Update Changelog and Contributing [[74eed99](https://github.com/dd/Meringue/commit/74eed99d1f4264a1b69f03c171484236fac0a393)]
+
+
 <a name="1.3.3"></a>
 ## 1.3.3 (2025-04-07)
 
