@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import Final
 
 from django.core.files.storage import Storage
-from django.db.models.utils import AltersData
 
 from PIL import Image
 
@@ -16,7 +15,7 @@ from meringue.thumbnail.storage import default_storage
 from meringue.thumbnail.types import JobChainType
 
 
-class ThumbnailImage(AltersData):
+class ThumbnailImage:
     """
     Thumbnail Image class.
     """

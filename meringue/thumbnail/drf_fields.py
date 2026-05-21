@@ -60,7 +60,7 @@ class MImageField(BaseImageField):
             result = optimized_image_url
 
         else:
-            logger.error(f"File `{path}` not found")
+            logger.error("File `%s` not found", path)
             result = _dummyimage([])
 
         return result
@@ -96,6 +96,7 @@ class MImageSetField(ImageField):
 
             self.job_chains = {}
 
+            dimensions = list(dimensions)
             if 1 not in dimensions:
                 dimensions.insert(0, 1)
 
@@ -158,7 +159,7 @@ class MImageSetField(ImageField):
         path = Path(value.path)
 
         if not path.exists():
-            logger.error(f"File `{path}` not found")
+            logger.error("File `%s` not found", path)
             return [
                 {
                     "url": _dummyimage(self.job_chains[1]),

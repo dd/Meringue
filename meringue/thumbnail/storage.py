@@ -19,7 +19,9 @@ def get_storage() -> Storage:
     """
 
     if django.VERSION < (4, 2):
-        DefaultStorage = settings.DEFAULT_FILE_STORAGE  # noqa: N806
+        from django.utils.module_loading import import_string
+
+        DefaultStorage = import_string(settings.DEFAULT_FILE_STORAGE)  # noqa: N806
         storage = DefaultStorage(
             location=m_settings.THUMBNAIL_DIR,
             base_url=m_settings.THUMBNAIL_URL,

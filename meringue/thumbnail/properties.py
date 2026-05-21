@@ -1,4 +1,5 @@
 import re
+from typing import Final
 
 from meringue.thumbnail.constants import CROP_METHOD_BOTTOM
 from meringue.thumbnail.constants import CROP_METHOD_CENTER
@@ -16,6 +17,9 @@ from meringue.thumbnail.constants import PROP_RESIZE_STRATEGY
 from meringue.thumbnail.constants import RESIZE_METHOD_LIST
 from meringue.thumbnail.constants import RESIZE_STRATEGY_LIST
 from meringue.thumbnail.exceptions import WrongPropertyOptionError
+
+
+_SIZE_RE: Final = re.compile(r"(\d+)?x(\d+)?")
 
 
 # cm - crop method
@@ -63,8 +67,7 @@ def set_resize_strategy(strategy, opt):
 
 # s - size
 def set_size(raw, opt):
-    size_re = re.compile(r"(\d+)?x(\d+)?")
-    size = [float(i or 0) for i in size_re.search(raw).groups()]
+    size = [float(i or 0) for i in _SIZE_RE.search(raw).groups()]
 
     # расчитываем относительные размеры если один из размеров не указан
     size[0] = (
