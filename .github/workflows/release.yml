@@ -76,7 +76,7 @@ jobs:
         run: npm install -g gitmoji-changelog
 
       - name: Cleanup | Remove local prerelease tags
-        if: github.event_name == 'push'
+        if: github.ref == 'refs/heads/master'
         # For a stable release, we remove all *local* prerelease tags
         # so that all commits are grouped under a single stable version
         # in the changelog.
@@ -110,7 +110,7 @@ jobs:
         if: steps.version.outputs.new_release == 'true'
         run: |
           git add meringue/__init__.py
-          if [[ "${{ github.event_name }}" == "push" ]]; then
+          if [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
             # master branch (aka stable release) - commit changelog
             # `hatch run changelog-update` runs in append mode, which
             # means that if you save changes for a dev release,
