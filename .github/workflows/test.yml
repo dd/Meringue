@@ -1,6 +1,8 @@
 name: Tests
 
 on:
+  push:
+    branches: [master]
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -350,9 +352,15 @@ jobs:
       # - testdj5py310-311
       - testdj5py312
     runs-on: ubuntu-latest
-    if: always() && !contains(needs.*.result, 'failure')
+    if: >-
+      always()
+      && !contains(needs.*.result, 'failure')
+      && contains(fromJSON('["master", "next"]'), github.base_ref || github.ref_name)
 
     steps:
+      - name: Setup | Checkout Repository
+        uses: actions/checkout@v4
+
       - name: Action | Merge Artifacts
         uses: actions/upload-artifact/merge@v4
         with:
