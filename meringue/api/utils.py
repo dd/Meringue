@@ -42,4 +42,4 @@ def render_error_details(error_detail: list | dict | ErrorDetail) -> list | dict
         return error_dict
 
     msg = f"Unknown error type {error_detail.__class__}: `{error_detail}`"
-    raise Exception(msg)
+    raise TypeError(msg)
