@@ -135,10 +135,13 @@ def test_reset_cache(getter):
     assert getter.call_count == 2
 
 
-@override_settings(TEST_MERINGUE={"OVERRIDED_PROP": "value 2"})
 def test_redefining():
     """
-    Checking that override the property value by the user in the project settings works
+    Checking that settings are updated after reset when django settings change
     """
     foo_settings = Settings("TEST_MERINGUE", {"OVERRIDED_PROP": "value"}, {}, [])
-    assert foo_settings.OVERRIDED_PROP == "value 2"
+    assert foo_settings.OVERRIDED_PROP == "value"
+
+    with override_settings(TEST_MERINGUE={"OVERRIDED_PROP": "value 2"}):
+        foo_settings.reset()
+        assert foo_settings.OVERRIDED_PROP == "value 2"
