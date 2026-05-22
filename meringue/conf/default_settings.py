@@ -84,15 +84,37 @@ THUMBNAIL_PROPERTIES: Final[dict[str, str]] = {
     "maxh": "meringue.thumbnail.properties.set_max_height",
     "c": "meringue.thumbnail.properties.set_bg_color",
 }
+"""
+Registered thumbnail properties.
+"""
+
 THUMBNAIL_ACTIONS: Final[dict[str, str]] = {
     "crop": "meringue.thumbnail.actions.crop",
     "resize": "meringue.thumbnail.actions.resize",
 }
+"""
+Registered thumbnail actions.
+"""
 
 THUMBNAIL_DEFAULT_CROP_METHOD: Final[list[str]] = ["center", "center"]
+"""
+Default crop method.
+"""
+
 THUMBNAIL_DEFAULT_RESIZE_METHOD: Final[str] = "contain"
+"""
+Default resize method.
+"""
+
 THUMBNAIL_DEFAULT_RESIZE_STRATEGY: Final[str] = "standard"
+"""
+Default resize strategy.
+"""
+
 THUMBNAIL_DEFAULT_BG_COLOR: Final[tuple[int]] = (200, 200, 200, 0)
+"""
+Default background color for crop in RGBA format.
+"""
 
 
 THUMBNAIL_SAVE_PARAMS_BY_FORMAT: Final[dict[str, dict]] = {
@@ -109,6 +131,9 @@ List of default options for saving thumbnails images by format.
 # THUMBNAIL_IMAGE_OPTIMIZE_HANDLER: Final[str] = None
 
 THUMBNAIL_DUMMYIMAGE_TEMPLATE: Final[str] = "//dummyimage.com/{width}x{height}/9e9e9e/424242.png"
+"""
+Template for dummy image URL. Supports `{width}` and `{height}` placeholders.
+"""
 
 THUMBNAIL_DEFAULT_FORMAT: Final[str] = "PNG"
 """

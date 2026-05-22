@@ -33,7 +33,7 @@ def crop(image, options):
     current_size = options[constants.PROP_CURRENT_SIZE]
     thumb = Image.new(mode="RGBA", size=new_size, color=options[constants.PROP_BG_COLOR])
 
-    # позиционируем новое изображение по X
+    # position image on X axis
     if options[constants.PROP_CROP_METHOD][0] == constants.CROP_METHOD_LEFT:
         x = 0
     elif options[constants.PROP_CROP_METHOD][0] == constants.CROP_METHOD_RIGHT:
@@ -42,7 +42,7 @@ def crop(image, options):
         # CROP_METHOD_CENTER
         x = (new_size[0] - current_size[0]) / 2
 
-    # позиционируем новое изображение по Y
+    # position image on Y axis
     if options[constants.PROP_CROP_METHOD][1] == constants.CROP_METHOD_TOP:
         y = 0
     elif options[constants.PROP_CROP_METHOD][1] == constants.CROP_METHOD_BOTTOM:
@@ -69,14 +69,14 @@ def resize(image, options):
     strategy = options[constants.PROP_RESIZE_STRATEGY]
 
     if method in [constants.RESIZE_METHOD_COVER, constants.RESIZE_METHOD_CONTAIN]:
-        # режим cover - заполнить всё новое изображение старым
+        # cover mode - fill the entire new image with the old one
         if method == constants.RESIZE_METHOD_COVER:
             res = max(
                 new_size[0] / current_size[0],
                 new_size[1] / current_size[1],
             )
 
-        # режим contain - вписать изображение полностью в новый размер
+        # contain mode - fit the entire image within the new size
         elif method == constants.RESIZE_METHOD_CONTAIN:
             res = min(
                 new_size[0] / current_size[0],
@@ -84,11 +84,11 @@ def resize(image, options):
             )
 
         if strategy == constants.RESIZE_STRATEGY_DO_NOT_INCREASE_SIZE and res > 1:
-            # отказываем в увеличении размера
+            # deny upscaling
             new_size = current_size.copy()
 
         elif strategy == constants.RESIZE_STRATEGY_DO_NOT_REDUCE_SIZE and res < 1:
-            # отказываем в уменьшении размера
+            # deny downscaling
             new_size = current_size.copy()
 
         else:
@@ -96,7 +96,7 @@ def resize(image, options):
 
     else:  # noqa: PLR5501
         # RESIZE_METHOD_STRETCH
-        # при сжатии никак не меняем конечный размер
+        # stretch mode - use the target size as is
 
         if strategy != constants.RESIZE_STRATEGY_STANDARD:
             msg = (

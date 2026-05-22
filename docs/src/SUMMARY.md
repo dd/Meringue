@@ -4,6 +4,7 @@
 	* [Core](usage/core.md)
 	* [API](usage/api.md)
 	* [Protected](usage/protected.md)
+	* [Thumbnail](usage/thumbnail.md)
 * [Code Reference](reference/)
 * Contributing
 	* [Introduction](dev/contributing.md)

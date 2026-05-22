@@ -69,7 +69,7 @@ def set_resize_strategy(strategy, opt):
 def set_size(raw, opt):
     size = [float(i or 0) for i in _SIZE_RE.search(raw).groups()]
 
-    # расчитываем относительные размеры если один из размеров не указан
+    # calculate proportional size if one dimension is omitted
     size[0] = (
         size[0] if size[0] else size[1] * opt[PROP_CURRENT_SIZE][0] / opt[PROP_CURRENT_SIZE][1]
     )
