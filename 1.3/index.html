@@ -768,29 +768,29 @@
 
 <p>A package providing various utilities for Django, such as mixins, form tools, upload handlers, and more.</p>
 <p>This library is a collection of reusable components that I frequently use across different projects. Its primary purpose is to clean up and standardize these tools, ensure they are well-tested, and provide clear documentation to make it easy for colleagues to understand and use.</p>
-<p>However, if someone decides to use this functionality in their project, and even more so to add functionality or change the implementation to a more correct, beautiful or understandable one, I will only be happy, do not worry and feel free to write to me by <a href="mailto:dd@tovarisch.engineer">mail</a>, create an <a href="https://github.com/dd/Meringue/issues">issue</a> or <a href="https://github.com/dd/Meringue/pulls">pull request</a> on <a href="https://github.com/dd/Meringue">github</a>.</p>
+<p>If you decide to use this in your project, or want to improve the implementation, feel free to reach out by <a href="mailto:dd@tovarisch.engineer">mail</a>, create an <a href="https://github.com/dd/Meringue/issues">issue</a> or <a href="https://github.com/dd/Meringue/pulls">pull request</a> on <a href="https://github.com/dd/Meringue">GitHub</a>. Contributions are always welcome!</p>
 <p>Read more in the <a href="https://dd.github.io/Meringue/">documentation</a>.</p>
 <h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">¤</a></h2>
 <p>Adding new functionality. Can change.</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://www.django-rest-framework.org/">drf</a> serializer serializer for automatic form generation on the front when working through rest api. (An npm package on <a href="https://vuejs.org/">vuejs</a> will also be developed generating form based on response from api).</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Authorization backend for authorization by a pair of email and password.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://www.django-rest-framework.org/">DRF</a> serializer for automatic form generation on the frontend via REST API. (An npm package for <a href="https://vuejs.org/">Vue.js</a> will also be developed to generate forms based on API responses).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Authentication backend for email and password login.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Functionality for working with images.<ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Image editor like easy_thumbnails.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> A field for the drf serializer that returns a set of images (for example, a standard image and a double-sized image for a retina screen), as well as in different formats (for example, in the original format and in webp).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> A DRF serializer field that returns a set of images in multiple sizes (e.g., standard and 2x for retina) and formats (e.g., original and WebP).</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Job chain presets</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tests</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Docs</li>
 </ul>
 </li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Functionality similar to that described in the previous paragraph only for video.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Similar image-processing functionality but for video.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Functionality for loading private files available through <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#internal">nginx internal</a>.</li>
 </ul>
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">¤</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Use Git Flow (read <a href="https://jeffkreeftmeijer.com/git-flow/">here</a> and <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">here</a>) to resolve the versioning</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Linter with a <a href="https://github.com/charliermarsh/ruff">Ruff</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Formatter with a <a href="https://github.com/psf/black">Black</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Linting with <a href="https://github.com/charliermarsh/ruff">Ruff</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Formatting with <a href="https://github.com/psf/black">Black</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Lint commit with <a href="https://jorisroovers.com/gitlint/">Gitlint</a> and <a href="https://www.conventionalcommits.org/">Conventional Commits</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Documentation with <a href="https://www.mkdocs.org/">mkdocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Testing local with <a href="https://hatch.pypa.io/1.7/meta/faq/#environments">hatch</a></li>
