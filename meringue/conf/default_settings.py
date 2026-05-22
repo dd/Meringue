@@ -12,7 +12,7 @@ UPLOAD_RENAME_HANDLER: Final[str] = "meringue.core.upload_handlers.rename_handle
 Path to method for renaming images on upload
 """
 
-COP_YEAR: Final[int] = None
+COP_YEAR: Final[int | None] = None
 """
 Project start year for the copyright tag
 """
@@ -29,12 +29,12 @@ CRYPTO_KEY: Final[str] = settings.SECRET_KEY[:32]
 Encryption key
 """
 
-FRONTEND_URLS: Final[dict] = None
+FRONTEND_URLS: Final[dict | None] = None
 """
 A dict of links to the frontend
 """
 
-FRONTEND_DOMAIN: Final[str] = None
+FRONTEND_DOMAIN: Final[str | None] = None
 """
 Domain for generating absolute links
 """

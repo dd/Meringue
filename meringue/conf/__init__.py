@@ -158,7 +158,7 @@ class Settings:
     def __init__(
         self,
         setting_key: str,
-        defaults: dict[str, str],
+        defaults: dict[str, Any] | ModuleType,
         deprecated_params: dict[str, str] | None = None,
         params_to_import: list[str] | None = None,
         params_to_impoprt: list[str] | None = None,
