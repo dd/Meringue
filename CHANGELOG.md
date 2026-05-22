@@ -2,6 +2,19 @@
 
 
 
+<a name="1.3.6"></a>
+## 1.3.6 (2026-05-22)
+
+### Changed
+
+- 🔧 (CI/CD): Update start test and send data to codecov [[858bf02](https://github.com/dd/Meringue/commit/858bf029531c83c0f9caf3196d21ad982da4074a)]
+
+### Miscellaneous
+
+-  Merge pull request [#16](https://github.com/dd/Meringue/issues/16) from dd/dev [[8b3e986](https://github.com/dd/Meringue/commit/8b3e98611742b1e416d200ce8a74226a17bd0f8c)]
+-  Merge branch &#x27;master&#x27; into dev [[954ac1f](https://github.com/dd/Meringue/commit/954ac1f11e4e122d89b0b51180590b68404c7c73)]
+
+
 <a name="1.3.5"></a>
 ## 1.3.5 (2026-05-22)
 
