@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling==1.27.0"]
+requires = ["hatchling==1.29.0"]
 build-backend = "hatchling.build"
 
 [project]
@@ -30,6 +30,10 @@ classifiers = [
 	"Framework :: Django :: 4.1",
 	"Framework :: Django :: 4.2",
 	"Framework :: Django :: 5.0",
+	"Framework :: Django :: 5.1",
+	"Framework :: Django :: 5.2",
+	"Framework :: Django :: 6",
+	"Framework :: Django :: 6.0",
 	"Intended Audience :: Developers",
 	"License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
 	"Natural Language :: English",
@@ -40,6 +44,8 @@ classifiers = [
 	"Programming Language :: Python :: 3.10",
 	"Programming Language :: Python :: 3.11",
 	"Programming Language :: Python :: 3.12",
+	"Programming Language :: Python :: 3.13",
+	"Programming Language :: Python :: 3.14",
 	"Programming Language :: Python :: 3 :: Only",
 	"Programming Language :: Python :: Implementation :: CPython",
 	"Programming Language :: Python :: Implementation :: PyPy",
@@ -49,16 +55,16 @@ classifiers = [
 	"Topic :: Software Development :: Libraries",
 ]
 dependencies = [
-	"Django>=2.0.0,<6",
+	"Django>=2.0.0,<7",
 ]
 dynamic = ["version"]
 
 [project.optional-dependencies]
-modeltranslation = ["django-modeltranslation>=0.17,<0.20"]
+modeltranslation = ["django-modeltranslation>=0.17,<0.21"]
 drf = ["djangorestframework>=3.13,<4"]
 drf-spectacular = ["drf-spectacular>=0.26.3,<1"]
-cryptodome = ["pycryptodome==3.20.0"]
-django_hosts = ["django_hosts>=5.2,<7"]
+cryptodome = ["pycryptodome==3.23.0"]
+django_hosts = ["django_hosts>=5.2,<8"]
 
 [project.urls]
 "Documentation" = "https://dd.github.io/Meringue"
@@ -86,18 +92,18 @@ exclude = [
 description = "Dev environment"
 python = "3.12"
 dependencies = [
-	"pre-commit==4.2.0",
-	"ipython==9.0.2",
-	"django==5.1.7",
-	"pytz==2025.2",
-	"django-modeltranslation==0.19.13",
-	"pycryptodome==3.22.0",
-	"djangorestframework==3.16.0",
-	"djangorestframework-simplejwt==5.5.0",
-	"drf-spectacular==0.28.0",
-	"Pillow==11.1.0",
-	"django_hosts==6.0",
-	"python-semantic-release==9.21.0",
+	"pre-commit==4.6.0",
+	"ipython==9.13.0",
+	"django==5.2",
+	"pytz==2026.2",
+	"django-modeltranslation==0.20.3",
+	"pycryptodome==3.23.0",
+	"djangorestframework==3.17.1",
+	"djangorestframework-simplejwt==5.5.1",
+	"drf-spectacular==0.29.0",
+	"Pillow==12.2.0",
+	"django_hosts==7.0.0",
+	"python-semantic-release==10.5.3",
 ]
 [tool.hatch.envs.default.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
@@ -136,8 +142,8 @@ description = "Lint environment"
 detached = true
 python = "3.12"
 dependencies = [
-	"ruff==0.11.2",
-	"black==25.1.0",
+	"ruff==0.15.14",
+	"black==26.5.1",
 ]
 [tool.hatch.envs.lint.scripts]
 check = [
@@ -154,19 +160,19 @@ description = "Tests environment"
 detached = true
 python = "3.12"
 dependencies = [
-	"pytest==8.3.5",
-	"pytest-django==4.10.0",
-	"pytest-cov==6.0.0",  # for ci tests with cover
-	"Faker==37.1.0",
-	"pytz==2025.2",
-	"pycryptodome==3.22.0",
-	"drf-spectacular==0.28.0",
-	"Pillow==11.1.0",
-	"django==5.1.7",
-	"django-modeltranslation==0.19.13",
-	"djangorestframework==3.16.0",
-	"djangorestframework-simplejwt==5.5.0",
-	"django_hosts==6.0",
+	"pytest==9.0.3",
+	"pytest-django==4.12.0",
+	"pytest-cov==7.1.0",  # for ci tests with cover
+	"Faker==40.18.0",
+	"pytz==2026.2",
+	"pycryptodome==3.23.0",
+	"drf-spectacular==0.29.0",
+	"Pillow==12.2.0",
+	"django==5.2",
+	"django-modeltranslation==0.20.3",
+	"djangorestframework==3.17.1",
+	"djangorestframework-simplejwt==5.5.1",
+	"django_hosts==7.0.0",
 ]
 [tool.hatch.envs.test.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
@@ -179,14 +185,14 @@ makemigrations = "django-admin makemigrations {args}"
 description = "Test matrix environment"
 detached = true
 dependencies = [
-	"pytest==8.3.5",
-	"pytest-django==4.10.0",
-	"pytest-cov==6.0.0",  # for ci tests with cover
-	"Faker==37.1.0",
-	"pytz==2025.2",
-	"pycryptodome==3.22.0",
-	"drf-spectacular==0.28.0",
-	"Pillow==11.1.0",
+	"pytest==9.0.3",
+	"pytest-django==4.12.0",
+	"pytest-cov==7.1.0",  # for ci tests with cover
+	"Faker==40.18.0",
+	"pytz==2026.2",
+	"pycryptodome==3.23.0",
+	"drf-spectacular==0.29.0",
+	"Pillow==12.2.0",
 ]
 [tool.hatch.envs.mtest.overrides]
 matrix.django.dependencies = [
@@ -196,53 +202,78 @@ matrix.django.dependencies = [
 	{ value = "djangorestframework-simplejwt=={matrix:simplejwt}" },
 	{ value = "django_hosts=={matrix:django_hosts}" },
 ]
+matrix.simplejwt.dependencies = [
+	{ value = "setuptools<75", if = ["5.2.0", "5.3.0"] },
+]
 [tool.hatch.envs.mtest.env-vars]
 DJANGO_SETTINGS_MODULE = "test_project.settings"
 PYTHONPATH  = "."
 [tool.hatch.envs.mtest.scripts]
 check = "pytest {args:-q}"
+# Django 2.2 — Python 3.10-3.11
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
-django = ["2.0"]
+django = ["2.2"]
 modeltranslation = ["0.17.0", "0.18.2"]
 djangorestframework = ["3.13.0"]
 simplejwt = ["5.2.0"]
 django_hosts = ["5.2", "6.0"]
+# Django 3.2 — Python 3.10-3.11
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
-django = ["3.0"]
+django = ["3.2"]
 modeltranslation = ["0.17.0", "0.18.2"]
 djangorestframework = ["3.13.0", "3.14.0", "3.15.0"]
 simplejwt = ["5.3.0"]
 django_hosts = ["5.2", "6.0"]
+# Django 4.2 — Python 3.10-3.11 (mt >=0.19 для Django 4.2+; simplejwt 5.3.0 не работает на 3.12+)
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
-django = ["4.0"]
-modeltranslation = ["0.17.0", "0.18.2", "0.19.0"]
+django = ["4.2"]
+modeltranslation = ["0.19.0"]
 djangorestframework = ["3.14.0", "3.15.0"]
 simplejwt = ["5.3.0", "5.4.0", "5.5.0"]
-django_hosts = ["5.2", "6.0"]
+django_hosts = ["7.0.0"]
+# Django 4.2 — Python 3.12
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.12"]
-django = ["4.0"]
-modeltranslation = ["0.17.0", "0.18.2", "0.19.0"]
-djangorestframework = ["3.14.0", "3.15.0", "3.16.0"]
-simplejwt = ["5.3.1", "5.4.0", "5.5.0"]
-django_hosts = ["6.0"]
+django = ["4.2"]
+modeltranslation = ["0.19.0"]
+djangorestframework = ["3.14.0", "3.15.0", "3.16.0", "3.17.1"]
+simplejwt = ["5.3.1", "5.4.0", "5.5.0", "5.5.1"]
+django_hosts = ["7.0.0"]
+# Django 5.2 — Python 3.10-3.11 (simplejwt 5.3.0 не работает на 3.12+; django_hosts 7.0+ для Django 4.2+)
 [[tool.hatch.envs.mtest.matrix]]
 python = ["3.10", "3.11"]
-django = ["5.0"]
-modeltranslation = ["0.17.0", "0.18.2", "0.19.0"]
-djangorestframework = ["3.15.0", "3.16.0"]
-simplejwt = ["5.3.0", "5.4.0", "5.5.0"]
-django_hosts = ["6.0"]
+django = ["5.2"]
+modeltranslation = ["0.19.0", "0.20.3"]
+djangorestframework = ["3.15.0", "3.16.0", "3.17.1"]
+simplejwt = ["5.3.0", "5.4.0", "5.5.0", "5.5.1"]
+django_hosts = ["7.0.0"]
+# Django 5.2 — Python 3.12-3.13
 [[tool.hatch.envs.mtest.matrix]]
-python = ["3.12"]
-django = ["5.0"]
-modeltranslation = ["0.17.0", "0.18.2", "0.19.0"]
-djangorestframework = ["3.15.0", "3.16.0"]
-simplejwt = ["5.3.1", "5.4.0", "5.5.0"]
-django_hosts = ["6.0"]
+python = ["3.12", "3.13"]
+django = ["5.2"]
+modeltranslation = ["0.19.0", "0.20.3"]
+djangorestframework = ["3.15.0", "3.16.0", "3.17.1"]
+simplejwt = ["5.3.1", "5.4.0", "5.5.0", "5.5.1"]
+django_hosts = ["7.0.0"]
+# Django 5.2 — Python 3.14
+[[tool.hatch.envs.mtest.matrix]]
+python = ["3.14"]
+django = ["5.2"]
+modeltranslation = ["0.20.3"]
+djangorestframework = ["3.17.1"]
+simplejwt = ["5.5.1"]
+django_hosts = ["7.0.0"]
+# Django 6.0 — Python 3.12-3.14
+[[tool.hatch.envs.mtest.matrix]]
+python = ["3.12", "3.13", "3.14"]
+django = ["6.0"]
+modeltranslation = ["0.20.3"]
+djangorestframework = ["3.17.1"]
+simplejwt = ["5.5.1"]
+django_hosts = ["7.0.0"]
 
 [tool.hatch.envs.docs]
 description = "Docs environment"
@@ -250,17 +281,17 @@ detached = true
 python = "3.12"
 dependencies = [
 	"mkdocs[i18n]==1.6.1",
-	"mkdocs-literate-nav==0.6.2",
-	"mkdocs-material==9.6.9",
-	"mkdocs-git-revision-date-localized-plugin==1.4.5",
-	"mkdocs-git-authors-plugin==0.9.4",
-	"mkdocstrings[python]==0.29.0",
-	"black==25.1.0",
+	"mkdocs-literate-nav==0.6.3",
+	"mkdocs-material==9.7.6",
+	"mkdocs-git-revision-date-localized-plugin==1.5.2",
+	"mkdocs-git-authors-plugin==0.10.0",
+	"mkdocstrings[python]==1.0.4",
+	"black==26.5.1",
 	"mkdocs-minify-plugin==0.8.0",
-	"mkdocs-gen-files==0.5.0",
-	"Pygments==2.19.1",
-	"mike==2.1.3",
-	"linkchecker==10.5.0",
+	"mkdocs-gen-files==0.6.1",
+	"Pygments==2.20.0",
+	"mike==2.2.0",
+	"linkchecker==10.6.0",
 ]
 [tool.hatch.envs.docs.env-vars]
 MERINGUE_MKDOCS_ENABLE_MINIFY = "false"
