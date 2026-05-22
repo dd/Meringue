@@ -1,6 +1,5 @@
 <h1 align="center" >Meringue</h1>
 
-
 <p align="center">
 	<a href="https://pypi.org/project/meringue">
 		<img src="https://img.shields.io/pypi/status/meringue.svg" alt="PyPI - Status" />
@@ -64,7 +63,7 @@ A package providing various utilities for Django, such as mixins, form tools, up
 
 This library is a collection of reusable components that I frequently use across different projects. Its primary purpose is to clean up and standardize these tools, ensure they are well-tested, and provide clear documentation to make it easy for colleagues to understand and use.
 
-However, if someone decides to use this functionality in their project, and even more so to add functionality or change the implementation to a more correct, beautiful or understandable one, I will only be happy, do not worry and feel free to write to me by [mail](mailto:dd@tovarisch.engineer), create an [issue](https://github.com/dd/Meringue/issues) or [pull request](https://github.com/dd/Meringue/pulls) on [github](https://github.com/dd/Meringue).
+If you decide to use this in your project, or want to improve the implementation, feel free to reach out by [mail](mailto:dd@tovarisch.engineer), create an [issue](https://github.com/dd/Meringue/issues) or [pull request](https://github.com/dd/Meringue/pulls) on [GitHub](https://github.com/dd/Meringue). Contributions are always welcome!
 
 Read more in the [documentation](https://dd.github.io/Meringue/).
 
@@ -73,23 +72,23 @@ Read more in the [documentation](https://dd.github.io/Meringue/).
 
 Adding new functionality. Can change.
 
-* [ ] [drf](https://www.django-rest-framework.org/) serializer serializer for automatic form generation on the front when working through rest api. (An npm package on [vuejs](https://vuejs.org/) will also be developed generating form based on response from api).
-* [ ] Authorization backend for authorization by a pair of email and password.
+* [ ] [DRF](https://www.django-rest-framework.org/) serializer for automatic form generation on the frontend via REST API. (An npm package for [Vue.js](https://vuejs.org/) will also be developed to generate forms based on API responses).
+* [ ] Authentication backend for email and password login.
 * [ ] Functionality for working with images.
 	* [x] Image editor like easy_thumbnails.
-	* [x] A field for the drf serializer that returns a set of images (for example, a standard image and a double-sized image for a retina screen), as well as in different formats (for example, in the original format and in webp).
+	* [x] A DRF serializer field that returns a set of images in multiple sizes (e.g., standard and 2x for retina) and formats (e.g., original and WebP).
 	* [ ] Job chain presets
 	* [ ] Tests
 	* [ ] Docs
-* [ ] Functionality similar to that described in the previous paragraph only for video.
+* [ ] Similar image-processing functionality but for video.
 * [x] Functionality for loading private files available through [nginx internal](http://nginx.org/en/docs/http/ngx_http_core_module.html#internal).
 
 
 ## Contributing
 
 - [x] Use Git Flow (read [here](https://jeffkreeftmeijer.com/git-flow/) and [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)) to resolve the versioning
-- [x] Linter with a [Ruff](https://github.com/charliermarsh/ruff)
-- [x] Formatter with a [Black](https://github.com/psf/black)
+- [x] Linting with [Ruff](https://github.com/charliermarsh/ruff)
+- [x] Formatting with [Black](https://github.com/psf/black)
 - [x] Lint commit with [Gitlint](https://jorisroovers.com/gitlint/) and [Conventional Commits](https://www.conventionalcommits.org/)
 - [x] Documentation with [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 - [x] Testing local with [hatch](https://hatch.pypa.io/1.7/meta/faq/#environments)
