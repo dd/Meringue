@@ -2,6 +2,29 @@
 
 
 
+<a name="1.3.5"></a>
+## 1.3.5 (2026-05-22)
+
+### Changed
+
+- 🔧 (CI/CD): Add new job for PR protect [[a8abece](https://github.com/dd/Meringue/commit/a8abecea929ae768248ac76b5eced1a9610382e5)]
+
+### Fixed
+
+- 🐛 (CI/CD): Fix workflow [[692d4ab](https://github.com/dd/Meringue/commit/692d4ab35459cbc2e1817cd948970a916bc0a255)]
+- 🐛 (CI/CD): Fix release workflow [[8861d47](https://github.com/dd/Meringue/commit/8861d47e8f273d7cd94dce9bfd93465dbf030940)]
+
+### Miscellaneous
+
+-  Merge pull request [#15](https://github.com/dd/Meringue/issues/15) from dd/dev [[b9e5909](https://github.com/dd/Meringue/commit/b9e59095f85bea81800311b87c2ac6f79aa878f4)]
+- 📝 (docs): Update Changelog [[1b30529](https://github.com/dd/Meringue/commit/1b30529f07ace06b62b8f2652e727443751dfc06)]
+-  Merge branch &#x27;master&#x27; into dev [[930ae4d](https://github.com/dd/Meringue/commit/930ae4dd50ab96ef611db744c8edc0c9513cf4d2)]
+- 📝 (docs): Update README [[f232c78](https://github.com/dd/Meringue/commit/f232c78a5568778a494922167aaf4f39964ba3ea)]
+-  Merge pull request [#14](https://github.com/dd/Meringue/issues/14) from dd/dev [[7084ee1](https://github.com/dd/Meringue/commit/7084ee1efbb2f2ae980e224b2ef4300d32560db5)]
+- 🩹 (CI/CD): Finaly fix tests workflow [[862263f](https://github.com/dd/Meringue/commit/862263f6a57ef64d6fc75c94f04d437522b64290)]
+-  Merge branch &#x27;master&#x27; into dev [[c74f48e](https://github.com/dd/Meringue/commit/c74f48e666c1019a8b88ec5786977f4bcdca8d8c)]
+
+
 <a name="1.3.4"></a>
 ## 1.3.4 (2026-05-21)
 
