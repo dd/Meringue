@@ -22,6 +22,7 @@ jobs:
     outputs:
       new_release: ${{ steps.version.outputs.new_release }}
       new_version: ${{ steps.version.outputs.new_version }}
+      old_version: ${{ steps.version.outputs.old_version }}
       log: ${{ steps.changelog.outputs.log }}
 
     steps:
@@ -171,6 +172,11 @@ jobs:
       - name: Publish | Upload to GitHub Release Assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OLD_VERSION: ${{ needs.build.outputs.old_version }}
           RELEASE_VERSION: ${{ needs.build.outputs.new_version }}
           RELEASE_NOTES: ${{ needs.build.outputs.log }}
-        run: gh release create "v${RELEASE_VERSION}" --notes "${RELEASE_NOTES}" dist/*
+        run: >-
+          gh release create "v${RELEASE_VERSION}"
+          --title "v${OLD_VERSION} → v${RELEASE_VERSION}"
+          --notes "${RELEASE_NOTES}"
+          dist/*

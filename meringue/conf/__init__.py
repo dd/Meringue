@@ -158,8 +158,9 @@ class Settings:
     def __init__(
         self,
         setting_key: str,
-        defaults: dict[str, str],
+        defaults: dict[str, Any] | ModuleType,
         deprecated_params: dict[str, str] | None = None,
+        params_to_import: list[str] | None = None,
         params_to_impoprt: list[str] | None = None,
     ):
         """
@@ -167,9 +168,20 @@ class Settings:
             setting_key: Settings key in django settings list.
             defaults: Dict with default parameter values. Used as a list of available settings.
             deprecated_params: Dict with deprecated options and warning texts for them.
-            params_to_impoprt: List of options that contain the path to the module and must be
+            params_to_import: List of options that contain the path to the module and must be
                 imported.
+            params_to_impoprt: Deprecated alias for ``params_to_import``.
         """
+
+        if params_to_impoprt is not None:
+            warnings.warn(
+                "The `params_to_impoprt` argument is deprecated due to a typo, "
+                "use `params_to_import` instead.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+            if params_to_import is None:
+                params_to_import = params_to_impoprt
 
         self.setting_key = setting_key
         if isinstance(defaults, ModuleType):
@@ -180,7 +192,7 @@ class Settings:
         else:
             self.defaults = defaults
         self.deprecated_params = deprecated_params or {}
-        self.params_to_impoprt = params_to_impoprt or []
+        self.params_to_import = params_to_import or []
         self._cached_attrs = set()
         self.reset()
 
@@ -210,7 +222,7 @@ class Settings:
 
         val = self.user_params.get(attr, self.defaults[attr])
 
-        if attr in self.params_to_impoprt:
+        if attr in self.params_to_import:
             try:
                 val = import_parameter(val)
 

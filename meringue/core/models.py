@@ -43,8 +43,8 @@ class PublicationMixin(models.Model):
     Mixin with the functionality of manual publishing.
 
     Examples:
-        >>> FooModel.object.published()
-        >>> FooModel.object.unpublished()
+        >>> FooModel.objects.published()
+        >>> FooModel.objects.unpublished()
     """
 
     is_published = models.BooleanField(
@@ -65,8 +65,8 @@ class PublicationDatesMixin(models.Model):
     Mixin with the functionality of publishing in a certain period.
 
     Examples:
-        >>> FooModel.object.published()
-        >>> FooModel.object.unpublished()
+        >>> FooModel.objects.published()
+        >>> FooModel.objects.unpublished()
     """
 
     date_from = models.DateTimeField(

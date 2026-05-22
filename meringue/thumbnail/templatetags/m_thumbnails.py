@@ -11,32 +11,28 @@ register = Library()
 @register.filter
 def thumbnail(filename, args=""):
     """
-        Фильтр обработки изображений, применяется к адресу изображения (путь до файла) в аргументах
-    ожидает параметры изменения изображения разделённые запятой, последовательность действий
-    соответствует последовательности введённых аргументов.
-    Например:
-        * последовательность s:600x400,resize,s:400x400,crop - сначала задас целевой размер
-    изображения 600x400, далее  скукожит (или растянет изображение в зависимости от исходного и
-    других параметров) до 600x400, потом установит новый целевой размер 400x400 и последним этапом
-    будет обезание изображения в размер 400x400.
-        * последовательность crop,s:400x400 не даст никакого результата, потому что новый размер
-    указывается после события кропа (если параметры поменять местами, то изображение обрежется до
-    квадрата 400x400).
+    Image processing filter. Applied to an image file path; expects comma-separated
+    processing parameters as arguments. Actions are executed in the order they are specified.
 
-    Аргументы фильтра:
-        s:<width>x<height> - указывает целевой размер изображения для
-            последующих функций
-        maxw:<width> - указывает максимальную ширину
-        maxh:<height> - указывает максимальную высоту
-        crop - изменения размера холста до последнего установленного
-        resize - изменение размера изображения до последнего установленного
-        c:<color> - цвет заливки для кропа в формате rgba
-            (c:255 255 255 255)
-        cm:left|center|right top|bottom - точка отсчёта для кропа
-        rm:cover|contain|stretch - метод ресайза вписать в размер или
-            растянуть
-        rs:no_increase|standard|no_reduce - стратегия ресайза - не давать увеличивать исходное
-            изображение или уменьшать
+    For example:
+
+    * `s:600x400,resize,s:400x400,crop` — first sets the target size to 600x400,
+      then resizes the image to that size, then sets a new target size of 400x400,
+      and finally crops the canvas to 400x400.
+    * `crop,s:400x400` — produces no result because the new size is specified after
+      the crop action (swapping the order would crop the image to a 400x400 square).
+
+    Filter arguments:
+
+    * `s:<width>x<height>` — sets the target size for subsequent actions.
+    * `maxw:<width>` — sets the maximum width.
+    * `maxh:<height>` — sets the maximum height.
+    * `crop` — changes the canvas size to the last specified target size.
+    * `resize` — resizes the image to the last specified target size.
+    * `c:<color>` — background fill color for crop in RGBA format (e.g., `c:255 255 255 255`).
+    * `cm:left|center|right top|bottom` — crop anchor point.
+    * `rm:cover|contain|stretch` — resize method.
+    * `rs:no_increase|standard|no_reduce` — resize strategy.
     """
 
     job_chain = args.split(",")

@@ -28,22 +28,22 @@ def set_crop_method(value, opt):
 
     if len(methods) == 1:
         if methods[0] != CROP_METHOD_CENTER:
-            msg = "For property `{property}` if it contains one value it can only be `{option}`"
+            msg = "For property `{prop}` if it contains one value it can only be `{option}`"
             raise WrongPropertyOptionError(PROP_CROP_METHOD, CROP_METHOD_CENTER, msg)
 
         methods = [CROP_METHOD_CENTER, CROP_METHOD_CENTER]
 
     elif len(methods) == 2:  # noqa: PLR2004
         if methods[0] not in [CROP_METHOD_RIGHT, CROP_METHOD_LEFT, CROP_METHOD_CENTER]:
-            msg = "Value `{option}` is invalid for property `{property}` at the first position."
+            msg = "Value `{option}` is invalid for property `{prop}` at the first position."
             raise WrongPropertyOptionError(PROP_CROP_METHOD, methods[0], msg)
 
         if methods[1] not in [CROP_METHOD_TOP, CROP_METHOD_BOTTOM, CROP_METHOD_CENTER]:
-            msg = "Value `{option}` is invalid for property `{property}` at the second position."
+            msg = "Value `{option}` is invalid for property `{prop}` at the second position."
             raise WrongPropertyOptionError(PROP_CROP_METHOD, methods[1], msg)
 
     else:
-        msg = "The property `{property}` must have one or two options."
+        msg = "The property `{prop}` must have one or two options."
         raise WrongPropertyOptionError(PROP_CROP_METHOD, None, msg)
 
     return {PROP_CROP_METHOD: methods}
@@ -69,7 +69,7 @@ def set_resize_strategy(strategy, opt):
 def set_size(raw, opt):
     size = [float(i or 0) for i in _SIZE_RE.search(raw).groups()]
 
-    # расчитываем относительные размеры если один из размеров не указан
+    # calculate proportional size if one dimension is omitted
     size[0] = (
         size[0] if size[0] else size[1] * opt[PROP_CURRENT_SIZE][0] / opt[PROP_CURRENT_SIZE][1]
     )

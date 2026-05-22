@@ -1,2 +1,7 @@
 # https://linkchecker.github.io/linkchecker/man/linkcheckerrc.html
+
+[checking]
+threads=20
+timeout=10
+
 [AnchorCheck]

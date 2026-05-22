@@ -8,6 +8,8 @@ from django.http import FileResponse
 from django.http import Http404
 from django.http import HttpResponse
 
+from django.db.models.fields.files import FieldFile
+
 from meringue.conf import m_settings
 from meringue.protected.fields import ProtectedFieldFile
 from meringue.protected.fields import ProtectedImageFieldFile
@@ -30,9 +32,9 @@ def x_accel_redirect_view(request, cid, field, pk, disp="inline"):
         raise PermissionDenied()
 
     model = contenttype.model_class().objects.get(pk=pk)
-    file = getattr(model, field)
+    file = getattr(model, field, None)
 
-    if not file:
+    if not isinstance(file, FieldFile) or not file:
         raise Http404()
 
     if m_settings.PROTECTED_SERVE_WITH_NGINX:
