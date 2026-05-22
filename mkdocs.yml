@@ -126,18 +126,18 @@ plugins:
       - docs/gen_ref_pages.py
   - mkdocstrings:
       default_handler: python
-      import:
-        - https://docs.python.org/3/objects.inv
-        # - https://mkdocstrings.github.io/objects.inv
-        # - https://mkdocstrings.github.io/griffe/objects.inv
-        - https://docs.djangoproject.com/en/4.2/_objects
-        # - https://django-modeltranslation.readthedocs.io/en/latest/objects.inv
-        # - https://django-polymorphic.readthedocs.io/en/stable/objects.inv
-        # - url: https://docs.python-requests.org/en/master/objects.inv
-        - https://drf-spectacular.readthedocs.io/en/latest/objects.inv
       handlers:
         python:
           load_external_modules: true
+          inventories:
+            - https://docs.python.org/3/objects.inv
+            # - https://mkdocstrings.github.io/objects.inv
+            # - https://mkdocstrings.github.io/griffe/objects.inv
+            - https://docs.djangoproject.com/en/4.2/_objects
+            # - https://django-modeltranslation.readthedocs.io/en/latest/objects.inv
+            # - https://django-polymorphic.readthedocs.io/en/stable/objects.inv
+            # - url: https://docs.python-requests.org/en/master/objects.inv
+            - https://drf-spectacular.readthedocs.io/en/latest/objects.inv
           options:
             # show_bases: false
             show_source: true
