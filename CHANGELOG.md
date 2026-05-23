@@ -7,32 +7,27 @@
 
 ### Added
 
-- ✨ (thumbnail): Add thumbnail package [[cd6f9ea](https://github.com/dd/Meringue/commit/cd6f9eae1d5cbe98430846e4f31298cfe6473744)]
-- ✅ (thumbnail): Add tests [[9a494a5](https://github.com/dd/Meringue/commit/9a494a5959a321840f7411cb7838f5ae5b904d12)]
-- ✅ (conf): Change test dublicate for new test [[b5028ee](https://github.com/dd/Meringue/commit/b5028ee476a76fed59e7798db20eec3911f4e62f)]
+- ✨ (thumbnail): Add thumbnail package [[`cd6f9ea`](https://github.com/dd/Meringue/commit/cd6f9eae1d5cbe98430846e4f31298cfe6473744),[`c2bb716`](https://github.com/dd/Meringue/commit/c2bb71640360431b288637364fa82f37e9cc8969),[`972db97`](https://github.com/dd/Meringue/commit/972db97faa9163190b822b40526b0991ba2176c9),[`9a494a5`](https://github.com/dd/Meringue/commit/9a494a5959a321840f7411cb7838f5ae5b904d12)]
+- ✅ (conf): Change test dublicate for new test [[`b5028ee`](https://github.com/dd/Meringue/commit/b5028ee476a76fed59e7798db20eec3911f4e62f)]
 
 ### Changed
 
-- ⚡ (CI/CD): Improve docs build [[b874484](https://github.com/dd/Meringue/commit/b8744849a24a265cc6d1ba541a1fda992b61f123)]
-- ⬆️ (project): Add more reqs versions and upgrade tests matrix [[f71ec1c](https://github.com/dd/Meringue/commit/f71ec1cd6f0ce9413262b12e033b9e7cc7def2fa)]
-- 🔧 (CI/CD): Update release title [[793a5e9](https://github.com/dd/Meringue/commit/793a5e9619586c2f79222a4b4a898b42d53c57b6)]
-- 🔧 (CI/CD): Upate release workflow [[3d96278](https://github.com/dd/Meringue/commit/3d962782cbee48b627fa2508b0551b911def20fa)]
+- ⚡ (CI/CD): Improve docs build [[`b874484`](https://github.com/dd/Meringue/commit/b8744849a24a265cc6d1ba541a1fda992b61f123)]
+- ⬆️ (project): Add more reqs versions and upgrade tests matrix [[`f71ec1c`](https://github.com/dd/Meringue/commit/f71ec1cd6f0ce9413262b12e033b9e7cc7def2fa)]
+- 🔧 (CI/CD): Update release title [[`793a5e9`](https://github.com/dd/Meringue/commit/793a5e9619586c2f79222a4b4a898b42d53c57b6)]
+- 🔧 (CI/CD): Upate release workflow [[`3d96278`](https://github.com/dd/Meringue/commit/3d962782cbee48b627fa2508b0551b911def20fa)]
 
 ### Fixed
 
-- ✏️ (conf): Fix attribute name [[2645d2d](https://github.com/dd/Meringue/commit/2645d2d7570e3a75c58c158e6c4cc6d949dbc467)]
-- ✏️ (core): Fix typos [[213b168](https://github.com/dd/Meringue/commit/213b168576f2d385f6f41901380fa7eb917b1b0d)]
+- ✏️ (conf): Fix attribute name [[`2645d2d`](https://github.com/dd/Meringue/commit/2645d2d7570e3a75c58c158e6c4cc6d949dbc467)]
+- ✏️ (core): Fix typos [[`213b168`](https://github.com/dd/Meringue/commit/213b168576f2d385f6f41901380fa7eb917b1b0d)]
 
 ### Miscellaneous
 
--  Merge pull request [#17](https://github.com/dd/Meringue/issues/17) from dd/dev [[a053ec1](https://github.com/dd/Meringue/commit/a053ec1f609213b6b0dd8c4df81617391521df15)]
-- 📝 (docs): Add thumbnails to docs [[c2bb716](https://github.com/dd/Meringue/commit/c2bb71640360431b288637364fa82f37e9cc8969)]
-- 🩹 (thumbnail): Fix error messages [[972db97](https://github.com/dd/Meringue/commit/972db97faa9163190b822b40526b0991ba2176c9)]
-- 🩹 (protected): Access only for file fields [[e46ee62](https://github.com/dd/Meringue/commit/e46ee623913d1780def7d0fbc124d0d9f091c5ce)]
-- 🩹 (conf): Fix annotations types [[665ad89](https://github.com/dd/Meringue/commit/665ad89eb4cbeea5229bb3bd0a7102112b391eb8)]
-- 🩹 (api): Change error type [[5a952c9](https://github.com/dd/Meringue/commit/5a952c9c5f88153469c03b65688bbf122513d2ba)]
-- 📝 (docs): Update Changelog [[b9d39d6](https://github.com/dd/Meringue/commit/b9d39d6a6b69bbb79e3df4a347a150e1cc8b5169)]
--  Merge branch &#x27;master&#x27; into dev [[da72c7c](https://github.com/dd/Meringue/commit/da72c7ca709062f87cd86911746259cb7d147538)]
+- 🩹 (protected): Access only for file fields [[`e46ee62`](https://github.com/dd/Meringue/commit/e46ee623913d1780def7d0fbc124d0d9f091c5ce)]
+- 🩹 (conf): Fix annotations types [[`665ad89`](https://github.com/dd/Meringue/commit/665ad89eb4cbeea5229bb3bd0a7102112b391eb8)]
+- 🩹 (api): Change error type [[`5a952c9`](https://github.com/dd/Meringue/commit/5a952c9c5f88153469c03b65688bbf122513d2ba)]
+- 📝 (docs): Update Changelog [[`b9d39d6`](https://github.com/dd/Meringue/commit/b9d39d6a6b69bbb79e3df4a347a150e1cc8b5169)]
 
 
 <a name="1.3.6"></a>

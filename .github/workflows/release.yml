@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Setup | Checkout Repository (master)
         if: github.ref == 'refs/heads/master'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: master
           fetch-depth: 0
@@ -36,14 +36,14 @@ jobs:
 
       - name: Setup | Checkout Repository (next)
         if: github.ref == 'refs/heads/next'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: next
           fetch-depth: 0
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup | Cache pip
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/pip
           key: pip-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
@@ -74,7 +74,7 @@ jobs:
 
       - name: Setup | Install Node.js
         if: steps.version.outputs.new_release == 'true'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
 
@@ -93,6 +93,7 @@ jobs:
         run: git tag | grep -E '\-(dev|alpha|beta|rc)' | xargs -r git tag -d
 
       - name: Action | Update changelog
+        id: changelog
         if: steps.version.outputs.new_release == 'true'
         run: |
           gitmoji-changelog update "${{ steps.version.outputs.new_version }}" --preset generic
@@ -135,7 +136,7 @@ jobs:
         run: hatch build
 
       - name: Action | Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: steps.version.outputs.new_release == 'true'
         with:
           name: python-artifacts
@@ -158,10 +159,10 @@ jobs:
 
     steps:
       - name: Setup | Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Action | Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: python-artifacts
           path: dist
@@ -172,11 +173,21 @@ jobs:
       - name: Publish | Upload to GitHub Release Assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
           OLD_VERSION: ${{ needs.build.outputs.old_version }}
           RELEASE_VERSION: ${{ needs.build.outputs.new_version }}
           RELEASE_NOTES: ${{ needs.build.outputs.log }}
-        run: >-
-          gh release create "v${RELEASE_VERSION}"
-          --title "v${OLD_VERSION} → v${RELEASE_VERSION}"
-          --notes "${RELEASE_NOTES}"
-          dist/*
+        run: |
+          LICENSE=$(grep -m1 '^license' pyproject.toml | sed 's/.*= *"\(.*\)"/\1/')
+          NOTES="## v${RELEASE_VERSION} ($(date +%Y-%m-%d))
+
+          *This release is published under the ${LICENSE} License.*
+
+          ${RELEASE_NOTES}
+
+          **Detailed Changes:** [v${OLD_VERSION}...v${RELEASE_VERSION}](https://github.com/${REPO}/compare/v${OLD_VERSION}...v${RELEASE_VERSION})"
+
+          gh release create "v${RELEASE_VERSION}" \
+            --title "v${RELEASE_VERSION}" \
+            --notes "${NOTES}" \
+            dist/*
