@@ -8,7 +8,7 @@
 ### Changed
 
 - 🔧 (CI/CD): Update release note config [[8b7f50b](https://github.com/dd/Meringue/commit/8b7f50b3e4ecb400f6ef5c3ce20fb2c7ae5dacbe)]
-- 🔧 (CI/CD): Update versions of actions [[aca2a61](https://github.com/dd/Meringue/commit/aca2a6181907403d4e380f3481603a79343525e0)]
+- 🔧 (CI/CD): Upgrade versions of actions [[aca2a61](https://github.com/dd/Meringue/commit/aca2a6181907403d4e380f3481603a79343525e0)]
 
 ### Fixed
 
@@ -16,7 +16,6 @@
 
 ### Miscellaneous
 
--  Merge pull request [#18](https://github.com/dd/Meringue/issues/18) from dd/dev [[9bd45b2](https://github.com/dd/Meringue/commit/9bd45b234372b95740ba0d34dfd5ac8c89bb6949)]
 - 📝 (docs): Update Changelog [[682d38e](https://github.com/dd/Meringue/commit/682d38e26d151feab274110fe502e9469e56bf78)]
 
 
