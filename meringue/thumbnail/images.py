@@ -104,12 +104,12 @@ class ThumbnailImage:
     @property
     def path(self) -> Path:
         """Absolute path to thumbnail."""
-        return self.storage.path(self.name)
+        return self.storage.path(str(self.name))
 
     @property
     def url(self) -> str:
         """Url to thumbnail."""
-        return self.storage.url(self.name)
+        return self.storage.url(str(self.name))
 
     @property
     def is_supports_alpha(self) -> bool:
@@ -171,7 +171,7 @@ class ThumbnailImage:
 
         tmp_image = BytesIO()
         image.save(tmp_image, **params)
-        self.storage.save(self.name, tmp_image)
+        self.storage.save(str(self.name), tmp_image)
         self._saved = True
 
         # if m_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER:

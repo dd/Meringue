@@ -3,12 +3,15 @@ from unittest import mock
 
 import pytest
 
-from PIL import Image
-
 from meringue.thumbnail.constants import FORMAT_JPEG
 from meringue.thumbnail.constants import FORMAT_PNG
 from meringue.thumbnail.constants import FORMAT_WEBP
 from meringue.thumbnail.images import ThumbnailImage
+
+
+class LegacyUrlStorage:
+    def url(self, name):
+        return "/media/m/thumbnail/" + name.replace("\\", "/")
 
 
 @pytest.fixture()
@@ -58,6 +61,17 @@ class TestThumbnailImage:
 
     def test_filename_contains_hash_and_extension(self, thumb):
         assert thumb.filename == f"{thumb.thumbnail_hash}{thumb.file_extension}"
+
+    def test_url_passes_string_name_to_legacy_storage(self, rgba_image):
+        thumb = ThumbnailImage(
+            image_path=Path("/source/image.png"),
+            job_chain=["resize"],
+            out_format=FORMAT_PNG,
+            image=rgba_image,
+            storage=LegacyUrlStorage(),
+        )
+
+        assert thumb.url == f"/media/m/thumbnail/{thumb.name.as_posix()}"
 
     def test_is_supports_alpha_png(self, thumb):
         assert thumb.is_supports_alpha is True
@@ -117,9 +131,9 @@ class TestThumbnailImage:
         thumb.save(force=True)
         thumb.storage.save.assert_called_once()
 
-    def test_save_converts_to_rgb_for_jpeg(self, rgba_image):
+    def test_save_converts_to_rgb_for_jpeg(self, rgba_image, tmp_path):
         storage = mock.MagicMock()
-        storage.path.return_value = Path("/tmp/test.jpg")
+        storage.path.return_value = tmp_path / "test.jpg"
         thumb = ThumbnailImage(
             image_path=Path("/source/image.jpg"),
             job_chain=[],
