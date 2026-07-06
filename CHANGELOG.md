@@ -3,7 +3,7 @@
 
 
 <a name="1.4.2"></a>
-## 1.4.2  (2026-07-07)
+## 1.4.2 (2026-07-06)
 
 ### Fixed
 
@@ -11,6 +11,8 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#19](https://github.com/dd/Meringue/issues/19) from dd/dev [[41c8a76](https://github.com/dd/Meringue/commit/41c8a76d62a4beaa52723ea3b2b142ea41b9e8e3)]
+- 📝 (docs): Update changelog [[bdd0a70](https://github.com/dd/Meringue/commit/bdd0a70f57ed6763179fad316bfbfe2d70b48540)]
 - 📝 (docs): Update changelog [[3b9e503](https://github.com/dd/Meringue/commit/3b9e503012fb029a848e8e1735e8a1e373936839)]
 
 
