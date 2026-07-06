@@ -2,6 +2,18 @@
 
 
 
+<a name="1.4.2"></a>
+## 1.4.2  (2026-07-07)
+
+### Fixed
+
+- 🐛 (thumbnail): Fix thumbnail storage names compatibility [[3355286](https://github.com/dd/Meringue/commit/33552866cb291b5cc7340eb609ecc69b123c49ed)]
+
+### Miscellaneous
+
+- 📝 (docs): Update changelog [[3b9e503](https://github.com/dd/Meringue/commit/3b9e503012fb029a848e8e1735e8a1e373936839)]
+
+
 <a name="1.4.1"></a>
 ## 1.4.1 (2026-05-23)
 
