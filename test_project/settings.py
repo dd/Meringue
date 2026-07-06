@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "meringue.core",
     "meringue.api",
     "meringue.protected",
+    "meringue.thumbnail",
 ]
 
 MIDDLEWARE = [
