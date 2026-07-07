@@ -626,14 +626,18 @@
   
   
   
-    <a href="../../conf/__init__/" class="md-nav__link">
+    
+  
+  
+  
+    <a href="../../api/docs/__init__/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
     
   
-    conf
+    api
   
 
     
@@ -645,6 +649,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -678,18 +684,14 @@
   
   
   
-    
-  
-  
-  
-    <a href="../../api/docs/__init__/" class="md-nav__link">
+    <a href="../../protected/__init__/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
     
   
-    api
+    protected
   
 
     
@@ -701,8 +703,6 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
-  
-
   
 
       
@@ -1362,14 +1362,14 @@
   
   
   
-    <a href="../../protected/__init__/" class="md-nav__link">
+    <a href="../../conf/__init__/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
     
   
-    protected
+    conf
   
 
     
@@ -2325,7 +2325,7 @@ which can be a problem with a large count of images.</p>
 <a id="__codelineno-0-171" name="__codelineno-0-171"></a><a href="#__codelineno-0-171"><span class="linenos" data-linenos="171 "></span></a>
 <a id="__codelineno-0-172" name="__codelineno-0-172"></a><a href="#__codelineno-0-172"><span class="linenos" data-linenos="172 "></span></a>    <span class="n">tmp_image</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
 <a id="__codelineno-0-173" name="__codelineno-0-173"></a><a href="#__codelineno-0-173"><span class="linenos" data-linenos="173 "></span></a>    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">tmp_image</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-<a id="__codelineno-0-174" name="__codelineno-0-174"></a><a href="#__codelineno-0-174"><span class="linenos" data-linenos="174 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">tmp_image</span><span class="p">)</span>
+<a id="__codelineno-0-174" name="__codelineno-0-174"></a><a href="#__codelineno-0-174"><span class="linenos" data-linenos="174 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="n">tmp_image</span><span class="p">)</span>
 <a id="__codelineno-0-175" name="__codelineno-0-175"></a><a href="#__codelineno-0-175"><span class="linenos" data-linenos="175 "></span></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div>
             </details>
