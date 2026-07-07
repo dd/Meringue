@@ -2,6 +2,21 @@
 
 
 
+<a name="1.5.0"></a>
+## 1.5.0 (2026-07-07)
+
+### Added
+
+- ✨ (thumbnail): Add default optimzer function [[edd21ca](https://github.com/dd/Meringue/commit/edd21cafafc081372658cd76f5ecab856179fcb2)]
+- ✨ (thumbnail): Add image optimization hook [[68db3d5](https://github.com/dd/Meringue/commit/68db3d58fab1c9fd887b386db3eab1ecf85d09fa)]
+
+### Miscellaneous
+
+-  Merge pull request [#20](https://github.com/dd/Meringue/issues/20) from dd/dev [[08e38d7](https://github.com/dd/Meringue/commit/08e38d754b48a71860c725cbce526fe4837f2cba)]
+- 📝 (docs): Update changelog [[dc93a13](https://github.com/dd/Meringue/commit/dc93a13a71691f81dfb778699c4e47220869c712)]
+-  Merge branch &#x27;master&#x27; into dev [[ffab953](https://github.com/dd/Meringue/commit/ffab95320d20dfeeba9c4cd7f80db812d935fe21)]
+
+
 <a name="1.4.2"></a>
 ## 1.4.2 (2026-07-06)
 
