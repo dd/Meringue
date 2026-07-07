@@ -50,6 +50,25 @@ def test_oxipng_optimizes_png_from_memory(run):
 
 
 @mock.patch("meringue.thumbnail.optimizers.subprocess.run")
+def test_oxipng_accepts_options_as_string(run):
+    run.return_value = mock.Mock(returncode=0, stdout=b"optimized", stderr=b"")
+
+    result = oxipng(
+        get_thumbnail_image(),
+        BytesIO(b"source"),
+        {"binary": "/usr/bin/oxipng", "options": "-o 2 --strip all"},
+    )
+
+    assert result.read() == b"optimized"
+    run.assert_called_once_with(
+        ["/usr/bin/oxipng", "-o", "2", "--strip", "all", "--stdout", "-"],
+        input=b"source",
+        capture_output=True,
+        check=False,
+    )
+
+
+@mock.patch("meringue.thumbnail.optimizers.subprocess.run")
 def test_oxipng_uses_default_options(run):
     run.return_value = mock.Mock(returncode=0, stdout=b"optimized", stderr=b"")
 

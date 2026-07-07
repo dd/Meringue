@@ -94,7 +94,7 @@ print(thumbnail.url)
 ```
 
 !!! note
-    The `image_path` must be an absolute path.
+	The `image_path` must be an absolute path.
 
 
 ### Templatetags
@@ -149,8 +149,8 @@ The response will contain an array of objects with `srcset` and `type` fields:
 
 ```json
 [
-    {"srcset": "/media/m/thumbnail/.../image.webp 1x, .../image.webp 2x", "type": "image/webp"},
-    {"srcset": "/media/m/thumbnail/.../image.jpg 1x, .../image.jpg 2x", "type": "image/jpeg"}
+	{"srcset": "/media/m/thumbnail/.../image.webp 1x, .../image.webp 2x", "type": "image/webp"},
+	{"srcset": "/media/m/thumbnail/.../image.jpg 1x, .../image.jpg 2x", "type": "image/jpeg"}
 ]
 ```
 
@@ -185,6 +185,35 @@ def optimize_thumbnail(thumbnail_image, image_file):
 
 If the image should not be changed, return the original `image_file`.
 
+By default, [THUMBNAIL_IMAGE_OPTIMIZE_HANDLER][meringue.conf.default_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER] uses the built-in [optimize][meringue.thumbnail.optimizers.optimize] handler. Built-in optimizers are configured through [THUMBNAIL_OPTIMIZERS][meringue.conf.default_settings.THUMBNAIL_OPTIMIZERS]. The default value is an empty dictionary, so no external optimizer is executed until it is explicitly configured.
+
+Currently, the built-in handler supports `oxipng` for PNG files. The optimizer reads the generated thumbnail from memory and returns an optimized in-memory file before it is saved to storage:
+
+```python title="settings.py"
+MERINGUE = {
+    "THUMBNAIL_OPTIMIZERS": {
+        "oxipng": {
+            "binary": "oxipng",
+        },
+    },
+}
+```
+
+You can override oxipng command-line options:
+
+```python title="settings.py"
+MERINGUE = {
+    "THUMBNAIL_OPTIMIZERS": {
+        "oxipng": {
+            "binary": "/usr/bin/oxipng",
+            "options": "-o 4 --strip all",
+        },
+    },
+}
+```
+
+The `options` value can also be a list of strings if you prefer to pass already-split command-line arguments.
+
 
 ## Customization
 
@@ -201,4 +230,5 @@ The thumbnail system is highly customizable through settings:
 * [THUMBNAIL_DEFAULT_BG_COLOR][meringue.conf.default_settings.THUMBNAIL_DEFAULT_BG_COLOR] — default background color.
 * [THUMBNAIL_SAVE_PARAMS_BY_FORMAT][meringue.conf.default_settings.THUMBNAIL_SAVE_PARAMS_BY_FORMAT] — format-specific save parameters (e.g., JPEG quality).
 * [THUMBNAIL_IMAGE_OPTIMIZE_HANDLER][meringue.conf.default_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER] — in-memory optimization hook called before saving thumbnail to storage. It must return an in-memory image file.
+* [THUMBNAIL_OPTIMIZERS][meringue.conf.default_settings.THUMBNAIL_OPTIMIZERS] — built-in thumbnail optimizer settings.
 * [THUMBNAIL_DUMMYIMAGE_TEMPLATE][meringue.conf.default_settings.THUMBNAIL_DUMMYIMAGE_TEMPLATE] — template for dummy image URL when source file is not found.

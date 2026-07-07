@@ -1,4 +1,5 @@
 import logging
+import shlex
 import subprocess
 from io import BytesIO
 
@@ -7,6 +8,9 @@ from meringue.thumbnail import constants
 
 
 logger = logging.getLogger("meringue.thumbnail")
+
+
+DEFAULT_OXIPNG_OPTIONS = ("-o", "max", "--strip", "all", "--alpha")
 
 
 def optimize(thumbnail_image, image_file):
@@ -28,6 +32,13 @@ def optimize(thumbnail_image, image_file):
     return optimized_image
 
 
+def split_options(options):
+    if isinstance(options, str):
+        return shlex.split(options)
+
+    return options
+
+
 def oxipng(thumbnail_image, image_file, options):
     """
     Optimize PNG thumbnail with oxipng without writing it to local disk.
@@ -46,7 +57,7 @@ def oxipng(thumbnail_image, image_file, options):
     result = subprocess.run(  # noqa: S603
         [
             binary,
-            *options.get("options", ["-o", "max", "--strip", "all", "--alpha"]),
+            *split_options(options.get("options", DEFAULT_OXIPNG_OPTIONS)),
             "--stdout",
             "-",
         ],
