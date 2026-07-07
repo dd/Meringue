@@ -1,5 +1,8 @@
+from io import BytesIO
 from pathlib import Path
 from unittest import mock
+
+from django.test import override_settings
 
 import pytest
 
@@ -12,6 +15,21 @@ from meringue.thumbnail.images import ThumbnailImage
 class LegacyUrlStorage:
     def url(self, name):
         return "/media/m/thumbnail/" + name.replace("\\", "/")
+
+
+optimized_thumbnails = []
+
+
+def replace_optimized_thumbnail(thumbnail_image, image_file):
+    optimized_thumbnails.append(
+        (
+            thumbnail_image,
+            thumbnail_image.storage.save.called,
+            thumbnail_image.saved,
+            image_file.tell(),
+        )
+    )
+    return BytesIO(b"optimized")
 
 
 @pytest.fixture()
@@ -130,6 +148,23 @@ class TestThumbnailImage:
         thumb._saved = True
         thumb.save(force=True)
         thumb.storage.save.assert_called_once()
+
+    @override_settings(
+        MERINGUE={
+            "THUMBNAIL_IMAGE_OPTIMIZE_HANDLER": (
+                "meringue.thumbnail.tests.test_images.replace_optimized_thumbnail"
+            ),
+        }
+    )
+    def test_save_calls_optimize_handler_before_storage_save(self, thumb):
+        optimized_thumbnails.clear()
+        thumb._saved = False
+
+        thumb.save()
+
+        saved_file = thumb.storage.save.call_args.args[1]
+        assert optimized_thumbnails == [(thumb, False, False, 0)]
+        assert saved_file.read() == b"optimized"
 
     def test_save_converts_to_rgb_for_jpeg(self, rgba_image, tmp_path):
         storage = mock.MagicMock()
