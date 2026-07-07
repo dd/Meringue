@@ -41,6 +41,7 @@ PARAMS_TO_IMPORT: Final[list[str]] = [
     "THUMBNAIL_GENERATOR_CLASS",
     "THUMBNAIL_STORAGE_GETTER",
     "THUMBNAIL_IMAGE_CLASS",
+    "THUMBNAIL_IMAGE_OPTIMIZE_HANDLER",
     "THUMBNAIL_PROPERTIES",
     "THUMBNAIL_ACTIONS",
     "PROTECTED_NGINX_LOCATION_GETTER",
@@ -222,7 +223,7 @@ class Settings:
 
         val = self.user_params.get(attr, self.defaults[attr])
 
-        if attr in self.params_to_import:
+        if attr in self.params_to_import and val is not None:
             try:
                 val = import_parameter(val)
 

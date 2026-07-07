@@ -171,12 +171,14 @@ class ThumbnailImage:
 
         tmp_image = BytesIO()
         image.save(tmp_image, **params)
+
+        if m_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER:
+            tmp_image.seek(0)
+            tmp_image = m_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER(self, tmp_image)
+
+        tmp_image.seek(0)
         self.storage.save(str(self.name), tmp_image)
         self._saved = True
-
-        # if m_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER:
-        #     optimze_handler = import_string(m_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER)
-        #     optimze_handler(self)
 
     save.alters_data = True
 

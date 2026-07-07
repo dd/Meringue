@@ -160,6 +160,32 @@ The response will contain an array of objects with `srcset` and `type` fields:
 Thumbnails are saved to a separate storage configured via [THUMBNAIL_DIR][meringue.conf.default_settings.THUMBNAIL_DIR] and [THUMBNAIL_URL][meringue.conf.default_settings.THUMBNAIL_URL]. The storage initialization can be customized through the [THUMBNAIL_STORAGE_GETTER][meringue.conf.default_settings.THUMBNAIL_STORAGE_GETTER] setting.
 
 
+## Image optimization
+
+The [THUMBNAIL_IMAGE_OPTIMIZE_HANDLER][meringue.conf.default_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER] setting can be used to optimize the generated image before it is saved to thumbnail storage. The handler receives the [ThumbnailImage][meringue.thumbnail.images.ThumbnailImage] instance and an in-memory image file. It must return an in-memory image file.
+
+```python title="settings.py"
+MERINGUE = {
+    "THUMBNAIL_IMAGE_OPTIMIZE_HANDLER": "project.thumbnails.optimize_thumbnail",
+}
+```
+
+```python title="project/thumbnails.py"
+from io import BytesIO
+
+
+def optimize_thumbnail(thumbnail_image, image_file):
+    image_file.seek(0)
+    image_data = image_file.read()
+
+    optimized_data = optimize_image(image_data, thumbnail_image.out_format)
+
+    return BytesIO(optimized_data)
+```
+
+If the image should not be changed, return the original `image_file`.
+
+
 ## Customization
 
 The thumbnail system is highly customizable through settings:
@@ -174,4 +200,5 @@ The thumbnail system is highly customizable through settings:
 * [THUMBNAIL_DEFAULT_RESIZE_STRATEGY][meringue.conf.default_settings.THUMBNAIL_DEFAULT_RESIZE_STRATEGY] — default resize strategy (default: standard).
 * [THUMBNAIL_DEFAULT_BG_COLOR][meringue.conf.default_settings.THUMBNAIL_DEFAULT_BG_COLOR] — default background color.
 * [THUMBNAIL_SAVE_PARAMS_BY_FORMAT][meringue.conf.default_settings.THUMBNAIL_SAVE_PARAMS_BY_FORMAT] — format-specific save parameters (e.g., JPEG quality).
+* [THUMBNAIL_IMAGE_OPTIMIZE_HANDLER][meringue.conf.default_settings.THUMBNAIL_IMAGE_OPTIMIZE_HANDLER] — in-memory optimization hook called before saving thumbnail to storage. It must return an in-memory image file.
 * [THUMBNAIL_DUMMYIMAGE_TEMPLATE][meringue.conf.default_settings.THUMBNAIL_DUMMYIMAGE_TEMPLATE] — template for dummy image URL when source file is not found.

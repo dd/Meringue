@@ -71,6 +71,19 @@ def test_import_properties():
     assert Settings == foo_settings.IMPORTABLE_PROP
 
 
+def test_import_properties_optional_none():
+    """
+    Checking that optional importable properties may be disabled with None.
+    """
+    foo_settings = Settings(
+        "TEST_MERINGUE",
+        {"IMPORTABLE_PROP": None},
+        {},
+        ["IMPORTABLE_PROP"],
+    )
+    assert foo_settings.IMPORTABLE_PROP is None
+
+
 def test_import_properties_wrong_type():
     """
     Checking for a data type error when importing a property.

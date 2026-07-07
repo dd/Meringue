@@ -128,7 +128,12 @@ THUMBNAIL_SAVE_PARAMS_BY_FORMAT: Final[dict[str, dict]] = {
 List of default options for saving thumbnails images by format.
 """
 
-# THUMBNAIL_IMAGE_OPTIMIZE_HANDLER: Final[str] = None
+THUMBNAIL_IMAGE_OPTIMIZE_HANDLER: Final[str | None] = None
+"""
+Dotted path to a function that optimizes thumbnail image before saving it to storage.
+The function receives a [ThumbnailImage][meringue.thumbnail.images.ThumbnailImage] instance and
+an in-memory image file and must return an in-memory image file.
+"""
 
 THUMBNAIL_DUMMYIMAGE_TEMPLATE: Final[str] = "//dummyimage.com/{width}x{height}/9e9e9e/424242.png"
 """
