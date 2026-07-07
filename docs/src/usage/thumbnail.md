@@ -94,7 +94,7 @@ print(thumbnail.url)
 ```
 
 !!! note
-    The `image_path` must be an absolute path.
+	The `image_path` must be an absolute path.
 
 
 ### Templatetags
@@ -149,8 +149,8 @@ The response will contain an array of objects with `srcset` and `type` fields:
 
 ```json
 [
-    {"srcset": "/media/m/thumbnail/.../image.webp 1x, .../image.webp 2x", "type": "image/webp"},
-    {"srcset": "/media/m/thumbnail/.../image.jpg 1x, .../image.jpg 2x", "type": "image/jpeg"}
+	{"srcset": "/media/m/thumbnail/.../image.webp 1x, .../image.webp 2x", "type": "image/webp"},
+	{"srcset": "/media/m/thumbnail/.../image.jpg 1x, .../image.jpg 2x", "type": "image/jpeg"}
 ]
 ```
 
@@ -206,11 +206,13 @@ MERINGUE = {
     "THUMBNAIL_OPTIMIZERS": {
         "oxipng": {
             "binary": "/usr/bin/oxipng",
-            "options": ["-o", "4", "--strip", "all"],
+            "options": "-o 4 --strip all",
         },
     },
 }
 ```
+
+The `options` value can also be a list of strings if you prefer to pass already-split command-line arguments.
 
 
 ## Customization

@@ -146,14 +146,15 @@ Keys are optimizer names, values are optimizer-specific settings.
 Empty dictionary disables built-in optimizers.
 
 For `oxipng`, set `binary` to the oxipng executable path or command name.
-The default command-line options can be overridden with the `options` value.
+The default command-line options can be overridden with the `options` value,
+as either a string or a list of strings.
 
 Example:
     ```python
     {
         "oxipng": {
             "binary": "oxipng",
-            "options": ["-o", "4", "--strip", "all"],
+            "options": "-o 4 --strip all",
         },
     }
     ```
