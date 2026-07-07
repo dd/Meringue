@@ -2416,7 +2416,8 @@ an in-memory image file and must return an in-memory image file.</p>
 <p>Keys are optimizer names, values are optimizer-specific settings.
 Empty dictionary disables built-in optimizers.</p>
 <p>For <code>oxipng</code>, set <code>binary</code> to the oxipng executable path or command name.
-The default command-line options can be overridden with the <code>options</code> value.</p>
+The default command-line options can be overridden with the <code>options</code> value,
+as either a string or a list of strings.</p>
 
 
 <details class="example" open>
@@ -2424,7 +2425,7 @@ The default command-line options can be overridden with the <code>options</code>
   <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="s2">&quot;oxipng&quot;</span><span class="p">:</span> <span class="p">{</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>        <span class="s2">&quot;binary&quot;</span><span class="p">:</span> <span class="s2">&quot;oxipng&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;--strip&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">],</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;-o 4 --strip all&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>    <span class="p">},</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a><span class="p">}</span>
 </code></pre></div>
