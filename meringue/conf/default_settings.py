@@ -7,6 +7,7 @@ from django.conf import settings
 
 # CORE #############################################################################################
 
+
 UPLOAD_RENAME_HANDLER: Final[str] = "meringue.core.upload_handlers.rename_handler"
 """
 Path to method for renaming images on upload
@@ -42,6 +43,7 @@ Domain for generating absolute links
 
 # API ##############################################################################################
 
+
 API_ENABLE_ROOT_VIEW: Final[bool] = settings.DEBUG
 """
 Option to enable or disable the root view of the [Router][meringue.api.routers.MeringueRouter]
@@ -49,6 +51,7 @@ Option to enable or disable the root view of the [Router][meringue.api.routers.M
 
 
 # THUMBNAIL ########################################################################################
+
 
 THUMBNAIL_GENERATOR_CLASS: Final[str] = "meringue.thumbnail.generators.Thumbnailer"
 """
@@ -128,11 +131,32 @@ THUMBNAIL_SAVE_PARAMS_BY_FORMAT: Final[dict[str, dict]] = {
 List of default options for saving thumbnails images by format.
 """
 
-THUMBNAIL_IMAGE_OPTIMIZE_HANDLER: Final[str | None] = None
+THUMBNAIL_IMAGE_OPTIMIZE_HANDLER: Final[str | None] = "meringue.thumbnail.optimizers.optimize"
 """
 Dotted path to a function that optimizes thumbnail image before saving it to storage.
 The function receives a [ThumbnailImage][meringue.thumbnail.images.ThumbnailImage] instance and
 an in-memory image file and must return an in-memory image file.
+"""
+
+THUMBNAIL_OPTIMIZERS: Final[dict[str, dict]] = {}
+"""
+Built-in thumbnail optimizer settings.
+
+Keys are optimizer names, values are optimizer-specific settings.
+Empty dictionary disables built-in optimizers.
+
+For `oxipng`, set `binary` to the oxipng executable path or command name.
+The default command-line options can be overridden with the `options` value.
+
+Example:
+    ```python
+    {
+        "oxipng": {
+            "binary": "oxipng",
+            "options": ["-o", "4", "--strip", "all"],
+        },
+    }
+    ```
 """
 
 THUMBNAIL_DUMMYIMAGE_TEMPLATE: Final[str] = "//dummyimage.com/{width}x{height}/9e9e9e/424242.png"
@@ -147,6 +171,7 @@ Default thumbnail image format.
 
 
 # PROTECTED ########################################################################################
+
 
 PROTECTED_SERVE_WITH_NGINX: Final[bool] = not settings.DEBUG
 """
