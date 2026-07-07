@@ -2,6 +2,19 @@
 
 
 
+<a name="1.5.1"></a>
+## 1.5.1 (2026-07-07)
+
+### Changed
+
+- ♻️ (thumbnail): Improve oxipng options configuration [[d08ed05](https://github.com/dd/Meringue/commit/d08ed05f304ba67cd10484af267666a5acfb9bf4)]
+
+### Miscellaneous
+
+-  Merge pull request [#21](https://github.com/dd/Meringue/issues/21) from dd/dev [[c1c1c2f](https://github.com/dd/Meringue/commit/c1c1c2f7aa111cda5e583e674c47cf5d045a4130)]
+- 📝 (thumbnail): Add default optimizer description to docs [[775f5bd](https://github.com/dd/Meringue/commit/775f5bdb3de6d601e2719e6d9b84179bfc89ab02)]
+
+
 <a name="1.5.0"></a>
 ## 1.5.0 (2026-07-07)
 
