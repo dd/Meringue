@@ -1,8 +1,11 @@
 from unittest import mock
 
+from django.db import connections
+
 import pytest
 
 from meringue.core.db import PgAdvisoryLock
+from meringue.core.db import pg_advisory_xact_lock
 
 
 @pytest.mark.parametrize(
@@ -105,6 +108,36 @@ def test_unlock_calls_cursor_execute_single_key(lock_id, namespace_id, sql, args
     mock_execute.assert_called_once_with(sql, args)
 
 
+@pytest.mark.parametrize(
+    "lock_id, namespace_id, sql, args",
+    [
+        (42, None, "SELECT pg_advisory_xact_lock(%s)", [42]),
+        (42, 42, "SELECT pg_advisory_xact_lock(%s, %s)", [42, 42]),
+        ("test_lock_id", None, "SELECT pg_advisory_xact_lock(%s)", [1596780821]),
+        (
+            "test_lock_id",
+            "test_namespace_id",
+            "SELECT pg_advisory_xact_lock(%s, %s)",
+            [-202238029, -550702827],
+        ),
+    ],
+)
+@pytest.mark.django_db
+def test_pg_advisory_xact_lock_calls_cursor_execute(lock_id, namespace_id, sql, args):
+    """
+    Проверка выполняемых sql запросов при вызове pg_advisory_xact_lock()
+    """
+
+    with (
+        mock.patch("meringue.core.db._check_postgresql", return_value=True),
+        mock.patch.object(connections["default"], "get_autocommit", return_value=False),
+        mock.patch("django.db.backends.utils.CursorWrapper.execute") as mock_execute,
+    ):
+        pg_advisory_xact_lock(lock_id, namespace_id)
+
+    mock_execute.assert_called_once_with(sql, args)
+
+
 def test_warn_if_not_postgresql():
     """
     Проверка что выводится сообщение пользователю
@@ -120,6 +153,60 @@ def test_warn_if_not_postgresql():
         lock.lock()
 
 
+def test_xact_warn_if_not_postgresql():
+    """
+    Проверка что выводится сообщение пользователю для transaction-level lock
+    """
+
+    with (
+        mock.patch("meringue.core.db._check_postgresql", return_value=False),
+        pytest.warns(
+            UserWarning,
+            match="pg_advisory_xact_lock is only supported with PostgreSQL databases.",
+        ),
+    ):
+        pg_advisory_xact_lock("test")
+
+
+@pytest.mark.django_db
+def test_xact_warn_if_autocommit():
+    """
+    Проверка предупреждения при использовании transaction-level lock вне транзакции
+    """
+
+    with (
+        mock.patch("meringue.core.db._check_postgresql", return_value=True),
+        mock.patch.object(connections["default"], "get_autocommit", return_value=True),
+        mock.patch.object(connections["default"], "in_atomic_block", False),
+        mock.patch("django.db.backends.utils.CursorWrapper.execute") as mock_execute,
+        pytest.warns(
+            UserWarning,
+            match="pg_advisory_xact_lock is being used in autocommit mode.",
+        ),
+    ):
+        pg_advisory_xact_lock("test")
+
+    mock_execute.assert_called_once()
+
+
+def test_skip_xact_lock_with_not_postgresql_db():
+    """
+    Проверка что если база не postgresql то transaction-level lock не вызывается
+    """
+
+    with (
+        mock.patch("meringue.core.db._check_postgresql", return_value=False),
+        mock.patch("django.db.backends.utils.CursorWrapper.execute") as mock_execute,
+        pytest.warns(
+            UserWarning,
+            match="pg_advisory_xact_lock is only supported with PostgreSQL databases.",
+        ),
+    ):
+        pg_advisory_xact_lock("test")
+
+    mock_execute.assert_not_called()
+
+
 def test_skip_lock_with_not_postgresql_db():
     """
     Проверка что если база не postgresql то lock не вызывается
@@ -128,7 +215,13 @@ def test_skip_lock_with_not_postgresql_db():
     lock = PgAdvisoryLock("test")
     lock.is_postgresql = False
 
-    with mock.patch("django.db.backends.utils.CursorWrapper.execute") as mock_execute:
+    with (
+        mock.patch("django.db.backends.utils.CursorWrapper.execute") as mock_execute,
+        pytest.warns(
+            UserWarning,
+            match="pg_advisory_lock is only supported with PostgreSQL databases.",
+        ),
+    ):
         lock.lock()
 
     mock_execute.assert_not_called()
