@@ -78,8 +78,8 @@ Adding new functionality. Can change.
 	* [x] Image editor like easy_thumbnails.
 	* [x] A DRF serializer field that returns a set of images in multiple sizes (e.g., standard and 2x for retina) and formats (e.g., original and WebP).
 	* [ ] Job chain presets
-	* [ ] Tests
-	* [ ] Docs
+	* [x] Tests
+	* [x] Docs
 * [ ] Similar image-processing functionality but for video.
 * [x] Functionality for loading private files available through [nginx internal](http://nginx.org/en/docs/http/ngx_http_core_module.html#internal).
 

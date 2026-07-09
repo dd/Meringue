@@ -3,7 +3,6 @@ from django.apps import apps
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.translator import translator
 
-
 for model in apps.get_models():
     fields = getattr(model._meta, "m_translate_fields", [])
 

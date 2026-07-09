@@ -5,7 +5,6 @@ from faker import Faker
 
 from meringue.core.upload_handlers import rename_handler
 
-
 fake = Faker()
 
 

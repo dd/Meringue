@@ -35,8 +35,8 @@ class PublicationQuerySet(QuerySet):
         """
         Method to getting published items.
         """
-        from meringue.core.models import PublicationDatesMixin
-        from meringue.core.models import PublicationMixin
+        from meringue.core.models import PublicationDatesMixin  # noqa: PLC0415
+        from meringue.core.models import PublicationMixin  # noqa: PLC0415
 
         if issubclass(self.model, PublicationMixin):
             kwargs["is_published"] = True
@@ -57,8 +57,8 @@ class PublicationQuerySet(QuerySet):
         """
         Method for getting unpublished items.
         """
-        from meringue.core.models import PublicationDatesMixin
-        from meringue.core.models import PublicationMixin
+        from meringue.core.models import PublicationDatesMixin  # noqa: PLC0415
+        from meringue.core.models import PublicationMixin  # noqa: PLC0415
 
         if issubclass(self.model, PublicationMixin):
             kwargs["is_published"] = False

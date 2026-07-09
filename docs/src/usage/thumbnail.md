@@ -74,7 +74,19 @@ url = get_thumbnail(
 )
 ```
 
-If the source file does not exist, a dummy image URL will be returned.
+The `file_path` must point to an existing absolute source path. If the source file does not exist, a dummy image URL will be returned. The `out_format` argument is optional and defaults to [THUMBNAIL_DEFAULT_FORMAT][meringue.conf.default_settings.THUMBNAIL_DEFAULT_FORMAT].
+
+Additional keyword arguments are passed to [ThumbnailImage.save][meringue.thumbnail.images.ThumbnailImage.save], so you can override Pillow save options for a single thumbnail or force regeneration of an already saved thumbnail:
+
+```python
+url = get_thumbnail(
+    file_path=Path("/path/to/image.jpg"),
+    job_chain=["s:300x200", "rm:cover", "resize", "crop"],
+    out_format="JPEG",
+    quality=90,
+    force=True,
+)
+```
 
 
 ### Thumbnailer
@@ -95,6 +107,8 @@ print(thumbnail.url)
 
 !!! note
 	The `image_path` must be an absolute path.
+
+The returned thumbnail file name is based on the source image path and the job chain. Save options passed through `get_thumbnail()` or `Thumbnailer.get_thumbnail()` do not change the generated file name. Use `force=True` when you need to overwrite an existing thumbnail with different save options.
 
 
 ### Templatetags
@@ -133,6 +147,14 @@ class MySerializer(serializers.ModelSerializer):
     photo = MImageField(job_chain=["s:300x200", "rm:cover", "rs:no_increase", "resize"])
 ```
 
+When `size` is used, the field builds the following job chain:
+
+```python
+["s:<width>x<height>", "rm:cover", "rs:no_increase", "resize"]
+```
+
+The output format follows the source file extension.
+
 
 #### MImageSetField
 
@@ -144,6 +166,27 @@ from meringue.thumbnail.drf_fields import MImageSetField
 class MySerializer(serializers.ModelSerializer):
     photo = MImageSetField(size=(300, 200), dimensions=(1, 2))
 ```
+
+When `size` is used, `MImageSetField` builds a separate job chain for each dimension. The default base chain is `["rm:cover", "resize", "crop"]`, so the generated images match the requested size exactly. You can override the base chain or pass explicit chains:
+
+```python
+class MySerializer(serializers.ModelSerializer):
+    photo = MImageSetField(
+        size=(300, 200),
+        dimensions=(1, 2),
+        base_job_chain=["rm:contain", "resize"],
+    )
+
+    # or
+    photo = MImageSetField(
+        job_chains={
+            1: ["s:300x200", "rm:cover", "resize", "crop"],
+            2: ["s:600x400", "rm:cover", "resize", "crop"],
+        },
+    )
+```
+
+If `1` is not included in `dimensions`, it is added automatically.
 
 The response will contain an array of objects with `srcset` and `type` fields:
 
@@ -212,7 +255,7 @@ MERINGUE = {
 }
 ```
 
-The `options` value can also be a list of strings if you prefer to pass already-split command-line arguments.
+By default, `oxipng` is called with `-o max --strip all --alpha`. The `options` value replaces the default options and can also be a list of strings if you prefer to pass already-split command-line arguments. If `binary` is not set, or if the thumbnail is not PNG, the optimizer returns the original in-memory image unchanged.
 
 
 ## Customization

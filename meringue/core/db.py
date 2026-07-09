@@ -3,8 +3,62 @@ import zlib
 from functools import cached_property
 from functools import wraps
 
-from django.conf import settings
 from django.db import connections
+
+
+def _check_postgresql(using: str) -> bool:
+    """
+    Check whether the selected DB engine is PostgreSQL.
+    """
+
+    return connections[using].vendor == "postgresql"
+
+
+def _int_lock_id(lock_id: int | str, namespace_id: int | str | None = None) -> int:
+    """
+    Returns the integer form of `lock_id`, applying CRC32 hash if it's a string.
+    """
+
+    if isinstance(lock_id, int):
+        return lock_id
+
+    unsigned = zlib.crc32(lock_id.encode("utf-8")) & 0xFFFFFFFF
+
+    if namespace_id is not None:
+        return unsigned - 0x80000000
+
+    return unsigned
+
+
+def _int_namespace_id(namespace_id: int | str | None) -> int | None:
+    """
+    Returns the integer form of `namespace_id`, applying CRC32 hash if it's a string.
+    """
+
+    if namespace_id is None:
+        return None
+
+    if isinstance(namespace_id, int):
+        return namespace_id
+
+    unsigned = zlib.crc32(namespace_id.encode("utf-8")) & 0xFFFFFFFF
+    return unsigned - 0x80000000
+
+
+def _advisory_lock_args(lock_id: int | str, namespace_id: int | str | None) -> list[int]:
+    """
+    Returns PostgreSQL advisory lock arguments for single-key or namespace-key signatures.
+    """
+
+    if namespace_id is None:
+        return [_int_lock_id(lock_id)]
+
+    namespace_arg = _int_namespace_id(namespace_id)
+    if namespace_arg is None:
+        msg = "namespace_id cannot be None when using two advisory lock arguments."
+        raise ValueError(msg)
+
+    return [namespace_arg, _int_lock_id(lock_id, namespace_id)]
 
 
 class PgAdvisoryLock:
@@ -91,8 +145,7 @@ class PgAdvisoryLock:
         Check whether the current DB engine is PostgreSQL.
         """
 
-        engine = settings.DATABASES[self.db_name]["ENGINE"]
-        return "postgresql" in engine
+        return _check_postgresql(self.db_name)
 
     @cached_property
     def int_lock_id(self) -> int:
@@ -103,15 +156,7 @@ class PgAdvisoryLock:
             32-bit signed integer key for pg_advisory_lock.
         """
 
-        if isinstance(self.lock_id, int):
-            return self.lock_id
-
-        unsigned = zlib.crc32(self.lock_id.encode("utf-8")) & 0xFFFFFFFF
-
-        if self.namespace_id is not None:
-            return unsigned - 0x80000000
-
-        return unsigned
+        return _int_lock_id(self.lock_id, self.namespace_id)
 
     @cached_property
     def int_namespace_id(self) -> int | None:
@@ -122,14 +167,7 @@ class PgAdvisoryLock:
             Signed 32-bit integer or None if namespace is not set.
         """
 
-        if self.namespace_id is None:
-            return None
-
-        if isinstance(self.namespace_id, int):
-            return self.namespace_id
-
-        unsigned = zlib.crc32(self.namespace_id.encode("utf-8")) & 0xFFFFFFFF
-        return unsigned - 0x80000000
+        return _int_namespace_id(self.namespace_id)
 
     def lock(self) -> None:
         """
@@ -168,3 +206,57 @@ class PgAdvisoryLock:
 
         with connections[self.db_name].cursor() as cursor:
             cursor.execute(sql, args)
+
+
+def pg_advisory_xact_lock(
+    lock_id: int | str,
+    namespace_id: int | str | None = None,
+    using: str = "default",
+) -> None:
+    """
+    PostgreSQL transaction-level advisory lock for Django projects.
+
+    This function uses the same key handling as [PgAdvisoryLock][meringue.core.db.PgAdvisoryLock],
+    but calls PostgreSQL's `pg_advisory_xact_lock` functions. Transaction-level advisory locks are
+    released automatically at the end of the current transaction and cannot be released manually.
+
+    !!! info "supports both signatures"
+        - `pg_advisory_xact_lock(key)`            — if only `lock_id` is provided
+        - `pg_advisory_xact_lock(namespace, key)` — if `namespace_id` is also provided
+
+    !!! warning
+        In Django autocommit mode this lock is released at the end of the SQL statement. Wrap usage
+        in `transaction.atomic()` when the lock must be held for a block of application code.
+
+    Examples:
+        ```py
+        from django.db import transaction
+
+        with transaction.atomic():
+            pg_advisory_xact_lock(12345, namespace_id="transfer")
+            ...
+        ```
+    """
+
+    if not _check_postgresql(using):
+        msg = "pg_advisory_xact_lock is only supported with PostgreSQL databases."
+        warnings.warn(msg, UserWarning, stacklevel=2)
+        return
+
+    connection = connections[using]
+    if connection.get_autocommit() and not connection.in_atomic_block:
+        msg = (
+            "pg_advisory_xact_lock is being used in autocommit mode. "
+            "Wrap usage in transaction.atomic() to hold the lock for application code."
+        )
+        warnings.warn(msg, UserWarning, stacklevel=2)
+
+    if namespace_id is None:
+        sql = "SELECT pg_advisory_xact_lock(%s)"
+    else:
+        sql = "SELECT pg_advisory_xact_lock(%s, %s)"
+
+    args = _advisory_lock_args(lock_id, namespace_id)
+
+    with connection.cursor() as cursor:
+        cursor.execute(sql, args)

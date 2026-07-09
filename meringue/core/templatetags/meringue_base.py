@@ -7,7 +7,6 @@ from django.utils.safestring import mark_safe
 from meringue.conf import m_settings
 from meringue.core.utils import format_date_from_to
 
-
 register = template.Library()
 
 
