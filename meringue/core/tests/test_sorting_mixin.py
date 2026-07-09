@@ -3,7 +3,6 @@ from faker import Faker
 
 from test_project.models import SortingModel
 
-
 fake = Faker()
 
 

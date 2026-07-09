@@ -7,7 +7,6 @@ from faker import Faker
 
 from test_project.models import PublicationDatesModel
 
-
 fake = Faker()
 
 

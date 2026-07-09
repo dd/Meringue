@@ -353,7 +353,6 @@ ignore-variadic-names = true
 [tool.ruff.lint.isort]
 force-single-line = true
 known-first-party = ["meringue"]
-lines-after-imports = 2
 no-lines-before = ["local-folder"]
 section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
 [tool.ruff.lint.isort.sections]
@@ -363,7 +362,6 @@ exclude = ["*/migrations/*"]
 
 [tool.isort]
 known_first_party = ["meringue"]
-lines_after_imports = 2
 no_lines_before = ["LOCALFOLDER"]
 known_django = "django"
 sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
