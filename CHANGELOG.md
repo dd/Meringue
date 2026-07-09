@@ -2,6 +2,24 @@
 
 
 
+<a name="1.6.0"></a>
+## 1.6.0 (2026-07-09)
+
+### Added
+
+- ✨ (core): Add pg_advisory_xact_lock [[2e71888](https://github.com/dd/Meringue/commit/2e71888c3e9776ee83ecf109be6240d922a27071)]
+
+### Changed
+
+- 🚨 (chore): Linting [[bfbee53](https://github.com/dd/Meringue/commit/bfbee53a181a580818ff22c64ab230a43883c49f)]
+
+### Miscellaneous
+
+-  Merge pull request [#22](https://github.com/dd/Meringue/issues/22) from dd/dev [[78b59de](https://github.com/dd/Meringue/commit/78b59de048c55b6c46c6edd99a8c8aef81d0a5c9)]
+- 📝 (docs): Update docs [[38965a1](https://github.com/dd/Meringue/commit/38965a13133299200dc09d358097c28b29aed6fc)]
+- 🗑️ (core): Deprecate legacy crypt helpers [[933de8e](https://github.com/dd/Meringue/commit/933de8e272996f6f37d8306e19c02a6fa52219d5)]
+
+
 <a name="1.5.1"></a>
 ## 1.5.1 (2026-07-07)
 
