@@ -11,7 +11,6 @@
 
 ### Miscellaneous
 
--  Merge pull request [#21](https://github.com/dd/Meringue/issues/21) from dd/dev [[c1c1c2f](https://github.com/dd/Meringue/commit/c1c1c2f7aa111cda5e583e674c47cf5d045a4130)]
 - 📝 (thumbnail): Add default optimizer description to docs [[775f5bd](https://github.com/dd/Meringue/commit/775f5bdb3de6d601e2719e6d9b84179bfc89ab02)]
 
 
@@ -25,9 +24,7 @@
 
 ### Miscellaneous
 
--  Merge pull request [#20](https://github.com/dd/Meringue/issues/20) from dd/dev [[08e38d7](https://github.com/dd/Meringue/commit/08e38d754b48a71860c725cbce526fe4837f2cba)]
 - 📝 (docs): Update changelog [[dc93a13](https://github.com/dd/Meringue/commit/dc93a13a71691f81dfb778699c4e47220869c712)]
--  Merge branch &#x27;master&#x27; into dev [[ffab953](https://github.com/dd/Meringue/commit/ffab95320d20dfeeba9c4cd7f80db812d935fe21)]
 
 
 <a name="1.4.2"></a>
