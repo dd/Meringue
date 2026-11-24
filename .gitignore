@@ -6,6 +6,19 @@
 *~
 .*
 
+# Исключения из `.*` - конфиги, которые должны быть в репозитории.
+# Слэш в конце обязателен: без него git не заходит внутрь исключённой
+# директории, и правила для вложенных файлов не сработают.
+!.gitignore
+!.editorconfig
+!.gitattributes
+!.gitlint
+!.github/
+!.pre-commit-config.yaml
+!.git-blame-ignore-revs
+!.linkcheckerrc
+!.mailmap
+
 __pycache__
 dist
 /env
