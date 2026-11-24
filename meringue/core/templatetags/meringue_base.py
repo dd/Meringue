@@ -6,8 +6,29 @@ from django.utils.safestring import mark_safe
 
 from meringue.conf import m_settings
 from meringue.core.utils import format_date_from_to
+from meringue.core.utils import frontend
 
 register = template.Library()
+
+
+@register.simple_tag
+def frontend_link(url_name: str, absolute: bool = True, **params) -> str:
+    """
+    Build a frontend URL using [get_link][meringue.core.utils.frontend.get_link].
+
+    Attributes:
+        url_name: Name of the URL in the frontend URL settings.
+        absolute: Whether to include the configured frontend domain.
+        params: Parameters passed to the URL pattern or callable.
+
+    Examples:
+        ```jinja
+        {% load meringue_base %}
+        {% frontend_link 'user' id=user.pk %}
+        {% frontend_link 'user' absolute=False id=user.pk %}
+        ```
+    """
+    return frontend.get_link(url_name, absolute=absolute, **params)
 
 
 @register.simple_tag
